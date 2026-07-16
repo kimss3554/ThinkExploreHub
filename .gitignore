@@ -1,0 +1,40 @@
+﻿# 개발 환경
+node_modules/
+.npm
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 빌드 결과
+dist/
+build/
+.next/
+out/
+
+# 캐시
+.cache/
+.codex/
+.cursor/
+
+# Obsidian 설정 (로컬만)
+.obsidian/appearance.json
+.obsidian/workspace.json
+
+# 개인 자료 (공유 금지)
+.claude/settings.local.json
+04_Cloud_Shared/
+99_Backup/
+
+# 임시 파일
+새폴더/
+무제/
+*.tmp
