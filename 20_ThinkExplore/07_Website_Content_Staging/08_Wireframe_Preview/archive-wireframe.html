@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성장기록 - 콘텐츠 와이어프레임</title>
+  <link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+
+<nav>
+  <a href="index-wireframe.html">홈</a>
+  <a href="elementary-wireframe.html">초등 교육</a>
+  <a href="middle-wireframe.html">중등 교육</a>
+  <a href="archive-wireframe.html">성장기록</a>
+</nav>
+
+<div class="page-title">
+  <h1>학생 성장기록</h1>
+  <p>글쓰기 · 탐구 · 발표 · 프로젝트</p>
+</div>
+
+<!-- 필터 -->
+<section>
+  <h2>1. 콘텐츠 필터</h2>
+
+  <div class="info-box">
+    <h4>학교급 선택</h4>
+    <p>
+      <span class="required">전체</span> |
+      <span class="required">초등</span> |
+      <span class="required">중등</span>
+    </p>
+  </div>
+
+  <div class="info-box">
+    <h4>활동 유형 선택</h4>
+    <p>
+      <span class="required">전체</span> |
+      글쓰기 | 질문 | 마인드맵 | 탐구 | PPT | 포스터 | 발표
+    </p>
+  </div>
+</section>
+
+<!-- 아카이브 갤러리 -->
+<section>
+  <h2>2. 학생 성장 사례 갤러리</h2>
+
+  <p style="color: var(--dark-gray); margin-bottom: 2rem;">
+    대표 6개 카드 표시 (실제 자료가 준비되면 더 추가)
+  </p>
+
+  <!-- 카드 1: 초등 글쓰기 -->
+  <div class="card">
+    <div class="image-slot tall">
+      <div>
+        <div class="slot-label">글쓰기 변화</div>
+        <div class="slot-filename">ELEM-WRITING (Before/After)</div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">초등 글쓰기 성장</div>
+      <div class="card-meta">초등 · 글쓰기</div>
+      <p>처음 쓴 짧은 생각에서 근거 있는 글로 발전하는 과정</p>
+      <button class="cta-button" style="font-size: 0.85rem; padding: 0.5rem 1rem;">자세히 보기</button>
+    </div>
+  </div>
+
+  <!-- 카드 2: 초등 질문 노트 -->
+  <div class="card">
+    <div class="image-slot tall">
+      <div>
+        <div class="slot-label">독서 중 질문</div>
+        <div class="slot-filename">ELEM-QUESTION-NOTE</div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">초등 질문 노트</div>
+      <div class="card-meta">초등 · 질문</div>
+      <p>책을 읽으며 자신이 품은 의문과 생각 기록</p>
+      <button class="cta-button" style="font-size: 0.85rem; padding: 0.5rem 1rem;">자세히 보기</button>
+    </div>
+  </div>
+
+  <!-- 카드 3: 초등 마인드맵 -->
+  <div class="card">
+    <div class="image-slot tall">
+      <div>
+        <div class="slot-label">개념 정리</div>
+        <div class="slot-filename">ELEM-MINDMAP</div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">초등 마인드맵</div>
+      <div class="card-meta">초등 · 마인드맵</div>
+      <p>배운 내용을 시각적으로 정리한 결과물</p>
+      <button class="cta-button" style="font-size: 0.85rem; padding: 0.5rem 1rem;">자세히 보기</button>
+    </div>
+  </div>
+
+  <!-- 카드 4: 중등 탐구 -->
+  <div class="card">
+    <div class="image-slot tall">
+      <div>
+        <div class="slot-label">탐구 과정</div>
+        <div class="slot-filename">MIDDLE-INQUIRY</div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">중등 탐구 프로젝트</div>
+      <div class="card-meta">중등 · 탐구</div>
+      <p>질문 설정부터 결과 발표까지의 탐구 여정</p>
+      <button class="cta-button" style="font-size: 0.85rem; padding: 0.5rem 1rem;">자세히 보기</button>
+    </div>
+  </div>
+
+  <!-- 카드 5: 중등 PPT -->
+  <div class="card">
+    <div class="image-slot tall">
+      <div>
+        <div class="slot-label">발표 자료</div>
+        <div class="slot-filename">MIDDLE-PPT</div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">중등 발표 자료</div>
+      <div class="card-meta">중등 · PPT</div>
+      <p>탐구 결과를 시각화하고 정보를 구조화한 발표</p>
+      <button class="cta-button" style="font-size: 0.85rem; padding: 0.5rem 1rem;">자세히 보기</button>
+    </div>
+  </div>
+
+  <!-- 카드 6: 중등 포스터 또는 발표 -->
+  <div class="card">
+    <div class="image-slot tall">
+      <div>
+        <div class="slot-label">학생 발표</div>
+        <div class="slot-filename">MIDDLE-PRESENTATION</div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-title">중등 발표 장면</div>
+      <div class="card-meta">중등 · 발표</div>
+      <p>탐구 결과를 반 친구들 앞에서 발표하는 모습</p>
+      <button class="cta-button" style="font-size: 0.85rem; padding: 0.5rem 1rem;">자세히 보기</button>
+    </div>
+  </div>
+</section>
+
+<!-- 수상·진학 소식 -->
+<section>
+  <h2>3. 학생 성과</h2>
+
+  <div class="grid grid-2">
+    <div class="grid-item">
+      <h3>⭐ 수상 소식</h3>
+      <p>대회 수상, 영재원 합격</p>
+      <p style="font-size: 0.85rem; color: var(--dark-gray);">2차 배치</p>
+    </div>
+
+    <div class="grid-item">
+      <h3>🎓 진학 소식</h3>
+      <p>특목고, 자사고, 대학 진학</p>
+      <p style="font-size: 0.85rem; color: var(--dark-gray);">2차 배치</p>
+    </div>
+  </div>
+</section>
+
+<!-- 수업 후기 (2차 배치) -->
+<section>
+  <h2>4. 학부모·학생 후기</h2>
+
+  <div class="info-box">
+    <h4>⏳ 2차 배치</h4>
+    <p>초등 학부모, 중등 학부모, 학생 후기</p>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="content-slot">
+      <div class="slot-label">초등 학부모 후기</div>
+      <div class="slot-note">2차 배치</div>
+    </div>
+
+    <div class="content-slot">
+      <div class="slot-label">중등 학부모 후기</div>
+      <div class="slot-note">2차 배치</div>
+    </div>
+
+    <div class="content-slot">
+      <div class="slot-label">학생 후기</div>
+      <div class="slot-note">2차 배치</div>
+    </div>
+  </div>
+</section>
+
+<!-- 다음 단계 -->
+<section>
+  <h2>5. 더 알아보기</h2>
+
+  <div class="cta-section">
+    <h3 style="margin-top: 0;">우리 아이도 이렇게 성장할 수 있습니다</h3>
+    <p>초등 또는 중등 과정 살펴보기</p>
+    <button class="cta-button">초등 과정</button>
+    <button class="cta-button">중등 과정</button>
+    <button class="cta-button">상담 신청</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 생각탐구. 모든 권리 보유.</p>
+  <p style="margin-top: 1rem; font-size: 0.9rem;">
+    <a href="index-wireframe.html">← 홈으로</a>
+  </p>
+</footer>
+
+</body>
+</html>

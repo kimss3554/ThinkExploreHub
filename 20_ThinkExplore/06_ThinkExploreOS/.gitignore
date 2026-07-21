@@ -1,0 +1,42 @@
+# === 개인정보 · 학생자료 (저장소 추적 금지) ===
+# 실제 학생 개인정보 원본은 이 저장소에 넣지 않는다.
+students/
+student-data/
+학생자료/
+개인정보/
+*_개인정보*
+*_학생명단*
+*.roster
+*.pii
+
+# === 녹음 · 미디어 원본 ===
+recordings/
+녹음/
+*.mp3
+*.wav
+*.m4a
+*.mp4
+*.mov
+
+# === 임시 · 캐시 파일 ===
+tmp/
+temp/
+*.tmp
+*.log
+*.bak
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === 편집기 · 도구 ===
+.vscode/
+.idea/
+node_modules/
+
+# === 민감 설정 ===
+.env
+.env.*
+*.secret
+
+# outputs/ 내 민감 산출물은 필요 시 개별 지정

@@ -4,60 +4,48 @@
 
 ---
 
-## 🏗️ 아키텍처 (3계층)
+## 🏗️ 아키텍처 (하이브리드 저장소)
 
-| 계층 | 경로 | 용도 |
-|------|------|------|
-| **Obsidian Vault** | `01_ObsidianVault/` | 콘텐츠 작성·관리·아이디어 노트 |
-| **개발 프로젝트** | `03_Projects/` | 웹사이트·템플릿·프로토타입 구현 |
-| **참고 자료** | `02_Zotero/`, `00_Inbox/` | 논문 참고문헌, 수집 자료 |
+| 계층 | 경로 | 저장소 | 동기화 |
+|------|------|--------|--------|
+| **Obsidian Vault** | `01_ObsidianVault/` | Google Drive | ☁️ 자동 동기화 |
+| **개발 프로젝트** | `03_Projects/` | 로컬 + GitHub | 💻 로컬 전용 |
+| **참고 자료** | Zotero 앱 내부 | %APPDATA%\Zotero\ | Obsidian 연동 |
 
 ---
 
-## 📁 디렉터리 구조
+## 📁 저장소 구조
 
+### **Google Drive** (클라우드)
+```
+G:\내 드라이브\
+└── ThinkExploreHub/
+    └── 01_ObsidianVault/          ☁️ Obsidian Vault 루트
+        ├── 00_대시보드/
+        ├── 10_논문/
+        ├── 20_학생탐구보고서/
+        ├── 30_교재/
+        ├── 40_생각탐구site/       (웹사이트 기획·콘텐츠)
+        ├── 50_수업자료/
+        ├── 60_브랜드마케팅/
+        ├── 99_AI_context/
+        ├── wiki/                  (참고 자료 라이브러리)
+        └── .obsidian/             (Obsidian 설정)
+```
+
+### **로컬** (개발 전용)
 ```
 C:\Users\Kim\ThinkExploreHub/
-├── 01_ObsidianVault/              # ← Obsidian Vault 루트
-│   ├── 00_대시보드/
-│   │   └── 홈.md                  # 작업 개요·빠른 링크
-│   ├── 10_논문/
-│   │   ├── 논문_작업기준.md       # 논문 작성 체크리스트
-│   │   ├── 논문초안/
-│   │   ├── 문헌노트/
-│   │   ├── 분석결과/
-│   │   ├── 선행연구매트릭스/
-│   │   └── 이론적배경/
-│   ├── 20_학생탐구보고서/
-│   │   ├── 학생탐구보고서_기본템플릿.md
-│   │   └── [학생별 탐구 프로젝트]
-│   ├── 30_교재/                   # (확장 예정)
-│   │   └── [교재별 콘텐츠·템플릿]
-│   ├── 40_생각탐구site/
-│   │   ├── site_작업기준.md       # 홈페이지 기획서
-│   │   └── [섹션별 콘텐츠]
-│   ├── 50_수업자료/               # (확장 예정)
-│   ├── 60_브랜드마케팅/           # (확장 예정)
-│   ├── 99_AI_context/
-│   │   └── 작업기준.md            # Claude Code 운영 규칙
-│   └── .obsidian/                 # Obsidian 설정
+├── 03_Projects/                   💻 개발 프로젝트 (로컬 + GitHub)
+│   ├── thinkexplore-site/         🌐 홈페이지 (React/Next.js)
+│   ├── thesis-gels2022/           📖 논문 데이터·분석
+│   └── [기타 템플릿·프로젝트]
 │
-├── 03_Projects/                   # ← 개발 프로젝트
-│   ├── thinkexplore-site/         # 🌐 홈페이지 (React/Next.js)
-│   ├── next-forge/                # 🌐 Next.js 프로젝트
-│   ├── nextjs/                    # 🌐 Next.js 기본 템플릿
-│   ├── react-best-practices/      # 🌐 React 베스트 프랙티스
-│   ├── react-and-nextjs-data-visualization/  # 📊 데이터 시각화
-│   ├── student-report-template/   # 📝 탐구보고서 템플릿
-│   ├── textbook-template/         # 📚 교재 템플릿
-│   └── thesis-gels2022/           # 📖 논문 데이터·분석
-│
-├── 02_Zotero/                     # ← 논문 참고문헌 (Zotero)
-├── 00_Inbox/                      # ← 자료 수집함
-├── 04_Cloud_Shared/               # ← Google Drive 동기화 대기
-├── 99_Backup/                     # ← 백업
-├── CLAUDE.md                      # ← 이 파일 (Claude Code 설정)
-└── .claude/                       # Claude Code 커스텀 설정
+├── 00_Inbox/                      자료 수집함
+├── 20_ThinkExplore/               기존 자료 (정리 중)
+├── 99_Backup/                     로컬 백업
+├── CLAUDE.md                      이 파일
+└── .claude/                       Claude Code 설정
 ```
 
 ---
@@ -131,10 +119,12 @@ C:\Users\Kim\ThinkExploreHub/
 
 ## 🔧 Claude Code 통합
 
-### **Obsidian 열기**
-```bash
-# ThinkExploreHub를 Obsidian Vault로 열기
-# Obsidian에서 "01_ObsidianVault" 폴더 선택
+### **Obsidian 열기** (Google Drive 버전)
+```
+1. Obsidian 앱 실행
+2. 좌하단 폴더 아이콘 클릭 → '다른 Vault 열기'
+3. G:\내 드라이브\ThinkExploreHub\01_ObsidianVault 선택
+4. 완료! (모든 기기에서 자동 동기화)
 ```
 
 ### **개발 서버 실행**
@@ -205,24 +195,21 @@ npm run dev
 
 ---
 
-## 🔌 확장 가능성
+## ☁️ 동기화 및 협업
 
-### **Google Drive 연동** (향후)
-```
-04_Cloud_Shared/ ← Google Drive for Desktop 마운트
-  ├── 논문_협업/
-  ├── 교재_피드백/
-  └── 학생_제출물/
-```
+### **Google Drive 자동 동기화**
+- Obsidian Vault: G:\내 드라이브\ThinkExploreHub\01_ObsidianVault
+- 모든 기기에서 실시간 동기화 (PC, 태블릿, 휴대폰 등)
+- 필요한 자료만 Google Drive에 업로드 (대용량 프로젝트는 제외)
 
-### **Zotero 자동 임베드**
-- 논문 작성 시 Zotero 라이브러리 자동 연결
+### **Zotero 연동**
+- 논문 작성 시 Obsidian에서 Zotero 자동 임베드
 - 참고문헌 자동 생성
+- Obsidian 플러그인 사용 (Zotero Citation 등)
 
-### **학생 협업 대시보드** (향후)
-- 탐구보고서 진행률 추적
-- 교재 피드백 수집
-- 통계 시각화
+### **GitHub 백업** (개발 프로젝트)
+- 03_Projects는 로컬에서 Git 관리
+- 정기적으로 GitHub으로 푸시 (버전 관리 및 백업)
 
 ---
 
@@ -230,23 +217,27 @@ npm run dev
 
 | 날짜 | 변경 내용 | 대상 | 사유 |
 |------|----------|------|------|
+| 2026-07-21 | 폴더 정리 및 Google Drive 동기화 | 전체 | Obsidian을 Google Drive로 이동하여 다중 기기 동기화 지원 |
+| 2026-07-21 | 중복 폴더 삭제 | 02_Zotero, 04_Cloud_Shared, .obsidian | 불필요한 백업 제거, 저장소 단순화 |
 | 2026-07-16 | 초기 구성 | 전체 | ThinkExploreHub 통합 설정 |
 
 ---
 
 ## 🎯 다음 단계
 
-1. **Obsidian Vault 활성화**
-   - `C:\Users\Kim\ThinkExploreHub\01_ObsidianVault` 를 Obsidian에서 열기
-   - `.obsidian/` 설정 완성
+1. **Obsidian 설정 완료** ✅
+   - Google Drive의 01_ObsidianVault를 Vault로 설정
+   - 모든 기기에서 자동 동기화 확인
 
 2. **프로젝트 개발 환경 구성**
-   - `03_Projects/thinkexplore-site/` 에서 `npm install` 실행
-   - 로컬 개발 서버 확인
+   - `C:\Users\Kim\ThinkExploreHub\03_Projects\thinkexplore-site/` 에서 `npm install` 실행
+   - 로컬 개발 서버 실행: `npm run dev`
 
-3. **첫 작업 시작**
-   - 홈페이지 또는 논문부터 선택해 시작
-   - Obsidian과 개발 서버를 나란히 띄우며 작업
+3. **워크플로우 시작**
+   - Google Drive에서 Obsidian으로 콘텐츠 작성
+   - 로컬 개발 환경에서 코드 구현
+   - 변경 사항은 자동으로 Google Drive에 동기화
+   - 완성된 코드는 GitHub으로 푸시
 
 ---
 
