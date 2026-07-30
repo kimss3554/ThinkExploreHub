@@ -745,11 +745,11 @@
 
 <a id="top"></a>
 
-<!-- ========== HERO IMAGE ========== -->
-<img src="cta-hero.png" alt="생각탐구 입시분석" style="width:100%;display:block;">
+<!-- ========== HERO IMAGE (숨김 처리, 2026-07-30) ========== -->
+<img src="cta-hero.png" alt="생각탐구 입시분석" style="width:100%;display:none;">
 
-<!-- ========== GATE SECTION ========== -->
-<section id="overview-gate" class="block" style="background:var(--section-alt);text-align:center;padding:40px 20px;">
+<!-- ========== GATE SECTION (숨김 처리, 2026-07-30) ========== -->
+<section id="overview-gate" class="block" style="background:var(--section-alt);text-align:center;padding:40px 20px;display:none;">
   <div class="wrap">
     <!-- 비로그인 상태 -->
     <div id="gate-locked">
@@ -951,7 +951,7 @@
         <div class="pv-desc">A등급 비율을 기반으로 학교별 내신 1등급 취득 난이도를 추정합니다. 5등급제(현 고2)·9등급제(현 고3)를 구분 분석합니다.</div>
         <div class="pv-tags"><span class="pv-tag">국어</span><span class="pv-tag">수학</span><span class="pv-tag">영어</span><span class="pv-tag">5등급제</span><span class="pv-tag">9등급제</span></div>
         <div class="pv-bar" id="pv-bar-1">
-          <span class="pv-bar-label">🔒 채널 멤버 전용</span>
+          <span class="pv-bar-label" onclick="pvClick('rw')" style="cursor:pointer;">🔒 채널 멤버 전용</span>
           <button class="pv-bar-btn" onclick="pvClick('rw')">상세보기 →</button>
         </div>
       </div>
@@ -961,7 +961,7 @@
         <div class="pv-desc">2023→2024→2025 3개년 국·수·영 성취도 변화 추이로 학교의 학력 방향성을 파악합니다.</div>
         <div class="pv-tags"><span class="pv-tag">2023</span><span class="pv-tag">2024</span><span class="pv-tag">2025</span><span class="pv-tag">상승·하락 추이</span><span class="pv-tag">11개교</span></div>
         <div class="pv-bar" id="pv-bar-2">
-          <span class="pv-bar-label">🔒 채널 멤버 전용</span>
+          <span class="pv-bar-label" onclick="pvClick('rw')" style="cursor:pointer;">🔒 채널 멤버 전용</span>
           <button class="pv-bar-btn" onclick="pvClick('rw')">상세보기 →</button>
         </div>
       </div>
@@ -971,7 +971,7 @@
         <div class="pv-desc">학교별 수행평가 중 독서활동·논술형 쓰기 연계 비중을 분석합니다. 생기부 세특과 직결되는 핵심 항목입니다.</div>
         <div class="pv-tags"><span class="pv-tag">독서 연계</span><span class="pv-tag">논술형</span><span class="pv-tag">서술형</span><span class="pv-tag">세특 연계</span></div>
         <div class="pv-bar" id="pv-bar-3">
-          <span class="pv-bar-label">🔒 채널 멤버 전용</span>
+          <span class="pv-bar-label" onclick="pvClick('rw')" style="cursor:pointer;">🔒 채널 멤버 전용</span>
           <button class="pv-bar-btn" onclick="pvClick('rw')">상세보기 →</button>
         </div>
       </div>
@@ -981,7 +981,7 @@
         <div class="pv-desc">세부능력 및 특기사항(세특) 충실도, 수상경력, 봉사활동 기록 수준을 학교별로 비교합니다.</div>
         <div class="pv-tags"><span class="pv-tag">세특 충실도</span><span class="pv-tag">수상경력</span><span class="pv-tag">봉사활동</span><span class="pv-tag">자율활동</span></div>
         <div class="pv-bar" id="pv-bar-4">
-          <span class="pv-bar-label">🔒 채널 멤버 전용</span>
+          <span class="pv-bar-label" onclick="pvClick('gib')" style="cursor:pointer;">🔒 채널 멤버 전용</span>
           <button class="pv-bar-btn" onclick="pvClick('gib')">상세보기 →</button>
         </div>
       </div>
@@ -991,7 +991,7 @@
         <div class="pv-desc">중3 겨울방학부터 고1·고2 시작 전까지 반드시 준비할 항목을 학년별로 정리했습니다.</div>
         <div class="pv-tags"><span class="pv-tag">중3 준비</span><span class="pv-tag">고1 진입</span><span class="pv-tag">고2 전환</span><span class="pv-tag">수능 플랜</span></div>
         <div class="pv-bar" id="pv-bar-5">
-          <span class="pv-bar-label">🔒 채널 멤버 전용</span>
+          <span class="pv-bar-label" onclick="pvClick('rw')" style="cursor:pointer;">🔒 채널 멤버 전용</span>
           <button class="pv-bar-btn" onclick="pvClick('rw')">상세보기 →</button>
         </div>
       </div>
@@ -1001,7 +1001,7 @@
         <div class="pv-desc">고1·고2·고3 학년별 전 과목 평균 점수를 히트맵으로 비교해 학교별 과목 강약점을 한눈에 파악합니다.</div>
         <div class="pv-tags"><span class="pv-tag">히트맵</span><span class="pv-tag">학년별</span><span class="pv-tag">전 과목</span><span class="pv-tag">강약점 비교</span></div>
         <div class="pv-bar" id="pv-bar-6">
-          <span class="pv-bar-label">🔒 채널 멤버 전용</span>
+          <span class="pv-bar-label" onclick="pvClick('rw')" style="cursor:pointer;">🔒 채널 멤버 전용</span>
           <button class="pv-bar-btn" onclick="pvClick('rw')">상세보기 →</button>
         </div>
       </div>
