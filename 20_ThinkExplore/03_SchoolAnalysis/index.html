@@ -804,7 +804,6 @@
         <option value="sec-cutline">🎓 내신 1등급 커트라인 분석</option>
         <option value="sec-trend">🎓 연도별 성취도 추이</option>
         <option value="sec-rw">🎓 수행평가 읽기·쓰기 연계 분석</option>
-        <option value="sec-gib">🎓 생기부 관리 분석</option>
         <option value="sec-checklist">🎓 학년별 입학 전 점검 체크리스트</option>
         <option value="sec-score">🎓 성취도 과목 전체 분석</option>
       </select>
@@ -3361,8 +3360,12 @@ function updatePvBars(){
 }
 
 function quickNav(id){
-  const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  // 모바일에서 네이티브 선택 팝업이 닫히는 도중 즉시 스크롤하면
+  // 애니메이션과 겹쳐 무시되는 경우가 있어 약간의 지연을 둔다
+  setTimeout(()=>{
+    const el=document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  },150);
 }
 
 /* ===================== HEATMAP ===================== */
