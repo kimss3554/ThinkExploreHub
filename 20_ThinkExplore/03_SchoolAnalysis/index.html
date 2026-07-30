@@ -3466,7 +3466,7 @@ function showLockPrompt(){ setTab('rw'); }
 document.getElementById('schoolGrid').addEventListener('click',e=>{
   const btn=e.target.closest('.detail-btn'); if(!btn) return;
   if(!premium.classList.contains('unlocked')){
-    toast('🔒 채널 멤버 전용 콘텐츠입니다 — "수행평가" 탭에서 비밀번호를 입력해주세요');
+    showLockPrompt();
     return;
   }
   openModal(btn.dataset.school);
