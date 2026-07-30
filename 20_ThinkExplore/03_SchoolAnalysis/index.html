@@ -238,7 +238,11 @@
   .toggle button.active,.subjtabs button.active{background:var(--navy);color:#fff;border-color:var(--navy);
     box-shadow:0 3px 10px rgba(28,61,107,.2);}
   .toggle button:hover:not(.active),.subjtabs button:hover:not(.active){background:var(--section-alt);color:var(--navy);}
-  .subjtabs{display:flex;gap:8px;justify-content:center;margin-bottom:22px;flex-wrap:wrap;}
+  .subjtabs button.active::before{content:'✓ ';}
+  .subjtabs{display:flex;gap:8px;justify-content:flex-start;margin-bottom:14px;
+    flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+  .subjtabs button{flex:0 0 auto;white-space:nowrap;}
+  .filter-label{font-size:13px;color:var(--muted);font-weight:600;margin:0 0 6px;}
 
   /* heatmap table */
   .tablewrap{overflow-x:auto;}
@@ -257,8 +261,9 @@
   .dot{width:13px;height:13px;border-radius:3px;display:inline-block;}
 
   /* checkboxes */
-  .checkrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:18px;}
-  .checkrow label{font-size:13px;display:inline-flex;align-items:center;gap:5px;
+  .checkrow{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    gap:8px;justify-content:flex-start;margin-bottom:10px;padding-bottom:4px;}
+  .checkrow label{font-size:13px;display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;white-space:nowrap;
     background:#fff;border:1.5px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer;}
 
   /* ---------- MODAL ---------- */
@@ -1189,6 +1194,7 @@
         <p>2023~2026학년도 1학년 과목별 평균 점수 변화</p>
       </div>
 
+      <div class="filter-label">📖 과목 선택</div>
       <div class="subjtabs reveal" id="trendTabs">
         <button data-subj="국어" class="active">국어</button>
         <button data-subj="수학">수학</button>
@@ -1197,14 +1203,15 @@
         <button data-subj="통합과학">통합과학</button>
       </div>
 
-      <div class="checkrow reveal" style="margin-bottom:6px;gap:8px;" id="yearFilter">
-        <span style="font-size:13px;color:var(--muted);font-weight:600;margin-right:4px;">학년도 선택:</span>
-        <label style="font-size:13px;display:inline-flex;align-items:center;gap:4px;cursor:pointer;"><input type="checkbox" data-year="2023" checked style="accent-color:var(--navy);"> 2023</label>
-        <label style="font-size:13px;display:inline-flex;align-items:center;gap:4px;cursor:pointer;"><input type="checkbox" data-year="2024" checked style="accent-color:var(--navy);"> 2024</label>
-        <label style="font-size:13px;display:inline-flex;align-items:center;gap:4px;cursor:pointer;"><input type="checkbox" data-year="2025" checked style="accent-color:var(--navy);"> 2025</label>
-        <span style="font-size:13px;color:var(--muted);margin-left:6px;">⬜ 2026 (수집 예정)</span>
+      <div class="filter-label">📅 학년도 선택</div>
+      <div class="checkrow reveal" id="yearFilter">
+        <label><input type="checkbox" data-year="2023" checked style="accent-color:var(--navy);"> 2023</label>
+        <label><input type="checkbox" data-year="2024" checked style="accent-color:var(--navy);"> 2024</label>
+        <label><input type="checkbox" data-year="2025" checked style="accent-color:var(--navy);"> 2025</label>
+        <span style="font-size:13px;color:var(--muted);flex:0 0 auto;white-space:nowrap;">2026 (수집 예정)</span>
       </div>
 
+      <div class="filter-label">🏫 학교 선택</div>
       <div class="checkrow reveal" id="trendChecks"></div>
 
       <div class="chartcard reveal">
