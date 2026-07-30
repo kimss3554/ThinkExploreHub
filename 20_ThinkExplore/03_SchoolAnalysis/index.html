@@ -3222,6 +3222,8 @@ function unlock(persist){
   if(gLocked) gLocked.style.display='none';
   if(gUnlocked) gUnlocked.style.display='';
   if(prem) prem.style.display='';
+  // 학교 카드 "상세" 버튼의 자물쇠 아이콘 제거 — 로그인 후엔 제한 없이 열람 가능
+  document.querySelectorAll('.detail-btn .lockmini').forEach(el=>el.style.display='none');
   updatePvBars();
   consolidatePremiumIntoOverview();
   setTimeout(()=>{initTrend();buildHeat();buildRWChart();buildRWGrid();buildGradeScoreSection();initCompareBlock();observeReveals();},60);
