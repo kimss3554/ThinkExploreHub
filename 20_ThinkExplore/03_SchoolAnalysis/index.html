@@ -3023,6 +3023,7 @@ new Chart(document.getElementById('rankChart'),{
 
 /* ===================== 학생 현황 차트 ===================== */
 (function initStatsCharts(){
+ try{
   const navy='#1C3D6B', amber='#C8830A', teal='#0D9488';
   const tickC='#2A2A2A', gridC='#E5DDD0', mutedC='#6B6B6B';
   const baseOpts=(unit,xMin,xMax)=>({
@@ -3190,6 +3191,12 @@ new Chart(document.getElementById('rankChart'),{
       }
     }
   });
+ }catch(e){
+  /* 통계 차트 하나가 실패해도(예: 숨겨진 탭 안 캔버스) 이후 스크립트 전체가
+     멈추면 안 되므로 여기서 흡수한다. 로그인/비밀번호 로직이 이 아래에 있어서
+     예전엔 이 블록에서 에러가 나면 관리자 로그인 자체가 통째로 죽었었음. */
+  console.error('학생 현황 차트 초기화 중 오류(무시하고 계속 진행):', e);
+ }
 })();
 
 /* ---- 탭 전환 ---- */
