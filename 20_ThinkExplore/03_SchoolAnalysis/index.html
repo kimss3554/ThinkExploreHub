@@ -1017,6 +1017,7 @@
 
 <!-- TAB: 학교 비교 (compare) -->
 <div class="tab-panel" data-tab="compare" style="display:none;">
+<div id="compareContent" style="display:none;">
 <section class="block">
   <div class="wrap">
     <div class="sechead reveal">
@@ -1085,6 +1086,7 @@
     </div>
   </div>
 </section>
+</div><!-- /compareContent -->
 </div><!-- /tab-panel compare -->
 
 <!-- TAB: 수행평가 (rw) -->
@@ -1374,6 +1376,7 @@
 
 <!-- TAB: 입시 달력 (calendar) -->
 <div class="tab-panel" data-tab="calendar" style="display:none;">
+<div id="calendarContent" style="display:none;">
 
 <!-- 학년별 입학 전 점검 체크리스트 (입시달력 상단) -->
 <section class="block">
@@ -1406,6 +1409,7 @@
     <div id="calContent" class="chartcard reveal"></div>
   </div>
 </section>
+</div><!-- /calendarContent -->
 </div><!-- /tab-panel calendar -->
 
 <!-- TAB: 입시뉴스 (news) -->
@@ -1505,6 +1509,7 @@
 
 <!-- TAB: 생기부 강점 분석 (gib) — 프리미엄 -->
 <div class="tab-panel" data-tab="gib" style="display:none;">
+<div id="gibContent" style="display:none;">
 <section class="block">
   <div class="wrap">
     <div class="sechead reveal">
@@ -1569,6 +1574,7 @@
     </div>
   </div>
 </section>
+</div><!-- /gibContent -->
 </div><!-- /tab-panel gib -->
 
 <!-- TAB: 수업 소개 (class) — 전체 공개 -->
@@ -2019,29 +2025,27 @@ function setTab(name){
     b.classList.toggle('active', b.dataset.tab===name);
   });
   window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='rw'){
+
+  /* 잠긴 탭(compare/rw/gib/calendar) 공통 처리 — 로그인 전엔 실제 콘텐츠 대신
+     STEP1~3 안내 카드(#premium-lock)만 보여준다. 모달은 더 이상 쓰지 않는다.
+     rw의 #premium은 자체 CSS 클래스(.premium.unlocked)로 이미 표시 여부가 관리되므로
+     여기서 인라인 style을 건드리지 않는다(건드리면 로그인 후에도 display:none이 남을 수 있음). */
+  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent'};
+  if(name==='rw' || name in LOCK_CONTENT_ID){
     const unlocked=localStorage.getItem('sjtg_unlocked')==='1';
-    const premEl=document.getElementById('premium');
-    const lockEl=document.getElementById('lockBanner');
-    if(unlocked && premEl && lockEl){
-      lockEl.style.display='none';
-      premEl.style.display='block';
+    const contentEl=(name in LOCK_CONTENT_ID)?document.getElementById(LOCK_CONTENT_ID[name]):null;
+    const lockSection=document.getElementById('premium-lock');
+    if(!unlocked){
+      if(contentEl) contentEl.style.display='none';
+      if(lockSection){
+        if(panel && lockSection.parentElement!==panel) panel.insertBefore(lockSection, panel.firstChild);
+        lockSection.style.display='block';
+      }
+    }else{
+      if(lockSection) lockSection.style.display='none';
+      if(contentEl) contentEl.style.display='block';
+      if(name==='calendar') setTimeout(initCalendar, 50);
     }
-  }
-  if(name==='compare'){
-    if(localStorage.getItem('sjtg_unlocked')!=='1'){ openPremModal(); return; }
-  }
-  if(name==='gib'){
-    if(localStorage.getItem('sjtg_unlocked')!=='1'){
-      openPremModal(); return;
-    }
-  }
-  if(name==='calendar'){
-    if(localStorage.getItem('sjtg_unlocked')!=='1'){
-      openPremModal(); return;
-      return;
-    }
-    setTimeout(initCalendar, 50);
   }
   // 새 탭의 reveal 요소 재감지
   setTimeout(()=>{
@@ -3294,13 +3298,22 @@ document.getElementById('pwInput').addEventListener('keydown',e=>{if(e.key==='En
 function tryPw(){
   const v=document.getElementById('pwInput').value.trim();
   const err=document.getElementById('pwErr');
-  if(v===PREMIUM_PASSWORD){err.textContent='';unlock(true);toast('프리미엄 콘텐츠가 열렸습니다');}
-  else{err.textContent='비밀번호가 올바르지 않습니다. 채널 공지를 확인하세요.';}
+  if(v===ADMIN_PASSWORD){
+    err.textContent='';
+    unlock(true);
+    try{ unlockAdmin(); }catch(e){}
+    const panel=document.getElementById('adminPanel');
+    if(panel) panel.style.display='block';
+    toast('관리자 모드로 열렸습니다 🛡️');
+    return;
+  }
+  if(v===PREMIUM_PASSWORD){err.textContent='';unlock(true);toast('프리미엄 콘텐츠가 열렸습니다');return;}
+  err.textContent='비밀번호가 올바르지 않습니다. 채널 공지를 확인하세요.';
 }
 
 function pvClick(tab){
   if(localStorage.getItem('sjtg_unlocked')==='1'){ setTab(tab); }
-  else { openPremModal(); }
+  else { showLockPrompt(); }
 }
 function updatePvBars(){
   for(let i=1;i<=6;i++){
@@ -3420,11 +3433,13 @@ let radarChart=null, aeChart=null;
 function openPremModal(){ document.getElementById('premModal').style.display='flex'; document.body.style.overflow='hidden'; }
 function closePremModal(){ document.getElementById('premModal').style.display='none'; document.body.style.overflow=''; }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePremModal(); });
+/* 잠김 안내는 모달이 아니라 STEP1~3 카드(#premium-lock)로 통일 — '수행평가' 탭에 그 카드가 있으므로 그쪽으로 이동시킨다 */
+function showLockPrompt(){ setTab('rw'); }
 
 document.getElementById('schoolGrid').addEventListener('click',e=>{
   const btn=e.target.closest('.detail-btn'); if(!btn) return;
   if(!premium.classList.contains('unlocked')){
-    openPremModal();
+    showLockPrompt();
     return;
   }
   openModal(btn.dataset.school);
@@ -3644,7 +3659,7 @@ function generateConsultantSynthesis(sA,sB){
 
 window.runCompareAnalysis=function(){
   if(localStorage.getItem('sjtg_unlocked')!=='1'){
-    openPremModal(); return;
+    showLockPrompt(); return;
   }
   const sA=document.getElementById('cmpSelectA').value;
   const sB=document.getElementById('cmpSelectB').value;
