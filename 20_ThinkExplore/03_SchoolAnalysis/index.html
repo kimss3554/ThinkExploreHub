@@ -728,11 +728,11 @@
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:16px;align-items:center;">
-      <input type="password" id="gatePwInput" placeholder="채널 공지 비밀번호" autocomplete="off" style="flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:13px;">
-      <button onclick="tryGatePw()" style="padding:9px 20px;background:var(--amber);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;">확인</button>
+      <input type="password" id="gatePwInputModal" placeholder="채널 공지 비밀번호" autocomplete="off" style="flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:13px;">
+      <button onclick="tryGatePw('gatePwInputModal','gatePwErrModal')" style="padding:9px 20px;background:var(--amber);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;">확인</button>
       <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener" style="width:40px;height:40px;background:#FEE500;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:20px;">💬</a>
     </div>
-    <div id="gatePwErr" style="color:#e53e3e;font-size:12px;margin-bottom:8px;height:16px;"></div>
+    <div id="gatePwErrModal" style="color:#e53e3e;font-size:12px;margin-bottom:8px;height:16px;"></div>
 
     <p style="text-align:center;font-size:12px;color:var(--muted);">아직 채널 가입 전이라면 <button onclick="window.open('https://open.kakao.com/o/gOTxt9Bi','_blank');" style="background:none;border:none;color:var(--amber);font-size:12px;font-weight:700;cursor:pointer;padding:0;font-family:inherit;text-decoration:underline;">오픈채팅 버튼</button>으로 먼저 가입하세요</p>
   </div>
@@ -3229,13 +3229,15 @@ function consolidatePremiumIntoOverview(){
   }
   if(pv) pv.style.display='none';
 }
-function tryGatePw(){
-  const v=document.getElementById('gatePwInput').value.trim();
-  const err=document.getElementById('gatePwErr');
+function tryGatePw(inputId,errId){
+  inputId=inputId||'gatePwInput'; errId=errId||'gatePwErr';
+  const v=document.getElementById(inputId).value.trim();
+  const err=document.getElementById(errId);
   // 관리자 비밀번호: 프리미엄 + 관리자(자료 수집 현황) 모두 열기
   if(v===ADMIN_PASSWORD){
     err.textContent='';
     unlock(true);
+    try{ closePremModal(); }catch(e){}
     try{ unlockAdmin(); }catch(e){}
     const panel=document.getElementById('adminPanel');
     if(panel) panel.style.display='block';
@@ -3246,6 +3248,7 @@ function tryGatePw(){
   if(v===PREMIUM_PASSWORD){
     err.textContent='';
     unlock(true);
+    try{ closePremModal(); }catch(e){}
     toast('프리미엄 콘텐츠가 열렸습니다 🎉');
     setTimeout(()=>{ document.getElementById('schools')?.scrollIntoView({behavior:'smooth',block:'start'}); },200);
     return;
@@ -3253,6 +3256,7 @@ function tryGatePw(){
   err.textContent='비밀번호가 올바르지 않습니다. 채널 공지를 확인해 주세요.';
 }
 document.getElementById('gatePwInput')?.addEventListener('keydown',e=>{if(e.key==='Enter')tryGatePw();});
+document.getElementById('gatePwInputModal')?.addEventListener('keydown',e=>{if(e.key==='Enter')tryGatePw('gatePwInputModal','gatePwErrModal');});
 function logoutPremium(){
   localStorage.removeItem('sjtg_unlocked');localStorage.removeItem('sjtg_last_active');
   location.reload();
