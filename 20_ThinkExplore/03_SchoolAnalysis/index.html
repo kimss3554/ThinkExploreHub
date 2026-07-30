@@ -131,10 +131,19 @@
   .quick-nav-sel{width:100%;padding:9px 36px 9px 14px;border:1.5px solid var(--line);
     border-radius:10px;font-size:14px;font-family:inherit;color:var(--navy);
     background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;
-    font-weight:500;}
+    font-weight:500;text-align:left;display:block;}
   .quick-nav-sel:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(28,61,107,.1);}
   .quick-nav-arr{position:absolute;right:12px;top:50%;transform:translateY(-50%);
-    color:var(--navy);font-size:12px;pointer-events:none;}
+    color:var(--navy);font-size:12px;pointer-events:none;transition:transform .15s;}
+  .quick-nav-sel-wrap.open .quick-nav-arr{transform:translateY(-50%) rotate(180deg);}
+  .quick-nav-dropdown{display:none;position:absolute;left:0;right:0;top:calc(100% + 4px);
+    background:#fff;border:1.5px solid var(--line);border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;max-height:300px;overflow-y:auto;}
+  .quick-nav-sel-wrap.open .quick-nav-dropdown{display:block;}
+  .quick-nav-item{padding:11px 14px;font-size:14px;color:var(--navy);cursor:pointer;
+    border-bottom:1px solid var(--line);}
+  .quick-nav-item:last-child{border-bottom:none;}
+  .quick-nav-item:hover,.quick-nav-item:active{background:var(--section-alt);}
   @media(max-width:600px){.quick-nav-label{display:none;}.quick-nav-sel-wrap{max-width:100%;}}
   /* Section teaser preview cards */
   .pv-section{background:var(--section-alt);}
@@ -797,17 +806,17 @@
 <div style="background:#fff;border-bottom:1.5px solid var(--line);">
   <div class="quick-nav-wrap">
     <span class="quick-nav-label">📋 빠른 이동</span>
-    <div class="quick-nav-sel-wrap">
-      <select class="quick-nav-sel" onchange="quickNav(this.value);this.value=''">
-        <option value="" disabled selected>섹션 선택...</option>
-        <option value="schools">🎓 관악구 11개 고등학교 한눈에 보기</option>
-        <option value="sec-cutline">🎓 내신 1등급 커트라인 분석</option>
-        <option value="sec-trend">🎓 연도별 성취도 추이</option>
-        <option value="sec-rw">🎓 수행평가 읽기·쓰기 연계 분석</option>
-        <option value="sec-checklist">🎓 학년별 입학 전 점검 체크리스트</option>
-        <option value="sec-score">🎓 성취도 과목 전체 분석</option>
-      </select>
+    <div class="quick-nav-sel-wrap" id="quickNavWrap">
+      <button type="button" class="quick-nav-sel" id="quickNavBtn" onclick="toggleQuickNav()">섹션 선택...</button>
       <span class="quick-nav-arr">▾</span>
+      <div class="quick-nav-dropdown" id="quickNavDropdown">
+        <div class="quick-nav-item" onclick="quickNav('schools')">🎓 관악구 11개 고등학교 한눈에 보기</div>
+        <div class="quick-nav-item" onclick="quickNav('sec-cutline')">🎓 내신 1등급 커트라인 분석</div>
+        <div class="quick-nav-item" onclick="quickNav('sec-trend')">🎓 연도별 성취도 추이</div>
+        <div class="quick-nav-item" onclick="quickNav('sec-rw')">🎓 수행평가 읽기·쓰기 연계 분석</div>
+        <div class="quick-nav-item" onclick="quickNav('sec-checklist')">🎓 학년별 입학 전 점검 체크리스트</div>
+        <div class="quick-nav-item" onclick="quickNav('sec-score')">🎓 성취도 과목 전체 분석</div>
+      </div>
     </div>
   </div>
 </div>
@@ -3359,14 +3368,18 @@ function updatePvBars(){
   }
 }
 
-function quickNav(id){
-  // 모바일에서 네이티브 선택 팝업이 닫히는 도중 즉시 스크롤하면
-  // 애니메이션과 겹쳐 무시되는 경우가 있어 약간의 지연을 둔다
-  setTimeout(()=>{
-    const el=document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-  },150);
+function toggleQuickNav(){
+  document.getElementById('quickNavWrap')?.classList.toggle('open');
 }
+function quickNav(id){
+  document.getElementById('quickNavWrap')?.classList.remove('open');
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.addEventListener('click',e=>{
+  const wrap=document.getElementById('quickNavWrap');
+  if(wrap && wrap.classList.contains('open') && !wrap.contains(e.target)) wrap.classList.remove('open');
+});
 
 /* ===================== HEATMAP ===================== */
 let curSys='5';
