@@ -2381,6 +2381,12 @@ const ARATE = {
     통합과학:{광신고:21,구암고:17,남강고:15,당곡고:23,문영여고:35,미림여고:20,삼성고:12,성보고:19,신림고:18,영락고:43,인헌고:29}
   }
 };
+/* 종합리포트 모달의 "고3(2024입학)" 학년 선택 시 필요한 2023학년도 A비율(성취도_파싱결과.json 원자료 기준) */
+const ARATE_2023 = {
+  국어:{광신고:34,구암고:13,남강고:6,당곡고:16,문영여고:70,미림여고:28,삼성고:30,성보고:25,신림고:14,영락고:15,인헌고:29},
+  수학:{광신고:16,구암고:6,남강고:20,당곡고:26,문영여고:23,미림여고:53,삼성고:19,성보고:11,신림고:36,영락고:13,인헌고:18},
+  영어:{광신고:25,구암고:15,남강고:20,당곡고:21,문영여고:31,미림여고:44,삼성고:20,성보고:28,신림고:13,영락고:48,인헌고:50}
+};
 
 /* yearly trends 2023->2024->2025 */
 const TREND = {
@@ -3551,11 +3557,48 @@ function renderModalRadar(s, year){
   }
 }
 
+/* 학년(연도) 선택에 따른 A비율 차트 — 2025('all'/고1)=ARATE['5'], 2024(고2)=ARATE['9'], 2023(고3)=ARATE_2023 */
+function renderModalAeChart(s, yr){
+  const col=SCHOOL_COLORS[s];
+  const subs=['국어','수학','영어'];
+  const src = yr==='2023' ? ARATE_2023 : yr==='2024' ? ARATE['9'] : ARATE['5'];
+  const aData=subs.map(x=>src[x][s]||0);
+  if(aeChart)aeChart.destroy();
+  aeChart=new Chart(document.getElementById('aeChart'),{
+    type:'bar',
+    data:{labels:subs,datasets:[
+      {label:'A비율(%)',data:aData,backgroundColor:col,borderRadius:5},
+      {label:'A 외 비율(%)',data:aData.map(a=>100-a),backgroundColor:'#E5DDD0',borderRadius:5}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#2A2A2A',boxWidth:12}},
+        title:{display:true,text:'과목별 A비율 비교 (5등급제)',color:'#1C3D6B'}},
+      scales:{x:{stacked:true,ticks:{color:'#2A2A2A'},grid:{display:false}},
+              y:{stacked:true,max:100,ticks:{color:'#6B6B6B'},grid:{color:'#E5DDD0'}}}}
+  });
+  const aePd=document.getElementById('aePrintData');
+  if(aePd){
+    const aKor=src['국어'][s]||0, aMath=src['수학'][s]||0, aEng=src['영어'][s]||0;
+    aePd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;">
+      <thead><tr style="background:#1C3D6B;color:#fff;">
+        <th style="padding:4px 8px;text-align:left;">과목</th>
+        <th style="padding:4px 8px;">A비율</th><th style="padding:4px 8px;">A 외</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">국어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aKor}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aKor}%</td></tr>
+        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">수학</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aMath}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aMath}%</td></tr>
+        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">영어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aEng}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aEng}%</td></tr>
+      </tbody>
+    </table>`;
+  }
+}
+
 /* 학년 변경 */
 window.setModalYear=function(yr){
   _curModalYear=yr;
   document.querySelectorAll('.modal-yr-btn').forEach(b=>b.classList.toggle('active',b.dataset.modalYr===yr));
   renderModalRadar(_curModalSchool,yr);
+  renderModalAeChart(_curModalSchool,yr);
   /* eval 탭 성취도 표 갱신 */
   if(_curModalSchool) _refreshEvalTab(_curModalSchool,yr);
 };
@@ -4027,37 +4070,7 @@ function openModal(s){
   renderModalRadar(s,'all');
 
   /* ── ② A비율 ── */
-  const subs=['국어','수학','영어'];
-  const aData=subs.map(x=>ARATE['5'][x][s]);
-  if(aeChart)aeChart.destroy();
-  aeChart=new Chart(document.getElementById('aeChart'),{
-    type:'bar',
-    data:{labels:subs,datasets:[
-      {label:'A비율(%)',data:aData,backgroundColor:col,borderRadius:5},
-      {label:'A 외 비율(%)',data:aData.map(a=>100-a),backgroundColor:'#E5DDD0',borderRadius:5}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{position:'bottom',labels:{color:'#2A2A2A',boxWidth:12}},
-        title:{display:true,text:'과목별 A비율 비교 (5등급제)',color:'#1C3D6B'}},
-      scales:{x:{stacked:true,ticks:{color:'#2A2A2A'},grid:{display:false}},
-              y:{stacked:true,max:100,ticks:{color:'#6B6B6B'},grid:{color:'#E5DDD0'}}}}
-  });
-  /* A비율 인쇄용 데이터 */
-  const aePd=document.getElementById('aePrintData');
-  if(aePd){
-    const aKor=ARATE['5']['국어'][s]||0, aMath=ARATE['5']['수학'][s]||0, aEng=ARATE['5']['영어'][s]||0;
-    aePd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;">
-      <thead><tr style="background:#1C3D6B;color:#fff;">
-        <th style="padding:4px 8px;text-align:left;">과목</th>
-        <th style="padding:4px 8px;">A비율</th><th style="padding:4px 8px;">A 외</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">국어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aKor}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aKor}%</td></tr>
-        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">수학</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aMath}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aMath}%</td></tr>
-        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">영어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aEng}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aEng}%</td></tr>
-      </tbody>
-    </table>`;
-  }
+  renderModalAeChart(s,'all');
 
   /* ── ③ 분석 리포트 ── */
   const rep=SCHOOL_REPORTS[s];
