@@ -691,10 +691,10 @@
   </div>
   <nav class="navlinks" id="navlinks">
     <button class="nav-tab active" data-tab="overview" onclick="setTab('overview')">학교 한눈에</button>
-    <button class="nav-tab" data-tab="compare" onclick="setTab('compare')">학교 비교 🔒</button>
-    <button class="nav-tab" data-tab="rw" onclick="setTab('rw')">수행평가 🔒</button>
-    <button class="nav-tab" data-tab="gib" onclick="setTab('gib')">생기부 분석 🔒</button>
-    <button class="nav-tab" data-tab="calendar" onclick="setTab('calendar')">입시 달력 🔒</button>
+    <button class="nav-tab" data-tab="compare" onclick="setTab('compare')">학교 비교 <span class="tab-lock">🔒</span></button>
+    <button class="nav-tab" data-tab="rw" onclick="setTab('rw')">수행평가 <span class="tab-lock">🔒</span></button>
+    <button class="nav-tab" data-tab="gib" onclick="setTab('gib')">생기부 분석 <span class="tab-lock">🔒</span></button>
+    <button class="nav-tab" data-tab="calendar" onclick="setTab('calendar')">입시 달력 <span class="tab-lock">🔒</span></button>
     <button class="nav-tab" data-tab="news" onclick="setTab('news')">입시뉴스 ↗</button>
     <button class="nav-tab" data-tab="class" onclick="setTab('class')">수업 소개 ↗</button>
     <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logoutPremium()">🔓 로그아웃</button>
@@ -1973,15 +1973,15 @@
     </button>
     <button class="mob-tab" onclick="setTab('compare');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h3M16 3h3a2 2 0 012 2v14a2 2 0 01-2 2h-3M12 3v18"/></svg>
-      비교 🔒
+      비교 <span class="tab-lock">🔒</span>
     </button>
     <button class="mob-tab" onclick="setTab('rw');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M13 4H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 4 13 9 18 9"/></svg>
-      수행평가 🔒
+      수행평가 <span class="tab-lock">🔒</span>
     </button>
     <button class="mob-tab" onclick="setTab('calendar');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      달력 🔒
+      달력 <span class="tab-lock">🔒</span>
     </button>
     <button class="mob-tab" onclick="setTab('news');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8L4 6v14a2 2 0 002 2z"/></svg>
@@ -1989,7 +1989,7 @@
     </button>
     <button class="mob-tab" onclick="setTab('gib');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
-      생기부 🔒
+      생기부 <span class="tab-lock">🔒</span>
     </button>
     <button class="mob-tab" onclick="setTab('class');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
@@ -3224,6 +3224,8 @@ function unlock(persist){
   if(prem) prem.style.display='';
   // 학교 카드 "상세" 버튼의 자물쇠 아이콘 제거 — 로그인 후엔 제한 없이 열람 가능
   document.querySelectorAll('.detail-btn .lockmini').forEach(el=>el.style.display='none');
+  // PC 상단 탭바 · 모바일 하단 탭바의 자물쇠 아이콘 제거
+  document.querySelectorAll('.tab-lock').forEach(el=>el.style.display='none');
   updatePvBars();
   consolidatePremiumIntoOverview();
   setTimeout(()=>{initTrend();buildHeat();buildRWChart();buildRWGrid();buildGradeScoreSection();initCompareBlock();observeReveals();},60);
