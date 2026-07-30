@@ -516,7 +516,11 @@
   .disc{font-size:13px;color:var(--muted);margin-top:18px;border-top:1px dashed var(--line);
     padding-top:14px;max-width:1180px;margin-left:auto;margin-right:auto;line-height:1.9;}
   .lock-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 28px;text-align:left;}
-  @media(max-width:640px){.lock-steps{grid-template-columns:1fr;}}
+  @media(max-width:640px){
+    .lockbanner{padding:24px 16px;}
+    .lockbanner .feats{gap:6px;margin:12px 0 16px;}
+    .lock-steps{grid-template-columns:1fr;gap:10px;margin:16px 0 20px;}
+  }
 
   /* ---------- TAB PANEL ---------- */
   .tab-panel{display:block;}
@@ -1108,22 +1112,16 @@
         <!-- Step 1 -->
         <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px;">
           <div style="font-size:14px;opacity:.7;margin-bottom:6px;font-weight:600;">STEP 1</div>
-          <div style="font-size:15px;font-weight:700;margin-bottom:10px;">📢 카카오톡 채널 추가</div>
-          <div style="font-size:14px;opacity:.85;margin-bottom:14px;line-height:1.6;">생각탐구 카카오톡 채널을 추가하고 알림 받기를 ON으로 설정해 주세요</div>
-          <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener"
-            style="display:inline-block;background:var(--amber);color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">채널 추가하기 →</a>
+          <div style="font-size:15px;font-weight:700;margin-bottom:10px;">💬 1:1 오픈채팅에서 비번 받기</div>
+          <div style="font-size:14px;opacity:.85;margin-bottom:14px;line-height:1.6;">생각탐구 카카오톡 오픈채팅에 가입하고 1:1로 비밀번호를 요청해 주세요</div>
+          <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener"
+            style="display:inline-block;background:var(--amber);color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">오픈채팅 가입 →</a>
         </div>
         <!-- Step 2 -->
         <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px;">
           <div style="font-size:14px;opacity:.7;margin-bottom:6px;font-weight:600;">STEP 2</div>
-          <div style="font-size:15px;font-weight:700;margin-bottom:10px;">🔔 알림 받기 설정</div>
-          <div style="font-size:14px;opacity:.85;line-height:1.6;">채널 채팅방 우측 상단 → 알림 → <b>알림 받기 ON</b><br>입시 정보 업데이트 시 카카오톡 알림을 받으실 수 있습니다</div>
-        </div>
-        <!-- Step 3 -->
-        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px;">
-          <div style="font-size:14px;opacity:.7;margin-bottom:6px;font-weight:600;">STEP 3</div>
           <div style="font-size:15px;font-weight:700;margin-bottom:10px;">🔑 비밀번호 입력</div>
-          <div style="font-size:14px;opacity:.85;margin-bottom:12px;line-height:1.6;">채널에서 공유된 비밀번호를 입력하시면 모든 프리미엄 자료를 열람하실 수 있습니다</div>
+          <div style="font-size:14px;opacity:.85;margin-bottom:12px;line-height:1.6;">오픈채팅에서 받은 비밀번호를 입력하시면 모든 프리미엄 자료를 열람하실 수 있습니다</div>
           <div class="pwbox" style="display:flex;gap:6px;">
             <input type="password" id="pwInput" placeholder="비밀번호" autocomplete="off"
               style="flex:1;padding:8px 10px;border-radius:8px;border:none;font-size:13px;">
