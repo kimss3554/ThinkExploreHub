@@ -3147,6 +3147,8 @@ function unlock(persist){
   document.querySelectorAll('.detail-btn .lockmini').forEach(el=>el.style.display='none');
   // PC 상단 탭바 · 모바일 하단 탭바의 자물쇠 아이콘 제거
   document.querySelectorAll('.tab-lock').forEach(el=>el.style.display='none');
+  // 로그인 후에는 이미 열람 중이므로 각 섹션 제목의 "프리미엄" 배지 제거
+  document.querySelectorAll('.premflag').forEach(el=>el.style.display='none');
   // 잠긴 탭(compare/gib/calendar) 안에서 바로 로그인한 경우, 안내 카드는 사라지는데
   // 실제 콘텐츠는 계속 display:none인 채로 남아 화면이 텅 비어 보이던 문제 수정 —
   // 지금 열려있는 탭이 잠긴 탭이었다면 그 콘텐츠를 즉시 보여준다.
