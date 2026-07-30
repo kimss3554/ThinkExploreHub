@@ -2988,6 +2988,10 @@ new Chart(document.getElementById('rankChart'),{
 });
 
 /* ===================== 학생 현황 차트 ===================== */
+/* 숨겨진 탭(class/career/movement) 안 캔버스는 생성 시점에 부모가
+   display:none이라 0px 크기로 굳는 경우가 있어, 탭 전환 시 resize()로
+   다시 계산해줄 수 있도록 인스턴스를 보관해둔다 */
+const statsCharts={};
 (function initStatsCharts(){
  try{
   const navy='#1C3D6B', amber='#C8830A', teal='#0D9488';
@@ -3001,35 +3005,8 @@ new Chart(document.getElementById('rankChart'),{
     }
   });
 
-  /* ── 1. 전체 학생수 (많은 순) ── */
-  const sTotalSorted = SCHOOLS.slice().sort((a,b)=>STU_DATA[b].total-STU_DATA[a].total);
-  new Chart(document.getElementById('stuTotalChart'),{
-    type:'bar',
-    data:{
-      labels: sTotalSorted,
-      datasets:[{
-        data: sTotalSorted.map(s=>STU_DATA[s].total),
-        backgroundColor: sTotalSorted.map(s=>SCHOOL_COLORS[s]+'CC'),
-        borderColor: sTotalSorted.map(s=>SCHOOL_COLORS[s]),
-        borderWidth:1, borderRadius:5, barThickness:22
-      }]
-    },
-    options:{
-      ...baseOpts('명', 0, 800),
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{
-          label:c=>{
-            const s=sTotalSorted[c.dataIndex];
-            const d=STU_DATA[s];
-            return [`전체 ${d.total}명`, `1학년 ${d.g1}명 · 2학년 ${d.g2}명 · 3학년 ${d.g3}명`];
-          }
-        }}
-      }
-    }
-  });
-
   /* ── 2. 학년별 누적 막대 ── */
+  const sTotalSorted = SCHOOLS.slice().sort((a,b)=>STU_DATA[b].total-STU_DATA[a].total);
   new Chart(document.getElementById('stuGradeChart'),{
     type:'bar',
     data:{
@@ -3061,7 +3038,7 @@ new Chart(document.getElementById('rankChart'),{
   /* ── 3. 학급당 학생수 (적은 순) ── */
   const sClsSorted = SCHOOLS.slice().sort((a,b)=>STU_DATA[a].stuPerCls-STU_DATA[b].stuPerCls);
   const avgCls = Math.round(SCHOOLS.reduce((s,k)=>s+STU_DATA[k].stuPerCls,0)/SCHOOLS.length*10)/10;
-  new Chart(document.getElementById('clsSizeChart'),{
+  statsCharts.cls = new Chart(document.getElementById('clsSizeChart'),{
     type:'bar',
     data:{
       labels: sClsSorted,
@@ -3083,34 +3060,9 @@ new Chart(document.getElementById('rankChart'),{
     }
   });
 
-  /* ── 4. 교원 1인당 학생수 (적은 순) ── */
-  const sTeachSorted = SCHOOLS.slice().sort((a,b)=>STU_DATA[a].stuPerTeacher-STU_DATA[b].stuPerTeacher);
-  const avgTeach = Math.round(SCHOOLS.reduce((s,k)=>s+STU_DATA[k].stuPerTeacher,0)/SCHOOLS.length*10)/10;
-  new Chart(document.getElementById('teacherChart'),{
-    type:'bar',
-    data:{
-      labels: sTeachSorted,
-      datasets:[{
-        data: sTeachSorted.map(s=>STU_DATA[s].stuPerTeacher),
-        backgroundColor: sTeachSorted.map(s=>STU_DATA[s].stuPerTeacher<avgTeach?teal+'CC':navy+'99'),
-        borderColor: sTeachSorted.map(s=>STU_DATA[s].stuPerTeacher<avgTeach?teal:navy),
-        borderWidth:1, borderRadius:5, barThickness:22
-      }]
-    },
-    options:{
-      ...baseOpts('명/교원', 0, 15),
-      plugins:{
-        legend:{display:false},
-        annotation:{annotations:{avg:{type:'line',scaleID:'x',value:avgTeach,borderColor:amber,borderWidth:2,borderDash:[5,4],
-          label:{content:'관악구 평균 '+avgTeach+'명',display:true,position:'end',font:{size:12},color:amber,backgroundColor:'rgba(255,255,255,.85)'}}}},
-        tooltip:{callbacks:{label:c=>`${c.parsed.x}명/교원 (관악구 평균 ${avgTeach}명)`}}
-      }
-    }
-  });
-
   /* ── 5. 4년제 진학률 (높은 순) ── */
   const sCareerSorted = SCHOOLS.slice().sort((a,b)=>ADV_RATE[b]-ADV_RATE[a]);
-  new Chart(document.getElementById('careerBarChart'),{
+  statsCharts.career = new Chart(document.getElementById('careerBarChart'),{
     type:'bar',
     data:{
       labels: sCareerSorted,
@@ -3133,7 +3085,7 @@ new Chart(document.getElementById('rankChart'),{
   /* ── 6. 학업중단율 (낮은 순) ── */
   const sTransferSorted = SCHOOLS.slice().sort((a,b)=>TRANSFER_DATA[a].rate-TRANSFER_DATA[b].rate);
   const avgTransfer = Math.round(SCHOOLS.reduce((s,k)=>s+TRANSFER_DATA[k].rate,0)/SCHOOLS.length*100)/100;
-  new Chart(document.getElementById('transferChart'),{
+  statsCharts.transfer = new Chart(document.getElementById('transferChart'),{
     type:'bar',
     data:{
       labels: sTransferSorted.map(s=>`${s} (${TRANSFER_DATA[s].year})`),
@@ -3171,6 +3123,9 @@ function switchStatsTab(id, btn){
   document.querySelectorAll('.stats-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('sp-'+id).classList.remove('hidden');
   btn.classList.add('active');
+  // 숨겨진 상태에서 0px로 굳어버렸을 수 있는 차트를 다시 계산
+  const chartKey={class:'cls', career:'career', movement:'transfer'}[id];
+  if(chartKey && statsCharts[chartKey]) requestAnimationFrame(()=>statsCharts[chartKey].resize());
 }
 
 /* ===================== PREMIUM LOCK ===================== */
