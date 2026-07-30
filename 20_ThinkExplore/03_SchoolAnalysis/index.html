@@ -682,7 +682,7 @@
 <header class="site">
   <div class="nav">
     <a href="#top" class="logo" style="display:flex;align-items:center;gap:10px;">
-      <img src="logo.png" alt="생각탐구">
+      <span class="name"><span class="g">생각</span><span class="t">탐구</span></span>
       <div class="tag" style="font-size:16px;color:#fff;font-weight:600;white-space:nowrap;letter-spacing:-.2px;">관악구 입시 분석 플랫폼</div>
     </a>
     <button class="hamburger" id="hamburger" aria-label="메뉴">
@@ -712,7 +712,7 @@
      style="width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:var(--navy);box-shadow:0 4px 20px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;overflow:hidden;"
      onmouseover="this.style.transform='scale(1.08)';this.style.boxShadow='0 8px 28px rgba(28,61,107,.4)'"
      onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(28,61,107,.3)'">
-    <img src="logo_11.png" alt="생각탐구" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+    <span style="font-size:24px;">🔑</span>
   </a>
   <span class="kakao-float-label">오픈채팅<br>비번받기</span>
 
@@ -768,7 +768,7 @@
           <button onclick="tryGatePw()" style="padding:8px 18px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:600;white-space:nowrap;">확인</button>
           <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener" style="display:flex;gap:6px;align-items:center;text-decoration:none;">
             <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);box-shadow:0 2px 12px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;overflow:hidden;flex-shrink:0;">
-              <img src="logo_11.png" alt="생각탐구" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              <span style="font-size:18px;">🔑</span>
             </div>
             <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1.3;text-align:left;">
               <div>오픈채팅가입</div>
@@ -1878,7 +1878,7 @@
 <footer>
   <div class="fwrap">
     <div>
-      <div class="logo"><img src="logo_b.png" alt="생각탐구">
+      <div class="logo"><span class="name"><span class="g">생각</span><span class="t">탐구</span></span></div>
       <div class="finfo" style="margin-top:8px;">관악구 입시 분석 플랫폼</div>
     </div>
     <div class="finfo">
@@ -4048,15 +4048,13 @@ function openModal(s){
   /* ── 헤더 ── */
   const hdr=document.getElementById('mHeader');
   hdr.style.background=col;
-  const _logoEl=document.querySelector('.logo img');
-  const _logoSrc=_logoEl?_logoEl.src:'';
   hdr.innerHTML=`
     <div>
       <div class="modal-hdr-name">${s} 종합리포트</div>
       <div class="modal-hdr-sub">${m.cls==='girls'?'여고':m.cls==='boys'?'남고':'남녀공학'} · ${m.students} · 4년제 ${m.adv}</div>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      ${_logoSrc?`<img src="logo.png" alt="생각탐구" style="height:56px;">`:''}
+      <span class="name" style="font-size:20px;"><span class="g" style="color:#fff;">생각</span><span class="t">탐구</span></span>
     </div>`;
 
   /* 탭 초기화 */
