@@ -1143,7 +1143,7 @@
 
 
   <!-- A. CUTLINE -->
-  <section class="block" style="background:var(--card);">
+  <section class="block" id="full-cutline" style="background:var(--card);">
     <div class="wrap">
       <div class="sechead reveal">
         <h2>내신 1등급 커트라인 분석 <span class="premflag">프리미엄</span></h2>
@@ -1216,7 +1216,7 @@
   </section>
 
   <!-- B. TREND -->
-  <section class="block">
+  <section class="block" id="full-trend">
     <div class="wrap">
       <div class="sechead reveal">
         <h2>연도별 성취도 추이 <span class="premflag">프리미엄</span></h2>
@@ -1340,7 +1340,7 @@
   </section>
 
   <!-- F. 성취도 과목 전체 분석 -->
-  <section class="block" style="padding-top:0;">
+  <section class="block" id="full-score" style="padding-top:0;">
     <div class="wrap">
       <div class="sechead reveal">
         <h2>성취도 과목 전체 분석 <span class="premflag">프리미엄</span></h2>
@@ -3371,15 +3371,40 @@ function updatePvBars(){
 function toggleQuickNav(){
   document.getElementById('quickNavWrap')?.classList.toggle('open');
 }
-function quickNav(id){
-  document.getElementById('quickNavWrap')?.classList.remove('open');
-  const el=document.getElementById(id);
+/* 각 셀렉트 항목이 실제로 위치한 탭과, 로그인(채널 멤버 비밀번호) 후에만
+   보이는 프리미엄 콘텐츠인지 여부 — 잠긴 항목은 로그인 전엔 이동해도
+   보이지 않는 콘텐츠라 안내만 하고, 로그인 후에는 실제 탭으로 이동한다 */
+const QUICK_NAV_MAP={
+  schools:        {tab:'overview', target:'schools',      premium:false},
+  'sec-cutline':  {tab:'overview', target:'full-cutline',  premium:true},
+  'sec-trend':    {tab:'overview', target:'full-trend',    premium:true},
+  'sec-rw':       {tab:'overview', target:'rw-section',    premium:true},
+  'sec-checklist':{tab:'calendar', target:'checklistGrid', premium:true},
+  'sec-score':    {tab:'overview', target:'full-score',    premium:true}
+};
+function _scrollToEl(el){
   if(!el) return;
-  // scrollIntoView/scrollTo의 옵션 인자({behavior,block})를 지원하지
-  // 않는 구형 인앱 브라우저가 있어, 숫자 인자 방식으로만 스크롤한다
-  const headerOffset=110;
+  const headerOffset=(document.querySelector('header.site')?.offsetHeight||90)+8;
   const y=el.getBoundingClientRect().top+window.pageYOffset-headerOffset;
   window.scrollTo(0,Math.max(0,y));
+}
+function quickNav(id){
+  document.getElementById('quickNavWrap')?.classList.remove('open');
+  const info=QUICK_NAV_MAP[id];
+  if(!info) return;
+  const unlocked=localStorage.getItem('sjtg_unlocked')==='1';
+  if(info.premium && !unlocked){
+    toast('🔒 로그인 후 이용 가능한 메뉴입니다 — 오픈채팅에서 비밀번호를 받아 로그인해주세요');
+    return;
+  }
+  let activeName=null;
+  document.querySelectorAll('.tab-panel[data-tab]').forEach(p=>{ if(p.style.display!=='none') activeName=p.dataset.tab; });
+  if(activeName!==info.tab){
+    setTab(info.tab);
+    setTimeout(()=>_scrollToEl(document.getElementById(info.target)),350);
+  }else{
+    _scrollToEl(document.getElementById(info.target));
+  }
 }
 document.addEventListener('click',e=>{
   const wrap=document.getElementById('quickNavWrap');
