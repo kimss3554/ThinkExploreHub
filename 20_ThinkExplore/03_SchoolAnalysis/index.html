@@ -3394,7 +3394,9 @@ function quickNav(id){
   if(!info) return;
   const unlocked=localStorage.getItem('sjtg_unlocked')==='1';
   if(info.premium && !unlocked){
-    toast('🔒 로그인 후 이용 가능한 메뉴입니다 — 오픈채팅에서 비밀번호를 받아 로그인해주세요');
+    /* 토스트 대신 다른 잠금 진입점과 동일하게 STEP1~2 로그인 카드로 바로 이동 —
+       이중으로 알림이 겹쳐 보이던 문제(카드 + 토스트) 방지 */
+    showLockPrompt();
     return;
   }
   let activeName=null;
