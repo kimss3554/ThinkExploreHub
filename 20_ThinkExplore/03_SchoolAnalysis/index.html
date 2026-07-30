@@ -3374,7 +3374,12 @@ function toggleQuickNav(){
 function quickNav(id){
   document.getElementById('quickNavWrap')?.classList.remove('open');
   const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(!el) return;
+  // scrollIntoView/scrollTo의 옵션 인자({behavior,block})를 지원하지
+  // 않는 구형 인앱 브라우저가 있어, 숫자 인자 방식으로만 스크롤한다
+  const headerOffset=110;
+  const y=el.getBoundingClientRect().top+window.pageYOffset-headerOffset;
+  window.scrollTo(0,Math.max(0,y));
 }
 document.addEventListener('click',e=>{
   const wrap=document.getElementById('quickNavWrap');
