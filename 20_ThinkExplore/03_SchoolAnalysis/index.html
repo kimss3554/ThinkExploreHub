@@ -262,9 +262,10 @@
 
   /* checkboxes */
   .checkrow{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
-    gap:8px;justify-content:flex-start;margin-bottom:10px;padding-bottom:4px;}
+    align-items:center;gap:16px;justify-content:flex-start;margin-bottom:10px;
+    background:var(--section-alt);border:1px solid var(--line);border-radius:12px;padding:10px 14px;}
   .checkrow label{font-size:13px;display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;white-space:nowrap;
-    background:#fff;border:1.5px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer;}
+    background:none;border:none;padding:0;border-radius:0;cursor:pointer;}
 
   /* ---------- MODAL ---------- */
   .modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(20,30,50,.55);
