@@ -565,6 +565,25 @@
     margin-top:8px;margin-right:6px;
   }
   .cal-section-title{font-size:15px;font-weight:700;color:var(--navy);margin:16px 0 10px;}
+  .cal-grid-wrap{margin-bottom:20px;}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+  .cal-grid-wd{text-align:center;font-size:12px;font-weight:700;color:var(--muted);padding:6px 0;}
+  .cal-grid-wd.sun{color:#D14343;}
+  .cal-grid-wd.sat{color:#1C6BD1;}
+  .cal-grid-cell{
+    position:relative;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border-radius:8px;background:var(--bg);font-size:13px;color:var(--txt);
+  }
+  .cal-grid-cell.empty{background:transparent;}
+  .cal-grid-cell.sun .cal-grid-daynum{color:#D14343;}
+  .cal-grid-cell.sat .cal-grid-daynum{color:#1C6BD1;}
+  .cal-grid-cell.has-event{background:rgba(200,131,10,.12);font-weight:700;cursor:help;}
+  .cal-grid-daynum{font-size:13px;}
+  .cal-grid-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);margin-top:2px;}
+  @media (max-width:480px){
+    .cal-grid-cell{border-radius:6px;}
+    .cal-grid-daynum{font-size:11px;}
+  }
 
   @media(max-width:860px){
     .mobile-tabbar{display:block;}
@@ -2251,6 +2270,57 @@ function buildCalMonthTabs(){
   `).join('');
 }
 
+/* ===== 실제 달력 그리드 ===== */
+/* 학사년도 기준 3~12월은 2026년, 1~2월은 2027년 (예: 11월 수능은 2026년 11월에 치러 "2027학년도" 수능) */
+function calYearOf(m){ return m>=3 ? 2026 : 2027; }
+
+/* 이벤트 문구에서 "(M/D)" 또는 "(M/D~D)" 형태의 날짜를 뽑아낸다. 못 찾으면 null */
+function parseEventDays(evText, month){
+  const m = evText.match(/\((\d{1,2})\/(\d{1,2})(?:\s*~\s*(\d{1,2}))?/);
+  if(!m) return null;
+  const evMonth = parseInt(m[1],10);
+  if(evMonth !== month) return null; // 다른 달을 가리키는 문구면 이 달 그리드엔 표시 안 함
+  const startDay = parseInt(m[2],10);
+  const endDay = m[3] ? parseInt(m[3],10) : startDay;
+  const days=[];
+  for(let d=startDay; d<=endDay; d++) days.push(d);
+  return days;
+}
+
+function renderCalGrid(month, events){
+  const year = calYearOf(month);
+  const firstWeekday = new Date(year, month-1, 1).getDay(); // 0=일
+  const totalDays = new Date(year, month, 0).getDate();
+
+  /* 날짜별 이벤트 매핑 */
+  const dayMap = {};
+  (events||[]).forEach(ev=>{
+    const days = parseEventDays(ev, month);
+    if(!days) return;
+    days.forEach(d=>{ (dayMap[d]=dayMap[d]||[]).push(ev.replace(/\s*\([^)]*\)\s*/g,' ').trim()); });
+  });
+
+  const weekdayNames=['일','월','화','수','목','금','토'];
+  let cells = weekdayNames.map((w,i)=>`<div class="cal-grid-wd${i===0?' sun':''}${i===6?' sat':''}">${w}</div>`).join('');
+
+  for(let i=0;i<firstWeekday;i++) cells += `<div class="cal-grid-cell empty"></div>`;
+  for(let d=1; d<=totalDays; d++){
+    const wd=(firstWeekday+d-1)%7;
+    const evs=dayMap[d];
+    const hasEvent=!!evs;
+    const title=hasEvent?evs.join(' / ').replace(/"/g,'&quot;'):'';
+    cells += `<div class="cal-grid-cell${hasEvent?' has-event':''}${wd===0?' sun':''}${wd===6?' sat':''}"${hasEvent?` title="${title}"`:''}>
+      <span class="cal-grid-daynum">${d}</span>
+      ${hasEvent?`<span class="cal-grid-dot"></span>`:''}
+    </div>`;
+  }
+
+  return `<div class="cal-grid-wrap">
+    <div class="cal-grid">${cells}</div>
+    ${Object.keys(dayMap).length===0?'':`<p style="font-size:11px;color:var(--muted);margin-top:8px;">🟠 점이 표시된 날짜에 마우스를 올리면 일정이 보입니다</p>`}
+  </div>`;
+}
+
 function renderCalContent(){
   const cont=document.getElementById('calContent');
   if(!cont) return;
@@ -2261,9 +2331,10 @@ function renderCalContent(){
   const gradeLabel=['','고1','고2','고3'][calGrade];
   const monthLabel=CAL_MONTH_NAMES[calMonth];
   let html=`<div style="margin-bottom:16px;">
-    <h3 style="font-size:17px;font-weight:700;color:var(--navy);">${monthLabel} — ${gradeLabel} 핵심 체크리스트</h3>
+    <h3 style="font-size:17px;font-weight:700;color:var(--navy);">${calYearOf(calMonth)}년 ${monthLabel} — ${gradeLabel} 핵심 체크리스트</h3>
     <p style="font-size:13px;color:var(--muted);margin-top:4px;">${CAL_MONTH_DESCS[calMonth]} 시기</p>
   </div>`;
+  html+=renderCalGrid(calMonth, d.events);
   if(items.length>0){
     html+=`<div class="cal-section-title">☑ 이번 달 핵심 행동 목록</div>`;
     html+=items.map(it=>`<div class="cal-check-item"><span class="ico">☑</span><span>${it}</span></div>`).join('');
