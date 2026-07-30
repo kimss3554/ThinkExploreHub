@@ -3262,6 +3262,11 @@ function tryGatePw(inputId,errId){
     err.textContent='';
     unlock(true);
     try{ closePremModal(); }catch(e){}
+    /* 이전에 관리자로 로그인했던 잔여 상태가 있어도 오픈채팅 비번 로그인 시엔
+       반드시 일반 모드로 — 관리자 전용 자료 수집 현황이 보이면 안 됨 */
+    sessionStorage.removeItem('sjtg_admin_unlocked');
+    const adminPanelEl=document.getElementById('adminPanel');
+    if(adminPanelEl) adminPanelEl.style.display='none';
     toast('프리미엄 콘텐츠가 열렸습니다 🎉');
     setTimeout(()=>{ document.getElementById('schools')?.scrollIntoView({behavior:'smooth',block:'start'}); },200);
     return;
@@ -3272,6 +3277,11 @@ document.getElementById('gatePwInput')?.addEventListener('keydown',e=>{if(e.key=
 document.getElementById('gatePwInputModal')?.addEventListener('keydown',e=>{if(e.key==='Enter')tryGatePw('gatePwInputModal','gatePwErrModal');});
 function logoutPremium(){
   localStorage.removeItem('sjtg_unlocked');localStorage.removeItem('sjtg_last_active');
+  /* 관리자 세션도 함께 초기화 — 안 지우면 로그아웃 후 오픈채팅 비번으로만
+     다시 로그인해도 예전 관리자 모드(자료 수집 현황)가 계속 보이는 문제가 있었음 */
+  sessionStorage.removeItem('sjtg_admin_unlocked');
+  const panel=document.getElementById('adminPanel');
+  if(panel) panel.style.display='none';
   location.reload();
 }
 
@@ -3316,7 +3326,15 @@ function tryPw(){
     toast('관리자 모드로 열렸습니다 🛡️');
     return;
   }
-  if(v===PREMIUM_PASSWORD){err.textContent='';unlock(true);toast('프리미엄 콘텐츠가 열렸습니다');return;}
+  if(v===PREMIUM_PASSWORD){
+    err.textContent='';
+    unlock(true);
+    sessionStorage.removeItem('sjtg_admin_unlocked');
+    const adminPanelEl=document.getElementById('adminPanel');
+    if(adminPanelEl) adminPanelEl.style.display='none';
+    toast('프리미엄 콘텐츠가 열렸습니다');
+    return;
+  }
   err.textContent='비밀번호가 올바르지 않습니다. 채널 공지를 확인하세요.';
 }
 
