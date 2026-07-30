@@ -3242,21 +3242,33 @@ function unlock(persist){
   document.querySelectorAll('.tab-lock').forEach(el=>el.style.display='none');
   // 로그인 후에는 이미 열람 중이므로 각 섹션 제목의 "프리미엄" 배지 제거
   document.querySelectorAll('.premflag').forEach(el=>el.style.display='none');
-  // 잠긴 탭(compare/gib/calendar) 안에서 바로 로그인한 경우, 안내 카드는 사라지는데
-  // 실제 콘텐츠는 계속 display:none인 채로 남아 화면이 텅 비어 보이던 문제 수정 —
-  // 지금 열려있는 탭이 잠긴 탭이었다면 그 콘텐츠를 즉시 보여준다.
-  (function revealCurrentLockedTabContent(){
-    const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent'};
-    let activeName=null;
-    document.querySelectorAll('.tab-panel[data-tab]').forEach(p=>{ if(p.style.display!=='none') activeName=p.dataset.tab; });
-    if(activeName && activeName in LOCK_CONTENT_ID){
-      const contentEl=document.getElementById(LOCK_CONTENT_ID[activeName]);
-      if(contentEl) contentEl.style.display='block';
-      if(activeName==='calendar') setTimeout(()=>{ if(typeof initCalendar==='function') initCalendar(); }, 50);
-    }
-  })();
+  // 잠긴 탭(compare/rw/gib/calendar) 안에서 바로 로그인한 경우 화면이 비어 보이던 문제 수정 —
+  // 지금 열려있는 탭이 어디였는지 먼저 파악해둔다.
+  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent'};
+  let _activeTabAtLogin=null;
+  document.querySelectorAll('.tab-panel[data-tab]').forEach(p=>{ if(p.style.display!=='none') _activeTabAtLogin=p.dataset.tab; });
+  if(_activeTabAtLogin && _activeTabAtLogin in LOCK_CONTENT_ID){
+    // compare/gib/calendar: 안내 카드는 사라지고 실제 콘텐츠는 display:none인 채로
+    // 남아있던 것을 즉시 보여준다.
+    const contentEl=document.getElementById(LOCK_CONTENT_ID[_activeTabAtLogin]);
+    if(contentEl) contentEl.style.display='block';
+    if(_activeTabAtLogin==='calendar') setTimeout(()=>{ if(typeof initCalendar==='function') initCalendar(); }, 50);
+  }
   updatePvBars();
   consolidatePremiumIntoOverview();
+  if(_activeTabAtLogin==='rw'){
+    // rw 탭 안에서 로그인한 경우: 위 consolidatePremiumIntoOverview()가 실제 콘텐츠(#premium)를
+    // 'overview' 탭으로 옮겨버려서, rw 탭에 계속 머물러 있으면 화면이 텅 비어 보인다.
+    // 콘텐츠가 옮겨간 overview 탭으로 화면 자체를 전환해준다.
+    document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='none');
+    const ov=document.querySelector('.tab-panel[data-tab="overview"]');
+    if(ov) ov.style.display='block';
+    document.querySelectorAll('.nav-tab').forEach(b=>b.classList.toggle('active', b.dataset.tab==='overview'));
+    setTimeout(()=>{
+      const el=document.getElementById('rw-section')||document.getElementById('premium');
+      if(el){ const h=(document.querySelector('header.site')?.offsetHeight||90); window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-h-8, behavior:'smooth'}); }
+    },120);
+  }
   setTimeout(()=>{initTrend();buildHeat();buildRWChart();buildRWGrid();buildGradeScoreSection();initCompareBlock();observeReveals();},60);
 }
 /* 로그인 시: 티저 카드(pv-section)를 숨기고, 실제 상세 결과(#premium)를
