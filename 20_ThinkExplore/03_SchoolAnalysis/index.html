@@ -722,6 +722,7 @@
     <button class="nav-tab active" data-tab="overview" onclick="setTab('overview')">학교 한눈에</button>
     <button class="nav-tab" data-tab="compare" onclick="setTab('compare')">학교 비교 <span class="tab-lock">🔒</span></button>
     <button class="nav-tab" data-tab="rw" onclick="setTab('rw')">수행평가 <span class="tab-lock">🔒</span></button>
+    <button class="nav-tab" data-tab="joint" onclick="setTab('joint')">공동교육과정</button>
     <button class="nav-tab" data-tab="calendar" onclick="setTab('calendar')">입시 달력 <span class="tab-lock">🔒</span></button>
     <button class="nav-tab" data-tab="news" onclick="setTab('news')" style="display:none;">입시뉴스 ↗</button>
     <button class="nav-tab" data-tab="class" onclick="setTab('class')" style="display:none;">수업 소개 ↗</button>
@@ -1373,6 +1374,19 @@
 
 </div><!-- /tab-panel rw -->
 
+<!-- TAB: 공동교육과정 (joint) -->
+<div class="tab-panel" data-tab="joint" style="display:none;">
+<section class="block">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <h2>공동교육과정 — 우리 학교에 없는 과목, 밖에서 듣기</h2>
+      <p>내 학교에 개설되지 않은 과목을 다른 학교·온라인학교에서 이수하고 학교생활기록부에 남기는 제도입니다. (2026학년도 기준)</p>
+    </div>
+    <div id="jointContent"></div>
+  </div>
+</section>
+</div><!-- /tab-panel joint -->
+
 <!-- TAB: 입시 달력 (calendar) -->
 <div class="tab-panel" data-tab="calendar" style="display:none;">
 <div id="calendarContent" style="display:none;">
@@ -1974,6 +1988,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M13 4H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 4 13 9 18 9"/></svg>
       수행평가 <span class="tab-lock">🔒</span>
     </button>
+    <button class="mob-tab" onclick="setTab('joint');setMobTab(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2 8l10 5 10-5z"/><path d="M2 13l10 5 10-5"/></svg>
+      공동교육
+    </button>
     <button class="mob-tab" onclick="setTab('calendar');setMobTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       달력 <span class="tab-lock">🔒</span>
@@ -2012,6 +2030,7 @@ function setTab(name){
   document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='none');
   const panel=document.querySelector('.tab-panel[data-tab="'+name+'"]');
   if(panel) panel.style.display='block';
+  if(name==='joint' && typeof renderJoint==='function') renderJoint();
   document.querySelectorAll('.nav-tab').forEach(b=>{
     b.classList.toggle('active', b.dataset.tab===name);
   });
@@ -2141,7 +2160,7 @@ function printCurrentTab(){
     try{ canvasData[c.id] = c.toDataURL('image/png'); } catch(e){}
   });
 
-  const titleMap = {overview:'학교 한눈에',compare:'학교 비교',rw:'수행평가',gib:'생기부 분석',calendar:'입시 달력',news:'입시뉴스',class:'수업 소개'};
+  const titleMap = {overview:'학교 한눈에',compare:'학교 비교',rw:'수행평가',joint:'공동교육과정',gib:'생기부 분석',calendar:'입시 달력',news:'입시뉴스',class:'수업 소개'};
   const html = `<!DOCTYPE html><html><head>
     <meta charset="UTF-8">
     <title>생각탐구 — ${titleMap[tabName]||tabName}</title>
@@ -5263,6 +5282,218 @@ function renderStatCards(s,det){
     out.push(card('졸업생 진로현황',`<div class="rep-val">${det.graduates||'수집 예정'}</div>`));
   }
   return out.join('');
+}
+
+/* 공동교육과정 탭 렌더러 */
+function renderJoint(){
+  const el=document.getElementById('jointContent');
+  if(!el||el.dataset.done) return;
+  const card=(lbl,body,note)=>`<div class="rep-card" style="margin-bottom:14px;">
+    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    ${body}${note?`<div class="rec-source" style="margin-top:8px;">${note}</div>`:''}
+  </div>`;
+
+  /* ① 유형 5가지 */
+  const types=`<div style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:4px;">
+      우리 학교에 없는 과목을 다른 학교나 온라인학교에서 듣고 <b>학교생활기록부에 정식 과목으로 남기는</b> 제도입니다. 운영 방식에 따라 5가지로 나뉘며, <b>학생이 직접 신청할 수 있는 것은 거점학교와 온라인학교 개방형</b> 두 가지입니다.
+    </div>`
+    +igTable(['유형','운영 시간','내용','신청 방법','수강 제한'],
+      JOINT_TYPES.map(t=>[`<b style="color:${t.color}">${t.name}</b>`,t.when,t.who,t.apply,t.limit]),
+      {align:['left','center','left','left','left']});
+
+  /* ② 관악구 학생이 들을 수 있는 것 */
+  const local=`<div style="font-size:14px;color:var(--muted);line-height:1.8;">
+      <b>동작관악 권역 공유캠퍼스</b>는 3개 강좌 모두 <b>정규 일과시간 내</b> 운영이라 학기당 2과목 제한에 포함되지 않습니다.
+    </div>`
+    +igTable(['개설 학교','과목','위치'],JOINT_LOCAL.map(x=>[`<b>${x.school}</b>`,x.subject,x.area]),{align:['center','left','left']})
+    +`<div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;padding:9px 11px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;">
+      관악구 안에 있는 <b>거점학교는 삼성고 1곳</b>뿐이며 예술 영역(방송 일반, 연극과 삶)만 운영합니다. 아래 고급·전문 과목은 대부분 <b>타 지역 거점학교나 서울온라인학교</b>에서 들어야 합니다. 온라인학교는 실시간 쌍방향이라 이동 부담이 없습니다.
+    </div>`;
+
+  /* ③ 고급·전문 과목 개설처 */
+  const adv=`<div style="font-size:14px;color:var(--muted);line-height:1.8;">
+      일반고 정규 교육과정에 편성하기 어려워 <b>공동교육과정에서만 열리는</b> 과목들입니다. 이과·의약학·공학 계열 지망 학생이 전공 적합성을 보여주기 좋은 통로입니다.
+    </div>`
+    +igTable(['과목','대상','개설 학교'],
+      JOINT_ADVANCED.map(x=>[`<b>${x.subject}</b>`,x.grade,x.places.join(' · ')]),
+      {align:['left','center','left']});
+
+  /* ④ 신청 방법 */
+  const steps=[
+    {n:'1',t:'우리 학교 편제표 확인',d:'소속 학교에 이미 개설된 과목은 신청 불가. 이 사이트의 학교별 「선택과목 개설 사항」에서 먼저 확인.'},
+    {n:'2',t:'담임·교육과정 담당 교사 상담',d:'수강 가능 여부와 선이수 과목 충족 여부를 반드시 사전 상담. 공식 절차로 규정되어 있음.'},
+    {n:'3',t:'콜라캠퍼스에서 신청',d:'서울고교학점제지원센터 → 학교 간 공동교육과정 → 수강신청. 학업계획서·원적교 확인서·개인정보 제공 동의서 3종 제출.'},
+    {n:'4',t:'선발 (정원 초과 시)',d:'학업계획서 70점 + 필요 시 면접 60점. 진로와의 연결을 구체적으로 서술하는 것이 관건.'},
+    {n:'5',t:'수강 및 이수',d:'출석 2/3 이상 + 학업성취율 40% 이상을 모두 충족해야 이수. 취소 기간 이후에는 중도 포기 불가(고1·고2).'}
+  ];
+  const apply=`<div style="display:grid;gap:8px;margin-top:8px;">
+      ${steps.map(s=>`<div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px;">
+        <div style="flex:0 0 26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;">${s.n}</div>
+        <div style="min-width:0;">
+          <div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:2px;">${s.t}</div>
+          <div style="font-size:13.5px;line-height:1.75;color:var(--txt);">${s.d}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div style="margin-top:12px;">
+      <div style="font-size:14px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">신청 시기</div>
+      ${igTable(['구분','신청 시기','비고'],[
+        ['<b>1학기 과목</b>','전년도 12월 ~ 1월 말','1학년은 신청 불가'],
+        ['<b>2학기 과목</b>','7월','1학년은 2학기부터 신청 가능'],
+        ['2026학년도 2학기 (확정)','신청 7.6~7.31 · 발표 8.5 · 취소마감 9.10','서울온라인학교 거점강좌 기준']
+      ],{align:['left','center','left']})}
+    </div>`;
+
+  /* ⑤ 평가·이수 — 핵심 */
+  const evalBody=`<div style="background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:10px;padding:12px 14px;margin-top:8px;">
+      <div style="font-size:15px;font-weight:800;color:#9A3412;margin-bottom:6px;">가장 중요한 사실 — 석차등급이 산출되지 않습니다</div>
+      <div style="font-size:14px;line-height:1.8;color:var(--txt);">
+        공동교육과정·온라인학교 개설 과목은 여러 학교 학생이 함께 듣는 특성상 <b>상대평가 석차등급을 매기지 않습니다.</b>
+        따라서 이 과목의 성적이 <b>내신 등급 평균을 깎지 않습니다.</b> 대신 <b>「과목별 세부능력 및 특기사항」</b>이 남아 학생부종합전형의 정성 평가 자료가 됩니다.
+      </div>
+    </div>`
+    +igTable(['기재 항목','일반 교과','공동교육과정'],[
+      ['원점수','○','○'],['과목평균','○','○'],['성취도 (A~E)','○','○'],
+      ['성취도별 분포비율','○','○'],['수강자수','○','○'],
+      ['<b>석차등급 (상대평가)</b>','<b style="color:#D14343;">5등급 산출</b>','<b style="color:#2E9E5B;">산출 안 함</b>'],
+      ['과목별 세부능력 및 특기사항','○','<b>○ (핵심)</b>']
+    ],{align:['left','center','center']})
+    +`<div style="margin-top:12px;">
+      <div style="font-size:14px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">이수 기준과 미이수 처리</div>
+      ${igTable(['구분','기준'],[
+        ['<b>이수 조건</b>','수업횟수의 <b>2/3 이상 출석</b> + <b>학업성취율 40% 이상</b> (둘 다 충족)'],
+        ['출석 미달 시','추가학습 — 1학점당 5시수 운영, 2/3 이상 참여 시 이수 인정'],
+        ['성취율 미달 시','최소 성취수준 보장지도(예방·보충지도)'],
+        ['그래도 미충족','학생부에 <b>「미이수」</b> 기재. 학기 중 온라인 콘텐츠(64시수의 2/3) 또는 방학 중 계절학기로 학점 취득 가능']
+      ],{align:['left','left']})}
+    </div>`;
+
+  /* ⑥ Q&A */
+  const qa=`<div style="display:grid;gap:8px;margin-top:8px;">
+      ${JOINT_QA.map((x,i)=>`<details style="background:#fff;border:1px solid var(--line);border-radius:9px;padding:0;overflow:hidden;">
+        <summary style="cursor:pointer;padding:11px 13px;font-size:14.5px;font-weight:700;color:var(--navy);list-style:none;display:flex;gap:8px;align-items:flex-start;">
+          <span style="color:var(--amber);font-weight:800;flex:0 0 auto;">Q${i+1}.</span><span>${x.q}</span>
+        </summary>
+        <div style="padding:0 13px 12px 13px;font-size:14px;line-height:1.85;color:var(--txt);border-top:1px dashed var(--line);padding-top:10px;">${x.a}</div>
+      </details>`).join('')}
+    </div>`;
+
+  /* ⑦ 공식 문서 */
+  const docs=`<div style="font-size:14px;color:var(--muted);line-height:1.8;">아래는 모두 <b>공식 기관이 발간한 2026학년도 자료</b>입니다.</div>
+    <div style="display:grid;gap:7px;margin-top:8px;">
+      ${[
+        ['서울고교학점제지원센터 (공동교육과정·수강신청)','https://seoulhsc.sen.go.kr/'],
+        ['공동교육과정 안내 — 콜라캠퍼스','https://seoulhsc.sen.go.kr/fus/MI000000000000000140/html/cont0010v.do'],
+        ['거점학교·공유캠퍼스 개설 강좌 운영현황','https://seoulhsc.sen.go.kr/fus/campusInfo/MI000000000000000144/01/view0010v.do'],
+        ['공식 FAQ (평가·기록·이수기준)','https://seoulhsc.sen.go.kr/fus/MI000000000000001061/board/BO00001021/list0021v.do'],
+        ['학교 밖 교육 안내','https://seoulhsc.sen.go.kr/fus/MI000000000000000080/html/cont0010v.do'],
+        ['2026학년도 2학기 거점학교 학생 모집 요강 (PDF, 58p)','https://seoulonline.sen.hs.kr/dggb/board/boardFile/downFile.do?atchFileId=FILE_000000012328622&fileSn=1'],
+        ['2026학년도 학점이수 인정기준 및 최소 성취수준 보장지도 지원자료','https://seoulhsc.sen.go.kr/fus/MI000000000000000167/board/BO00000064/list0011v.do'],
+        ['서울온라인학교','https://seoulonline.sen.hs.kr/']
+      ].map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:10px 12px;font-size:14px;font-weight:600;color:#0369A1;text-decoration:none;">
+        <span style="flex:0 0 auto;">📄</span><span style="min-width:0;word-break:keep-all;">${t}</span><span style="margin-left:auto;flex:0 0 auto;color:var(--muted);font-size:12px;">↗</span>
+      </a>`).join('')}
+    </div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;">문의 — 서울고교학점제지원센터 02-6033-5871 · 서울온라인학교 02-6953-9700 (평일 09:30~18:30)</div>`;
+
+  el.innerHTML=
+     card('공동교육과정이란? — 5가지 유형',types)
+    +card('관악구 학생이 들을 수 있는 강좌',local)
+    +card('우리 학교엔 없는 고급·전문 과목은 어디서?',adv,'출처: 서울고교학점제지원센터 운영현황 (2026학년도 1학기 기준)')
+    +card('신청 방법과 시기',apply)
+    +card('성적은 어떻게 기록되나 — 이수·평가 방법',evalBody,'출처: 서울고교학점제지원센터 공식 FAQ, 2026학년도 2학기 거점학교 모집요강')
+    +card('자주 묻는 질문',qa)
+    +card('공식 자료 내려받기',docs);
+  el.dataset.done='1';
+}
+
+/* ===================== 공동교육과정 데이터 (2026학년도, 공식 자료 기반) =====================
+   출처: 서울고교학점제지원센터, 서울온라인학교 2026학년도 2학기 거점학교 모집요강,
+        「2026학년도 서울 일반계고 고교학점제 운영 안내」 */
+const JOINT_TYPES=[
+  {name:'공유캠퍼스',when:'정규 일과시간 내',who:'인근 2~4개교가 공동 운영',
+   apply:'학교 교육과정으로 편성',limit:'학기당 과목수 제한에 <b>미포함</b>',color:'#0369A1'},
+  {name:'거점학교',when:'방과후·주말',who:'서울 전역 일반고 학생',
+   apply:'<b>학생이 직접 신청</b>',limit:'학기당 최대 2과목',color:'#C8830A'},
+  {name:'온라인학교 — 주문형',when:'정규 일과시간 내',who:'실시간 쌍방향 온라인',
+   apply:'학교↔온라인학교 협의 <b>(개별신청 불가)</b>',limit:'학교 정규 교육과정',color:'#4338CA'},
+  {name:'온라인학교 — 개방형',when:'방과후·주말',who:'서울 전역 일반고 학생',
+   apply:'<b>학생이 직접 신청</b>',limit:'거점학교와 합산 학기당 2과목',color:'#7C3AED'},
+  {name:'학교 밖 교육',when:'—',who:'지역사회 기관에서 이수',
+   apply:'학교장이 판단 <b>(개별신청 불가)</b>',limit:'3년간 최대 8학점',color:'#2E9E5B'}
+];
+
+/* 동작관악 권역 공유캠퍼스 — 관악구 학생이 정규 일과 중 들을 수 있는 강좌 */
+const JOINT_LOCAL=[
+  {school:'당곡고',subject:'인공지능과 피지컬 컴퓨팅',area:'관악구 봉천로21길 108'},
+  {school:'신림고',subject:'스페인어',area:'관악구 문성로 119'},
+  {school:'수도여고',subject:'미래사회학',area:'동작구 여의대방로10길 73'}
+];
+
+/* 일반고에서 개설하기 어려운 고급·전문 과목이 열리는 거점학교 (2026학년도 1학기 기준) */
+const JOINT_ADVANCED=[
+  {subject:'고급 물리학',grade:'3학년',places:['동북고','숭실고','서울온라인학교']},
+  {subject:'고급 화학',grade:'3학년',places:['대신고','동북고','잠신고','한서고','홍대부고','서울온라인학교']},
+  {subject:'고급 생명과학',grade:'3학년',places:['숭실고','잠신고','혜성여고','서울온라인학교']},
+  {subject:'고급 지구과학',grade:'2학년',places:['창동고']},
+  {subject:'물리학실험',grade:'—',places:['경신고','대진고','덕원여고','문정고','상명대부여고','양재고','영훈고','인창고','잠신고','창동고']},
+  {subject:'화학실험',grade:'—',places:['경신고','덕원여고','문정고','상명대부여고','수도여고','양재고','인창고','창동고']},
+  {subject:'생명과학실험',grade:'—',places:['경신고','덕원여고','문정고','상명대부여고','수도여고','양재고','영훈고','창동고']},
+  {subject:'지구과학실험',grade:'—',places:['경신고','양재고']},
+  {subject:'고급 대수 · 이산수학 · 심화수학Ⅰ',grade:'—',places:['영동고','청담고','재현고 (공유캠퍼스)']},
+  {subject:'정보과학 · 사물인터넷과 센서 제어 · 프로그래밍',grade:'—',places:['대원고','동양고','영훈고','서울영상고','오산고']},
+  {subject:'국제 관계와 국제 기구 · 국제 경제 · 국제 정치',grade:'—',places:['대진고','숭실고','인창고','서울온라인학교']}
+];
+
+/* 자주 묻는 질문 — 답변은 전부 공식 자료에 근거 */
+const JOINT_QA=[
+  {q:'내신이 낮은데 고급물리학 같은 어려운 과목을 들어도 될까요?',
+   a:'공동교육과정 과목은 <b>석차등급(상대평가)을 산출하지 않습니다.</b> 원점수·과목평균·성취도(A~E)·성취도별 분포비율·수강자수와 세부능력 및 특기사항만 기록됩니다. 즉 <b>이 과목 때문에 내신 등급 평균이 나빠지지 않습니다.</b> 어려운 과목에 도전하는 부담이 일반 교과보다 훨씬 작다는 뜻입니다. 다만 성취도(A~E)와 세특은 그대로 남으므로, 수업을 따라가지 못하면 세특 내용이 빈약해질 수 있습니다. 학업 부담을 감당할 수 있는지는 별도로 판단해야 합니다.'},
+  {q:'그럼 대입에는 어떻게 반영되나요?',
+   a:'석차등급이 없으므로 <b>교과 성적(내신 등급) 정량 계산에는 들어가지 않습니다.</b> 대신 학생부종합전형에서 <b>「과목별 세부능력 및 특기사항」의 정성 평가</b>로 활용됩니다. 서울시교육청도 고교학점제 이후 "과목별 세특이라는 정성적 평가의 영향력이 커졌다"고 밝히고 있습니다. 전공 적합성을 보여주기에 좋은 통로입니다.'},
+  {q:'몇 과목까지 들을 수 있나요?',
+   a:'2022 개정 교육과정 적용 학년(현 고1·고2)은 <b>학기당 2과목 이내</b>입니다. 거점학교·온라인학교 개방형·일과시간 외 공유캠퍼스 강좌를 <b>모두 합산</b>합니다. 단 <b>공유캠퍼스의 정규 일과시간 내 강좌는 이 제한에 포함되지 않습니다.</b> 관악구 학생이 들을 수 있는 당곡고·신림고·수도여고 3개 강좌가 여기에 해당합니다.'},
+  {q:'1학년도 신청할 수 있나요?',
+   a:'1학년은 <b>2학기부터</b> 모집·신청이 가능합니다. 1학기에는 소속 학교 교육과정에 집중하게 되어 있습니다.'},
+  {q:'신청하면 다 들을 수 있나요?',
+   a:'아닙니다. 신청 인원이 정원을 넘으면 선발 절차가 있습니다. <b>학업계획서 70점</b>(지원 동기 20 + 자기주도학습 과정 30 + 진로 계획 20)으로 평가하고, 필요 시 <b>면접 60점</b>(관심도·잠재 능력·종합적 품성 각 20)을 추가로 봅니다. 학업계획서에 진로와의 연결을 구체적으로 쓰는 것이 중요합니다.'},
+  {q:'우리 학교에 이미 개설된 과목도 신청할 수 있나요?',
+   a:'<b>불가능합니다.</b> 소속 학교 1~3학년 교육과정에 편성된 과목은 신청할 수 없습니다. 그래서 신청 전에 <b>우리 학교 편제표를 먼저 확인</b>해야 합니다. 이 사이트의 학교별 「선택과목 개설 사항」에서 확인할 수 있습니다.'},
+  {q:'중간에 그만둘 수 있나요?',
+   a:'취소 기간(2026학년도 2학기 기준 9월 10일까지) 안에는 콜라캠퍼스에서 직접 취소하거나 참가포기확인서를 제출하면 됩니다. <b>취소 기간이 지나면 2022 개정 적용 학년(고1·고2)은 중도 포기가 불가능</b>하며, 최소 성취수준 보장지도를 받은 뒤 이수/미이수가 학생부에 기록됩니다.'},
+  {q:'이수하려면 무엇을 충족해야 하나요?',
+   a:'<b>수업횟수의 2/3 이상 출석</b>과 <b>학업성취율 40% 이상</b>을 <b>모두</b> 충족해야 합니다. 출석이 모자라면 1학점당 5시수의 추가학습, 성취율이 모자라면 최소 성취수준 보장지도를 받습니다. 그래도 못 채우면 「미이수」로 기록됩니다.'},
+  {q:'선이수 과목이 필요한 경우가 있나요?',
+   a:'네. 위계가 있는 과목은 선수 과목을 먼저 이수해야 신청할 수 있습니다. 예를 들어 고급 과목은 해당 일반선택·진로선택 과목을 이수한 뒤 듣는 것이 원칙입니다. 신청 전 <b>담임 또는 교육과정 담당 교사와 반드시 상담</b>하도록 되어 있습니다.'}
+];
+
+/* ===================== 과목명 정규화 & 학교별 개설과목 집합 =====================
+   같은 과목이 학교 문서마다 "역학과 에너지"/"역학과에너지"처럼 다르게 표기되고
+   "(공유캠퍼스)"·"(온라인학교)" 같은 주석이 붙어 있어, 그대로 비교하면
+   학교에 실제로 있는 과목을 "없음"으로 잘못 판정한다. 반드시 정규화 후 비교할 것. */
+function normSubj(s){
+  return String(s)
+    .replace(/\([^)]*\)/g,'')   /* (공유캠퍼스)·(온라인학교)·(교육감 승인) 등 주석 제거 */
+    .replace(/\s+/g,'')         /* 공백 전부 제거 */
+    .trim();
+}
+
+/* 한 학교가 개설하는 과목 전체를 정규화된 Set으로 반환. 2015 개정(배열) 학교는 null */
+function schoolSubjectSet(school){
+  const e=(SCHOOL_DETAIL[school]||{}).electives;
+  if(!e||Array.isArray(e)) return null;
+  const CATS=['일반','진로','융합'], set=new Set();
+  const add=arr=>(arr||[]).forEach(x=>{
+    const n=normSubj(x);
+    /* "1학기 택1 — A / B" 같은 설명 문자열은 과목명이 아니므로 제외 */
+    if(n && !/[—]|택\d/.test(n)) set.add(n);
+  });
+  add(e['공통']); add(e.g1sel);
+  CATS.forEach(c=>add(e[c]));
+  ['g2','g3'].forEach(g=>{ if(e[g]) CATS.forEach(c=>add(e[g][c])); });
+  (e.terms||[]).forEach(t=>CATS.forEach(c=>add(t[c])));
+  if(e.unassigned) add(e.unassigned.list);
+  return set;
 }
 
 /* "16학점 택4 × 2그룹 + 예술 3학점 택1" 같은 이수구조 문구를
