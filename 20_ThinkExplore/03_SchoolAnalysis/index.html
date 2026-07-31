@@ -3048,6 +3048,73 @@ const SCHOOL_YEARLY = {
   '인헌고':{transfer:{'2025':{drop:1.4}}}
 };
 /* 전출입·학업중단 총계 원자료 (raw/학교자료/관악구학교자료/{학교명}/전출입및학업중단학생수.xls, 2026-07-22 재추출) */
+/* ===================== 학생 통계 실인원 (학교알리미 공시 원자료) =====================
+   students: 학년별 인원(명) — sp는 특수학급(총계에 포함), cls는 총 학급수
+   transfer: 전입·전출·학업중단 인원(명), base=4월 1일 재적수, rate=학업중단율(%)
+   grad: 졸업자·진로별 인원(명) — abroad는 국외 진학
+   ※ 학업중단 사유별(질병·가사·부적응·해외출국) 세분 자료는 공시되지 않음 */
+const SCHOOL_STATS = {
+  '신림고':{
+    studentsSrc:'출처: 학교알리미 「학년별·학급별 학생수」 공시 (2024~2026학년도). 특수학급 포함 총계.',
+    students:{
+      '2024':{g1:153,g2:164,g3:145,sp:17,total:479,cls:18},
+      '2025':{g1:154,g2:154,g3:163,sp:14,total:485,cls:18},
+      '2026':{g1:155,g2:150,g3:156,sp:14,total:475,cls:21}
+    },
+    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준.',
+    transfer:{
+      '2023':{in:9,out:11,drop:18,base:499,rate:3.6},
+      '2024':{in:11,out:13,drop:12,base:479,rate:2.5},
+      '2025':{in:21,out:10,drop:11,base:485,rate:2.3}
+    },
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    grad:{
+      '2022':{total:145,univ4:58,jeondae:25,abroad:0,employ:0,etc:62},
+      '2023':{total:162,univ4:65,jeondae:44,abroad:1,employ:17,etc:35},
+      '2024':{total:151,univ4:58,jeondae:48,abroad:0,employ:4,etc:41}
+    }
+  },
+  '영락고':{
+    studentsSrc:'출처: 학교알리미 「학년별·학급별 학생수」 공시 (2024~2026학년도). 남학급·여학급 분리 편성.',
+    students:{
+      '2024':{g1:157,g2:197,g3:181,sp:0,total:535,cls:20},
+      '2025':{g1:151,g2:159,g3:195,sp:4,total:509,cls:20},
+      '2026':{g1:164,g2:155,g3:159,sp:9,total:487,cls:20}
+    },
+    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준.',
+    transfer:{
+      '2023':{in:11,out:4,drop:10,base:536,rate:1.9},
+      '2024':{in:8,out:2,drop:9,base:535,rate:1.7},
+      '2025':{in:9,out:3,drop:8,base:509,rate:1.6}
+    },
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다. 확보된 연도는 2개입니다.',
+    grad:{
+      '2023':{total:155,univ4:89,jeondae:27,abroad:0,employ:0,etc:39},
+      '2024':{total:180,univ4:97,jeondae:29,abroad:0,employ:0,etc:54}
+    }
+  },
+  '인헌고':{
+    studentsSrc:'출처: 학교알리미 「학년별·학급별 학생수」 공시 (2024~2026학년도). 특수학급 포함 총계.',
+    students:{
+      '2024':{g1:142,g2:155,g3:153,sp:0,total:450,cls:19},
+      '2025':{g1:129,g2:135,g3:149,sp:3,total:416,cls:18},
+      '2026':{g1:141,g2:127,g3:131,sp:3,total:402,cls:18}
+    },
+    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준.',
+    transfer:{
+      '2023':{in:17,out:10,drop:9,base:437,rate:2.1},
+      '2024':{in:13,out:12,drop:15,base:450,rate:3.3},
+      '2025':{in:15,out:13,drop:6,base:416,rate:1.4}
+    },
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    grad:{
+      '2022':{total:147,univ4:54,jeondae:40,abroad:0,employ:0,etc:53},
+      '2023':{total:129,univ4:50,jeondae:29,abroad:0,employ:0,etc:50},
+      '2024':{total:153,univ4:73,jeondae:36,abroad:1,employ:0,etc:43}
+    }
+  }
+};
+
 const TRANSFER_DATA = {
   '광신고':{year:'2025',in:15,out:13,drop:10,base:486,rate:2.1},
   '구암고':{year:'2025',in:15,out:6, drop:15,base:547,rate:2.7},
@@ -4169,6 +4236,230 @@ function _refreshEvalTab(s, yr){
     </div>`;
 }
 
+/* ===================== 인포그래픽 헬퍼 =====================
+   숫자를 표·막대·추이선으로 보여주기 위한 순수 SVG/CSS 컴포넌트.
+   Chart.js 인스턴스를 쓰지 않아 모달 재렌더·인쇄에 안전하다. */
+const IG_PALETTE=['#1C3D6B','#C8830A','#0369A1','#4338CA','#B45309','#2E9E5B','#94A3B8'];
+
+/* 가로 막대 — rows: [{label, value, unit, note}] */
+function igBars(rows,opt={}){
+  const vals=rows.map(r=>Number(r.value)||0);
+  const max=opt.max!=null?opt.max:Math.max(...vals,1);
+  const unit=opt.unit||'명';
+  return `<div style="display:grid;gap:7px;margin-top:8px;">
+    ${rows.map((r,i)=>{
+      const v=Number(r.value)||0, pct=max>0?(v/max*100):0;
+      const c=r.color||IG_PALETTE[i%IG_PALETTE.length];
+      return `<div style="display:flex;align-items:center;gap:8px;">
+        <div style="flex:0 0 ${opt.labelW||72}px;font-size:13px;font-weight:700;color:var(--txt);text-align:right;">${r.label}</div>
+        <div style="flex:1;min-width:0;background:#EEF2F7;border-radius:5px;height:20px;position:relative;overflow:hidden;">
+          <div style="width:${pct.toFixed(1)}%;height:100%;background:${c};border-radius:5px;"></div>
+        </div>
+        <div style="flex:0 0 auto;font-size:13px;font-weight:800;color:${c};min-width:52px;">${v.toLocaleString()}${unit}${r.note?`<span style="font-weight:500;color:var(--muted);font-size:12px;"> ${r.note}</span>`:''}</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+/* 100% 스택 막대 — segs: [{label, value, color}] */
+function igStack(segs,opt={}){
+  const total=opt.total!=null?opt.total:segs.reduce((a,b)=>a+(Number(b.value)||0),0);
+  if(!total) return '';
+  return `<div style="margin-top:8px;">
+    <div style="display:flex;height:26px;border-radius:6px;overflow:hidden;border:1px solid var(--line);">
+      ${segs.map((s,i)=>{
+        const v=Number(s.value)||0, pct=v/total*100;
+        if(pct<=0) return '';
+        const c=s.color||IG_PALETTE[i%IG_PALETTE.length];
+        return `<div title="${s.label} ${v}명 (${pct.toFixed(1)}%)" style="width:${pct}%;background:${c};display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">${pct>=9?pct.toFixed(0)+'%':''}</div>`;
+      }).join('')}
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:7px;">
+      ${segs.map((s,i)=>{
+        const v=Number(s.value)||0; if(v<=0) return '';
+        const c=s.color||IG_PALETTE[i%IG_PALETTE.length];
+        return `<div style="display:flex;align-items:center;gap:5px;font-size:13px;">
+          <span style="width:10px;height:10px;border-radius:2px;background:${c};display:inline-block;"></span>
+          <span style="color:var(--txt);font-weight:600;">${s.label}</span>
+          <span style="color:${c};font-weight:800;">${v.toLocaleString()}명</span>
+          <span style="color:var(--muted);">(${(v/total*100).toFixed(1)}%)</span>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+/* 연도별 추이 선그래프 — series: [{name, color, data:[{x, y}]}] */
+function igTrend(series,opt={}){
+  const xs=[...new Set(series.flatMap(s=>s.data.map(d=>d.x)))].sort();
+  if(xs.length<2) return '';
+  const ys=series.flatMap(s=>s.data.map(d=>Number(d.y))).filter(v=>!isNaN(v));
+  if(!ys.length) return '';
+  let lo=opt.min!=null?opt.min:Math.min(...ys), hi=opt.max!=null?opt.max:Math.max(...ys);
+  if(hi===lo){hi=lo+1;lo=Math.max(0,lo-1);}
+  const pad=(hi-lo)*0.15; lo=Math.max(0,lo-pad); hi=hi+pad;
+  const W=100,H=42,L=0;
+  const px=i=>xs.length>1?(L+i*(W-L)/(xs.length-1)):W/2;
+  const py=v=>H-((v-lo)/(hi-lo))*H;
+  const unit=opt.unit||'';
+  return `<div style="margin-top:8px;">
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:86px;display:block;overflow:visible;">
+      ${[0,.5,1].map(f=>`<line x1="0" y1="${(H*f).toFixed(1)}" x2="${W}" y2="${(H*f).toFixed(1)}" stroke="#E5EAF2" stroke-width="0.4" vector-effect="non-scaling-stroke"/>`).join('')}
+      ${series.map(s=>{
+        const pts=xs.map((x,i)=>{const d=s.data.find(p=>p.x===x);return d&&d.y!=null?`${px(i).toFixed(2)},${py(Number(d.y)).toFixed(2)}`:null;}).filter(Boolean);
+        if(pts.length<2) return '';
+        return `<polyline points="${pts.join(' ')}" fill="none" stroke="${s.color}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+          ${pts.map(p=>{const[a,b]=p.split(',');return `<circle cx="${a}" cy="${b}" r="2.6" fill="${s.color}" vector-effect="non-scaling-stroke"/>`;}).join('')}`;
+      }).join('')}
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:2px;">
+      ${xs.map(x=>`<span style="font-size:12px;color:var(--muted);font-weight:600;">${x}</span>`).join('')}
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;">
+      ${series.map(s=>{
+        const last=s.data.filter(d=>d.y!=null).slice(-1)[0];
+        const first=s.data.filter(d=>d.y!=null)[0];
+        const diff=(last&&first)?(Number(last.y)-Number(first.y)):null;
+        const arrow=diff==null?'':diff>0?`▲ ${Math.abs(diff).toFixed(diff%1?1:0)}`:diff<0?`▼ ${Math.abs(diff).toFixed(diff%1?1:0)}`:'—';
+        const ac=diff>0?'#D14343':diff<0?'#2E9E5B':'var(--muted)';
+        return `<div style="display:flex;align-items:center;gap:5px;font-size:13px;">
+          <span style="width:14px;height:3px;background:${s.color};display:inline-block;border-radius:2px;"></span>
+          <span style="font-weight:700;color:var(--txt);">${s.name}</span>
+          ${last?`<span style="font-weight:800;color:${s.color};">${Number(last.y).toLocaleString()}${unit}</span>`:''}
+          ${arrow?`<span style="color:${ac};font-weight:700;font-size:12px;">${arrow}</span>`:''}
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+/* 표 — head:[문자열], rows:[[셀]] , opt.align */
+function igTable(head,rows,opt={}){
+  if(!rows||!rows.length) return '';
+  const al=opt.align||head.map((_,i)=>i===0?'left':'center');
+  return `<div style="overflow-x:auto;margin-top:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr style="background:var(--navy);color:#fff;">
+        ${head.map((h,i)=>`<th style="padding:6px 8px;text-align:${al[i]};white-space:nowrap;">${h}</th>`).join('')}
+      </tr></thead>
+      <tbody>
+        ${rows.map(r=>`<tr>${r.map((c,i)=>`<td style="padding:6px 8px;text-align:${al[i]};border-bottom:1px solid var(--line);${i===0?'font-weight:700;background:#F9F7F4;':''}">${c}</td>`).join('')}</tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+/* 핵심 수치 카드 — items:[{label, value, unit, sub, color}] */
+function igStats(items){
+  return `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:8px;">
+    ${items.map(it=>`<div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;">
+      <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:3px;">${it.label}</div>
+      <div style="font-size:19px;font-weight:800;color:${it.color||'var(--navy)'};line-height:1.2;">${it.value}<span style="font-size:13px;font-weight:600;"> ${it.unit||''}</span></div>
+      ${it.sub?`<div style="font-size:12px;color:var(--muted);margin-top:2px;">${it.sub}</div>`:''}
+    </div>`).join('')}
+  </div>`;
+}
+
+/* 학생 통계 3종(학생수·전출입/학업중단·졸업생 진로)을 인포그래픽 카드로 렌더.
+   SCHOOL_STATS에 연도별 실인원(명)이 있으면 그래프·표로, 없으면 기존 텍스트로 대체한다. */
+function renderStatCards(s,det){
+  const st=(typeof SCHOOL_STATS!=='undefined'&&SCHOOL_STATS[s])?SCHOOL_STATS[s]:null;
+  const card=(lbl,body,src)=>`<div class="rep-card">
+    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    ${body}
+    ${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
+  </div>`;
+  const out=[];
+
+  /* ① 학년별 학생수 */
+  if(st&&st.students&&Object.keys(st.students).length){
+    const ks=Object.keys(st.students).sort(), lastK=ks[ks.length-1], L=st.students[lastK];
+    const perCls=L.cls?(L.total/L.cls).toFixed(1):null;
+    let body=igStats([
+      {label:`전교생 (${lastK})`,value:L.total.toLocaleString(),unit:'명'},
+      {label:'총 학급수',value:L.cls||'—',unit:L.cls?'학급':''},
+      {label:'학급당 평균',value:perCls||'—',unit:perCls?'명':'',color:'#C8830A'}
+    ]);
+    body+=igBars([
+      {label:'1학년',value:L.g1},
+      {label:'2학년',value:L.g2},
+      {label:'3학년',value:L.g3}
+    ].concat(L.sp?[{label:'특수학급',value:L.sp,color:'#94A3B8'}]:[]),{labelW:56});
+    if(ks.length>1){
+      body+=igTrend([
+        {name:'전교생',color:'#1C3D6B',data:ks.map(k=>({x:k,y:st.students[k].total}))},
+        {name:'1학년',color:'#C8830A',data:ks.map(k=>({x:k,y:st.students[k].g1}))}
+      ],{unit:'명'});
+      body+=igTable(['학년도','1학년','2학년','3학년','전교생'],
+        ks.map(k=>{const v=st.students[k];return [k,v.g1+'명',v.g2+'명',v.g3+'명',`<b>${v.total}명</b>`];}));
+    }
+    out.push(card('학년별 학생수',body,st.studentsSrc));
+  } else {
+    out.push(card('학년별 학생수',`<div class="rep-val">${det.students||'수집 예정'}</div>`));
+  }
+
+  /* ② 전출입·학업중단 */
+  if(st&&st.transfer&&Object.keys(st.transfer).length){
+    const ks=Object.keys(st.transfer).sort(), lastK=ks[ks.length-1], T=st.transfer[lastK];
+    let body=igStats([
+      {label:`전입 (${lastK})`,value:T.in,unit:'명',color:'#2E9E5B'},
+      {label:'전출',value:T.out,unit:'명',color:'#B45309'},
+      {label:'학업중단',value:T.drop,unit:'명',color:'#D14343'},
+      {label:'학업중단율',value:T.rate,unit:'%',color:'#D14343',sub:T.base?`재적 ${T.base}명 기준`:''}
+    ]);
+    body+=igBars([
+      {label:'전입',value:T.in,color:'#2E9E5B'},
+      {label:'전출',value:T.out,color:'#B45309'},
+      {label:'학업중단',value:T.drop,color:'#D14343'}
+    ],{labelW:60});
+    if(T.reasons&&Object.keys(T.reasons).length){
+      const rs=Object.entries(T.reasons).filter(([,v])=>Number(v)>0);
+      if(rs.length) body+=`<div style="font-size:13px;color:var(--muted);margin-top:8px;"><b>학업중단 사유</b> — ${rs.map(([k,v])=>`${k} ${v}명`).join(' · ')}</div>`;
+    }
+    if(ks.length>1){
+      body+=igTrend([{name:'학업중단율',color:'#D14343',data:ks.map(k=>({x:k,y:st.transfer[k].rate}))}],{unit:'%'});
+      body+=igTable(['학년도','전입','전출','학업중단','재적','중단율'],
+        ks.map(k=>{const v=st.transfer[k];return [k,v.in+'명',v.out+'명',v.drop+'명',(v.base||'—')+(v.base?'명':''),`<b>${v.rate}%</b>`];}));
+    }
+    out.push(card('전출입·학업중단 현황',body,st.transferSrc));
+  } else {
+    out.push(card('전출입·학업중단',`<div class="rep-val">${det.transfer||'수집 예정'}</div>`));
+  }
+
+  /* ③ 졸업생 진로현황 */
+  if(st&&st.grad&&Object.keys(st.grad).length){
+    const ks=Object.keys(st.grad).sort(), lastK=ks[ks.length-1], G=st.grad[lastK];
+    const segs=[
+      {label:'4년제 대학',value:G.univ4,color:'#1C3D6B'},
+      {label:'전문대학',value:G.jeondae,color:'#0369A1'},
+      {label:'국외 진학',value:G.abroad,color:'#7C3AED'},
+      {label:'취업',value:G.employ,color:'#2E9E5B'},
+      {label:'기타(재수·미정 등)',value:G.etc,color:'#94A3B8'}
+    ].filter(x=>Number(x.value)>0);
+    let body=igStats([
+      {label:`졸업자 (${lastK})`,value:G.total,unit:'명'},
+      {label:'4년제 진학',value:G.univ4,unit:'명',color:'#1C3D6B',sub:G.total?`${(G.univ4/G.total*100).toFixed(1)}%`:''},
+      {label:'전문대 진학',value:G.jeondae,unit:'명',color:'#0369A1',sub:G.total?`${(G.jeondae/G.total*100).toFixed(1)}%`:''}
+    ]);
+    body+=igStack(segs,{total:G.total});
+    if(ks.length>1){
+      body+=igTrend([
+        {name:'4년제 진학자',color:'#1C3D6B',data:ks.map(k=>({x:k,y:st.grad[k].univ4}))},
+        {name:'전문대 진학자',color:'#0369A1',data:ks.map(k=>({x:k,y:st.grad[k].jeondae}))}
+      ],{unit:'명'});
+      const anyAbroad=ks.some(k=>Number(st.grad[k].abroad)>0);
+      body+=igTable(['학년도','졸업자','4년제','전문대'].concat(anyAbroad?['국외']:[]).concat(['취업','기타']),
+        ks.map(k=>{const v=st.grad[k];const p=n=>v.total?` <span style="color:var(--muted);font-size:12px;">(${(n/v.total*100).toFixed(1)}%)</span>`:'';
+          return [k,`<b>${v.total}명</b>`,v.univ4+'명'+p(v.univ4),v.jeondae+'명'+p(v.jeondae)]
+            .concat(anyAbroad?[(v.abroad||0)+'명']:[]).concat([(v.employ||0)+'명',(v.etc||0)+'명']);}));
+    }
+    out.push(card('졸업생 진로현황',body,st.gradSrc));
+  } else {
+    out.push(card('졸업생 진로현황',`<div class="rep-val">${det.graduates||'수집 예정'}</div>`));
+  }
+  return out.join('');
+}
+
 /* 선택과목 렌더러.
    신형(객체) = 2022 개정 편제표 기반 → 계열별 그룹 표시 (현 고1·고2 해당)
    구형(배열) = 2015 개정 과목명 → 현 고3에만 해당한다는 경고와 함께 표시 */
@@ -4276,15 +4567,11 @@ function openModal(s){
     if(src) html+=`<p class="rec-source">${src}</p>`;
     return html;
   }
-  const yt=(typeof yearlyTrend==='function')?yearlyTrend(s):{};
   const infoItems=[
     {lbl:'🎓 교육과정 편성·운영',val:fmtVal(det.curriculum),c:'#1C3D6B'},
     {lbl:'🎓 특색사업 계획',val:fmtVal(det.special),c:'#1C3D6B'},
     {lbl:'🎓 방과후학교 현황',val:fmtVal(det.afterschool),c:'#1C3D6B'},
-    {lbl:'🎓 동아리 현황',val:fmtVal(det.clubs),c:'#1C3D6B'},
-    {lbl:'🎓 학년별 학생수'+(yt.students?' (연도별 추이)':''),val:yt.students||det.students||'수집 예정',c:'#1C3D6B'},
-    {lbl:'🎓 전출입·학업중단'+(yt.transfer?' (연도별 추이)':''),val:yt.transfer||det.transfer||'수집 예정',c:'#1C3D6B'},
-    {lbl:'🎓 졸업생 진로현황'+(yt.graduates?' (연도별 추이)':''),val:yt.graduates||fmtVal(det.graduates),c:'#1C3D6B'}
+    {lbl:'🎓 동아리 현황',val:fmtVal(det.clubs),c:'#1C3D6B'}
   ];
   // 업로드된 이미지 (현재 학교)
   const schoolImgs=getUploads().filter(u=>u.school===s&&u.isImage&&u.dataUrl);
@@ -4329,6 +4616,7 @@ function openModal(s){
           <div class="rep-lbl" style="color:${it.c};">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
           <div class="rep-val">${it.val}</div>
         </div>`).join('')}
+      ${renderStatCards(s,det)}
       ${renderElectives(det)}
       ${imgGallery}
       ${gbTip}
