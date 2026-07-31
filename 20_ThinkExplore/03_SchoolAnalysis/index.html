@@ -1906,23 +1906,23 @@
     <button class="modal-close" id="modalClose">&times;</button>
     <div id="mHeader" class="modal-hdr"></div>
 
-    <!-- 학년(입학년도) 선택 -->
-    <div class="modal-yr-bar" id="modalYrBar">
-      <span style="font-size:13px;color:var(--muted);font-weight:600;">학년 선택:</span>
-      <select id="modalYrSelect" onchange="setModalYear(this.value)" style="padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">
-        <option value="all">전체</option>
-        <option value="2025">고1 (2026입학)</option>
-        <option value="2024">고2 (2025입학)</option>
-        <option value="2023">고3 (2024입학)</option>
-      </select>
-    </div>
-
     <!-- 탭 네비게이션 -->
     <div class="m-tabs">
       <button class="mtab active" data-tab="overview" onclick="switchMTab('overview')">학교 개요</button>
       <button class="mtab" data-tab="info" onclick="switchMTab('info')">학교 상세정보</button>
       <button class="mtab" data-tab="eval" onclick="switchMTab('eval')">교수·학습</button>
       <button class="mtab" data-tab="future" onclick="switchMTab('future')">2027·2028 방향</button>
+    </div>
+
+    <!-- 학년(입학년도) 선택 -->
+    <div class="modal-yr-bar" id="modalYrBar">
+      <span style="font-size:13px;color:var(--muted);font-weight:600;">학년 선택:</span>
+      <select id="modalYrSelect" onchange="setModalYear(this.value)" style="width:auto;padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">
+        <option value="all">전체</option>
+        <option value="2025">고1 (2026입학)</option>
+        <option value="2024">고2 (2025입학)</option>
+        <option value="2023">고3 (2024입학)</option>
+      </select>
     </div>
 
     <!-- Tab 1: 학교 개요 -->
