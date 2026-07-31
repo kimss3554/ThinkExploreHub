@@ -262,7 +262,7 @@
   .dot{width:13px;height:13px;border-radius:3px;display:inline-block;}
 
   /* checkboxes */
-  .checkrow{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  .checkrow{display:flex;flex-wrap:wrap;
     align-items:center;gap:16px;justify-content:flex-start;margin-bottom:10px;
     background:var(--section-alt);border:1px solid var(--line);border-radius:12px;padding:10px 14px;}
   .checkrow label{font-size:13px;display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;white-space:nowrap;
@@ -1237,7 +1237,7 @@
     <div class="wrap">
       <div class="sechead reveal">
         <h2>연도별 성취도 추이 <span class="premflag">프리미엄</span></h2>
-        <p>2023~2026학년도 1학년 과목별 평균 점수 변화</p>
+        <p>2023~2025학년도 1학년 과목별 평균 점수 변화</p>
       </div>
 
       <div class="filter-label">📖 과목 선택</div>
@@ -1247,14 +1247,6 @@
         <button data-subj="영어">영어</button>
         <button data-subj="통합사회">통합사회</button>
         <button data-subj="통합과학">통합과학</button>
-      </div>
-
-      <div class="filter-label">📅 학년도 선택</div>
-      <div class="checkrow reveal" id="yearFilter">
-        <label><input type="checkbox" data-year="2023" checked style="accent-color:var(--navy);"> 2023</label>
-        <label><input type="checkbox" data-year="2024" checked style="accent-color:var(--navy);"> 2024</label>
-        <label><input type="checkbox" data-year="2025" checked style="accent-color:var(--navy);"> 2025</label>
-        <span style="font-size:13px;color:var(--muted);flex:0 0 auto;white-space:nowrap;">2026 (수집 예정)</span>
       </div>
 
       <div class="filter-label">🏫 학교 선택</div>
@@ -3487,13 +3479,6 @@ document.querySelectorAll('#trendTabs button').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('#trendTabs button').forEach(x=>x.classList.remove('active'));
     b.classList.add('active'); curSubj=b.dataset.subj; drawTrend();
-  });
-});
-/* year filter checkboxes */
-document.querySelectorAll('#yearFilter input[type=checkbox]').forEach(cb=>{
-  cb.addEventListener('change',()=>{
-    yearVisible[cb.dataset.year]=cb.checked;
-    if(trendInit) drawTrend();
   });
 });
 let trendInit=false;
