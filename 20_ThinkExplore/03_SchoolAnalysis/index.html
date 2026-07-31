@@ -733,8 +733,8 @@
     <button class="nav-tab" data-tab="compare" onclick="setTab('compare')">학교 비교 <span class="tab-lock">🔒</span></button>
     <button class="nav-tab" data-tab="rw" onclick="setTab('rw')">수행평가 <span class="tab-lock">🔒</span></button>
     <button class="nav-tab" data-tab="calendar" onclick="setTab('calendar')">입시 달력 <span class="tab-lock">🔒</span></button>
-    <button class="nav-tab" data-tab="news" onclick="setTab('news')">입시뉴스 ↗</button>
-    <button class="nav-tab" data-tab="class" onclick="setTab('class')">수업 소개 ↗</button>
+    <button class="nav-tab" data-tab="news" onclick="setTab('news')" style="display:none;">입시뉴스 ↗</button>
+    <button class="nav-tab" data-tab="class" onclick="setTab('class')" style="display:none;">수업 소개 ↗</button>
     <a href="#" onclick="quickNav('schools');return false;">🎓 관악구 11개 고등학교 한눈에 보기</a>
     <a href="#" onclick="quickNav('sec-cutline');return false;">🎓 내신 1등급 커트라인 분석</a>
     <a href="#" onclick="quickNav('sec-trend');return false;">🎓 연도별 성취도 추이</a>
@@ -1992,7 +1992,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
       후기
     </button>
-    <button class="mob-tab" onclick="setTab('class');setMobTab(this)">
+    <button class="mob-tab" onclick="setTab('class');setMobTab(this)" style="display:none;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
       수업 ↗
     </button>
