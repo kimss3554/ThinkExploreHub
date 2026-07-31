@@ -5284,6 +5284,127 @@ function renderStatCards(s,det){
   return out.join('');
 }
 
+/* ===================== 서울대 2028학년도 전공 연계 과목 선택 안내 =====================
+   출처: 서울대학교 입학본부 「2028학년도 전공 연계 과목 선택 안내」(2025.6.30. 공지) 원문.
+   기존 '교과이수기준Ⅰ·Ⅱ'와 '전공 연계 교과이수 과목'을 통합·단순화한 체계.
+   지원자격과는 무관하나 수시 서류평가·정시 교과역량평가에 반영된다. */
+const SNU_TRACKS=[
+  {id:'t1',type:'유형 ①',name:'인문 · 사회 · 경영 계열',color:'#0369A1',
+   units:'인문대학 · 사회과학대학 · 경영대학 · 간호대학 · 농업생명과학대학 농경제사회학부 · 사범대학(교육학과, 국어·영어·독어·불어·사회·역사·지리·윤리교육과) · 생활과학대학(소비자아동학부, 식품영양학과, 의류학과)',
+   req:[{label:'제2외국어 / 한문 <b>1과목 이상</b>',any:['일본어','중국어','스페인어','프랑스어','한문'],min:1}]},
+  {id:'t2',type:'유형 ②',name:'자연 · 공학 · 의약학 계열',color:'#B45309',
+   units:'자연과학대학 · 공과대학 · 의과대학 · 약학대학 · 수의과대학 · 치의학대학원 치의학과 · 간호대학 · 첨단융합학부 · 농업생명과학대학(식물생산·산림·식품동물생명공학·응용생물화학·조경지역시스템공학·바이오시스템소재·스마트시스템과학) · 사범대학(수학·물리·화학·생물·지구과학교육과) · 생활과학대학(식품영양학과, 의류학과)',
+   req:[
+     {label:'수학 — <b>기하</b>',all:['기하'],note:'간호대학·치의학대학원 치의학과는 기하 <b>또는</b> 미적분Ⅱ'},
+     {label:'수학 — <b>미적분Ⅱ</b>',all:['미적분Ⅱ']},
+     {label:'과학 진로선택 <b>3과목 이상</b>',min:3,
+      any:['역학과 에너지','전자기와 양자','물질과 에너지','화학 반응의 세계','세포와 물질대사','생물의 유전','지구시스템과학','행성우주과학'],
+      note:'의과대학은 <b>세포와 물질대사</b>·<b>생물의 유전</b>을 포함하여 3과목 이상'}
+   ]},
+  {id:'t3',type:'유형 ③',name:'예체능 · 학부대학',color:'#7C3AED',
+   units:'미술대학 · 음악대학 · 사범대학 체육교육과 · 학부대학',
+   req:[]}
+];
+
+/* 유형② 중 전공 특성상 특정 일반선택 과목을 "우선 이수" 권장하는 모집단위 */
+const SNU_PRIORITY=[
+  {subject:'물리학',units:'자연과학대학 물리·천문학부 물리학전공 / 공과대학 기계공학부·전기정보공학부·원자핵공학과·조선해양공학과·항공우주공학과 / 사범대학 물리교육과'},
+  {subject:'화학',units:'자연과학대학 화학부 / 사범대학 화학교육과'},
+  {subject:'생명과학',units:'자연과학대학 생명과학부 / 사범대학 생물교육과 / 의과대학'},
+  {subject:'지구과학',units:'자연과학대학 물리·천문학부 천문학전공·지구환경과학부 / 사범대학 지구과학교육과'},
+  {subject:'화학 또는 생명과학',units:'약학대학',any:['화학','생명과학']}
+];
+
+/* 공동교육과정(거점학교·온라인학교)에서만 열리는 전문교과·심화 과목 */
+const JOINT_ONLY_SUBJECTS=['고급 물리학','고급 화학','고급 생명과학','고급 지구과학',
+  '물리학실험','화학실험','생명과학실험','지구과학실험','고급 대수','이산수학','심화수학Ⅰ',
+  '정보과학','과학과제 연구','국제 경제','국제 정치','국제 관계와 국제 기구','현대 세계의 변화',
+  '사물 인터넷과 센서 제어','프로그래밍','로봇과 공학세계'];
+
+/* 학교 × 계열 대조 결과 렌더 */
+window.renderTrackCheck=function(){
+  const box=document.getElementById('trackResult'); if(!box) return;
+  const school=document.getElementById('trackSchool').value;
+  const trackId=document.getElementById('trackSel').dataset.sel||'t2';
+  const track=SNU_TRACKS.find(t=>t.id===trackId);
+  const set=schoolSubjectSet(school);
+  if(!set){ box.innerHTML='<div class="rep-val">이 학교는 2022 개정 편제 자료를 아직 확보하지 못했습니다.</div>'; return; }
+  const hasSubj=s=>set.has(normSubj(s));
+
+  let rows='',allOk=true;
+  track.req.forEach(r=>{
+    let ok,detail;
+    if(r.all){ ok=r.all.every(hasSubj); detail=ok?'개설됨':'미개설'; }
+    else { const got=r.any.filter(hasSubj); ok=got.length>=(r.min||1);
+      detail=`${got.length}과목 개설${got.length?` — ${got.join(' · ')}`:''}`; }
+    if(!ok) allOk=false;
+    rows+=`<tr>
+      <td style="padding:8px;border-bottom:1px solid var(--line);">${r.label}${r.note?`<div style="font-size:12px;color:var(--muted);margin-top:3px;">${r.note}</div>`:''}</td>
+      <td style="padding:8px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'충족':'미충족'}</td>
+      <td style="padding:8px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted);">${detail}</td>
+    </tr>`;
+  });
+
+  const verdict=!track.req.length
+    ? `<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:9px;padding:11px 13px;font-size:14px;line-height:1.8;color:var(--txt);">
+         서울대는 이 계열에 <b>별도 권장과목을 제시하지 않습니다.</b> 진로와 적성에 따라 과목을 선택하고 적극적으로 이수하는 것을 권장합니다.
+       </div>`
+    : `<div style="background:${allOk?'#F0FDF4':'#FEF2F2'};border:1.5px solid ${allOk?'#86EFAC':'#FCA5A5'};border-radius:9px;padding:11px 13px;font-size:14px;line-height:1.8;color:var(--txt);">
+         ${allOk
+           ? `<b>${school}</b>에서 서울대 ${track.type} 권장과목을 <b>모두 이수할 수 있습니다.</b> 공동교육과정 없이 학교 정규 교육과정만으로 충족됩니다.`
+           : `<b>${school}</b>에는 위 권장과목 중 개설되지 않은 것이 있습니다. 공동교육과정(거점학교·온라인학교)으로 보완할 수 있는지 담임·교육과정 담당 교사와 상담하세요.`}
+       </div>`;
+
+  let priority='';
+  if(track.id==='t2'){
+    priority=`<div style="margin-top:12px;">
+      <div style="font-size:14px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">전공별 <b>우선 이수</b> 권장 과목</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:6px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
+      <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead><tr style="background:var(--navy);color:#fff;">
+          <th style="padding:6px 8px;white-space:nowrap;">과목</th><th style="padding:6px 8px;">해당 모집단위</th><th style="padding:6px 8px;white-space:nowrap;">${school}</th>
+        </tr></thead><tbody>
+        ${SNU_PRIORITY.map(p=>{
+          const ok=p.any?p.any.some(hasSubj):hasSubj(p.subject);
+          return `<tr>
+            <td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;">${p.subject}</td>
+            <td style="padding:7px 8px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.6;">${p.units}</td>
+            <td style="padding:7px 8px;text-align:center;border-bottom:1px solid var(--line);font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'개설':'미개설'}</td>
+          </tr>`;}).join('')}
+        </tbody></table></div>
+    </div>`;
+  }
+
+  const missing=JOINT_ONLY_SUBJECTS.filter(s=>!hasSubj(s));
+  const deeper=`<div style="margin-top:12px;padding:11px 13px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;">
+      <div style="font-size:14px;font-weight:800;color:#B45309;margin-bottom:5px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
+      <div style="font-size:13.5px;line-height:1.8;color:var(--txt);">
+        아래 과목은 <b>${school}을 포함한 관악구 11개교 어디에도 정규 편제로 개설되지 않습니다.</b> 일반고에서 개설하기 어려운 전문교과이기 때문이며, <b>공동교육과정(거점학교·서울온라인학교)에서만</b> 이수할 수 있습니다.
+      </div>
+      <div class="elect-pills" style="margin-top:7px;">${missing.map(s=>`<span class="elect-pill" style="background:#FEF3C7;color:#92400E;">${s}</span>`).join('')}</div>
+    </div>`;
+
+  box.innerHTML=`
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px;">${track.type} — <b>${track.name}</b><br>${track.units}</div>
+    ${track.req.length?`<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+      <thead><tr style="background:var(--navy);color:#fff;">
+        <th style="padding:7px 8px;text-align:left;">서울대 권장과목</th><th style="padding:7px 8px;white-space:nowrap;">${school}</th><th style="padding:7px 8px;text-align:left;">개설 현황</th>
+      </tr></thead><tbody>${rows}</tbody></table></div>`:''}
+    <div style="margin-top:10px;">${verdict}</div>
+    ${priority}${deeper}`;
+};
+
+window.selectTrack=function(id,btn){
+  document.getElementById('trackSel').dataset.sel=id;
+  document.querySelectorAll('#trackSel button').forEach(b=>{
+    const on=b===btn;
+    b.style.background=on?'var(--navy)':'var(--card)';
+    b.style.color=on?'#fff':'var(--txt)';
+    b.style.borderColor=on?'var(--navy)':'var(--line)';
+  });
+  renderTrackCheck();
+};
+
 /* 공동교육과정 탭 렌더러 */
 function renderJoint(){
   const el=document.getElementById('jointContent');
@@ -5396,8 +5517,24 @@ function renderJoint(){
     </div>
     <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;">문의 — 서울고교학점제지원센터 02-6033-5871 · 서울온라인학교 02-6953-9700 (평일 09:30~18:30)</div>`;
 
+  /* ⓪ 학교 × 계열 대조기 */
+  const checker=`<div style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:10px;">
+      <b>우리 학교에서 지망 계열의 권장과목을 다 들을 수 있는지</b> 확인해 보세요. 서울대학교 「2028학년도 전공 연계 과목 선택 안내」(2025년 6월 30일 발표) 기준입니다. 이 권장과목은 <b>지원자격은 아니지만 수시 서류평가·정시 교과역량평가에 반영</b>됩니다.
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;">
+      <span style="font-size:14px;font-weight:800;color:var(--muted);">학교</span>
+      <select id="trackSchool" onchange="renderTrackCheck()" style="padding:7px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;">
+        ${SCHOOLS.map(s=>`<option value="${s}">${s}</option>`).join('')}
+      </select>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;" id="trackSel" data-sel="t2">
+      ${SNU_TRACKS.map(t=>`<button onclick="selectTrack('${t.id}',this)" style="padding:8px 13px;border-radius:8px;border:1.5px solid ${t.id==='t2'?'var(--navy)':'var(--line)'};background:${t.id==='t2'?'var(--navy)':'var(--card)'};color:${t.id==='t2'?'#fff':'var(--txt)'};font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;">${t.name}</button>`).join('')}
+    </div>
+    <div id="trackResult"></div>`;
+
   el.innerHTML=
-     card('공동교육과정이란? — 5가지 유형',types)
+     card('우리 학교에서 다 들을 수 있나? — 학교 × 계열 대조',checker,'출처: 서울대학교 입학본부 「2028학년도 전공 연계 과목 선택 안내」(2025.6.30.) · 학교별 2026학년도 교육과정 편성표')
+    +card('공동교육과정이란? — 5가지 유형',types)
     +card('관악구 학생이 들을 수 있는 강좌',local)
     +card('우리 학교엔 없는 고급·전문 과목은 어디서?',adv,'출처: 서울고교학점제지원센터 운영현황 (2026학년도 1학기 기준)')
     +card('신청 방법과 시기',apply)
@@ -5405,6 +5542,7 @@ function renderJoint(){
     +card('자주 묻는 질문',qa)
     +card('공식 자료 내려받기',docs);
   el.dataset.done='1';
+  renderTrackCheck();
 }
 
 /* ===================== 공동교육과정 데이터 (2026학년도, 공식 자료 기반) =====================
