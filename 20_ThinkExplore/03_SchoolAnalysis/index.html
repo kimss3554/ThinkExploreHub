@@ -5275,6 +5275,16 @@ function renderStatCards(s,det){
   return out.join('');
 }
 
+/* "16학점 택4 × 2그룹 + 예술 3학점 택1" 같은 이수구조 문구를
+   +, × 구분자마다 줄바꿈해 좁은 열에서도 읽기 쉽게 만든다. */
+function splitPick(pick){
+  if(!pick) return [];
+  const parts=pick.split(/\s*([+×])\s*/);
+  const lines=[parts[0]];
+  for(let i=1;i<parts.length;i+=2) lines.push(parts[i]+' '+parts[i+1]);
+  return lines;
+}
+
 /* 선택과목 렌더러.
    신형(객체) = 2022 개정 편제표 기반 → 계열별 그룹 표시 (현 고1·고2 해당)
    구형(배열) = 2015 개정 과목명 → 현 고3에만 해당한다는 경고와 함께 표시 */
@@ -5308,7 +5318,7 @@ function renderElectives(det){
       const cats=CAT.filter(([k])=>b.src[k]&&b.src[k].length);
       if(!cats.length) return;
       cats.forEach(([k,klabel],i)=>{
-        const pickLines=b.pick?b.pick.split(/\s*\+\s*/).map((p,pi)=>pi===0?p:'+ '+p):[];
+        const pickLines=splitPick(b.pick);
         rows.push(`<tr>
           ${i===0?`<td rowspan="${cats.length}" style="width:1%;padding:6px;text-align:center;vertical-align:top;background:#F9F7F4;border-bottom:1px solid var(--line);">
             <div style="font-weight:800;color:${b.color};font-size:13px;white-space:nowrap;">${b.label}</div>
