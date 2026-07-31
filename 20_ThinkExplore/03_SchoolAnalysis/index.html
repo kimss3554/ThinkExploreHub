@@ -4002,11 +4002,11 @@ function _refreshEvalTab(s, yr){
     const v23=row&&row['2023']&&row['2023'][s]!=null?row['2023'][s].toFixed(1):'—';
     const trend=v25!=='—'&&v24!=='—'?(parseFloat(v25)-parseFloat(v24)>1?'📈':parseFloat(v25)-parseFloat(v24)<-1?'📉':'➡'):'';
     const hl=(y)=>hlYr===y?'background:#FFF8E7;font-weight:800;':'';
-    return `<tr><td style="text-align:left;font-weight:600;padding:6px 10px;background:#F9F7F4;">${subj}</td>
-      <td style="padding:6px 8px;text-align:center;${hl('2023')}">${v23}</td>
-      <td style="padding:6px 8px;text-align:center;${hl('2024')}">${v24}</td>
-      <td style="padding:6px 8px;text-align:center;font-weight:700;${hl('2025')}">${v25}</td>
-      <td style="padding:6px 8px;text-align:center;font-size:16px;">${trend}</td></tr>`;
+    return `<tr><td style="text-align:left;font-weight:600;padding:6px 6px;background:#F9F7F4;overflow:hidden;text-overflow:ellipsis;">${subj}</td>
+      <td style="padding:6px 3px;text-align:center;${hl('2023')}">${v23}</td>
+      <td style="padding:6px 3px;text-align:center;${hl('2024')}">${v24}</td>
+      <td style="padding:6px 3px;text-align:center;font-weight:700;${hl('2025')}">${v25}</td>
+      <td style="padding:6px 3px;text-align:center;font-size:16px;">${trend}</td></tr>`;
   }).join('');
   const aRateRows=['국어','수학','영어'].map(subj=>{
     const r5=ARATE['5'][subj]&&ARATE['5'][subj][s]!=null?ARATE['5'][subj][s]+'%':'—';
@@ -4022,13 +4022,14 @@ function _refreshEvalTab(s, yr){
       <div class="rep-card">
         <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> 교과 학업성취 추이 (1학년 공통과목)${gradeNote}</div>
         <div style="overflow-x:auto;margin-top:8px;">
-          <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed;">
+            <colgroup><col style="width:28%;"><col style="width:16%;"><col style="width:16%;"><col style="width:16%;"><col style="width:24%;"></colgroup>
             <thead><tr style="background:var(--navy);color:#fff;">
-              <th style="padding:7px 10px;text-align:left;">과목</th>
-              <th style="padding:7px 8px;${hlHead('2023')}">2023</th>
-              <th style="padding:7px 8px;${hlHead('2024')}">2024</th>
-              <th style="padding:7px 8px;${hlHead('2025')}">2025</th>
-              <th style="padding:7px 8px;">추이</th>
+              <th style="padding:6px 6px;text-align:left;">과목</th>
+              <th style="padding:6px 3px;${hlHead('2023')}">2023</th>
+              <th style="padding:6px 3px;${hlHead('2024')}">2024</th>
+              <th style="padding:6px 3px;${hlHead('2025')}">2025</th>
+              <th style="padding:6px 3px;">추이</th>
             </tr></thead>
             <tbody>${subjRows}</tbody>
           </table>
