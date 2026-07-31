@@ -5308,13 +5308,14 @@ function renderElectives(det){
       const cats=CAT.filter(([k])=>b.src[k]&&b.src[k].length);
       if(!cats.length) return;
       cats.forEach(([k,klabel],i)=>{
+        const pickLines=b.pick?b.pick.split(/\s*\+\s*/).map((p,pi)=>pi===0?p:'+ '+p):[];
         rows.push(`<tr>
-          ${i===0?`<td rowspan="${cats.length}" style="padding:8px;text-align:center;vertical-align:top;background:#F9F7F4;border-bottom:1px solid var(--line);white-space:nowrap;">
-            <div style="font-weight:800;color:${b.color};font-size:14px;">${b.label}</div>
-            ${b.pick?`<div style="font-size:12px;color:var(--muted);margin-top:3px;font-weight:600;">${b.pick}</div>`:''}
+          ${i===0?`<td rowspan="${cats.length}" style="width:1%;padding:6px;text-align:center;vertical-align:top;background:#F9F7F4;border-bottom:1px solid var(--line);">
+            <div style="font-weight:800;color:${b.color};font-size:13px;white-space:nowrap;">${b.label}</div>
+            ${pickLines.map(p=>`<div style="font-size:11px;color:var(--muted);margin-top:2px;font-weight:600;white-space:nowrap;">${p}</div>`).join('')}
           </td>`:''}
-          <td style="padding:8px;vertical-align:top;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:700;font-size:13px;color:var(--muted);">${klabel}<br><span style="font-weight:500;font-size:12px;">${b.src[k].length}과목</span></td>
-          <td style="padding:8px;vertical-align:top;border-bottom:1px solid var(--line);">${pills(b.src[k])}</td>
+          <td style="width:1%;padding:6px;vertical-align:top;border-bottom:1px solid var(--line);font-weight:700;font-size:12px;color:var(--muted);white-space:nowrap;">${klabel}<div style="font-weight:500;font-size:11px;margin-top:1px;">${b.src[k].length}과목</div></td>
+          <td style="padding:6px;vertical-align:top;border-bottom:1px solid var(--line);">${pills(b.src[k])}</td>
         </tr>`);
       });
     });
