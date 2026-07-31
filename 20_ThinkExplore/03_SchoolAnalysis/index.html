@@ -3177,6 +3177,100 @@ const SCHOOL_YEARLY = {
    transfer: 전입·전출·학업중단 인원(명), base=4월 1일 재적수, rate=학업중단율(%)
    grad: 졸업자·진로별 인원(명) — abroad는 국외 진학
    ※ 학업중단 사유별(질병·가사·부적응·해외출국) 세분 자료는 공시되지 않음 */
+/* ===================== 특색사업·동아리·학사일정·진로 프로그램 =====================
+   학교 공시 원자료 기반. 지도교사명 등 개인정보는 제외했다.
+   events의 tag: 축제/대회/캠프/체험/발표/진로/봉사 */
+const SCHOOL_PROGRAMS = {
+  '영락고':{
+    specialSrc:'출처: 2026년 영락고 학교 특색활동 교육계획서 (2026학년도)',
+    special:[
+      {name:'YN 르네상스 학술제',when:'3~12월 월별',who:'전교생',desc:'교과별로 달을 나눠 여는 학술 행사입니다. 3월 수학의 달(π데이), 4월 과학의 달, 5월 미술 전시회, 6월 논증적 글쓰기·토론 한마당, 7월 국제교류, 9월 인문학 강연, 10월 Science for all·글로벌 문화 축제, 12월 예술이 있는 등굣길로 이어집니다. 부서·동아리가 함께 기획하고 연구 성과를 발표합니다.'},
+      {name:'매일호기심 프로젝트',when:'학기별 40일',who:'신청 학생',desc:'수업 중 생긴 호기심을 카드로 남긴 뒤 2개월 이상 장기 프로젝트로 발전시켜 심화 탐구까지 진행합니다. 우수 학생은 생활기록부에 기록됩니다. 탐구의 시작부터 끝까지가 한 흐름으로 남아 학생부종합에서 활용도가 높습니다.'},
+      {name:'지식 공유 콘서트 「렉쳐드림」',when:'학기당 2회',who:'전문가·졸업생·신청 학생',desc:'TED 강연 형식으로 1회당 3~4명이 15분씩 발표합니다. 주제 제한이 없어 학생이 직접 연사로 서면 진로활동 기록으로 연결할 수 있습니다.'},
+      {name:'전공 멘토링',when:'3~12월',who:'1·2학년 신청자',desc:'교육·행정, 광고·미디어, 경영·경제, 건축, 기계전기전자, 컴퓨터, 생명과학·생명공학, 화학·약학, 메디컬1·2, 체육 등 11개 분야로 나눠 방과후 1:1 코칭과 소그룹을 운영하며 전공별 독서동아리와 연계합니다.'},
+      {name:'쌤 멘토링',when:'4월~',who:'스터디그룹 참여 학생',desc:'서울대 학생과 대학생 멘토링 봉사자를 활용한 학습 멘토링입니다.'},
+      {name:'학급별 독서·토론',when:'연중',who:'전교생',desc:'1학년은 정규수업에서 「한 학기 한 권 읽기 – 지혜의 여정」을, 2·3학년은 창의적 체험활동 1시수로 독서·토론을 진행합니다. Majormap·DBpia·빅카인즈로 기사와 논문을 분석해 보고서를 쓰고 포럼·패널토론 형식으로 발표합니다.'},
+      {name:'농촌 봉사활동',when:'5~8월',who:'신청 학생',desc:'5~7월 참가자 모집과 강습회를 거쳐 7월에 봉사대를 파송하고, 8월 개학 첫 주에 전교생 앞에서 보고회를 엽니다. 여름성경학교 기획·운영과 노력봉사를 함께 수행합니다.'},
+      {name:'Solution 프로그램',when:'4월~다음해 2월',who:'3학년',desc:'수능 대비 수월성 학습코칭입니다. 5월 비대면 학습습관 점검, 7·8·10월 모의 문제풀이 훈련, 12~2월 겨울방학 심화 특강으로 이어집니다.'}
+    ],
+    eventsSrc:'출처: 2026학년도 연중학사 계획표 (연간 수업일수 190일)',
+    events:[
+      {m:3,name:'파이데이(π데이)',d:'3.12',tag:'대회'},{m:3,name:'공부법 특강',d:'3.16 · 1·2학년',tag:'진로'},
+      {m:3,name:'생성AI 이해 특강',d:'3.20 · 고교연계',tag:'진로'},
+      {m:4,name:'학생회 수련회',d:'4.6',tag:'체험'},
+      {m:5,name:'직업인과의 만남',d:'5.6',tag:'진로'},{m:5,name:'체육제',d:'5.14',tag:'축제'},{m:5,name:'테마별 체험학습',d:'5.15',tag:'체험'},
+      {m:6,name:'개교기념식',d:'6.10',tag:'축제'},
+      {m:7,name:'대학생 전공특강',d:'7.6',tag:'진로'},{m:7,name:'YN 르네상스',d:'7.9',tag:'발표'},
+      {m:7,name:'교육과정박람회',d:'7.13 · 선택과목 안내',tag:'진로'},{m:7,name:'협력학술제',d:'7.15',tag:'발표'},
+      {m:7,name:'농촌봉사활동 파송',d:'7.20',tag:'봉사'},
+      {m:8,name:'축제·동아리발표회',d:'8.14',tag:'축제'},{m:8,name:'헌혈',d:'8.18',tag:'봉사'},
+      {m:10,name:'추수감사예배',d:'10.16',tag:'체험'},
+      {m:10,name:'교육여행·테마여행·국제교류',d:'10.21~23 · 학년별',tag:'체험'},
+      {m:11,name:'대학수학능력시험',d:'11.19',tag:'진로'},
+      {m:12,name:'고2·고3 생활훈련',d:'12.17 · 생기부 작성법',tag:'진로'},
+      {m:12,name:'토론대회·복음성가축제',d:'12.29',tag:'대회'},
+      {m:12,name:'비전트립',d:'12.23~1.31',tag:'체험'}
+    ],
+    clubsSrc:'출처: 2026학년도 영락고 동아리 운영계획서 (2026학년도)',
+    clubs:{
+      how:'금요일 6교시에 연 16차시로 운영하며 8~13차시는 8월 14일 축제·동아리발표회로 진행합니다. 개설 최소 인원은 5명이고, <b>정규동아리는 1인 1개 필수 가입</b>이며 자율동아리는 개수 제한이 없습니다. 계열은 인문진로·사회과학·이공계·문화예술·스포츠·환경봉사로 구분됩니다.',
+      정규:['더공감','모멘텀','뉴런(Neuron)','B.E.M(경제·경영·마케팅)','켐바이오','널(NULL)','그냥지나가기엔','아고라','힉스','하이퍼','메디케어','인티그럴(수학연구)','다솜(봉사)','CIA(케미스토리)','바이오메딕','CineThink','스픽업','B.G.M(보드게임)','인사이트(인문학)','영화비평반','볼륨매직 밴드부','참우리','HESSED','YN오케스트라','또래상담','빌드업(건축)','세렌디피티','BINARY(AI·프로그래밍)','창공(공학)','YMC(의료)','요리동아리','에너제틱','미술부','STB(사회인식개선)','이데아(창업)','책지기','YBS(방송부)','이모션(댄스)','도시농부','밀알','MVP(영상제작)'],
+      자율:['합창부','피에스타(치어리딩)','위딤(Withim)','모카구름','영락암스']
+    },
+    careerSrc:'출처: 2026년 영락고 학교 특색활동 교육계획서 「미래를 여는 진로·진학 프로그램」',
+    career:[
+      {name:'진로 설계 프로그램',who:'전 학년',when:'연중',desc:'커리어넷 표준화검사·대학계열탐색검사·자기주도학습코칭검사, 직업인과의 만남(5월), 대학생 전공 특강(7월)'},
+      {name:'진로 코칭',who:'1·2학년 신청자',when:'연중',desc:'진로 미결정 학생 대상 10회기 이상 정기 개별 코칭'},
+      {name:'전공 멘토링',who:'1·2학년 신청자',when:'연중',desc:'11개 분야 멘토 교사·졸업선배와 1:1 코칭 및 소그룹, 전공별 독서동아리 연계'},
+      {name:'인공지능 인문학 산책',who:'1학년 전체 / 2·3학년 신청',when:'2학기',desc:'AI 기반 인문학 융합교육과 인공지능 윤리 특강'},
+      {name:'교육청·대학 연계',who:'신청 학생',when:'일정별',desc:'서울시교육청 고교-대학 연계 프로그램, 동작관악교육지원청 오작교 프로그램'},
+      {name:'고2·고3 생활 훈련',who:'학년별 전체',when:'12월',desc:'입시 전략 안내와 생활기록부 작성법 훈련'}
+    ]
+  },
+  '신림고':{
+    specialSrc:'출처: 2026학년도 신림고등학교 역점특색사업 (2026학년도)',
+    special:[
+      {name:'꿈과 미래가 있는 행복 프로젝트',when:'연중',who:'전교생',desc:'역점사업 대주제로 ① 일반고 교육 역량강화 ② 진로교육 활성화 ③ 인성교육 ④ AI·디지털 리터러시 4개 축으로 운영합니다. 맞춤형 교육과정, 진로·진학 연계 강화, 창의적 체험활동 활성화, 교수학습 방법 다양화를 포함합니다.'},
+      {name:'새숲학술제 · 교내 학술대회',when:'연중',who:'희망 교사·학생',desc:'탐구 중심 동아리와 팀 활동의 성과를 발표하는 학술 행사입니다. 주제탐구 중심 협력활동 교내 발표회도 함께 운영해, 개인이 아닌 팀 단위 탐구 이력을 남길 수 있습니다.'},
+      {name:'융합탐구주간 (수업량 유연화)',when:'7월·12월',who:'전 학년 희망자',desc:'정규 수업량을 유연화해 진로 연계 심화탐구에 집중하는 기간입니다. 학기말 시험 이후 시간을 탐구 활동으로 전환합니다.'},
+      {name:'전공 탐색 활동 — 교과서 연계 진로탐구 프로젝트',when:'6~7월',who:'3학년',desc:'교과서 내용에서 출발해 개인·팀별로 진로탐구를 진행하고 보고서를 작성·발표합니다. 6월 12·19일, 7월 10·16일 4회에 걸쳐 단계적으로 진행됩니다.'},
+      {name:'새숲 인성 프로그램',when:'연중',who:'전교생',desc:'「새숲 인성 키움 통장」으로 성장한 점을 기록·공유하고, 「새숲인 어울림카페」(교사·학생·학부모 재능기부와 돌림 독서), 「새숲장터」(선후배·사제 간 물품 기증), 학생회 주도 아침맞이 캠페인을 운영합니다.'},
+      {name:'학부모·학생 진로진학 아카데미',when:'3월·9월',who:'학부모·학생',desc:'학부모와 학생이 함께 참여하는 진로진학 탐색 프로그램으로 연 5회, 회당 40명 규모의 방과후 특강으로 운영합니다.'}
+    ],
+    eventsSrc:'출처: 2026 학사일정_신림고 (연간 수업일수 191일)',
+    events:[
+      {m:3,name:'입학식·개학식',d:'3.3',tag:'체험'},{m:3,name:'전국연합학력평가',d:'3.24',tag:'진로'},
+      {m:5,name:'신산업 미니박람회',d:'5.22 · 1학년',tag:'진로'},{m:5,name:'양자컴퓨터 진로탐색',d:'5.22 · 3학년',tag:'진로'},
+      {m:5,name:'체육한마당',d:'5.15 · 1·2학년',tag:'축제'},{m:5,name:'교외 환경정화',d:'5.15 · 3학년',tag:'봉사'},
+      {m:5,name:'학급별 봉사활동',d:'5.29',tag:'봉사'},
+      {m:6,name:'AI융합활동',d:'6.12 · 2학년',tag:'진로'},{m:6,name:'진로진학특강',d:'6.12 · 1학년',tag:'진로'},
+      {m:7,name:'융합탐구주간',d:'7.7~7.15',tag:'캠프'},{m:7,name:'학교축제 새숲제',d:'7.16',tag:'축제'},
+      {m:7,name:'전공탐색활동 발표회',d:'7.16 · 3학년',tag:'발표'},
+      {m:8,name:'학급별 봉사활동',d:'8.21',tag:'봉사'},{m:8,name:'나의 꿈 프로젝트 — 대학생 특강',d:'8.28 · 1·2학년',tag:'진로'},
+      {m:10,name:'현장체험학습',d:'10.22~23 · 1·2학년',tag:'체험'},
+      {m:10,name:'나의 꿈 프로젝트 — 직업인 특강',d:'10.30 · 1·2학년',tag:'진로'},
+      {m:11,name:'대학수학능력시험',d:'11.19',tag:'진로'},{m:11,name:'교내 환경정화',d:'11.13 · 1·2학년',tag:'봉사'},
+      {m:12,name:'융합탐구주간',d:'12.18~29',tag:'캠프'}
+    ],
+    clubsSrc:'출처: 2026학년도 동아리 활동 운영 현황표 (2026학년도, 확정 42개)',
+    clubs:{
+      how:'1·2학년은 연 24시간, 3학년은 연 23시간을 금요일 5~6교시에 운영합니다. 자율동아리 명단은 공시 자료에 포함되어 있지 않습니다.',
+      정규:['에듀나래','방송부','밴드부','매쓰매치반','미술반','또래상담반','생활봉사부','경제와 사회탐구반(IMF)','도서부 혜윰','과학원리반(SESE)','SMART','스포츠당구반','댄스부','독서탐구반','물리독서반','책대화반','언론시사토론반','사회과학 이론 탐구반','물리 탐구반','배드민턴반','수학 독서 활동','수학 보드 게임반','수학 활용 연구반','시사탐구반','신문제작반','역사탐방반','융합독서토론반','인문고전탐구반','자기주도독서반','중국제기반','피지컬트레이닝','과학심층탐구반','화학탐구반','인문사회탐구반','심화영어탐구반','사회현상탐구반','스포츠와 사회현상탐구반','수리탐구반','방송반(3학년)','플레이핏','숏폼제작반','토탈공예'],
+      자율:[]
+    },
+    careerSrc:'출처: 2026학년도 신림고등학교 역점특색사업 진로교육 계획',
+    career:[
+      {name:'진로심리검사',who:'1학년',when:'3~4월',desc:'직업적성·직업흥미·진로희망, 직업가치관·진로개발역량 검사'},
+      {name:'진로체험활동',who:'전 학년',when:'5~6월',desc:'신산업 미니박람회(1학년), AI융합활동(2학년), 양자컴퓨터 진로탐색(3학년)'},
+      {name:'전공 탐색 활동Ⅱ',who:'전 학년 희망자',when:'연중',desc:'<b>오작교 프로그램, SG 미래학교 캠퍼스</b> — 교육지원청·서울대·관악구 연계 학과별 전공 탐색'},
+      {name:'나의 꿈 프로젝트',who:'1·2학년',when:'8월·10월',desc:'지역 진로센터 연계 대학생 특강과 직업인 특강'},
+      {name:'학부모·학생 진로진학아카데미',who:'학부모·학생',when:'3월·9월',desc:'연 5회, 회당 40명 규모 방과후 특강'},
+      {name:'진학 특강',who:'2학년',when:'6월',desc:'학교생활기록부 세부능력 및 특기사항 준비 방법'},
+      {name:'과정선택 안내 교육',who:'1·2학년',when:'5~10월',desc:'선택과목 편성 안내 및 과정 선택 지도'}
+    ]
+  }
+};
+
 const SCHOOL_STATS = {
   '신림고':{
     studentsSrc:'출처: 학교알리미 「학년별·학급별 학생수」 공시 (2024~2026학년도). 특수학급 포함 총계.',
@@ -4645,6 +4739,89 @@ function igStats(items){
   </div>`;
 }
 
+/* 학사일정 타임라인 — events:[{m:3, name:'입학식', tag:'행사'}] (3월 시작 학년도 기준) */
+function igTimeline(events){
+  if(!events||!events.length) return '';
+  const MONTHS=[3,4,5,6,7,8,9,10,11,12,1,2];
+  const TAGC={'축제':'#C8830A','대회':'#D14343','캠프':'#0369A1','체험':'#2E9E5B','발표':'#4338CA','진로':'#B45309','봉사':'#7C3AED'};
+  const byM={}; events.forEach(e=>{(byM[e.m]=byM[e.m]||[]).push(e);});
+  const used=MONTHS.filter(m=>byM[m]&&byM[m].length);
+  if(!used.length) return '';
+  return `<div style="overflow-x:auto;margin-top:8px;padding-bottom:4px;">
+    <div style="display:flex;gap:6px;min-width:min-content;">
+      ${used.map(m=>`
+        <div style="flex:0 0 116px;background:#F9FAFC;border:1px solid var(--line);border-radius:9px;padding:8px 7px;">
+          <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center;border-bottom:1px solid var(--line);padding-bottom:4px;">${m}월</div>
+          ${byM[m].map(e=>`<div style="font-size:12px;line-height:1.45;margin-bottom:5px;padding-left:6px;border-left:3px solid ${TAGC[e.tag]||'#94A3B8'};color:var(--txt);">
+            <span style="font-weight:700;">${e.name}</span>${e.d?`<br><span style="color:var(--muted);font-size:11px;">${e.d}</span>`:''}
+          </div>`).join('')}
+        </div>`).join('')}
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:7px;">
+    ${Object.entries(TAGC).filter(([t])=>events.some(e=>e.tag===t)).map(([t,c])=>
+      `<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px;"><span style="width:3px;height:11px;background:${c};display:inline-block;border-radius:2px;"></span>${t}</span>`).join('')}
+  </div>`;
+}
+
+/* 특색사업·동아리·학사일정·진로 프로그램 카드 */
+function renderProgramCards(s,det){
+  const p=(typeof SCHOOL_PROGRAMS!=='undefined'&&SCHOOL_PROGRAMS[s])?SCHOOL_PROGRAMS[s]:null;
+  const card=(lbl,body,src)=>`<div class="rep-card">
+    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    ${body}${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
+  </div>`;
+  const out=[];
+
+  /* 특색사업 */
+  if(p&&p.special&&p.special.length){
+    out.push(card('특색사업·프로그램',
+      `<div style="display:grid;gap:8px;margin-top:8px;">
+        ${p.special.map(x=>`<div style="background:#fff;border:1px solid var(--line);border-left:4px solid #C8830A;border-radius:8px;padding:10px 12px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:7px;margin-bottom:4px;">
+            <span style="font-size:15px;font-weight:800;color:var(--navy);">${x.name}</span>
+            ${x.when?`<span style="font-size:12px;font-weight:700;color:#C8830A;background:#FFFBEB;border-radius:20px;padding:2px 8px;">${x.when}</span>`:''}
+            ${x.who?`<span style="font-size:12px;color:var(--muted);">${x.who}</span>`:''}
+          </div>
+          ${x.desc?`<div style="font-size:14px;line-height:1.75;color:var(--txt);">${x.desc}</div>`:''}
+        </div>`).join('')}
+      </div>`, p.specialSrc));
+  } else {
+    out.push(card('특색사업 계획',`<div class="rep-val">${det.special?det.special:'수집 예정'}</div>`));
+  }
+
+  /* 학사일정 타임라인 */
+  if(p&&p.events&&p.events.length){
+    out.push(card('연간 학사일정 — 주요 행사',
+      `<div style="font-size:13px;color:var(--muted);line-height:1.7;">아래 행사는 <b>자율·자치활동</b>, <b>진로활동</b>, <b>봉사활동</b> 기록으로 연결할 수 있습니다.</div>`
+      +igTimeline(p.events), p.eventsSrc));
+  }
+
+  /* 동아리 */
+  if(p&&p.clubs){
+    const c=p.clubs, reg=c.정규||[], aut=c.자율||[];
+    let body=igStats([
+      {label:'정규 동아리',value:reg.length,unit:'개'},
+      {label:'자율 동아리',value:aut.length?aut.length:'—',unit:aut.length?'개':'',color:'#0369A1',sub:aut.length?'':'명단 미공시'}
+    ].concat(c.members?[{label:'참여 인원',value:c.members,unit:'명',color:'#C8830A'}]:[]));
+    if(c.how) body+=`<div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;">${c.how}</div>`;
+    if(reg.length) body+=`<div style="margin-top:10px;"><div style="font-size:14px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">정규(창의적 체험활동) 동아리</div><div class="elect-pills">${reg.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
+    if(aut.length) body+=`<div style="margin-top:10px;"><div style="font-size:14px;font-weight:800;color:#0369A1;margin-bottom:5px;">자율 동아리</div><div class="elect-pills">${aut.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
+    out.push(card('동아리 현황',body,p.clubsSrc));
+  } else {
+    out.push(card('동아리 현황',`<div class="rep-val">${det.clubs?det.clubs:'수집 예정'}</div>`));
+  }
+
+  /* 진로·진학 프로그램 */
+  if(p&&p.career&&p.career.length){
+    out.push(card('진로·진학 프로그램',
+      igTable(['프로그램','대상','시기','내용'],
+        p.career.map(x=>[`<b>${x.name}</b>`,x.who||'—',x.when||'—',x.desc||'—']),
+        {align:['left','center','center','left']}), p.careerSrc));
+  }
+  return out.join('');
+}
+
 /* 학생 통계 3종(학생수·전출입/학업중단·졸업생 진로)을 인포그래픽 카드로 렌더.
    SCHOOL_STATS에 연도별 실인원(명)이 있으면 그래프·표로, 없으면 기존 텍스트로 대체한다. */
 function renderStatCards(s,det){
@@ -4897,12 +5074,8 @@ function openModal(s){
     if(src) html+=`<p class="rec-source">${src}</p>`;
     return html;
   }
-  const infoItems=[
-    {lbl:'🎓 교육과정 편성·운영',val:fmtVal(det.curriculum),c:'#1C3D6B'},
-    {lbl:'🎓 특색사업 계획',val:fmtVal(det.special),c:'#1C3D6B'},
-    {lbl:'🎓 방과후학교 현황',val:fmtVal(det.afterschool),c:'#1C3D6B'},
-    {lbl:'🎓 동아리 현황',val:fmtVal(det.clubs),c:'#1C3D6B'}
-  ];
+  const infoItems=[{lbl:'🎓 교육과정 편성·운영',val:fmtVal(det.curriculum),c:'#1C3D6B'}];
+  const afterItems=[{lbl:'🎓 방과후학교 현황',val:fmtVal(det.afterschool),c:'#1C3D6B'}];
   // 업로드된 이미지 (현재 학교)
   const schoolImgs=getUploads().filter(u=>u.school===s&&u.isImage&&u.dataUrl);
   const imgGallery=schoolImgs.length?`
@@ -4942,6 +5115,12 @@ function openModal(s){
   document.getElementById('mDetail').innerHTML=`
     <div style="display:grid;gap:10px;">
       ${infoItems.map(it=>`
+        <div class="rep-card">
+          <div class="rep-lbl" style="color:${it.c};">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
+          <div class="rep-val">${it.val}</div>
+        </div>`).join('')}
+      ${renderProgramCards(s,det)}
+      ${afterItems.map(it=>`
         <div class="rep-card">
           <div class="rep-lbl" style="color:${it.c};">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
           <div class="rep-val">${it.val}</div>
