@@ -314,9 +314,7 @@
   @media(max-width:560px){.gb-act-grid{grid-template-columns:1fr;}}
   .m-print-bar{display:flex;align-items:center;justify-content:flex-end;padding:14px 0 0;border-top:1px dashed var(--line);margin-top:16px;gap:10px;}
   /* modal year selector */
-  .modal-yr-bar{display:flex;gap:5px;flex-wrap:nowrap;padding:10px 0 12px;border-bottom:1px dashed var(--line);margin-bottom:4px;align-items:center;}
-  .modal-yr-btn{padding:5px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;text-align:center;line-height:1.4;}
-  .modal-yr-btn.active{background:var(--amber);color:#fff;border-color:var(--amber);}
+  .modal-yr-bar{display:flex;gap:8px;flex-wrap:nowrap;padding:10px 0 12px;border-bottom:1px dashed var(--line);margin-bottom:4px;align-items:center;}
   /* compare block */
   .cmp-header-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
   .cmp-badge{background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.3px;}
@@ -1911,10 +1909,12 @@
     <!-- 학년(입학년도) 선택 -->
     <div class="modal-yr-bar" id="modalYrBar">
       <span style="font-size:13px;color:var(--muted);font-weight:600;">학년 선택:</span>
-      <button class="modal-yr-btn active" data-modal-yr="all" onclick="setModalYear('all')">전체</button>
-      <button class="modal-yr-btn" data-modal-yr="2025" onclick="setModalYear('2025')">고1<br><span style="font-size:13px;">2026입학</span></button>
-      <button class="modal-yr-btn" data-modal-yr="2024" onclick="setModalYear('2024')">고2<br><span style="font-size:13px;">2025입학</span></button>
-      <button class="modal-yr-btn" data-modal-yr="2023" onclick="setModalYear('2023')">고3<br><span style="font-size:13px;">2024입학</span></button>
+      <select id="modalYrSelect" onchange="setModalYear(this.value)" style="padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">
+        <option value="all">전체</option>
+        <option value="2025">고1 (2026입학)</option>
+        <option value="2024">고2 (2025입학)</option>
+        <option value="2023">고3 (2024입학)</option>
+      </select>
     </div>
 
     <!-- 탭 네비게이션 -->
@@ -3607,7 +3607,8 @@ function renderModalAeChart(s, yr){
 /* 학년 변경 */
 window.setModalYear=function(yr){
   _curModalYear=yr;
-  document.querySelectorAll('.modal-yr-btn').forEach(b=>b.classList.toggle('active',b.dataset.modalYr===yr));
+  const yrSel=document.getElementById('modalYrSelect');
+  if(yrSel) yrSel.value=yr;
   renderModalRadar(_curModalSchool,yr);
   renderModalAeChart(_curModalSchool,yr);
   /* eval 탭 성취도 표 갱신 */
@@ -4073,7 +4074,7 @@ function openModal(s){
   /* 탭 초기화 */
   switchMTab('overview');
   _curModalYear='all';
-  document.querySelectorAll('.modal-yr-btn').forEach(b=>b.classList.toggle('active',b.dataset.modalYr==='all'));
+  { const yrSel=document.getElementById('modalYrSelect'); if(yrSel) yrSel.value='all'; }
 
   /* ── ① 레이더 (관악구 최고 학교 기준선 포함) ── */
   renderModalRadar(s,'all');
