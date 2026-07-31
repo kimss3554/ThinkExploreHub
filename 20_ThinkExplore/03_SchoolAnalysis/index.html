@@ -285,7 +285,7 @@
   .m-tabs{display:flex;gap:3px;padding:14px 0 0;border-bottom:2px solid var(--line);flex-wrap:nowrap;margin:12px 0 0;}
   .mtab{padding:7px 9px;border-radius:8px 8px 0 0;border:1.5px solid var(--line);background:var(--card);color:#111;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;border-bottom:2px solid var(--line);margin-bottom:-2px;white-space:nowrap;}
   .mtab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .m-panel{display:none;padding-top:16px;}
+  .m-panel{display:none;padding-top:6px;}
   .m-panel.active{display:block;}
   .rep-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media(max-width:680px){.rep-grid2{grid-template-columns:1fr;}}
@@ -314,7 +314,7 @@
   @media(max-width:560px){.gb-act-grid{grid-template-columns:1fr;}}
   .m-print-bar{display:flex;align-items:center;justify-content:flex-end;padding:14px 0 0;border-top:1px dashed var(--line);margin-top:16px;gap:10px;}
   /* modal year selector */
-  .modal-yr-bar{display:flex;gap:8px;flex-wrap:nowrap;padding:10px 0 12px;border-bottom:1px dashed var(--line);margin-bottom:4px;align-items:center;}
+  .modal-yr-bar{display:flex;gap:8px;flex-wrap:nowrap;padding:10px 0 4px;border-bottom:1px dashed var(--line);margin-bottom:0;align-items:center;}
   /* compare block */
   .cmp-header-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
   .cmp-badge{background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.3px;}
@@ -1916,7 +1916,7 @@
 
     <!-- 학년(입학년도) 선택 -->
     <div class="modal-yr-bar" id="modalYrBar" style="justify-content:flex-end;">
-      <span style="font-size:14px;color:var(--muted);font-weight:600;">📅 학년 선택:</span>
+      <span style="font-size:14px;color:var(--muted);font-weight:800;">🎓 학년 선택:</span>
       <select id="modalYrSelect" onchange="setModalYear(this.value)" style="width:auto;padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;">
         <option value="all">전체</option>
         <option value="2025">고1 (2026입학)</option>
@@ -1929,11 +1929,11 @@
     <div class="m-panel active" id="mPanel-overview">
       <div class="rep-grid2">
         <div>
-          <div class="sec-hd" style="margin-top:8px;"><div class="sec-num">①</div><div class="sec-title" id="radarSectTitle">교과 성취도 레이더</div></div>
+          <div class="sec-hd" style="margin-top:0;"><div class="sec-num">①</div><div class="sec-title" id="radarSectTitle">교과 성취도 레이더</div></div>
           <div class="chartbox" style="height:260px"><canvas id="radarChart"></canvas><div class="print-data" id="radarPrintData"></div></div>
         </div>
         <div>
-          <div class="sec-hd" style="margin-top:8px;"><div class="sec-num">②</div><div class="sec-title">A등급 분포 (5등급제)</div></div>
+          <div class="sec-hd" style="margin-top:0;"><div class="sec-num">②</div><div class="sec-title">A등급 분포 (5등급제)</div></div>
           <div class="chartbox" style="height:260px"><canvas id="aeChart"></canvas><div class="print-data" id="aePrintData"></div></div>
         </div>
       </div>
@@ -4069,7 +4069,7 @@ function openModal(s){
       <div class="modal-hdr-sub">${m.cls==='girls'?'여고':m.cls==='boys'?'남고':'남녀공학'} · ${m.students} · 4년제 ${m.adv}</div>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <img src="logo_grade.png" alt="생각탐구" style="height:80px;">
+      <img src="logo_grade.png" alt="생각탐구" style="height:56px;">
     </div>`;
 
   /* 탭 초기화 */
