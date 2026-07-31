@@ -282,14 +282,14 @@
     border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;}
   .modal-close:hover{background:rgba(255,255,255,.5);}
   /* modal tabs */
-  .m-tabs{display:flex;gap:3px;padding:14px 0 0;border-bottom:2px solid var(--line);flex-wrap:nowrap;margin:12px 0 0;}
+  .m-tabs{display:flex;gap:3px;padding:14px 0 0;border-bottom:2px solid var(--line);flex-wrap:nowrap;margin:12px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .mtab{padding:7px 9px;border-radius:8px 8px 0 0;border:1.5px solid var(--line);background:var(--card);color:#111;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;border-bottom:2px solid var(--line);margin-bottom:-2px;white-space:nowrap;}
   .mtab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .m-panel{display:none;padding-top:6px;}
   .m-panel.active{display:block;}
   .rep-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media(max-width:680px){.rep-grid2{grid-template-columns:1fr;}}
-  .rep-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px;}
+  .rep-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px;min-width:0;}
   .rep-lbl{font-size:17px;font-weight:800;letter-spacing:.3px;margin-bottom:8px;}
   .lbl-ico{font-size:1.5em;line-height:1;display:inline-block;vertical-align:-.18em;margin-right:2px;}
   .rep-val{font-size:16px;line-height:1.9;color:var(--txt);}
@@ -308,7 +308,7 @@
   .upl-img-meta{padding:8px 10px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);}
   .upl-img-meta strong{color:var(--txt);}
   /* 생기부 activity section */
-  .gb-tip-box{background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border:1.5px solid #BAE6FD;border-radius:12px;padding:16px;margin-top:4px;}
+  .gb-tip-box{background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border:1.5px solid #BAE6FD;border-radius:12px;padding:16px;margin-top:4px;min-width:0;}
   .gb-tip-title{color:#0369A1;font-size:16px;font-weight:700;margin-bottom:10px;}
   .gb-act-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
   @media(max-width:560px){.gb-act-grid{grid-template-columns:1fr;}}
@@ -5014,16 +5014,31 @@ function igTrend(series,opt={}){
   const px=i=>xs.length>1?(L+i*(W-L)/(xs.length-1)):W/2;
   const py=v=>H-((v-lo)/(hi-lo))*H;
   const unit=opt.unit||'';
-  return `<div style="margin-top:8px;">
-    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:86px;display:block;overflow:visible;">
-      ${[0,.5,1].map(f=>`<line x1="0" y1="${(H*f).toFixed(1)}" x2="${W}" y2="${(H*f).toFixed(1)}" stroke="#E5EAF2" stroke-width="0.4" vector-effect="non-scaling-stroke"/>`).join('')}
-      ${series.map(s=>{
-        const pts=xs.map((x,i)=>{const d=s.data.find(p=>p.x===x);return d&&d.y!=null?`${px(i).toFixed(2)},${py(Number(d.y)).toFixed(2)}`:null;}).filter(Boolean);
-        if(pts.length<2) return '';
-        return `<polyline points="${pts.join(' ')}" fill="none" stroke="${s.color}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
-          ${pts.map(p=>{const[a,b]=p.split(',');return `<circle cx="${a}" cy="${b}" r="2.6" fill="${s.color}" vector-effect="non-scaling-stroke"/>`;}).join('')}`;
-      }).join('')}
-    </svg>
+  /* 점(circle)은 SVG의 non-uniform 스케일(preserveAspectRatio=none) 영향을 받으면
+     타원으로 찌그러지고 컨테이너 밖으로 삐져나가 가로 스크롤까지 유발한다.
+     그래서 점만 별도의 고정 픽셀 크기 HTML 원으로 %기반 절대좌표에 그린다. */
+  const dots=[];
+  series.forEach(s=>{
+    xs.forEach((x,i)=>{
+      const d=s.data.find(p=>p.x===x);
+      if(d&&d.y!=null){
+        const lx=(px(i)/W*100).toFixed(2), ty=(py(Number(d.y))/H*100).toFixed(2);
+        dots.push(`<span style="position:absolute;left:${lx}%;top:${ty}%;width:9px;height:9px;transform:translate(-50%,-50%);border-radius:50%;background:${s.color};"></span>`);
+      }
+    });
+  });
+  return `<div style="margin-top:8px;width:85%;max-width:85%;margin-left:auto;margin-right:auto;">
+    <div style="position:relative;width:100%;height:86px;">
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:100%;display:block;position:absolute;inset:0;overflow:hidden;">
+        ${[0,.5,1].map(f=>`<line x1="0" y1="${(H*f).toFixed(1)}" x2="${W}" y2="${(H*f).toFixed(1)}" stroke="#E5EAF2" stroke-width="0.4" vector-effect="non-scaling-stroke"/>`).join('')}
+        ${series.map(s=>{
+          const pts=xs.map((x,i)=>{const d=s.data.find(p=>p.x===x);return d&&d.y!=null?`${px(i).toFixed(2)},${py(Number(d.y)).toFixed(2)}`:null;}).filter(Boolean);
+          if(pts.length<2) return '';
+          return `<polyline points="${pts.join(' ')}" fill="none" stroke="${s.color}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>`;
+        }).join('')}
+      </svg>
+      <div style="position:absolute;inset:0;">${dots.join('')}</div>
+    </div>
     <div style="display:flex;justify-content:space-between;margin-top:2px;">
       ${xs.map(x=>`<span style="font-size:12px;color:var(--muted);font-weight:600;">${x}</span>`).join('')}
     </div>
