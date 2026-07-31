@@ -4879,6 +4879,8 @@ function initCompareBlock(){
 window.switchMTab = function(tab) {
   document.querySelectorAll('.mtab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
   document.querySelectorAll('.m-panel').forEach(p=>p.classList.toggle('active', p.id==='mPanel-'+tab));
+  const yrBar=document.getElementById('modalYrBar');
+  if(yrBar) yrBar.style.display = (tab==='overview') ? '' : 'none';
 };
 
 function _refreshEvalTab(s, yr){
