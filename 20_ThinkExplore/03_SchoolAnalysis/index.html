@@ -66,12 +66,17 @@
   header.site .logo .name .g{color:#fff;}
   header.site .logo img{height:58px;}
   footer .logo img{height:40px;}
-  .navlinks{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;
-    padding:5px 16px 8px;border-top:1px solid rgba(255,255,255,.12);}
+  /* 헤더 내비게이션 — PC·모바일 공통으로 햄버거 뒤에 숨김 (사용자 요청: PC도 모바일처럼 항상 햄버거) */
+  .navlinks{display:none;position:fixed;top:54px;left:0;right:0;
+    background:rgba(28,61,107,.98);flex-direction:column;align-items:stretch;
+    justify-content:flex-start;gap:0;padding:10px 16px 20px;border-top:none;
+    border-bottom:1px solid var(--line);box-shadow:0 8px 20px rgba(0,0,0,.08);
+    max-height:calc(100vh - 54px);overflow-y:auto;z-index:150;}
+  .navlinks.open{display:flex;}
   .navlinks a{font-size:14px;font-weight:500;color:rgba(255,255,255,.85);
-    padding:8px 12px;border-radius:8px;transition:.15s;}
+    padding:13px 12px;border-radius:0;border-bottom:1px solid rgba(255,255,255,.1);transition:.15s;}
   .navlinks a:hover{background:rgba(255,255,255,.12);color:#fff;}
-  .navlinks a.cta{background:var(--amber);color:#fff;font-weight:600;}
+  .navlinks a.cta{background:var(--amber);color:#fff;font-weight:600;margin-top:8px;border-radius:8px;text-align:center;border:none;}
   .navlinks a.cta:hover{background:#b07408;}
   .nav-tab{
     background:none;border:none;cursor:pointer;
@@ -83,19 +88,9 @@
   .nav-tab.active{background:rgba(255,255,255,.18);color:#fff;font-weight:700;}
   .logout-btn{background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:8px 12px;font-size:13.5px;font-weight:500;cursor:pointer;transition:.15s;}
   .logout-btn:hover{background:rgba(220,60,60,.7);color:#fff;border-color:transparent;}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;
     background:none;border:none;padding:8px;}
   .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;}
-  @media(max-width:860px){
-    .navlinks{display:none;position:fixed;top:54px;left:0;right:0;
-      background:rgba(28,61,107,.98);flex-direction:column;align-items:stretch;
-      justify-content:flex-start;gap:0;padding:10px 16px 20px;border-top:none;
-      border-bottom:1px solid var(--line);box-shadow:0 8px 20px rgba(0,0,0,.08);}
-    .navlinks.open{display:flex;}
-    .navlinks a{padding:13px 12px;border-bottom:1px solid rgba(255,255,255,.1);border-radius:0;color:rgba(255,255,255,.85);}
-    .navlinks a.cta{margin-top:8px;border-radius:8px;text-align:center;border:none;}
-    .hamburger{display:flex;}
-  }
 
   /* ---------- HERO ---------- */
   .hero{text-align:center;padding:62px 0 48px;}
@@ -604,16 +599,12 @@
   @media (max-width:900px){ .cal-overview-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:600px){ .cal-overview-grid{grid-template-columns:1fr;} }
 
-  @media(max-width:860px){
-    .mobile-tabbar{display:block;}
-    body{padding-bottom:64px;}
-    .nav-tab{display:none;}
-    /* 햄버거 드롭다운에서 탭 버튼 숨김 (하단 탭바로 이동) */
-    .navlinks .nav-tab{display:none !important;}
-  }
-
-  /* 탭 7개 대응 — 폰트 약간 축소 */
-  .nav-tab{font-size:13px;padding:7px 10px;}
+  /* PC·모바일 공통: 상단 탭 버튼은 숨기고 하단 고정 탭바로 대체 */
+  .mobile-tabbar{display:block;}
+  body{padding-bottom:64px;}
+  .nav-tab{display:none;}
+  /* 햄버거 드롭다운에서도 탭 버튼 숨김 (하단 탭바로 이동) */
+  .navlinks .nav-tab{display:none !important;}
 
   /* ---------- 인쇄 ---------- */
   .print-btn{
@@ -632,9 +623,8 @@
   .kakao-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,0,0,.25);}
   .kakao-float-label{font-size:11px;font-weight:700;color:var(--navy);background:#fff;padding:2px 8px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;}
   /* 하단 탭바에 가려지지 않도록 모바일에서 플로팅 버튼 위치 조정 */
-  @media(max-width:860px){
-    .kakao-float{bottom:calc(96px + env(safe-area-inset-bottom));}
-  }
+  /* 하단 탭바가 항상 표시되므로 플로팅 버튼 위치도 항상 위로 올림 */
+  .kakao-float{bottom:calc(96px + env(safe-area-inset-bottom));}
   /* 채널 가입 플로팅 버튼 */
   .channel-float-btn{width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 20px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;}
   .channel-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(28,61,107,.4);}
