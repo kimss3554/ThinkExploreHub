@@ -7116,17 +7116,18 @@ function renderGB(s){
 buildGBSection();
 
 /* ===================== 후기 렌더링 ===================== */
+const REVIEW_AVATAR_PALETTE=['#1B3B86','#2C5AA6','#4472C4','#3B6EA5','#5B7FA6','#1E4D8C','#2F5C8A','#4A6FA5'];
 function buildReviews(){
   const grid=document.getElementById('reviewGrid');
   if(!grid) return;
-  grid.innerHTML=REVIEWS.map(r=>{
-    const col=SCHOOL_COLORS[r.school]||'var(--navy)';
+  grid.innerHTML=REVIEWS.map((r,i)=>{
+    const avatarColor=REVIEW_AVATAR_PALETTE[i%REVIEW_AVATAR_PALETTE.length];
+    const initial=r.school.charAt(0);
     return `<div style="background:var(--bg);border:1px solid var(--line);border-radius:0;padding:20px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <span style="background:${col};color:#fff;font-size:14px;font-weight:700;padding:3px 10px;border-radius:999px;">${r.school}</span>
-        <span style="font-size:14px;color:var(--muted);">${r.grade}</span>
-      </div>
-      <p style="font-size:16px;line-height:1.8;color:var(--txt);">"${r.text}"</p>
+      <div style="width:52px;height:52px;border-radius:50%;background:${avatarColor};color:#fff;font-size:19px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">${initial}</div>
+      <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px;">${r.school}</div>
+      <div style="font-size:14px;color:var(--muted);margin-bottom:14px;">${r.grade}</div>
+      <p style="font-size:16px;line-height:1.8;color:var(--txt);padding-bottom:16px;border-bottom:1px dashed var(--line);">"${r.text}"</p>
     </div>`;
   }).join('');
 }
