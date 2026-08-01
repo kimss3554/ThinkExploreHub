@@ -184,8 +184,8 @@
     transition:.22s;box-shadow:0 2px 10px rgba(28,61,107,.07);}
   .school:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,61,107,.13);}
   /* 학교 요약 카드 (한눈에 보기) */
-  .sc-body{padding:15px 16px 14px;flex:1;display:flex;flex-direction:column;}
-  .sc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:9px;}
+  .sc-body{position:relative;padding:15px 16px 14px;flex:1;display:flex;flex-direction:column;}
+  .sc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:9px;padding-right:52px;}
   .sc-name{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:var(--lh-tight);}
   .sc-tag{font-size:12px;font-weight:600;padding:3px 8px;background:#E9F3ED;color:#1E7A53;white-space:nowrap;}
   .sc-stats{font-size:15px;font-weight:700;color:var(--txt);line-height:var(--lh-tight);}
@@ -204,8 +204,10 @@
   .sc-list b{color:var(--navy);font-weight:700;}
   .sc-foot{background:#5E9E7B;color:#fff;font-size:14px;font-weight:700;
     padding:11px 14px;text-align:center;line-height:var(--lh-tight);}
-  .sc-head .sc-detail{flex-shrink:0;margin-left:auto;width:auto;padding:4px 11px;font-size:12px;
+  .sc-head .sc-detail{position:absolute;top:13px;right:14px;
+    flex-shrink:0;width:auto;padding:3px 7px;font-size:11px;line-height:1.25;
     font-weight:600;border-radius:0;border:1px solid var(--line);background:var(--bg);color:var(--navy);}
+  .sc-head .sc-detail .lockmini{font-size:10px;}
   .sc-head .sc-detail:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
   .school .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
   .school h3{font-size:22px;font-weight:800;color:var(--navy);}
