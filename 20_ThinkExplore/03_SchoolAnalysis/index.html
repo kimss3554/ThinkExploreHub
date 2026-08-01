@@ -251,7 +251,7 @@
     border-radius:0;overflow:hidden;font-size:16px;box-shadow:0 2px 12px rgba(28,61,107,.06);}
   table.heat th,table.heat td{padding:12px 10px;text-align:center;border:1px solid var(--line);}
   table.heat thead th{background:var(--navy);color:#fff;font-weight:700;}
-  table.heat tbody th{background:var(--section-alt);color:var(--navy);font-weight:700;text-align:left;padding-left:14px;}
+  table.heat tbody th{background:var(--section-alt);color:var(--navy);font-weight:700;text-align:center;padding-left:14px;}
   .cell{font-weight:700;color:#fff;border-radius:0;}
   .c-green{background:var(--green);}
   .c-yellow{background:var(--yellow);}
@@ -295,7 +295,7 @@
   .rep-val p:last-child{border-bottom:none;padding-bottom:0;}
   .rep-val p:first-child{padding-top:0;}
   .rec-source{color:var(--muted);font-size:14px;margin-top:8px;font-style:italic;}
-  .elect-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+  .elect-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;justify-content:center;}
   .elect-pill{background:#F1F2F4;color:var(--txt);font-size:16px;padding:4px 12px;border-radius:0;font-weight:600;white-space:nowrap;}
   .dir-box{border-radius:0;padding:14px 16px;margin-bottom:12px;}
   .dir-yr{font-size:16px;font-weight:800;color:#111;margin-bottom:6px;}
@@ -459,9 +459,9 @@
   .yrtab-pending{padding:7px 16px;border-radius:0;border:1.5px dashed var(--line);background:#fafafa;color:var(--muted);font-size:14px;font-weight:500;cursor:default;}
   table.gs-heat{border-collapse:collapse;width:100%;table-layout:fixed;font-size:14px;}
   table.gs-heat th{background:var(--navy);color:#fff;padding:8px 3px;text-align:center;font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;}
-  table.gs-heat th.subj-h{text-align:left;padding-left:8px;width:15%;}
+  table.gs-heat th.subj-h{text-align:center;padding-left:8px;width:15%;}
   table.gs-heat td{padding:7px 3px;text-align:center;border-bottom:1px solid var(--line);font-size:14px;overflow:hidden;text-overflow:ellipsis;}
-  table.gs-heat td.subj-cell{text-align:left;font-weight:600;color:var(--navy);background:var(--section-alt);padding-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  table.gs-heat td.subj-cell{text-align:center;font-weight:600;color:var(--navy);background:var(--section-alt);padding-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   @media(max-width:640px){
     table.gs-heat,table.gs-heat th,table.gs-heat td{font-size:10.5px;}
     table.gs-heat th{padding:6px 2px;}
@@ -1172,7 +1172,7 @@
         <table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;">
           <thead>
             <tr style="background:rgba(28,61,107,0.08);">
-              <th style="padding:7px 10px;text-align:left;border-bottom:1px solid #E5DDD0;">구분</th>
+              <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #E5DDD0;">구분</th>
               <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #E5DDD0;">출생연도</th>
               <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #E5DDD0;">입학연도</th>
               <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #E5DDD0;">대입연도</th>
@@ -1182,15 +1182,15 @@
           </thead>
           <tbody>
             <tr>
-              <td style="padding:7px 10px;font-weight:600;">현 고3</td>
+              <td style="padding:7px 10px;text-align:center;font-weight:600;">현 고3</td>
               <td style="padding:7px 10px;text-align:center;">2008년생</td>
               <td style="padding:7px 10px;text-align:center;">2024학년 입학</td>
               <td style="padding:7px 10px;text-align:center;font-weight:600;">2027 대입</td>
-              <td style="padding:7px 10px;text-align:center;"><span style="background:#6366F1;color:#fff;padding:2px 8px;border-radius:0;font-size:14px;">9등급제</span></td>
+              <td style="padding:7px 10px;text-align:center;"><span style="background:#1B3B86;color:#fff;padding:2px 8px;border-radius:0;font-size:14px;">9등급제</span></td>
               <td style="padding:7px 10px;text-align:center;">상위 4%</td>
             </tr>
             <tr style="background:rgba(200,131,10,0.06);">
-              <td style="padding:7px 10px;font-weight:600;">현 고2</td>
+              <td style="padding:7px 10px;text-align:center;font-weight:600;">현 고2</td>
               <td style="padding:7px 10px;text-align:center;">2009년생</td>
               <td style="padding:7px 10px;text-align:center;">2025학년 입학</td>
               <td style="padding:7px 10px;text-align:center;font-weight:600;">2028 대입</td>
@@ -1198,7 +1198,7 @@
               <td style="padding:7px 10px;text-align:center;">상위 10%</td>
             </tr>
             <tr style="background:rgba(200,131,10,0.06);">
-              <td style="padding:7px 10px;font-weight:600;">현 고1</td>
+              <td style="padding:7px 10px;text-align:center;font-weight:600;">현 고1</td>
               <td style="padding:7px 10px;text-align:center;">2010년생</td>
               <td style="padding:7px 10px;text-align:center;">2026학년 입학</td>
               <td style="padding:7px 10px;text-align:center;font-weight:600;">2029 대입</td>
@@ -1441,21 +1441,21 @@
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead>
             <tr style="background:rgba(28,61,107,.08);">
-              <th style="padding:8px 12px;text-align:left;border-bottom:1.5px solid var(--line);">구분</th>
-              <th style="padding:8px 12px;text-align:left;border-bottom:1.5px solid var(--line);">일정</th>
+              <th style="padding:8px 12px;text-align:center;border-bottom:1.5px solid var(--line);">구분</th>
+              <th style="padding:8px 12px;text-align:center;border-bottom:1.5px solid var(--line);">일정</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수시 학생부 작성 기준일</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2026. 8. 31.</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수시 모집요강 발표</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2026. 5. 31.까지</td></tr>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수시 원서접수</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2026. 9. 7. ~ 11. (중 3일 이상)</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수시 합격자 발표</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2026. 12. 18.까지</td></tr>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수능일</td><td style="padding:8px 12px;font-weight:700;color:var(--red);border-bottom:1px solid var(--line);">2026. 11. 19. (목)</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수능 성적통지</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2026. 12. 11.</td></tr>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">정시 원서접수</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2027. 1. 4. ~ 7. (중 3일 이상)</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">정시 가군</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2027. 1. 11. ~ 17.</td></tr>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">정시 나군</td><td style="padding:8px 12px;font-weight:600;border-bottom:1px solid var(--line);">2027. 1. 18. ~ 24.</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);">정시 다군</td><td style="padding:8px 12px;font-weight:600;">2027. 1. 25. ~ 31.</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수시 학생부 작성 기준일</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2026. 8. 31.</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수시 모집요강 발표</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2026. 5. 31.까지</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수시 원서접수</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2026. 9. 7. ~ 11. (중 3일 이상)</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수시 합격자 발표</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2026. 12. 18.까지</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수능일</td><td style="padding:8px 12px;text-align:center;font-weight:700;color:var(--red);border-bottom:1px solid var(--line);">2026. 11. 19. (목)</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수능 성적통지</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2026. 12. 11.</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">정시 원서접수</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2027. 1. 4. ~ 7. (중 3일 이상)</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">정시 가군</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2027. 1. 11. ~ 17.</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">정시 나군</td><td style="padding:8px 12px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);">2027. 1. 18. ~ 24.</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);">정시 다군</td><td style="padding:8px 12px;text-align:center;font-weight:600;">2027. 1. 25. ~ 31.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1489,16 +1489,16 @@
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead>
             <tr style="background:rgba(28,61,107,.08);">
-              <th style="padding:8px 12px;text-align:left;border-bottom:1.5px solid var(--line);">구분</th>
-              <th style="padding:8px 12px;text-align:left;border-bottom:1.5px solid var(--line);">현행 수능 (고3·9등급)</th>
-              <th style="padding:8px 12px;text-align:left;border-bottom:1.5px solid var(--line);">2028 수능 (고2·5등급)</th>
+              <th style="padding:8px 12px;text-align:center;border-bottom:1.5px solid var(--line);">구분</th>
+              <th style="padding:8px 12px;text-align:center;border-bottom:1.5px solid var(--line);">현행 수능 (고3·9등급)</th>
+              <th style="padding:8px 12px;text-align:center;border-bottom:1.5px solid var(--line);">2028 수능 (고2·5등급)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">국어</td><td style="padding:8px 12px;border-bottom:1px solid var(--line);">공통+선택(화작/언매)</td><td style="padding:8px 12px;font-weight:600;color:var(--green);border-bottom:1px solid var(--line);">공통 (선택 없음)</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">수학</td><td style="padding:8px 12px;border-bottom:1px solid var(--line);">공통+선택(확통/미적/기하)</td><td style="padding:8px 12px;font-weight:600;color:var(--green);border-bottom:1px solid var(--line);">공통 (선택 없음)</td></tr>
-            <tr><td style="padding:8px 12px;color:var(--muted);border-bottom:1px solid var(--line);">탐구</td><td style="padding:8px 12px;border-bottom:1px solid var(--line);">사회/과학 중 최대 2과목 선택</td><td style="padding:8px 12px;font-weight:600;color:var(--amber);border-bottom:1px solid var(--line);">통합사회+통합과학 모두 응시</td></tr>
-            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;color:var(--muted);">내신 등급</td><td style="padding:8px 12px;">9등급제 (1등급=상위 4%)</td><td style="padding:8px 12px;font-weight:600;color:var(--amber);">5등급제 (1등급=상위 10%)</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">국어</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--line);">공통+선택(화작/언매)</td><td style="padding:8px 12px;text-align:center;font-weight:600;color:var(--green);border-bottom:1px solid var(--line);">공통 (선택 없음)</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">수학</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--line);">공통+선택(확통/미적/기하)</td><td style="padding:8px 12px;text-align:center;font-weight:600;color:var(--green);border-bottom:1px solid var(--line);">공통 (선택 없음)</td></tr>
+            <tr><td style="padding:8px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);">탐구</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--line);">사회/과학 중 최대 2과목 선택</td><td style="padding:8px 12px;text-align:center;font-weight:600;color:var(--amber);border-bottom:1px solid var(--line);">통합사회+통합과학 모두 응시</td></tr>
+            <tr style="background:rgba(200,131,10,.04);"><td style="padding:8px 12px;text-align:center;color:var(--muted);">내신 등급</td><td style="padding:8px 12px;text-align:center;">9등급제 (1등급=상위 4%)</td><td style="padding:8px 12px;text-align:center;font-weight:600;color:var(--amber);">5등급제 (1등급=상위 10%)</td></tr>
           </tbody>
         </table>
       </div>
@@ -4477,12 +4477,12 @@ function renderModalRadar(s, year){
   if(pd){
     pd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;">
       <thead><tr style="background:#1B3B86;color:#fff;">
-        <th style="padding:4px 8px;text-align:left;">과목</th>
-        <th style="padding:4px 8px;">${s}</th>
-        <th style="padding:4px 8px;">${refSchool}(최고)</th>
+        <th style="padding:4px 8px;text-align:center;">과목</th>
+        <th style="padding:4px 8px;text-align:center;">${s}</th>
+        <th style="padding:4px 8px;text-align:center;">${refSchool}(최고)</th>
       </tr></thead>
       <tbody>${RADAR_LABELS.map((lbl,i)=>`<tr>
-        <td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">${lbl}</td>
+        <td style="padding:4px 8px;text-align:center;font-weight:600;background:#F9F7F4;">${lbl}</td>
         <td style="padding:4px 8px;text-align:center;font-weight:700;">${useData[i]!=null?useData[i].toFixed(1):'—'}</td>
         <td style="padding:4px 8px;text-align:center;color:#888;">${useRef[i]!=null?useRef[i].toFixed(1):'—'}</td>
       </tr>`).join('')}</tbody>
@@ -4519,13 +4519,13 @@ function renderModalAeChart(s, yr){
     const aKor=src['국어'][s]||0, aMath=src['수학'][s]||0, aEng=src['영어'][s]||0;
     aePd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;">
       <thead><tr style="background:#1B3B86;color:#fff;">
-        <th style="padding:4px 8px;text-align:left;">과목</th>
-        <th style="padding:4px 8px;">A비율</th><th style="padding:4px 8px;">A 외</th>
+        <th style="padding:4px 8px;text-align:center;">과목</th>
+        <th style="padding:4px 8px;text-align:center;">A비율</th><th style="padding:4px 8px;text-align:center;">A 외</th>
       </tr></thead>
       <tbody>
-        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">국어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aKor}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aKor}%</td></tr>
-        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">수학</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aMath}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aMath}%</td></tr>
-        <tr><td style="padding:4px 8px;font-weight:600;background:#F9F7F4;">영어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aEng}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aEng}%</td></tr>
+        <tr><td style="padding:4px 8px;text-align:center;font-weight:600;background:#F9F7F4;">국어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aKor}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aKor}%</td></tr>
+        <tr><td style="padding:4px 8px;text-align:center;font-weight:600;background:#F9F7F4;">수학</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aMath}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aMath}%</td></tr>
+        <tr><td style="padding:4px 8px;text-align:center;font-weight:600;background:#F9F7F4;">영어</td><td style="padding:4px 8px;text-align:center;font-weight:700;">${aEng}%</td><td style="padding:4px 8px;text-align:center;color:#888;">${100-aEng}%</td></tr>
       </tbody>
     </table>`;
   }
@@ -4756,7 +4756,7 @@ window.runCompareAnalysis=function(){
     const winA=diff!=null&&diff>0;
     const winB=diff!=null&&diff<0;
     return `<tr>
-      <td style="font-weight:600;padding:8px 10px;background:#F9F7F4;text-align:left;">${subj}</td>
+      <td style="font-weight:600;padding:8px 10px;background:#F9F7F4;text-align:center;">${subj}</td>
       <td style="text-align:center;padding:8px;${winA?'font-weight:800;color:#1B3B86;':''}">${vA!=null?vA.toFixed(1):'—'}${winA?' ↑':''}</td>
       <td style="text-align:center;padding:8px;${winB?'font-weight:800;color:#B45309;':''}">${vB!=null?vB.toFixed(1):'—'}${winB?' ↑':''}</td>
       <td style="text-align:center;padding:8px;font-size:14px;color:var(--muted);">${diff!=null?(diff>0?'+':'')+diff.toFixed(1):'—'}</td>
@@ -4769,14 +4769,14 @@ window.runCompareAnalysis=function(){
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:16px;">
         <thead><tr style="background:var(--navy);color:#fff;">
-          <th style="padding:10px;text-align:left;">과목</th>
+          <th style="padding:10px;text-align:center;">과목</th>
           <th style="padding:10px;text-align:center;background:#1B3B86;">${sA}</th>
           <th style="padding:10px;text-align:center;background:#92400E;">${sB}</th>
           <th style="padding:10px;text-align:center;">A-B 차이</th>
         </tr></thead>
         <tbody>${tableRows}
           <tr style="background:#FFF8F0;border-top:2px solid var(--amber);">
-            <td style="font-weight:700;padding:9px 10px;text-align:left;">6과목 평균</td>
+            <td style="font-weight:700;padding:9px 10px;text-align:center;">6과목 평균</td>
             <td style="text-align:center;font-weight:800;${avgDiff!=null&&avgDiff>0?'color:#1B3B86;':''}">${avgA!=null?avgA.toFixed(1):'—'}${avgDiff!=null&&avgDiff>0?' ↑':''}</td>
             <td style="text-align:center;font-weight:800;${avgDiff!=null&&avgDiff<0?'color:#B45309;':''}">${avgB!=null?avgB.toFixed(1):'—'}${avgDiff!=null&&avgDiff<0?' ↑':''}</td>
             <td style="text-align:center;font-weight:700;color:var(--muted);">${avgDiff!=null?(avgDiff>0?'+':'')+avgDiff.toFixed(1):'—'}</td>
@@ -4833,7 +4833,7 @@ window.runCompareAnalysis=function(){
         <table style="width:100%;border-collapse:collapse;min-width:420px;">
           <thead>
             <tr style="background:#EDF1FA;">
-              <th style="padding:9px 10px;font-size:14px;color:var(--muted);font-weight:700;text-align:left;">과목</th>
+              <th style="padding:9px 10px;font-size:14px;color:var(--muted);font-weight:700;text-align:center;">과목</th>
               <th colspan="2" style="padding:9px 10px;text-align:center;font-size:14px;font-weight:700;color:#374151;">5등급제 (현 고2·고3)</th>
               <th colspan="2" style="padding:9px 10px;text-align:center;font-size:14px;font-weight:600;color:var(--muted);">9등급제 (현 고3 참고)</th>
             </tr>
@@ -5207,7 +5207,7 @@ function renderProgramCards(s,det){
     out.push(card('진로·진학 프로그램',
       igTable(['프로그램','대상','시기','내용'],
         p.career.map(x=>[`<b>${x.name}</b>`,x.who||'—',x.when||'—',x.desc||'—']),
-        {align:['center','center','center','left']}), p.careerSrc));
+        {align:['center','center','center','center']}), p.careerSrc));
   }
   return out.join('');
 }
@@ -6400,7 +6400,7 @@ window.renderTrackCheck=function(){
     rows+=`<tr>
       <td style="padding:8px;text-align:center;border-bottom:1px solid var(--line);">${r.label}${r.note?`<div style="font-size:12px;color:var(--muted);margin-top:3px;">${r.note}</div>`:''}</td>
       <td style="padding:8px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'충족':'미충족'}</td>
-      <td style="padding:8px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);">${detail}</td>
+      <td style="padding:8px;text-align:center;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);">${detail}</td>
     </tr>`;
   });
 
@@ -6421,13 +6421,13 @@ window.renderTrackCheck=function(){
       <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:10px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
       <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead><tr style="background:var(--navy);color:#fff;">
-          <th style="padding:6px 8px;text-align:center;white-space:nowrap;">과목</th><th style="padding:6px 8px;text-align:left;">해당 모집단위</th><th style="padding:6px 8px;text-align:center;white-space:nowrap;">${school}</th>
+          <th style="padding:6px 8px;text-align:center;white-space:nowrap;">과목</th><th style="padding:6px 8px;text-align:center;">해당 모집단위</th><th style="padding:6px 8px;text-align:center;white-space:nowrap;">${school}</th>
         </tr></thead><tbody>
         ${SNU_PRIORITY.map(p=>{
           const ok=p.any?p.any.some(hasSubj):hasSubj(p.subject);
           return `<tr>
             <td style="padding:7px 8px;text-align:center;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;">${p.subject}</td>
-            <td style="padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);line-height:var(--lh-base);">${p.units}</td>
+            <td style="padding:7px 8px;text-align:center;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);line-height:var(--lh-base);">${p.units}</td>
             <td style="padding:7px 8px;text-align:center;border-bottom:1px solid var(--line);font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'개설':'미개설'}</td>
           </tr>`;}).join('')}
         </tbody></table></div>
@@ -6479,13 +6479,13 @@ function renderJoint(){
     </div>`
     +igTable(['유형','운영 시간','내용','신청 방법','수강 제한'],
       JOINT_TYPES.map(t=>[`<b style="color:${t.color}">${t.name}</b>`,t.when,t.who,t.apply,t.limit]),
-      {align:['center','center','left','left','left']});
+      {align:['center','center','center','center','center']});
 
   /* ② 관악구 학생이 들을 수 있는 것 */
   const local=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);">
       <b>동작관악 권역 공유캠퍼스</b>는 3개 강좌 모두 <b>정규 일과시간 내</b> 운영이라 학기당 2과목 제한에 포함되지 않습니다.
     </div>`
-    +igTable(['개설 학교','과목','위치'],JOINT_LOCAL.map(x=>[`<b>${x.school}</b>`,x.subject,x.area]),{align:['center','left','left']})
+    +igTable(['개설 학교','과목','위치'],JOINT_LOCAL.map(x=>[`<b>${x.school}</b>`,x.subject,x.area]),{align:['center','center','center']})
     +`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:16px;padding:16px 18px;background:var(--section-alt);border:1px solid var(--line);border-radius:0;">
       관악구 안에 있는 <b>거점학교는 삼성고 1곳</b>뿐이며 예술 영역(방송 일반, 연극과 삶)만 운영합니다. 아래 고급·전문 과목은 대부분 <b>타 지역 거점학교나 서울온라인학교</b>에서 들어야 합니다. 온라인학교는 실시간 쌍방향이라 이동 부담이 없습니다.
     </div>`;
@@ -6496,7 +6496,7 @@ function renderJoint(){
     </div>`
     +igTable(['과목','대상','개설 학교'],
       JOINT_ADVANCED.map(x=>[`<b>${x.subject}</b>`,x.grade,x.places.join(' · ')]),
-      {align:['center','center','left']});
+      {align:['center','center','center']});
 
   /* ④ 신청 방법 */
   const steps=[
@@ -6521,7 +6521,7 @@ function renderJoint(){
         ['<b>1학기 과목</b>','전년도 12월 ~ 1월 말','1학년은 신청 불가'],
         ['<b>2학기 과목</b>','7월','1학년은 2학기부터 신청 가능'],
         ['2026학년도 2학기 (확정)','신청 7.6~7.31 · 발표 8.5 · 취소마감 9.10','서울온라인학교 거점강좌 기준']
-      ],{align:['center','center','left']})}
+      ],{align:['center','center','center']})}
     </div>`;
 
   /* ⑤ 평가·이수 — 핵심 */
@@ -6545,7 +6545,7 @@ function renderJoint(){
         ['출석 미달 시','추가학습 — 1학점당 5시수 운영, 2/3 이상 참여 시 이수 인정'],
         ['성취율 미달 시','최소 성취수준 보장지도(예방·보충지도)'],
         ['그래도 미충족','학생부에 <b>「미이수」</b> 기재. 학기 중 온라인 콘텐츠(64시수의 2/3) 또는 방학 중 계절학기로 학점 취득 가능']
-      ],{align:['center','left']})}
+      ],{align:['center','center']})}
     </div>`;
 
   /* ⑥ Q&A */
@@ -6788,7 +6788,7 @@ function renderElectives(det){
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead><tr style="background:var(--navy);color:#fff;">
-            <th style="padding:7px 8px;text-align:center;white-space:nowrap;">학년</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">과목 유형</th><th style="padding:7px 8px;text-align:left;">개설 과목</th>
+            <th style="padding:7px 8px;text-align:center;white-space:nowrap;">학년</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">과목 유형</th><th style="padding:7px 8px;text-align:center;">개설 과목</th>
           </tr></thead>
           <tbody>${rows.join('')}</tbody>
         </table>
@@ -6905,10 +6905,10 @@ function openModal(s){
     });
     const rowsHtml=rows.map(r=>`<tr>
         <td style="padding:8px 10px;text-align:center;font-weight:600;background:#F9F7F4;border-bottom:1px solid var(--line);">${r.name}</td>
-        <td style="padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);color:var(--muted);">${r.desc||'—'}</td>
+        <td style="padding:8px 10px;text-align:center;border-bottom:1px solid var(--line);color:var(--muted);">${r.desc||'—'}</td>
       </tr>`).join('');
     return `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
-        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:7px 10px;text-align:center;">프로그램</th><th style="padding:7px 10px;text-align:left;">내용</th></tr></thead>
+        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:7px 10px;text-align:center;">프로그램</th><th style="padding:7px 10px;text-align:center;">내용</th></tr></thead>
         <tbody>${rowsHtml}</tbody>
       </table></div>${src?`<div class="rec-source" style="margin-top:6px;">${src}</div>`:''}`;
   }
