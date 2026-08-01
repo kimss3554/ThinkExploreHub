@@ -5102,7 +5102,7 @@ function igTrend(series,opt={}){
 /* 표 — head:[문자열], rows:[[셀]] , opt.align */
 function igTable(head,rows,opt={}){
   if(!rows||!rows.length) return '';
-  const al=opt.align||head.map((_,i)=>i===0?'left':'center');
+  const al=opt.align||head.map(()=>'center');
   return `<div style="overflow-x:auto;margin-top:8px;">
     <table style="width:100%;border-collapse:collapse;font-size:14px;">
       <thead><tr style="background:var(--navy);color:#fff;">
@@ -5207,7 +5207,7 @@ function renderProgramCards(s,det){
     out.push(card('진로·진학 프로그램',
       igTable(['프로그램','대상','시기','내용'],
         p.career.map(x=>[`<b>${x.name}</b>`,x.who||'—',x.when||'—',x.desc||'—']),
-        {align:['left','center','center','left']}), p.careerSrc));
+        {align:['center','center','center','left']}), p.careerSrc));
   }
   return out.join('');
 }
@@ -6398,7 +6398,7 @@ window.renderTrackCheck=function(){
       detail=`${got.length}과목 개설${got.length?` — ${got.join(' · ')}`:''}`; }
     if(!ok) allOk=false;
     rows+=`<tr>
-      <td style="padding:8px;border-bottom:1px solid var(--line);">${r.label}${r.note?`<div style="font-size:12px;color:var(--muted);margin-top:3px;">${r.note}</div>`:''}</td>
+      <td style="padding:8px;text-align:center;border-bottom:1px solid var(--line);">${r.label}${r.note?`<div style="font-size:12px;color:var(--muted);margin-top:3px;">${r.note}</div>`:''}</td>
       <td style="padding:8px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'충족':'미충족'}</td>
       <td style="padding:8px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);">${detail}</td>
     </tr>`;
@@ -6421,13 +6421,13 @@ window.renderTrackCheck=function(){
       <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:10px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
       <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead><tr style="background:var(--navy);color:#fff;">
-          <th style="padding:6px 8px;white-space:nowrap;">과목</th><th style="padding:6px 8px;">해당 모집단위</th><th style="padding:6px 8px;white-space:nowrap;">${school}</th>
+          <th style="padding:6px 8px;text-align:center;white-space:nowrap;">과목</th><th style="padding:6px 8px;text-align:left;">해당 모집단위</th><th style="padding:6px 8px;text-align:center;white-space:nowrap;">${school}</th>
         </tr></thead><tbody>
         ${SNU_PRIORITY.map(p=>{
           const ok=p.any?p.any.some(hasSubj):hasSubj(p.subject);
           return `<tr>
-            <td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;">${p.subject}</td>
-            <td style="padding:7px 8px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);line-height:var(--lh-base);">${p.units}</td>
+            <td style="padding:7px 8px;text-align:center;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;">${p.subject}</td>
+            <td style="padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);line-height:var(--lh-base);">${p.units}</td>
             <td style="padding:7px 8px;text-align:center;border-bottom:1px solid var(--line);font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'개설':'미개설'}</td>
           </tr>`;}).join('')}
         </tbody></table></div>
@@ -6447,7 +6447,7 @@ window.renderTrackCheck=function(){
     <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:14px;">${track.type} — <b>${track.name}</b><br>${track.units}</div>
     ${track.req.length?`<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
       <thead><tr style="background:var(--navy);color:#fff;">
-        <th style="padding:7px 8px;text-align:left;">서울대 권장과목</th><th style="padding:7px 8px;white-space:nowrap;">${school}</th><th style="padding:7px 8px;text-align:left;">개설 현황</th>
+        <th style="padding:7px 8px;text-align:center;">서울대 권장과목</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">${school}</th><th style="padding:7px 8px;text-align:center;">개설 현황</th>
       </tr></thead><tbody>${rows}</tbody></table></div>`:''}
     <div style="margin-top:18px;">${verdict}</div>
     ${priority}${deeper}`;
@@ -6479,7 +6479,7 @@ function renderJoint(){
     </div>`
     +igTable(['유형','운영 시간','내용','신청 방법','수강 제한'],
       JOINT_TYPES.map(t=>[`<b style="color:${t.color}">${t.name}</b>`,t.when,t.who,t.apply,t.limit]),
-      {align:['left','center','left','left','left']});
+      {align:['center','center','left','left','left']});
 
   /* ② 관악구 학생이 들을 수 있는 것 */
   const local=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);">
@@ -6496,7 +6496,7 @@ function renderJoint(){
     </div>`
     +igTable(['과목','대상','개설 학교'],
       JOINT_ADVANCED.map(x=>[`<b>${x.subject}</b>`,x.grade,x.places.join(' · ')]),
-      {align:['left','center','left']});
+      {align:['center','center','left']});
 
   /* ④ 신청 방법 */
   const steps=[
@@ -6521,7 +6521,7 @@ function renderJoint(){
         ['<b>1학기 과목</b>','전년도 12월 ~ 1월 말','1학년은 신청 불가'],
         ['<b>2학기 과목</b>','7월','1학년은 2학기부터 신청 가능'],
         ['2026학년도 2학기 (확정)','신청 7.6~7.31 · 발표 8.5 · 취소마감 9.10','서울온라인학교 거점강좌 기준']
-      ],{align:['left','center','left']})}
+      ],{align:['center','center','left']})}
     </div>`;
 
   /* ⑤ 평가·이수 — 핵심 */
@@ -6537,7 +6537,7 @@ function renderJoint(){
       ['성취도별 분포비율','○','○'],['수강자수','○','○'],
       ['<b>석차등급 (상대평가)</b>','<b style="color:#D14343;">5등급 산출</b>','<b style="color:#2E9E5B;">산출 안 함</b>'],
       ['과목별 세부능력 및 특기사항','○','<b>○ (핵심)</b>']
-    ],{align:['left','center','center']})
+    ],{align:['center','center','center']})
     +`<div style="margin-top:12px;">
       <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">이수 기준과 미이수 처리</div>
       ${igTable(['구분','기준'],[
@@ -6545,7 +6545,7 @@ function renderJoint(){
         ['출석 미달 시','추가학습 — 1학점당 5시수 운영, 2/3 이상 참여 시 이수 인정'],
         ['성취율 미달 시','최소 성취수준 보장지도(예방·보충지도)'],
         ['그래도 미충족','학생부에 <b>「미이수」</b> 기재. 학기 중 온라인 콘텐츠(64시수의 2/3) 또는 방학 중 계절학기로 학점 취득 가능']
-      ],{align:['left','left']})}
+      ],{align:['center','left']})}
     </div>`;
 
   /* ⑥ Q&A */
