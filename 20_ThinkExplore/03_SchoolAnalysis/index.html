@@ -203,7 +203,8 @@
   .sc-list li::before{content:'•';position:absolute;left:0;color:var(--muted);}
   .sc-list b{color:var(--navy);font-weight:700;}
   .sc-foot{background:#5E9E7B;color:#fff;font-size:14px;font-weight:700;
-    padding:11px 14px;text-align:center;line-height:var(--lh-tight);}
+    padding:11px 12px;text-align:center;line-height:var(--lh-tight);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .sc-head .sc-detail{position:absolute;top:13px;right:14px;
     flex-shrink:0;width:auto;padding:3px 7px;font-size:11px;line-height:1.25;
     font-weight:600;border-radius:0;border:1px solid var(--line);background:var(--bg);color:var(--navy);}
@@ -2615,6 +2616,22 @@ const COMMENTS = {
   '인헌고':'IB 관심학교로 지정되어 국제 바칼로레아 프로그램 도입을 추진 중입니다. 통합사회 강세이며 내신 진입 장벽이 낮아 상위 등급 확보가 비교적 용이합니다.'
 };
 
+/* 학교 카드 하단 띠에 들어가는 한 줄 요약.
+   위 COMMENTS를 카드 폭(1줄)에 맞게 압축한 것으로, COMMENTS 수정 시 함께 갱신할 것. */
+const COMMENTS_SHORT = {
+  '광신고':'국어·영어 강세의 안정형',
+  '구암고':'과목 편차 적고 내신 경쟁 낮음',
+  '남강고':'영어·수학 강세 이과형',
+  '당곡고':'통합사회 강세, 영어 보완 필요',
+  '문영여고':'통합사회 최강, 균형형 여고',
+  '미림여고':'한국사·통합사회 강세',
+  '삼성고':'소규모, 과목별 편차 큼',
+  '성보고':'국·수·영 전 영역 최상위권',
+  '신림고':'2025년 전 과목 큰 폭 반등',
+  '영락고':'관악구 학력 최상위',
+  '인헌고':'IB 관심학교, 통합사회 강세'
+};
+
 /* ===================== SCHOOL REPORTS ===================== */
 const SCHOOL_REPORTS = {
   '광신고':{strengths:'국어(77.1점)·영어(70.1점)·통합사회(75.5점) 3과목 강세. 남녀분리 운영으로 면학 집중도가 높습니다.',weaknesses:'수학(67.1점)이 상대적으로 낮아 이과 지망 학생은 수학 보완이 필수입니다.',admissions:'4년제 진학률 58.0%로 관악구 최상위권. 학교 분위기가 안정적이고 수시 지원 관리 체계가 탄탄합니다.',target:'문과 성향 학생, 안정된 면학 분위기 선호 학생, 수시 중심 전략에 적합합니다.'},
@@ -4046,7 +4063,7 @@ SCHOOLS.forEach(s=>{
   const trDelta=tr.length>=2 ? (tr[tr.length-1]-tr[0]).toFixed(1) : '';
   const strengths=topStrengths(s,3).map(o=>`${o.k} A ${o.v}%`).join(', ');
   const programs=summarizePrograms((SCHOOL_DETAIL[s]||{}).special,3);
-  const summary=(COMMENTS[s]||'').split('. ')[0].replace(/\.$/,'');
+  const summary=COMMENTS_SHORT[s]||(COMMENTS[s]||'').split('. ')[0].replace(/\.$/,'');
 
   card.innerHTML=`
     <div class="sc-body">
