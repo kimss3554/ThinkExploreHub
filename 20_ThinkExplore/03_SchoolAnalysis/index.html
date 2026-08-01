@@ -626,10 +626,13 @@
   .cal-month-card-title{font-size:16px;font-weight:700;color:var(--navy);}
   .cal-month-card-desc{font-size:12px;color:var(--amber);font-weight:600;background:rgba(200,131,10,.12);padding:2px 8px;border-radius:999px;}
   .cal-sec-label{font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 6px;}
+  .cal-sec-label.divided{border-top:1px dashed var(--line);padding-top:12px;margin-top:14px;}
   .cal-event-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px;}
   .cal-event-list li{font-size:12px;line-height:var(--lh-base);color:var(--txt);padding-left:12px;position:relative;}
   .cal-event-list li::before{content:'•';position:absolute;left:0;color:var(--amber);}
   .cal-grade-block{margin-bottom:8px;}
+  /* 앞에 다른 학년 블록이 있을 때만 구분선 — 첫 블록(보통 고1) 위에는 선이 생기지 않는다 */
+  .cal-grade-block + .cal-grade-block{border-top:1px dashed var(--line);padding-top:11px;margin-top:11px;}
   .cal-grade-block-label{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--navy);padding:1px 8px;border-radius:0;margin-bottom:4px;}
   .cal-grade-block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;}
   .cal-grade-block li{font-size:12px;line-height:var(--lh-base);color:var(--txt);padding-left:12px;position:relative;}
@@ -2391,7 +2394,7 @@ function renderCalOverview(){
       </div>
       <div class="cal-sec-label">📌 주요 일정 (공통)</div>
       <ul class="cal-event-list">${eventsHtml}</ul>
-      <div class="cal-sec-label">🎯 학년별 핵심 활동</div>
+      <div class="cal-sec-label divided">🎯 학년별 핵심 활동</div>
       ${gradeBlocks || '<p style="color:var(--muted);font-size:12px;">학년별 특이사항 없음</p>'}
     </div>`;
   }).join('');
