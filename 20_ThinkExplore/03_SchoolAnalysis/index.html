@@ -81,6 +81,19 @@
   .navlinks a:hover{background:rgba(255,255,255,.12);color:#fff;}
   .navlinks a.cta{background:var(--amber);color:#fff;font-weight:600;margin-top:8px;border-radius:0;text-align:center;border:none;}
   .navlinks a.cta:hover{background:#b07408;}
+  .nav-group{border-bottom:1px solid rgba(255,255,255,.1);}
+  .nav-group-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;
+    background:none;border:1.5px solid transparent;cursor:pointer;font-size:16px;font-weight:700;
+    color:#fff;padding:13px 12px;font-family:inherit;text-align:left;transition:.15s;}
+  .nav-group-toggle:hover{background:rgba(255,255,255,.08);}
+  .nav-group-arrow{font-size:12px;transition:transform .2s;color:rgba(255,255,255,.6);}
+  .nav-group.open .nav-group-arrow{transform:rotate(180deg);}
+  .nav-group.open .nav-group-toggle{border-color:rgba(255,255,255,.5);}
+  .nav-group-body{display:none;flex-direction:column;background:rgba(255,255,255,.07);}
+  .nav-group.open .nav-group-body{display:flex;}
+  .nav-group-body a{font-size:15px;font-weight:400;color:rgba(255,255,255,.8);
+    padding:11px 12px 11px 30px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .nav-group-body a:hover{background:rgba(255,255,255,.12);color:#fff;}
   .nav-tab{
     background:none;border:none;cursor:pointer;
     font-size:16px;font-weight:500;color:rgba(255,255,255,.75);
@@ -612,8 +625,12 @@
   .mobile-tabbar{display:block;}
   body{padding-bottom:64px;}
   .nav-tab{display:none;}
-  /* 햄버거 드롭다운에서도 탭 버튼 숨김 (하단 탭바로 이동) */
-  .navlinks .nav-tab{display:none !important;}
+  /* 햄버거 드롭다운 안에서는 탭 버튼도 표시 (하단 탭바는 그대로 유지) */
+  .navlinks .nav-tab:not([data-tab="news"]):not([data-tab="class"]){display:flex !important;width:100%;align-items:center;justify-content:space-between;
+    font-size:16px;font-weight:700;padding:13px 12px;border-bottom:1px solid rgba(255,255,255,.1);
+    color:#fff;text-align:left;border-radius:0;}
+  .navlinks .nav-tab:hover{background:rgba(255,255,255,.08);}
+  .navlinks .nav-tab.active{color:var(--amber);}
 
   /* ---------- 인쇄 ---------- */
   .print-btn{
@@ -733,18 +750,29 @@
     <button class="nav-tab" data-tab="rw" onclick="setTab('rw')">수행평가 <span class="tab-lock">🔒</span></button>
     <button class="nav-tab" data-tab="joint" onclick="setTab('joint')">선택과목</button>
     <button class="nav-tab" data-tab="calendar" onclick="setTab('calendar')">입시 달력 <span class="tab-lock">🔒</span></button>
+    <button class="nav-tab" onclick="quickNav('reviews')">후기</button>
     <button class="nav-tab" data-tab="news" onclick="setTab('news')" style="display:none;">입시뉴스 ↗</button>
     <button class="nav-tab" data-tab="class" onclick="setTab('class')" style="display:none;">수업 소개 ↗</button>
-    <a href="#" onclick="quickNav('schools');return false;">🎓 관악구 11개 고등학교 한눈에 보기</a>
-    <a href="#" onclick="quickNav('sec-cutline');return false;">🎓 내신 1등급 커트라인 분석</a>
-    <a href="#" onclick="quickNav('sec-trend');return false;">🎓 연도별 성취도 추이</a>
-    <a href="#" onclick="quickNav('sec-rw');return false;">🎓 수행평가 읽기·쓰기 연계 분석</a>
-    <a href="#" onclick="quickNav('sec-checklist');return false;">🎓 학년별 입학 전 점검 체크리스트</a>
-    <a href="#" onclick="quickNav('sec-score');return false;">🎓 성취도 과목 전체 분석</a>
-    <a href="https://kimss3554.github.io/" target="_blank" rel="noopener">🏠 생각탐구 홈페이지 바로가기</a>
+    <div class="nav-group" id="navGroupJump">
+      <button class="nav-group-toggle" onclick="toggleNavGroup('navGroupJump')">🎓 바로가기 <span class="nav-group-arrow">▾</span></button>
+      <div class="nav-group-body">
+        <a href="#" onclick="quickNav('schools');return false;">11개 고등학교 한눈에 보기</a>
+        <a href="#" onclick="quickNav('sec-cutline');return false;">내신 1등급 커트라인 분석</a>
+        <a href="#" onclick="quickNav('sec-trend');return false;">연도별 성취도 추이</a>
+        <a href="#" onclick="quickNav('sec-rw');return false;">수행평가 읽기·쓰기 연계 분석</a>
+        <a href="#" onclick="quickNav('sec-checklist');return false;">학년별 입학 전 점검 체크리스트</a>
+        <a href="#" onclick="quickNav('sec-score');return false;">성취도 과목 전체 분석</a>
+      </div>
+    </div>
+    <div class="nav-group" id="navGroupSite">
+      <button class="nav-group-toggle" onclick="toggleNavGroup('navGroupSite')">🔗 사이트 <span class="nav-group-arrow">▾</span></button>
+      <div class="nav-group-body">
+        <a href="https://kimss3554.github.io/" target="_blank" rel="noopener">생각탐구 홈페이지 바로가기</a>
+        <a href="https://blog.naver.com/yylab" target="_blank" rel="noopener">블로그 바로가기</a>
+      </div>
+    </div>
     <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" class="cta">💬 상담신청</a>
     <a href="tel:010-2436-9019">📞 전화 문의</a>
-    <a href="https://blog.naver.com/yylab" target="_blank" rel="noopener">📖 블로그 바로가기</a>
     <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logoutPremium()">🔓 로그아웃</button>
   </nav>
 </header>
@@ -7389,6 +7417,12 @@ uploadBtn.addEventListener('click',()=>{
 const hb=document.getElementById('hamburger');
 hb.addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
 document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+window.toggleNavGroup=function(id){
+  const el=document.getElementById(id);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.nav-group.open').forEach(g=>g.classList.remove('open'));
+  if(!wasOpen) el.classList.add('open');
+};
 
 /* ===================== REVEAL ON SCROLL ===================== */
 let io=null;
