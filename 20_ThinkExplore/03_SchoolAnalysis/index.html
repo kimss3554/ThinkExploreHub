@@ -296,7 +296,7 @@
   .rep-val p:first-child{padding-top:0;}
   .rec-source{color:var(--muted);font-size:14px;margin-top:8px;font-style:italic;}
   .elect-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-  .elect-pill{background:#EFF6FF;color:#1B3B86;font-size:16px;padding:4px 12px;border-radius:999px;font-weight:600;}
+  .elect-pill{background:#F1F2F4;color:var(--txt);font-size:16px;padding:4px 12px;border-radius:0;font-weight:600;white-space:nowrap;}
   .dir-box{border-radius:0;padding:14px 16px;margin-bottom:12px;}
   .dir-yr{font-size:16px;font-weight:800;color:#111;margin-bottom:6px;}
   .dir-txt{font-size:16px;line-height:var(--lh-loose);color:#111;}
@@ -6788,7 +6788,7 @@ function renderElectives(det){
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead><tr style="background:var(--navy);color:#fff;">
-            <th style="padding:7px 8px;">학년</th><th style="padding:7px 8px;">과목 유형</th><th style="padding:7px 8px;text-align:left;">개설 과목</th>
+            <th style="padding:7px 8px;text-align:center;white-space:nowrap;">학년</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">과목 유형</th><th style="padding:7px 8px;text-align:left;">개설 과목</th>
           </tr></thead>
           <tbody>${rows.join('')}</tbody>
         </table>
@@ -6991,8 +6991,8 @@ function openModal(s){
         <div style="overflow-x:auto;">
           <table style="width:100%;border-collapse:collapse;font-size:16px;">
             <thead><tr style="background:var(--navy);color:#fff;">
-              <th style="padding:7px 8px;">학년</th><th style="padding:7px 8px;">입학</th>
-              <th style="padding:7px 8px;">대입전형</th><th style="padding:7px 8px;">내신</th>
+              <th style="padding:7px 8px;text-align:center;white-space:nowrap;">학년</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">입학</th>
+              <th style="padding:7px 8px;text-align:center;white-space:nowrap;">대입전형</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">내신</th>
             </tr></thead>
             <tbody>
               <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고3</td><td style="padding:6px 8px;text-align:center;">2024년</td><td style="padding:6px 8px;text-align:center;font-weight:700;">2027학년도</td><td style="padding:6px 8px;text-align:center;">9등급</td></tr>
