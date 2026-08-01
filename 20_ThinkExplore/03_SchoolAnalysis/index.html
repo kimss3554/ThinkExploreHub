@@ -415,10 +415,7 @@
   /* ---------- 핵심 배지 (학교 카드) ---------- */
   .badge-key{display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:600;
     padding:3px 10px;border-radius:999px;margin-bottom:6px;}
-  .bk-gold{background:#FEF3C7;color:#92400E;}
-  .bk-blue{background:#DBEAFE;color:#1B3B86;}
-  .bk-green{background:#D1FAE5;color:#065F46;}
-  .bk-muted{background:var(--card);color:var(--muted);border:1px solid var(--line);}
+  .bk-gold,.bk-blue,.bk-green,.bk-muted{background:var(--card);color:var(--navy);border:1px solid var(--line);}
   /* ---------- 포뮬러 배너 ---------- */
   .formula-banner{background:linear-gradient(135deg,#0F2342 0%,#1B3B86 60%,#0F2342 100%);
     color:#fff;padding:60px 20px;text-align:center;}
@@ -3926,9 +3923,9 @@ SCHOOLS.forEach(s=>{
   card.className='school';
   const bk=BADGES[s];
   card.innerHTML=`
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px;">
-      <h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:0;">${s}</h3>
-      <button class="detail-btn" data-school="${s}" style="flex-shrink:0;width:auto;padding:4px 10px;font-size:12px;border-radius:0;">상세 <span class="lockmini">🔒</span></button>
+    <div style="background:${SCHOOL_COLORS[s]};margin:-14px -15px 12px;padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:6px;">
+      <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0;">${s}</h3>
+      <button class="detail-btn" data-school="${s}" style="flex-shrink:0;width:auto;padding:4px 10px;font-size:12px;border-radius:0;border:none;background:rgba(255,255,255,.25);color:#fff;">상세 <span class="lockmini" style="color:#fff;">🔒</span></button>
     </div>
     <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px;">
       ${bk?`<span class="badge-key bk-${bk.cls}">${bk.label}</span>`:''}
@@ -4930,9 +4927,10 @@ function _refreshEvalTab(s, yr){
     const v25=row&&row['2025']&&row['2025'][s]!=null?row['2025'][s].toFixed(1):'—';
     const v24=row&&row['2024']&&row['2024'][s]!=null?row['2024'][s].toFixed(1):'—';
     const v23=row&&row['2023']&&row['2023'][s]!=null?row['2023'][s].toFixed(1):'—';
-    const trend=v25!=='—'&&v24!=='—'?(parseFloat(v25)-parseFloat(v24)>1?'📈':parseFloat(v25)-parseFloat(v24)<-1?'📉':'➡'):'';
+    const diff=v25!=='—'&&v24!=='—'?parseFloat(v25)-parseFloat(v24):null;
+    const trend=diff==null?'':diff>1?'<span style="color:#2E9E5B;">▲</span>':diff<-1?'<span style="color:#D14343;">▼</span>':'<span style="color:var(--muted);">→</span>';
     const hl=(y)=>hlYr===y?'background:#FFF8E7;font-weight:800;':'';
-    return `<tr><td style="text-align:left;font-weight:600;padding:6px 6px;background:#F9F7F4;overflow:hidden;text-overflow:ellipsis;">${subj}</td>
+    return `<tr><td style="text-align:center;font-weight:600;padding:6px 6px;background:#F9F7F4;overflow:hidden;text-overflow:ellipsis;">${subj}</td>
       <td style="padding:6px 3px;text-align:center;${hl('2023')}">${v23}</td>
       <td style="padding:6px 3px;text-align:center;${hl('2024')}">${v24}</td>
       <td style="padding:6px 3px;text-align:center;font-weight:700;${hl('2025')}">${v25}</td>
@@ -4941,7 +4939,7 @@ function _refreshEvalTab(s, yr){
   const aRateRows=['국어','수학','영어'].map(subj=>{
     const r5=ARATE['5'][subj]&&ARATE['5'][subj][s]!=null?ARATE['5'][subj][s]+'%':'—';
     const r9=ARATE['9'][subj]&&ARATE['9'][subj][s]!=null?ARATE['9'][subj][s]+'%':'—';
-    return `<tr><td style="text-align:left;font-weight:600;padding:6px 10px;background:#F9F7F4;">${subj}</td>
+    return `<tr><td style="text-align:center;font-weight:600;padding:6px 10px;background:#F9F7F4;">${subj}</td>
       <td style="padding:6px 8px;text-align:center;">${r5}</td>
       <td style="padding:6px 8px;text-align:center;">${r9}</td></tr>`;
   }).join('');
@@ -4957,7 +4955,7 @@ function _refreshEvalTab(s, yr){
           <table style="width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed;">
             <colgroup><col style="width:28%;"><col style="width:16%;"><col style="width:16%;"><col style="width:16%;"><col style="width:24%;"></colgroup>
             <thead><tr style="background:var(--navy);color:#fff;">
-              <th style="padding:6px 6px;text-align:left;">과목</th>
+              <th style="padding:6px 6px;text-align:center;">과목</th>
               <th style="padding:6px 3px;${hlHead('2023')}">2023</th>
               <th style="padding:6px 3px;${hlHead('2024')}">2024</th>
               <th style="padding:6px 3px;${hlHead('2025')}">2025</th>
@@ -4972,7 +4970,7 @@ function _refreshEvalTab(s, yr){
         <div style="overflow-x:auto;margin-top:8px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;">
             <thead><tr style="background:var(--navy);color:#fff;">
-              <th style="padding:7px 10px;text-align:left;">과목</th>
+              <th style="padding:7px 10px;text-align:center;">과목</th>
               <th style="padding:7px 8px;">5등급제(현고1·2)</th>
               <th style="padding:7px 8px;">9등급제(현고3)</th>
             </tr></thead>
@@ -6355,7 +6353,7 @@ window.renderUniCheck=function(changed){
 
   let verdict;
   if(!hasAny){
-    verdict=`<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:18px 20px;font-size:16px;line-height:var(--lh-loose);">
+    verdict=`<div style="background:var(--section-alt);border:1.5px solid var(--line);border-radius:0;padding:18px 20px;font-size:16px;line-height:var(--lh-loose);">
       이 모집단위는 특정 과목을 지정하지 않고 <b>진로·적성에 따른 선택</b>을 권장합니다. 지망 전공과 연결되는 과목을 스스로 골라 깊이 있게 이수하는 것이 중요합니다.</div>`;
   } else if(!missing.length&&!groupMissing.length){
     verdict=`<div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:0;padding:18px 20px;font-size:16px;line-height:var(--lh-loose);">
@@ -6405,7 +6403,7 @@ window.renderTrackCheck=function(){
   });
 
   const verdict=!track.req.length
-    ? `<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:18px 20px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
+    ? `<div style="background:var(--section-alt);border:1.5px solid var(--line);border-radius:0;padding:18px 20px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
          서울대는 이 계열에 <b>별도 권장과목을 제시하지 않습니다.</b> 진로와 적성에 따라 과목을 선택하고 적극적으로 이수하는 것을 권장합니다.
        </div>`
     : `<div style="background:${allOk?'#F0FDF4':'#FEF2F2'};border:1.5px solid ${allOk?'#86EFAC':'#FCA5A5'};border-radius:0;padding:18px 20px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
@@ -6486,7 +6484,7 @@ function renderJoint(){
       <b>동작관악 권역 공유캠퍼스</b>는 3개 강좌 모두 <b>정규 일과시간 내</b> 운영이라 학기당 2과목 제한에 포함되지 않습니다.
     </div>`
     +igTable(['개설 학교','과목','위치'],JOINT_LOCAL.map(x=>[`<b>${x.school}</b>`,x.subject,x.area]),{align:['center','left','left']})
-    +`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:10px;padding:9px 11px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
+    +`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:16px;padding:16px 18px;background:var(--section-alt);border:1px solid var(--line);border-radius:0;">
       관악구 안에 있는 <b>거점학교는 삼성고 1곳</b>뿐이며 예술 영역(방송 일반, 연극과 삶)만 운영합니다. 아래 고급·전문 과목은 대부분 <b>타 지역 거점학교나 서울온라인학교</b>에서 들어야 합니다. 온라인학교는 실시간 쌍방향이라 이동 부담이 없습니다.
     </div>`;
 
@@ -6955,17 +6953,17 @@ function openModal(s){
   const cohorts=[
     {grade:'현 고3', enter:'2024년 입학', apply:'2027학년도 대입전형',
      regime:'2015 개정 교육과정 · 내신 9등급 상대평가 · 선택형 수능(국어·수학 선택과목, 사탐/과탐 택2)',
-     txt:det.dir2027, color:'#0369A1', bg:'#F0F9FF', bd:'#BAE6FD'},
+     txt:det.dir2027, color:'#1B3B86', bg:'var(--section-alt)', bd:'var(--line)'},
     {grade:'현 고2', enter:'2025년 입학', apply:'2028학년도 대입전형',
      regime:'2022 개정 교육과정 · <b>고교학점제 첫 적용 세대</b> · 내신 5등급 상대평가(성취도 A~E 병기) · 통합형 수능(통합사회·통합과학 전원 응시)',
-     txt:det.dir2028, color:'#B45309', bg:'#FFFBEB', bd:'#FDE68A'},
+     txt:det.dir2028, color:'#1B3B86', bg:'var(--section-alt)', bd:'var(--line)'},
     {grade:'현 고1', enter:'2026년 입학', apply:'2029학년도 대입전형',
      regime:'고교학점제 2년차 · 2028 개편체제 안착 · 192학점 이수 · 선택과목 설계가 진로 적합성 평가의 핵심',
-     txt:det.dir2029, color:'#4338CA', bg:'#EEF2FF', bd:'#C7D2FE'}
+     txt:det.dir2029, color:'#1B3B86', bg:'var(--section-alt)', bd:'var(--line)'}
   ];
   document.getElementById('mFuture').innerHTML=`
     <div style="display:grid;gap:14px;">
-      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:0;padding:16px;">
+      <div style="background:var(--section-alt);border:1.5px solid var(--line);border-radius:0;padding:16px;">
         <div class="rep-lbl" style="color:#1B3B86;margin-bottom:10px;"><span class="lbl-ico">🎓</span> 학년별 적용 입시제도 한눈에 보기</div>
         <div style="overflow-x:auto;">
           <table style="width:100%;border-collapse:collapse;font-size:16px;">
