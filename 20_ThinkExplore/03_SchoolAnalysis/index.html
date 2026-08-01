@@ -7972,22 +7972,12 @@ function renderRW(school){
 function buildRWGrid(){
   const el = document.getElementById('rwGrid');
   if(!el) return;
-  const statusLabel = {'full':'데이터 완료','partial':'분석 중','none':'수집 예정'};
-  const statusBg   = {'full':'#ECFDF5','partial':'#FFFBEB','none':'#F5F5F5'};
-  const statusCol  = {'full':'#2E9E5B','partial':'#B45309','none':'#9CA3AF'};
   el.innerHTML = SCHOOLS.map(s=>{
-    const st = RW_STATUS[s] || 'none';
     const plan = (SCHOOL_DETAIL[s] && SCHOOL_DETAIL[s].evalPlan) || '수행평가 데이터 수집 예정';
-    const badge = `<span style="display:inline-block;font-size:14px;font-weight:600;
-      padding:3px 9px;border-radius:0;
-      background:${statusBg[st]};color:${statusCol[st]};">${statusLabel[st]}</span>`;
     return `<div style="background:#fff;border:1.5px solid var(--line);border-radius:0;
         padding:16px 18px;display:flex;flex-direction:column;gap:10px;
         box-shadow:0 2px 8px rgba(28,61,107,.04);">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-        <div style="font-weight:700;font-size:16px;color:var(--navy);">${s}</div>
-        ${badge}
-      </div>
+      <div style="font-weight:700;font-size:16px;color:var(--navy);">${s}</div>
       <div style="font-size:14px;color:var(--txt);line-height:var(--lh-base);flex:1;">${plan}</div>
       <div>
         <button onclick="openModal('${s}')"
