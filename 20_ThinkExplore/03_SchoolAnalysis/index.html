@@ -6435,12 +6435,12 @@ window.renderTrackCheck=function(){
   }
 
   const missing=JOINT_ONLY_SUBJECTS.filter(s=>!hasSubj(s));
-  const deeper=`<div style="margin-top:24px;padding:18px 20px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
-      <div style="font-size:16px;font-weight:800;color:#B45309;margin-bottom:10px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
+  const deeper=`<div style="margin-top:24px;padding:18px 20px;background:var(--section-alt);border:1px solid var(--line);border-radius:0;">
+      <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
       <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">
         아래 과목은 <b>${school}을 포함한 관악구 11개교 어디에도 정규 편제로 개설되지 않습니다.</b> 일반고에서 개설하기 어려운 전문교과이기 때문이며, <b>공동교육과정(거점학교·서울온라인학교)에서만</b> 이수할 수 있습니다.
       </div>
-      <div class="elect-pills" style="margin-top:7px;">${missing.map(s=>`<span class="elect-pill" style="background:#FEF3C7;color:#92400E;">${s}</span>`).join('')}</div>
+      <div class="elect-pills" style="margin-top:10px;">${missing.map(s=>`<span class="elect-pill" style="background:#fff;color:var(--navy);border:1px solid var(--line);">${s}</span>`).join('')}</div>
     </div>`;
 
   box.innerHTML=`
