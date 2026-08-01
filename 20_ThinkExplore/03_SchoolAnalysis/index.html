@@ -77,11 +77,11 @@
     padding:0 0 24px;box-shadow:-6px 0 28px rgba(0,0,0,.2);
     overflow-y:auto;z-index:250;}
   .navlinks.open{display:flex;}
-  .navlinks-head{display:flex;align-items:center;gap:10px;padding:18px 16px;
+  .navlinks-head{position:relative;display:flex;align-items:center;justify-content:center;
+    padding:28px 16px 24px;
     border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:6px;}
-  .navlinks-head img{height:32px;}
-  .navlinks-head .navlinks-title{flex:1;color:#fff;font-weight:700;font-size:16px;}
-  .navlinks-close{background:none;border:none;color:#fff;font-size:24px;line-height:1;cursor:pointer;padding:4px;}
+  .navlinks-head img{height:64px;opacity:.5;}
+  .navlinks-close{position:absolute;top:12px;right:12px;background:none;border:none;color:#fff;font-size:24px;line-height:1;cursor:pointer;padding:4px;}
   .navlinks-close:hover{color:rgba(255,255,255,.65);}
   .nav-cat{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.1);}
   .nav-cat-title{color:#fff;font-size:17px;font-weight:800;margin-bottom:12px;}
@@ -745,8 +745,7 @@
   </div>
   <nav class="navlinks" id="navlinks">
     <div class="navlinks-head">
-      <img src="logo.png" alt="생각탐구">
-      <span class="navlinks-title">생각탐구</span>
+      <img src="logo_grade_w.png" alt="생각탐구">
       <button class="navlinks-close" onclick="document.getElementById('navlinks').classList.remove('open')" aria-label="메뉴 닫기">✕</button>
     </div>
     <div class="nav-cat">
