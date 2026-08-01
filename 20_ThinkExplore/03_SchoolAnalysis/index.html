@@ -76,21 +76,21 @@
   .navlinks a{font-size:16px;font-weight:500;color:rgba(255,255,255,.85);
     padding:13px 12px;border-radius:0;border-bottom:1px solid rgba(255,255,255,.1);transition:.15s;}
   .navlinks a:hover{background:rgba(255,255,255,.12);color:#fff;}
-  .navlinks a.cta{background:var(--amber);color:#fff;font-weight:600;margin-top:8px;border-radius:8px;text-align:center;border:none;}
+  .navlinks a.cta{background:var(--amber);color:#fff;font-weight:600;margin-top:8px;border-radius:0;text-align:center;border:none;}
   .navlinks a.cta:hover{background:#b07408;}
   .nav-tab{
     background:none;border:none;cursor:pointer;
     font-size:16px;font-weight:500;color:rgba(255,255,255,.75);
-    padding:8px 13px;border-radius:8px;transition:.15s;
+    padding:8px 13px;border-radius:0;transition:.15s;
     font-family:inherit;
   }
   .nav-tab:hover{background:rgba(255,255,255,.12);color:#fff;}
   .nav-tab.active{background:rgba(255,255,255,.18);color:#fff;font-weight:700;}
-  .logout-btn{background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;}
+  .logout-btn{background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:0;padding:8px 12px;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;}
   .logout-btn:hover{background:rgba(220,60,60,.7);color:#fff;border-color:transparent;}
   .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;
     background:none;border:none;padding:8px;}
-  .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;}
+  .hamburger span{width:24px;height:2px;background:#fff;border-radius:0;}
 
   /* ---------- HERO ---------- */
   .hero{text-align:center;padding:62px 0 48px;}
@@ -100,7 +100,7 @@
     margin-top:8px;font-weight:600;}
   .hero .lead{color:var(--muted);font-size:16px;margin-top:18px;}
   .statbar{display:flex;gap:14px;justify-content:center;flex-wrap:nowrap;margin:32px 0 28px;}
-  .statcard{background:#fff;border:1.5px solid var(--line);border-radius:18px;
+  .statcard{background:#fff;border:1.5px solid var(--line);border-radius:0;
     padding:20px 18px;flex:1;max-width:190px;min-width:0;
     box-shadow:0 4px 18px rgba(28,61,107,.08);text-align:center;}
   .statcard .ico{font-size:22px;}
@@ -108,14 +108,14 @@
   .statcard .lbl{font-size:14px;color:var(--muted);margin-top:3px;}
   .herobtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
   /* hero inline premium CTA */
-  .hero-prem-box{background:#EDF2FB;border:1.5px solid var(--line);border-radius:16px;padding:18px 22px;max-width:660px;margin:0 auto;}
+  .hero-prem-box{background:#EDF2FB;border:1.5px solid var(--line);border-radius:0;padding:18px 22px;max-width:660px;margin:0 auto;}
   .hero-prem-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;font-size:16px;font-weight:600;color:var(--navy);}
-  .hero-prem-flow .step{background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:8px;white-space:nowrap;color:var(--navy);}
+  .hero-prem-flow .step{background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:0;white-space:nowrap;color:var(--navy);}
   .hero-prem-flow .arr{color:var(--muted);font-size:14px;}
   .hero-prem-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;}
-  .hero-chan-btn{display:inline-flex;align-items:center;gap:6px;background:#FEE500;color:#191919;padding:10px 18px;border-radius:10px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;transition:.15s;}
+  .hero-chan-btn{display:inline-flex;align-items:center;gap:6px;background:#FEE500;color:#191919;padding:10px 18px;border-radius:0;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;transition:.15s;}
   .hero-chan-btn:hover{opacity:.88;transform:translateY(-1px);}
-  .hero-pw-wrap{display:flex;gap:0;border-radius:10px;overflow:hidden;border:2px solid var(--line);}
+  .hero-pw-wrap{display:flex;gap:0;border-radius:0;overflow:hidden;border:2px solid var(--line);}
   .hero-pw-wrap input{width:150px;padding:10px 12px;border:none;font-size:16px;background:#fff;outline:none;font-family:inherit;color:var(--txt);}
   .hero-pw-wrap button{padding:10px 16px;background:var(--amber);color:#fff;border:none;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .15s;}
   .hero-pw-wrap button:hover{background:#b07408;}
@@ -124,23 +124,23 @@
   .pv-section{background:var(--section-alt);}
   .pv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px;}
   @media(max-width:640px){.pv-grid{grid-template-columns:1fr;}}
-  .pv-card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;}
+  .pv-card{background:#fff;border:1.5px solid var(--line);border-radius:0;padding:18px 20px;display:flex;flex-direction:column;}
   .pv-card:hover{box-shadow:0 6px 22px rgba(28,61,107,.09);}
   .pv-head{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
   .pv-icon{font-size:22px;line-height:1;}
   .pv-title{font-size:16px;font-weight:700;color:var(--navy);}
   .pv-desc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:10px;}
   .pv-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px;}
-  .pv-tag{font-size:12px;background:var(--section-alt);color:var(--navy);padding:3px 9px;border-radius:6px;font-weight:500;}
-  .pv-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#FDF5E4;border:1px solid #EDD080;border-radius:9px;padding:9px 13px;margin-top:auto;}
+  .pv-tag{font-size:12px;background:var(--section-alt);color:var(--navy);padding:3px 9px;border-radius:0;font-weight:500;}
+  .pv-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#FDF5E4;border:1px solid #EDD080;border-radius:0;padding:9px 13px;margin-top:auto;}
   .pv-bar.unlocked{background:#E9F7EE;border-color:#82C99A;}
   .pv-bar-label{font-size:14px;font-weight:600;color:#8B6000;}
   .pv-bar.unlocked .pv-bar-label{color:#2E7D45;}
-  .pv-bar-btn{background:var(--amber);color:#fff;border:none;border-radius:7px;padding:5px 13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.15s;flex-shrink:0;}
+  .pv-bar-btn{background:var(--amber);color:#fff;border:none;border-radius:0;padding:5px 13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.15s;flex-shrink:0;}
   .pv-bar-btn:hover{background:#b07408;}
   .pv-bar.unlocked .pv-bar-btn{background:var(--navy);}
   .pv-bar.unlocked .pv-bar-btn:hover{background:#16315a;}
-  .btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:600;
+  .btn{display:inline-block;padding:14px 26px;border-radius:0;font-weight:600;
     font-size:16px;cursor:pointer;border:none;font-family:inherit;transition:.18s;}
   .btn-navy{background:var(--navy);color:#fff;}
   .btn-navy:hover{background:#16315a;transform:translateY(-2px);}
@@ -154,7 +154,7 @@
   .sechead h2{font-size:clamp(24px,3.8vw,34px);font-weight:800;color:var(--navy);
     letter-spacing:-.5px;position:relative;display:inline-block;padding-bottom:14px;}
   .sechead h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-    width:44px;height:3.5px;background:var(--amber);border-radius:2px;}
+    width:44px;height:3.5px;background:var(--amber);border-radius:0;}
   .sechead p{color:var(--muted);font-size:16px;margin-top:10px;}
 
   .reveal{opacity:0;transform:translateY(22px);transition:.7s cubic-bezier(.2,.7,.3,1);}
@@ -165,7 +165,7 @@
   @media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);gap:10px;}}
   @media(max-width:480px){.grid{grid-template-columns:1fr;}}
-  .school{background:#fff;border:1.5px solid var(--line);border-radius:14px;
+  .school{background:#fff;border:1.5px solid var(--line);border-radius:0;
     padding:14px 15px;transition:.22s;box-shadow:0 2px 10px rgba(28,61,107,.07);}
   .school:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,61,107,.13);}
   .school .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
@@ -174,24 +174,24 @@
   .badge.gen{background:#E4EEFB;color:var(--navy);}
   .badge.girls{background:#FBE7F1;color:#B23A78;}
   .badge.boys{background:#E3F0EC;color:#1E7A53;}
-  .metrics{display:flex;gap:0;margin:10px 0 12px;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;}
+  .metrics{display:flex;gap:0;margin:10px 0 12px;border:1.5px solid var(--line);border-radius:0;overflow:hidden;}
   .metric{flex:1;background:var(--bg);padding:8px 4px;text-align:center;border-right:1px solid var(--line);}
   .metric:last-child{border-right:none;}
   .metric .ic{font-size:16px;}
   .metric .v{font-size:14px;font-weight:700;color:var(--txt);margin-top:2px;}
   .metric .k{font-size:12px;color:var(--muted);margin-top:1px;line-height:1.3;}
-  .detail-btn{width:100%;padding:8px;border-radius:8px;border:1.5px solid var(--navy);
+  .detail-btn{width:100%;padding:8px;border-radius:0;border:1.5px solid var(--navy);
     background:transparent;color:var(--navy);font-weight:700;font-size:14px;
     cursor:pointer;font-family:inherit;transition:.15s;}
   .detail-btn:hover{background:var(--navy);color:#fff;}
   .lockmini{font-size:12px;color:var(--amber);}
 
   /* ---------- CHART CARD ---------- */
-  .chartcard{background:#fff;border:1.5px solid var(--line);border-radius:18px;
+  .chartcard{background:#fff;border:1.5px solid var(--line);border-radius:0;
     padding:28px 24px;margin-top:36px;box-shadow:0 4px 20px rgba(28,61,107,.07);}
   .chartcard h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center;}
   .chartcard .csub{font-size:14px;color:var(--muted);text-align:center;margin-bottom:20px;}
-  .chart-analysis{background:#EEF4FF;border-left:3.5px solid var(--navy);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:20px;font-size:16px;line-height:1.9;color:var(--txt);}
+  .chart-analysis{background:#EEF4FF;border-left:3.5px solid var(--navy);border-radius:0;padding:16px 20px;margin-top:20px;font-size:16px;line-height:1.9;color:var(--txt);}
   .chart-analysis strong{color:var(--navy);}
   .chart-analysis ul{margin:6px 0 0 0;padding-left:18px;}
   .chart-analysis li{margin-bottom:5px;}
@@ -199,7 +199,7 @@
 
   /* ---------- LOCK BANNER ---------- */
   .lockbanner{background:linear-gradient(135deg,#1B3B86 0%,#16315a 100%);
-    border-radius:18px;padding:42px 28px;text-align:center;color:#fff;
+    border-radius:0;padding:42px 28px;text-align:center;color:#fff;
     box-shadow:0 16px 40px rgba(28,61,107,.25);
     max-width:760px;margin:0 auto;}
   .lockbanner h2{font-size:clamp(20px,3.4vw,26px);font-weight:700;}
@@ -208,10 +208,10 @@
     padding:7px 15px;border-radius:999px;font-size:14px;}
   .lockrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center;}
   .pwbox{display:flex;gap:8px;}
-  .pwbox input{padding:13px 16px;border-radius:10px;border:none;font-size:16px;
+  .pwbox input{padding:13px 16px;border-radius:0;border:none;font-size:16px;
     font-family:inherit;width:180px;outline:none;}
   .pwbox button{background:#fff;color:var(--navy);font-weight:700;padding:0 20px;
-    border-radius:10px;border:none;cursor:pointer;font-family:inherit;font-size:16px;}
+    border-radius:0;border:none;cursor:pointer;font-family:inherit;font-size:16px;}
   .pwerr{color:#ffd6d6;font-size:14px;margin-top:12px;min-height:18px;}
 
   /* ---------- PREMIUM ---------- */
@@ -220,7 +220,7 @@
   .premflag{display:inline-block;background:var(--amber);color:#fff;font-size:14px;
     font-weight:600;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;}
   .infobox{background:#EEF4FF;border:1.5px solid #C0D4F5;border-left:4px solid var(--navy);
-    border-radius:14px;padding:20px 22px;font-size:16px;color:var(--txt);margin-bottom:24px;
+    border-radius:0;padding:20px 22px;font-size:16px;color:var(--txt);margin-bottom:24px;
     line-height:1.8;}
   .infobox b{color:var(--navy);}
   .infobox.warn{background:#FFF8EE;border-color:#F5CFA0;border-left-color:var(--amber);}
@@ -230,7 +230,7 @@
 
   .toggle{display:flex;gap:8px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;}
   .toggle button,.subjtabs button{background:#fff;border:1.5px solid var(--line);
-    color:var(--muted);padding:10px 22px;border-radius:10px;cursor:pointer;
+    color:var(--muted);padding:10px 22px;border-radius:0;cursor:pointer;
     font-size:16px;font-weight:600;font-family:inherit;transition:.15s;
     box-shadow:0 1px 4px rgba(28,61,107,.06);}
   .toggle button.active,.subjtabs button.active{background:var(--navy);color:#fff;border-color:var(--navy);
@@ -245,23 +245,23 @@
   /* heatmap table */
   .tablewrap{overflow-x:auto;}
   table.heat{border-collapse:collapse;width:100%;min-width:420px;background:#fff;
-    border-radius:14px;overflow:hidden;font-size:16px;box-shadow:0 2px 12px rgba(28,61,107,.06);}
+    border-radius:0;overflow:hidden;font-size:16px;box-shadow:0 2px 12px rgba(28,61,107,.06);}
   table.heat th,table.heat td{padding:12px 10px;text-align:center;border:1px solid var(--line);}
   table.heat thead th{background:var(--navy);color:#fff;font-weight:700;}
   table.heat tbody th{background:var(--section-alt);color:var(--navy);font-weight:700;text-align:left;padding-left:14px;}
-  .cell{font-weight:700;color:#fff;border-radius:6px;}
+  .cell{font-weight:700;color:#fff;border-radius:0;}
   .c-green{background:var(--green);}
   .c-yellow{background:var(--yellow);}
   .c-orange{background:var(--orange);}
   .c-red{background:var(--red);}
   .legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:16px;font-size:14px;color:var(--muted);}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
-  .dot{width:13px;height:13px;border-radius:3px;display:inline-block;}
+  .dot{width:13px;height:13px;border-radius:0;display:inline-block;}
 
   /* checkboxes */
   .checkrow{display:flex;flex-wrap:wrap;
     align-items:center;gap:16px;justify-content:flex-start;margin-bottom:10px;
-    background:var(--section-alt);border:1px solid var(--line);border-radius:12px;padding:10px 14px;}
+    background:var(--section-alt);border:1px solid var(--line);border-radius:0;padding:10px 14px;}
   .checkrow label{font-size:14px;display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;white-space:nowrap;
     background:none;border:none;padding:0;border-radius:0;cursor:pointer;}
 
@@ -269,7 +269,7 @@
   .modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(20,30,50,.55);
     align-items:center;justify-content:center;padding:18px;}
   .modal.open{display:flex;}
-  .modal-inner{background:var(--bg);border-radius:18px;max-width:960px;width:100%;
+  .modal-inner{background:var(--bg);border-radius:0;max-width:960px;width:100%;
     max-height:92vh;overflow-y:auto;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;}
   .modal-inner h3{font-size:23px;font-weight:700;color:var(--navy);}
   .modal-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.3);
@@ -278,13 +278,13 @@
   .modal-close:hover{background:rgba(255,255,255,.5);}
   /* modal tabs */
   .m-tabs{display:flex;gap:3px;padding:14px 0 0;border-bottom:2px solid var(--line);flex-wrap:nowrap;margin:12px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .mtab{padding:7px 9px;border-radius:8px 8px 0 0;border:1.5px solid var(--line);background:var(--card);color:#111;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;border-bottom:2px solid var(--line);margin-bottom:-2px;white-space:nowrap;}
+  .mtab{padding:7px 9px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:#111;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;border-bottom:2px solid var(--line);margin-bottom:-2px;white-space:nowrap;}
   .mtab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .m-panel{display:none;padding-top:6px;}
   .m-panel.active{display:block;}
   .rep-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media(max-width:680px){.rep-grid2{grid-template-columns:1fr;}}
-  .rep-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px;min-width:0;}
+  .rep-card{background:var(--card);border:1px solid var(--line);border-radius:0;padding:14px;margin-bottom:12px;min-width:0;}
   .rep-lbl{font-size:17px;font-weight:800;letter-spacing:.3px;margin-bottom:8px;}
   .lbl-ico{font-size:1.5em;line-height:1;display:inline-block;vertical-align:-.18em;margin-right:2px;}
   .rep-val{font-size:16px;line-height:1.9;color:var(--txt);}
@@ -292,18 +292,18 @@
   .rec-source{color:var(--muted);font-size:14px;margin-top:8px;font-style:italic;}
   .elect-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
   .elect-pill{background:#EFF6FF;color:#1E40AF;font-size:16px;padding:4px 12px;border-radius:999px;font-weight:600;}
-  .dir-box{border-radius:10px;padding:14px 16px;margin-bottom:12px;}
+  .dir-box{border-radius:0;padding:14px 16px;margin-bottom:12px;}
   .dir-yr{font-size:16px;font-weight:800;color:#111;margin-bottom:6px;}
   .dir-txt{font-size:16px;line-height:1.9;color:#111;}
   /* uploaded image gallery */
   .upl-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:10px;}
-  .upl-img-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in;transition:.15s;}
+  .upl-img-card{border:1px solid var(--line);border-radius:0;overflow:hidden;background:#fff;cursor:zoom-in;transition:.15s;}
   .upl-img-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);}
   .upl-img-card img{width:100%;display:block;max-height:180px;object-fit:contain;background:#f5f5f5;}
   .upl-img-meta{padding:8px 10px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);}
   .upl-img-meta strong{color:var(--txt);}
   /* 생기부 activity section */
-  .gb-tip-box{background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border:1.5px solid #BAE6FD;border-radius:12px;padding:16px;margin-top:4px;min-width:0;}
+  .gb-tip-box{background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border:1.5px solid #BAE6FD;border-radius:0;padding:16px;margin-top:4px;min-width:0;}
   .gb-tip-title{color:#0369A1;font-size:16px;font-weight:700;margin-bottom:10px;}
   .gb-act-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
   @media(max-width:560px){.gb-act-grid{grid-template-columns:1fr;}}
@@ -312,34 +312,34 @@
   .modal-yr-bar{display:flex;gap:8px;flex-wrap:nowrap;padding:10px 0 4px;border-bottom:1px dashed var(--line);margin-bottom:0;align-items:center;}
   /* compare block */
   .cmp-header-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
-  .cmp-badge{background:var(--navy);color:#fff;font-size:14px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.3px;}
+  .cmp-badge{background:var(--navy);color:#fff;font-size:14px;font-weight:700;padding:4px 12px;border-radius:0;letter-spacing:.3px;}
   .cmp-section-lbl{font-size:16px;font-weight:700;color:var(--navy);}
   .cmp-selectors{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:4px;}
   .cmp-sel-group{display:flex;flex-direction:column;gap:5px;}
-  .cmp-sel-label{font-size:14px;font-weight:700;padding:4px 10px;border-radius:6px;display:inline-block;width:fit-content;}
+  .cmp-sel-label{font-size:14px;font-weight:700;padding:4px 10px;border-radius:0;display:inline-block;width:fit-content;}
   .cmp-a-label{background:#EFF6FF;color:#1E40AF;}
   .cmp-b-label{background:#FFF3E0;color:#B45309;}
-  .cmp-select{width:100%;padding:9px 10px;border:1.5px solid var(--line);border-radius:10px;font-size:16px;font-family:inherit;background:var(--bg);color:var(--txt);cursor:pointer;}
+  .cmp-select{width:100%;padding:9px 10px;border:1.5px solid var(--line);border-radius:0;font-size:16px;font-family:inherit;background:var(--bg);color:var(--txt);cursor:pointer;}
   .cmp-select:focus{outline:none;border-color:var(--navy);}
   .cmp-vs-divider{font-size:18px;font-weight:900;color:var(--muted);padding-bottom:10px;align-self:flex-end;}
-  .cmp-run-btn{background:#DC2626;color:#fff;border:none;padding:11px 36px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;letter-spacing:.2px;white-space:nowrap;}
+  .cmp-run-btn{background:#DC2626;color:#fff;border:none;padding:11px 36px;border-radius:0;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;letter-spacing:.2px;white-space:nowrap;}
   .cmp-run-btn:hover{background:#b91c1c;}
   @media(max-width:640px){.cmp-vs-divider{display:none;}.cmp-sel-group{min-width:calc(50% - 8px);}}
-  .cmp-deep-card{background:#F9F7F4;border-radius:12px;padding:18px;margin-top:18px;border:1.5px solid var(--line);}
+  .cmp-deep-card{background:#F9F7F4;border-radius:0;padding:18px;margin-top:18px;border:1.5px solid var(--line);}
   .cmp-deep-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:5px;}
   .cmp-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .cmp-fit-box-a{background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px;}
-  .cmp-fit-box-b{background:#FFF8F0;border:1.5px solid #FDE68A;border-radius:12px;padding:16px;}
+  .cmp-fit-box-a{background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:0;padding:16px;}
+  .cmp-fit-box-b{background:#FFF8F0;border:1.5px solid #FDE68A;border-radius:0;padding:16px;}
   .cmp-fit-title-a{font-size:16px;font-weight:700;color:#1E40AF;margin-bottom:10px;}
   .cmp-fit-title-b{font-size:16px;font-weight:700;color:#92400E;margin-bottom:10px;}
-  .cmp-consultant{background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:14px;padding:22px;margin-top:18px;}
-  .cmp-cta-btn{display:inline-block;background:#C8830A;color:#fff;padding:12px 26px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;transition:.15s;}
+  .cmp-consultant{background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:0;padding:22px;margin-top:18px;}
+  .cmp-cta-btn{display:inline-block;background:#C8830A;color:#fff;padding:12px 26px;border-radius:0;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;transition:.15s;}
   .cmp-cta-btn:hover{background:#a06a07;}
   @media(max-width:600px){.cmp-split-grid{grid-template-columns:1fr;}}
   .cmp-result-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:20px;}
   /* Triple layout: A scorecard | radar | B scorecard */
   .cmp-triple-layout{display:grid;grid-template-columns:200px 1fr 200px;gap:16px;align-items:start;}
-  .cmp-scorecard{border-radius:12px;padding:16px;border:1.5px solid var(--line);}
+  .cmp-scorecard{border-radius:0;padding:16px;border:1.5px solid var(--line);}
   .cmp-scorecard.sc-a{border-color:#BFDBFE;background:#F0F7FF;}
   .cmp-scorecard.sc-b{border-color:#FDE68A;background:#FFFBF0;}
   .cmp-sc-name{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:12px;text-align:center;}
@@ -356,13 +356,13 @@
   }
   /* school card checkbox */
   .scard-chk-wrap{position:absolute;top:10px;left:10px;}
-  .scard-chk{width:20px;height:20px;border:2px solid var(--line);border-radius:5px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;font-size:14px;font-weight:900;}
+  .scard-chk{width:20px;height:20px;border:2px solid var(--line);border-radius:0;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;font-size:14px;font-weight:900;}
   .scard-chk.sel-a{border-color:#1E40AF;background:#1E40AF;color:#fff;}
   .scard-chk.sel-b{border-color:#B45309;background:#B45309;color:#fff;}
   .scard-chk.sel-none:hover{border-color:var(--navy);background:#EFF6FF;}
   /* ---- stats section ---- */
   .stats-tab-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
-  .stats-tab{background:var(--card);border:1.5px solid var(--line);border-radius:8px;padding:9px 18px;font-size:16px;font-weight:600;color:var(--txt);cursor:pointer;font-family:inherit;transition:.15s;}
+  .stats-tab{background:var(--card);border:1.5px solid var(--line);border-radius:0;padding:9px 18px;font-size:16px;font-weight:600;color:var(--txt);cursor:pointer;font-family:inherit;transition:.15s;}
   .stats-tab:hover{background:rgba(28,61,107,.08);}
   .stats-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .stats-panel{display:block;}
@@ -386,17 +386,17 @@
     .chartbox canvas{display:none!important;}
     .chartbox .print-data{display:block!important;}
   }
-  .comment{background:var(--card);border-left:4px solid var(--amber);border-radius:10px;
+  .comment{background:var(--card);border-left:4px solid var(--amber);border-radius:0;
     padding:14px 16px;font-size:14px;margin-top:18px;}
   /* ---------- 모달 섹션 (상근쌤 스타일) ---------- */
-  .modal-hdr{border-radius:12px 12px 0 0;padding:18px 22px;margin:-28px -28px 0;
+  .modal-hdr{border-radius:0;padding:18px 22px;margin:-28px -28px 0;
     display:flex;align-items:center;justify-content:space-between;gap:12px;}
   .modal-hdr-name{font-size:32px;font-weight:800;color:#fff;}
   .modal-hdr-sub{font-size:16px;color:rgba(255,255,255,.9);margin-top:4px;}
   .by-badge{background:rgba(255,255,255,.22);color:#fff;font-size:14px;font-weight:600;
     padding:4px 10px;border-radius:999px;letter-spacing:.3px;white-space:nowrap;}
   .print-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45);color:#fff;
-    font-size:14px;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600;
+    font-size:14px;padding:6px 12px;border-radius:0;cursor:pointer;font-weight:600;
     white-space:nowrap;transition:.15s;}
   .print-btn:hover{background:rgba(255,255,255,.38);}
   .sec-hd{display:flex;align-items:center;gap:10px;margin:22px 0 12px;}
@@ -405,7 +405,7 @@
     flex-shrink:0;}
   .sec-title{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:.3px;}
   .tip-list{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);
-    border-radius:12px;padding:18px;}
+    border-radius:0;padding:18px;}
   .tip-item{display:flex;align-items:flex-start;gap:8px;font-size:16px;line-height:1.75;}
   .tip-y{color:#2E9E5B;font-size:16px;flex-shrink:0;margin-top:1px;}
   .tip-n{color:#D14343;font-size:16px;flex-shrink:0;margin-top:1px;}
@@ -423,7 +423,7 @@
   .formula .plus,.formula .eq{color:#C8830A;margin:0 4px;}
   .formula .result{display:block;font-size:clamp(18px,3.2vw,28px);color:#F59E0B;margin-top:4px;}
   .formula-cta-btn{display:inline-block;background:#C8830A;color:#fff;padding:14px 34px;
-    border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;transition:.15s;}
+    border-radius:0;font-weight:700;font-size:16px;text-decoration:none;transition:.15s;}
   .formula-cta-btn:hover{background:#b07408;transform:translateY(-1px);}
   .formula-sub{color:rgba(255,255,255,.6);font-size:14px;margin-top:14px;}
 
@@ -438,9 +438,9 @@
   .statusfilters{display:flex;gap:14px;align-items:flex-end;justify-content:center;margin-top:18px;flex-wrap:wrap;}
   .statusfilters .sf-group{display:flex;flex-direction:column;gap:5px;}
   .statusfilters .sf-lbl{font-size:14px;color:var(--muted);font-weight:600;}
-  .statusfilters select{background:#fff;border:1.5px solid var(--line);color:var(--txt);border-radius:8px;padding:8px 12px;font-size:14px;font-family:inherit;cursor:pointer;min-width:150px;}
+  .statusfilters select{background:#fff;border:1.5px solid var(--line);color:var(--txt);border-radius:0;padding:8px 12px;font-size:14px;font-family:inherit;cursor:pointer;min-width:150px;}
   .statusfilters select:focus{outline:none;border-color:var(--navy);}
-  .statusfilters .sf-toggle{background:#fff;border:1.5px solid var(--line);color:var(--muted);border-radius:8px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;}
+  .statusfilters .sf-toggle{background:#fff;border:1.5px solid var(--line);color:var(--muted);border-radius:0;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;}
   .statusfilters .sf-toggle.active{background:var(--red);border-color:var(--red);color:#fff;}
   .statusfilters .sf-count{font-size:14px;color:var(--muted);align-self:center;}
   table.status td.cell-missing{background:rgba(220,38,38,.06);}
@@ -449,12 +449,12 @@
 
   /* grade score section */
   .gd-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
-  .gdtab{padding:10px 22px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s;}
+  .gdtab{padding:10px 22px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s;}
   .gdtab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .yr-row{display:flex;gap:8px;align-items:center;margin-bottom:18px;flex-wrap:wrap;}
-  .yrtab{padding:7px 16px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--txt);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
+  .yrtab{padding:7px 16px;border-radius:0;border:1.5px solid var(--line);background:#fff;color:var(--txt);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
   .yrtab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .yrtab-pending{padding:7px 16px;border-radius:8px;border:1.5px dashed var(--line);background:#fafafa;color:var(--muted);font-size:14px;font-weight:500;cursor:default;}
+  .yrtab-pending{padding:7px 16px;border-radius:0;border:1.5px dashed var(--line);background:#fafafa;color:var(--muted);font-size:14px;font-weight:500;cursor:default;}
   table.gs-heat{border-collapse:collapse;width:100%;table-layout:fixed;font-size:14px;}
   table.gs-heat th{background:var(--navy);color:#fff;padding:8px 3px;text-align:center;font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;}
   table.gs-heat th.subj-h{text-align:left;padding-left:8px;width:15%;}
@@ -473,29 +473,29 @@
   .gsh-none{background:#F3F4F6;color:#9CA3AF;}
 
   /* upload */
-  .uploader{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  .uploader{background:var(--card);border:1px solid var(--line);border-radius:0;
     padding:26px;margin-top:30px;}
   .uploader h3{color:var(--navy);font-size:18px;margin-bottom:18px;}
   .ustep{margin-bottom:16px;}
   .ustep label.t{display:block;font-weight:600;font-size:14px;margin-bottom:7px;color:var(--navy);}
   select,.radios{width:100%;}
-  select{padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);
+  select{padding:11px 12px;border-radius:0;border:1px solid var(--line);background:var(--bg);
     font-family:inherit;font-size:16px;color:var(--txt);}
   .radios{display:flex;flex-wrap:wrap;gap:7px;}
   .radios label{font-size:14px;display:inline-flex;align-items:center;gap:5px;
-    background:#fff;border:1.5px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;}
+    background:#fff;border:1.5px solid var(--line);padding:7px 12px;border-radius:0;cursor:pointer;}
   .radios input{accent-color:var(--navy);}
-  .dropzone{border:2px dashed var(--line);border-radius:14px;padding:34px 16px;text-align:center;
+  .dropzone{border:2px dashed var(--line);border-radius:0;padding:34px 16px;text-align:center;
     cursor:pointer;color:var(--muted);transition:.18s;background:var(--bg);}
   .dropzone.drag{border-color:var(--amber);background:#fdf6e9;color:var(--amber);}
   .dropzone .big{font-size:16px;font-weight:600;color:var(--navy);}
   .dropzone .small{font-size:14px;margin-top:6px;}
   .uploadbtn{margin-top:16px;width:100%;background:var(--navy);color:#fff;padding:14px;
-    border:none;border-radius:10px;font-weight:600;font-size:16px;cursor:pointer;font-family:inherit;}
+    border:none;border-radius:0;font-weight:600;font-size:16px;cursor:pointer;font-family:inherit;}
   .uploadbtn:disabled{opacity:.5;cursor:not-allowed;}
 
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);
-    background:var(--navy);color:#fff;padding:14px 22px;border-radius:12px;font-size:16px;
+    background:var(--navy);color:#fff;padding:14px 22px;border-radius:0;font-size:16px;
     box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.4s;z-index:400;opacity:0;}
   .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
 
@@ -544,13 +544,13 @@
 
   /* ---------- 입시 달력 ---------- */
   .cal-grade-btn{
-    padding:8px 20px;border-radius:8px;border:1.5px solid var(--line);
+    padding:8px 20px;border-radius:0;border:1.5px solid var(--line);
     background:var(--card);color:var(--txt);font-size:16px;font-weight:600;
     cursor:pointer;transition:.15s;font-family:inherit;
   }
   .cal-grade-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .cal-month-btn{
-    padding:6px 13px;border-radius:6px;border:1px solid var(--line);
+    padding:6px 13px;border-radius:0;border:1px solid var(--line);
     background:var(--card);color:var(--muted);font-size:14px;
     cursor:pointer;transition:.15s;font-family:inherit;
     line-height:1.4;
@@ -558,13 +558,13 @@
   .cal-month-btn.active{background:var(--amber);color:#fff;border-color:var(--amber);}
   .cal-check-item{
     display:flex;align-items:flex-start;gap:10px;
-    padding:10px 14px;border-radius:8px;background:var(--bg);
+    padding:10px 14px;border-radius:0;background:var(--bg);
     font-size:14px;color:var(--txt);line-height:1.7;margin-bottom:8px;
   }
   .cal-check-item .ico{color:var(--green);flex-shrink:0;margin-top:2px;font-size:16px;}
   .cal-event-tag{
     display:inline-block;background:rgba(200,131,10,.12);color:var(--amber);
-    border-radius:5px;padding:3px 9px;font-size:14px;font-weight:600;
+    border-radius:0;padding:3px 9px;font-size:14px;font-weight:600;
     margin-top:8px;margin-right:6px;
   }
   .cal-section-title{font-size:16px;font-weight:700;color:var(--navy);margin:16px 0 10px;}
@@ -575,7 +575,7 @@
   .cal-grid-wd.sat{color:#1C6BD1;}
   .cal-grid-cell{
     position:relative;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    border-radius:8px;background:var(--bg);font-size:14px;color:var(--txt);
+    border-radius:0;background:var(--bg);font-size:14px;color:var(--txt);
   }
   .cal-grid-cell.empty{background:transparent;}
   .cal-grid-cell.sun .cal-grid-daynum{color:#D14343;}
@@ -584,13 +584,13 @@
   .cal-grid-daynum{font-size:14px;}
   .cal-grid-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);margin-top:2px;}
   @media (max-width:480px){
-    .cal-grid-cell{border-radius:6px;}
+    .cal-grid-cell{border-radius:0;}
     .cal-grid-daynum{font-size:12px;}
   }
 
   /* 입시 달력 월별 개요 카드 (3열 4행: 3,4,5 / 6,7,8 / 9,10,11 / 12,1,2) */
   .cal-overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .cal-month-card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .cal-month-card{background:var(--bg);border:1px solid var(--line);border-radius:0;padding:16px 18px;}
   .cal-month-card-hd{display:flex;align-items:baseline;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
   .cal-month-card-title{font-size:16px;font-weight:700;color:var(--navy);}
   .cal-month-card-desc{font-size:12px;color:var(--amber);font-weight:600;background:rgba(200,131,10,.12);padding:2px 8px;border-radius:999px;}
@@ -599,7 +599,7 @@
   .cal-event-list li{font-size:12px;line-height:1.6;color:var(--txt);padding-left:12px;position:relative;}
   .cal-event-list li::before{content:'•';position:absolute;left:0;color:var(--amber);}
   .cal-grade-block{margin-bottom:8px;}
-  .cal-grade-block-label{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--navy);padding:1px 8px;border-radius:5px;margin-bottom:4px;}
+  .cal-grade-block-label{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--navy);padding:1px 8px;border-radius:0;margin-bottom:4px;}
   .cal-grade-block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;}
   .cal-grade-block li{font-size:12px;line-height:1.6;color:var(--txt);padding-left:12px;position:relative;}
   .cal-grade-block li::before{content:'•';position:absolute;left:0;color:var(--amber);}
@@ -616,7 +616,7 @@
   /* ---------- 인쇄 ---------- */
   .print-btn{
     display:inline-flex;align-items:center;gap:5px;
-    background:var(--navy);color:#fff;border:none;border-radius:7px;
+    background:var(--navy);color:#fff;border:none;border-radius:0;
     padding:7px 14px;font-size:14px;font-weight:600;cursor:pointer;
     font-family:inherit;transition:.15s;margin-bottom:12px;
   }
@@ -628,7 +628,7 @@
   .kakao-float{position:fixed;bottom:28px;right:24px;z-index:900;display:flex;flex-direction:column;align-items:center;gap:6px;}
   .kakao-float-btn{width:56px;height:56px;border-radius:50%;background:#FEE500;color:#191919;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
   .kakao-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,0,0,.25);}
-  .kakao-float-label{font-size:12px;font-weight:700;color:var(--navy);background:#fff;padding:2px 8px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;}
+  .kakao-float-label{font-size:12px;font-weight:700;color:var(--navy);background:#fff;padding:2px 8px;border-radius:0;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;}
   /* 하단 탭바에 가려지지 않도록 모바일에서 플로팅 버튼 위치 조정 */
   /* 하단 탭바가 항상 표시되므로 플로팅 버튼 위치도 항상 위로 올림 */
   .kakao-float{bottom:calc(96px + env(safe-area-inset-bottom));}
@@ -638,7 +638,7 @@
 
   /* 프리미엄 전환 모달 */
   .prem-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;}
-  .prem-modal{background:#fff;border-radius:20px;width:100%;max-width:420px;padding:32px 28px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);}
+  .prem-modal{background:#fff;border-radius:0;width:100%;max-width:420px;padding:32px 28px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);}
   .prem-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);line-height:1;}
   .prem-step{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);}
   .prem-step:last-of-type{border-bottom:none;}
@@ -674,22 +674,22 @@
 
   /* ---------- ADMIN ZONE ---------- */
   .admin-zone{background:#EEEEEE;}
-  .admin-badge{display:inline-flex;align-items:center;gap:5px;background:#6b7280;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;margin-bottom:10px;}
+  .admin-badge{display:inline-flex;align-items:center;gap:5px;background:#6b7280;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:0;letter-spacing:.5px;margin-bottom:10px;}
 
   /* ---------- ADMIN PANEL ---------- */
   #adminPanel{background:#111827;color:#e5e7eb;}
   #adminPanel h2{color:#f9fafb;font-size:clamp(18px,3vw,24px);}
   #adminPanel p{color:#9ca3af;}
-  .admin-pw-bar{background:#1f2937;border:1px solid #374151;border-radius:12px;padding:20px 24px;margin-bottom:28px;}
+  .admin-pw-bar{background:#1f2937;border:1px solid #374151;border-radius:0;padding:20px 24px;margin-bottom:28px;}
   .admin-pw-bar label{font-size:14px;color:#9ca3af;display:block;margin-bottom:8px;}
-  .admin-pw-bar input{background:#111827;border:1px solid #374151;color:#f9fafb;border-radius:8px;padding:10px 14px;font-size:16px;width:220px;margin-right:8px;}
+  .admin-pw-bar input{background:#111827;border:1px solid #374151;color:#f9fafb;border-radius:0;padding:10px 14px;font-size:16px;width:220px;margin-right:8px;}
   .admin-pw-bar input:focus{outline:none;border-color:#6366f1;}
-  .admin-pw-bar button{background:#6366f1;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:16px;cursor:pointer;font-weight:600;}
+  .admin-pw-bar button{background:#6366f1;color:#fff;border:none;border-radius:0;padding:10px 20px;font-size:16px;cursor:pointer;font-weight:600;}
   .admin-pw-bar button:hover{background:#4f46e5;}
   .admin-pw-err{color:#f87171;font-size:12px;margin-top:6px;}
   #adminContent{display:none;}
   .admin-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
-  .admin-tabs button{background:#1f2937;color:#9ca3af;border:1px solid #374151;border-radius:8px;padding:8px 18px;font-size:14px;cursor:pointer;font-weight:600;transition:.15s;}
+  .admin-tabs button{background:#1f2937;color:#9ca3af;border:1px solid #374151;border-radius:0;padding:8px 18px;font-size:14px;cursor:pointer;font-weight:600;transition:.15s;}
   .admin-tabs button.active{background:#6366f1;color:#fff;border-color:#6366f1;}
   .admin-matrix{overflow-x:auto;}
   .admin-matrix table{border-collapse:collapse;font-size:12px;white-space:nowrap;}
@@ -699,10 +699,10 @@
   .admin-matrix td:first-child{position:sticky;left:0;background:#1a2235;z-index:1;font-weight:600;color:#d1d5db;text-align:left;padding-left:12px;}
   .admin-matrix input[type=checkbox]{width:16px;height:16px;accent-color:#6366f1;cursor:pointer;}
   .admin-summary{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
-  .admin-stat{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:14px 18px;min-width:120px;}
+  .admin-stat{background:#1f2937;border:1px solid #374151;border-radius:0;padding:14px 18px;min-width:120px;}
   .admin-stat .as-num{font-size:22px;font-weight:700;color:#6366f1;}
   .admin-stat .as-lbl{font-size:12px;color:#9ca3af;margin-top:2px;}
-  .admin-close-btn{margin-top:24px;background:#374151;color:#d1d5db;border:none;border-radius:8px;padding:10px 22px;font-size:16px;cursor:pointer;font-weight:600;}
+  .admin-close-btn{margin-top:24px;background:#374151;color:#d1d5db;border:none;border-radius:0;padding:10px 22px;font-size:16px;cursor:pointer;font-weight:600;}
   .admin-close-btn:hover{background:#4b5563;}
   .admin-trigger{font-size:12px;color:#555;cursor:default;user-select:none;margin-left:8px;}
   .admin-trigger:hover{color:#888;}
@@ -765,8 +765,8 @@
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:16px;align-items:center;">
-      <input type="password" id="gatePwInputModal" placeholder="채널 공지 비밀번호" autocomplete="off" style="flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;">
-      <button onclick="tryGatePw('gatePwInputModal','gatePwErrModal')" style="padding:9px 20px;background:var(--amber);color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;font-weight:600;">확인</button>
+      <input type="password" id="gatePwInputModal" placeholder="채널 공지 비밀번호" autocomplete="off" style="flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:0;font-size:14px;">
+      <button onclick="tryGatePw('gatePwInputModal','gatePwErrModal')" style="padding:9px 20px;background:var(--amber);color:#fff;border:none;border-radius:0;font-size:14px;cursor:pointer;font-weight:600;">확인</button>
       <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener" style="width:40px;height:40px;background:#FEE500;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:20px;">💬</a>
     </div>
     <div id="gatePwErrModal" style="color:#e53e3e;font-size:12px;margin-bottom:8px;height:16px;"></div>
@@ -790,15 +790,15 @@
   <div class="wrap">
     <!-- 비로그인 상태 -->
     <div id="gate-locked">
-      <div style="background:#FEE500;border-radius:12px;padding:24px 24px;margin-bottom:20px;">
+      <div style="background:#FEE500;border-radius:0;padding:24px 24px;margin-bottom:20px;">
         <!-- 제목 -->
         <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;text-align:center;">관악구 11개 고등학교 심층 분석 자료 열람</div>
         <div style="font-size:12px;color:var(--muted);margin-bottom:16px;text-align:center;">📅 2026학년도 현재</div>
 
         <!-- 비밀번호 입력 행 -->
         <div style="display:flex;gap:12px;justify-content:center;align-items:center;margin-bottom:8px;">
-          <input type="password" id="gatePwInput" placeholder="비밀번호" autocomplete="off" style="padding:8px 12px;border:1.5px solid var(--line);border-radius:6px;font-size:14px;width:120px;">
-          <button onclick="tryGatePw()" style="padding:8px 18px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:600;white-space:nowrap;">확인</button>
+          <input type="password" id="gatePwInput" placeholder="비밀번호" autocomplete="off" style="padding:8px 12px;border:1.5px solid var(--line);border-radius:0;font-size:14px;width:120px;">
+          <button onclick="tryGatePw()" style="padding:8px 18px;background:var(--navy);color:#fff;border:none;border-radius:0;font-size:14px;cursor:pointer;font-weight:600;white-space:nowrap;">확인</button>
           <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener" style="display:flex;gap:6px;align-items:center;text-decoration:none;">
             <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);box-shadow:0 2px 12px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;overflow:hidden;flex-shrink:0;">
               <span style="font-size:18px;">🔑</span>
@@ -823,7 +823,7 @@
     <div id="gate-unlocked" style="display:none;">
       <div style="font-size:16px;color:var(--navy);font-weight:700;margin-bottom:10px;">✅ 심층 분석 자료 열람 중입니다</div>
       <div style="font-size:14px;color:var(--muted);margin-bottom:14px;">아래에서 관악구 11개 고등학교 상세 분석을 모두 확인하실 수 있습니다.</div>
-      <button onclick="logoutPremium()" style="padding:8px 20px;background:#fff;color:var(--navy);border:1.5px solid var(--line);border-radius:8px;font-size:14px;cursor:pointer;font-weight:600;">🔓 로그아웃</button>
+      <button onclick="logoutPremium()" style="padding:8px 20px;background:#fff;color:var(--navy);border:1.5px solid var(--line);border-radius:0;font-size:14px;cursor:pointer;font-weight:600;">🔓 로그아웃</button>
     </div>
   </div>
 </section>
@@ -1118,7 +1118,7 @@
 
       <div class="lock-steps">
         <!-- Step 1 -->
-        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px;">
+        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:0;padding:16px 18px;">
           <div style="margin-bottom:10px;">
             <span style="font-size:16px;opacity:.7;font-weight:600;">STEP 1</span>
             <span style="font-size:16px;font-weight:700;margin-left:8px;">오픈채팅에서 비번 받기</span>
@@ -1126,11 +1126,11 @@
           <div style="font-size:16px;opacity:.85;margin-bottom:14px;line-height:1.6;">생각탐구 카카오톡 오픈채팅에 가입하고 공지 게시판에 있는 비밀번호를 입력하세요</div>
           <div style="text-align:center;">
             <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener"
-              style="display:inline-block;background:var(--amber);color:#fff;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;">오픈채팅 입장</a>
+              style="display:inline-block;background:var(--amber);color:#fff;padding:8px 16px;border-radius:0;font-size:14px;font-weight:600;text-decoration:none;">오픈채팅 입장</a>
           </div>
         </div>
         <!-- Step 2 -->
-        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px;">
+        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:0;padding:16px 18px;">
           <div style="margin-bottom:10px;">
             <span style="font-size:16px;opacity:.7;font-weight:600;">STEP 2</span>
             <span style="font-size:16px;font-weight:700;margin-left:8px;">비밀번호 입력</span>
@@ -1139,8 +1139,8 @@
           <div class="pwbox" style="display:flex;gap:6px;align-items:center;">
             <span style="font-size:18px;flex-shrink:0;">🔑</span>
             <input type="password" id="pwInput" placeholder="비밀번호" autocomplete="off"
-              style="flex:1;padding:8px 10px;border-radius:8px;border:none;font-size:14px;">
-            <button id="pwBtn" style="background:var(--amber);color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer;font-size:14px;">확인</button>
+              style="flex:1;padding:8px 10px;border-radius:0;border:none;font-size:14px;">
+            <button id="pwBtn" style="background:var(--amber);color:#fff;border:none;padding:8px 14px;border-radius:0;font-weight:600;cursor:pointer;font-size:14px;">확인</button>
           </div>
           <div class="pwerr" id="pwErr" style="margin-top:6px;font-size:14px;color:#FFB3B3;"></div>
         </div>
@@ -1184,7 +1184,7 @@
               <td style="padding:7px 10px;text-align:center;">2008년생</td>
               <td style="padding:7px 10px;text-align:center;">2024학년 입학</td>
               <td style="padding:7px 10px;text-align:center;font-weight:600;">2027 대입</td>
-              <td style="padding:7px 10px;text-align:center;"><span style="background:#6366F1;color:#fff;padding:2px 8px;border-radius:12px;font-size:14px;">9등급제</span></td>
+              <td style="padding:7px 10px;text-align:center;"><span style="background:#6366F1;color:#fff;padding:2px 8px;border-radius:0;font-size:14px;">9등급제</span></td>
               <td style="padding:7px 10px;text-align:center;">상위 4%</td>
             </tr>
             <tr style="background:rgba(200,131,10,0.06);">
@@ -1192,7 +1192,7 @@
               <td style="padding:7px 10px;text-align:center;">2009년생</td>
               <td style="padding:7px 10px;text-align:center;">2025학년 입학</td>
               <td style="padding:7px 10px;text-align:center;font-weight:600;">2028 대입</td>
-              <td style="padding:7px 10px;text-align:center;"><span style="background:#C8830A;color:#fff;padding:2px 8px;border-radius:12px;font-size:14px;">5등급제</span></td>
+              <td style="padding:7px 10px;text-align:center;"><span style="background:#C8830A;color:#fff;padding:2px 8px;border-radius:0;font-size:14px;">5등급제</span></td>
               <td style="padding:7px 10px;text-align:center;">상위 10%</td>
             </tr>
             <tr style="background:rgba(200,131,10,0.06);">
@@ -1200,7 +1200,7 @@
               <td style="padding:7px 10px;text-align:center;">2010년생</td>
               <td style="padding:7px 10px;text-align:center;">2026학년 입학</td>
               <td style="padding:7px 10px;text-align:center;font-weight:600;">2029 대입</td>
-              <td style="padding:7px 10px;text-align:center;"><span style="background:#C8830A;color:#fff;padding:2px 8px;border-radius:12px;font-size:14px;">5등급제</span></td>
+              <td style="padding:7px 10px;text-align:center;"><span style="background:#C8830A;color:#fff;padding:2px 8px;border-radius:0;font-size:14px;">5등급제</span></td>
               <td style="padding:7px 10px;text-align:center;">상위 10%</td>
             </tr>
           </tbody>
@@ -1291,7 +1291,7 @@
       <div class="chartcard reveal">
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
           <label for="rwSchoolSel" style="font-weight:700;color:var(--navy);font-size:16px;">🏫 학교 선택</label>
-          <select id="rwSchoolSel" onchange="renderRW(this.value)" style="padding:9px 14px;border:1.5px solid var(--line);border-radius:8px;font-size:16px;min-width:210px;font-family:inherit;color:var(--navy);cursor:pointer;"></select>
+          <select id="rwSchoolSel" onchange="renderRW(this.value)" style="padding:9px 14px;border:1.5px solid var(--line);border-radius:0;font-size:16px;min-width:210px;font-family:inherit;color:var(--navy);cursor:pointer;"></select>
         </div>
         <div id="rwSrc" class="csub" style="margin-bottom:10px;"></div>
         <div class="chartbox" style="height:340px"><canvas id="rwChart"></canvas></div>
@@ -1308,7 +1308,7 @@
           생각탐구 오픈채팅방에서 학교별 수행평가 전략과 글쓰기 실전 팁을 공유합니다.
         </span>
         <div style="margin-top:12px;">
-          <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" style="background:var(--amber);color:#fff;padding:8px 18px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;display:inline-block;">오픈채팅방 참여하기 →</a>
+          <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" style="background:var(--amber);color:#fff;padding:8px 18px;border-radius:0;font-weight:600;font-size:14px;text-decoration:none;display:inline-block;">오픈채팅방 참여하기 →</a>
         </div>
       </div>
 
@@ -1463,15 +1463,15 @@
       <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;">📊 2027 전국 대입 모집인원</h3>
       <p style="font-size:14px;color:var(--muted);margin-bottom:16px;">전년 대비 수시 증가(+1,735명), 정시 감소(-1,197명)</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;">
-        <div style="text-align:center;padding:16px;background:rgba(28,61,107,.06);border-radius:10px;">
+        <div style="text-align:center;padding:16px;background:rgba(28,61,107,.06);border-radius:0;">
           <div style="font-size:22px;font-weight:700;color:var(--navy);">277,583명</div>
           <div style="font-size:14px;color:var(--muted);margin-top:4px;">수시 (80.3%)</div>
         </div>
-        <div style="text-align:center;padding:16px;background:rgba(200,131,10,.08);border-radius:10px;">
+        <div style="text-align:center;padding:16px;background:rgba(200,131,10,.08);border-radius:0;">
           <div style="font-size:22px;font-weight:700;color:var(--amber);">68,134명</div>
           <div style="font-size:14px;color:var(--muted);margin-top:4px;">정시 (19.7%)</div>
         </div>
-        <div style="text-align:center;padding:16px;background:rgba(46,158,91,.08);border-radius:10px;">
+        <div style="text-align:center;padding:16px;background:rgba(46,158,91,.08);border-radius:0;">
           <div style="font-size:22px;font-weight:700;color:var(--green);">345,717명</div>
           <div style="font-size:14px;color:var(--muted);margin-top:4px;">총합계</div>
         </div>
@@ -1534,17 +1534,17 @@
     <div class="chartcard reveal" style="margin-bottom:24px;">
       <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;">📊 관악구 생기부, 전국과 어떻게 다를까?</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;">
-        <div style="background:rgba(28,61,107,.06);border-radius:10px;padding:16px;">
+        <div style="background:rgba(28,61,107,.06);border-radius:0;padding:16px;">
           <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">수행평가 서·논술형 비중</div>
           <div style="font-size:20px;font-weight:700;color:var(--navy);">삼성고 · 광신고 선도</div>
           <div style="font-size:14px;color:var(--muted);margin-top:4px;">2032 대입 개편 방향과 정렬</div>
         </div>
-        <div style="background:rgba(200,131,10,.08);border-radius:10px;padding:16px;">
+        <div style="background:rgba(200,131,10,.08);border-radius:0;padding:16px;">
           <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">탐구보고서·발표 강조 학교</div>
           <div style="font-size:20px;font-weight:700;color:var(--amber);">11개교 공통</div>
           <div style="font-size:14px;color:var(--muted);margin-top:4px;">학종 중점 대비 환경</div>
         </div>
-        <div style="background:rgba(46,158,91,.08);border-radius:10px;padding:16px;">
+        <div style="background:rgba(46,158,91,.08);border-radius:0;padding:16px;">
           <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">관악구 4년제 진학률 평균</div>
           <div style="font-size:20px;font-weight:700;color:var(--green);">약 49.7%</div>
           <div style="font-size:14px;color:var(--muted);margin-top:4px;">서울시 평균 대비 분석 중</div>
@@ -1563,7 +1563,7 @@
       <div style="margin-bottom:16px;">
         <label style="font-size:16px;font-weight:600;color:var(--txt);margin-right:10px;">학교 선택:</label>
         <select id="gibSchoolSelect" onchange="renderGibDetail(this.value)"
-          style="padding:8px 12px;border-radius:8px;border:1.5px solid var(--line);font-size:16px;font-family:inherit;background:var(--card);color:var(--txt);">
+          style="padding:8px 12px;border-radius:0;border:1.5px solid var(--line);font-size:16px;font-family:inherit;background:var(--card);color:var(--txt);">
           <option value="">— 학교를 선택하세요 —</option>
         </select>
       </div>
@@ -1580,7 +1580,7 @@
         <b>구체적인 로드맵</b>을 함께 설계합니다.
       </p>
       <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener"
-        style="display:inline-block;background:var(--amber);color:#fff;padding:10px 22px;border-radius:8px;font-size:16px;font-weight:700;text-decoration:none;">
+        style="display:inline-block;background:var(--amber);color:#fff;padding:10px 22px;border-radius:0;font-size:16px;font-weight:700;text-decoration:none;">
         오픈채팅으로 상담 신청 →
       </a>
     </div>
@@ -1602,7 +1602,7 @@
     <!-- 수업 단계 카드 -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:28px;">
       <div class="chartcard reveal">
-        <div style="background:rgba(28,61,107,.08);border-radius:8px;padding:10px 14px;margin-bottom:12px;">
+        <div style="background:rgba(28,61,107,.08);border-radius:0;padding:10px 14px;margin-bottom:12px;">
           <span style="font-size:14px;font-weight:700;color:var(--navy);">🌱 초등 과정 — 씨앗 단계</span>
         </div>
         <p style="font-size:14px;color:var(--muted);margin-bottom:10px;">미성초·남부초·난우초·난향초 외 관악구 초등학생</p>
@@ -1611,17 +1611,17 @@
           <div><b>탐구보고서반</b> — 초등 4~6학년 · 탐구심화 · 90분/주1회</div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;">
-          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:5px;">문학·비문학 독서</span>
-          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:5px;">교과 연계 글쓰기</span>
-          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:5px;">주제탐구보고서</span>
-          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:5px;">PPT·발표</span>
-          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:5px;">수행평가 대비</span>
+          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:0;">문학·비문학 독서</span>
+          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:0;">교과 연계 글쓰기</span>
+          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:0;">주제탐구보고서</span>
+          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:0;">PPT·발표</span>
+          <span style="background:#EDF1FA;color:var(--navy);font-size:12px;padding:3px 8px;border-radius:0;">수행평가 대비</span>
         </div>
         <div style="margin-top:14px;font-size:16px;font-weight:700;color:var(--amber);">월 15~18만 원</div>
         <div style="font-size:12px;color:var(--muted);">※ 관악구교육지원청 신고 기준 (교습소 신고 제7062호)</div>
       </div>
       <div class="chartcard reveal">
-        <div style="background:rgba(200,131,10,.08);border-radius:8px;padding:10px 14px;margin-bottom:12px;">
+        <div style="background:rgba(200,131,10,.08);border-radius:0;padding:10px 14px;margin-bottom:12px;">
           <span style="font-size:14px;font-weight:700;color:var(--amber);">🌿 중등 과정 — 뿌리 단계</span>
         </div>
         <p style="font-size:14px;color:var(--muted);margin-bottom:10px;">난곡중·신림중·관악중 외 관악구 중학생</p>
@@ -1630,15 +1630,15 @@
           교과 연계 탐구보고서 완성 · 자기주도학습 역량 강화
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;">
-          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:5px;">수행평가 완전 대비</span>
-          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:5px;">탐구보고서 심화</span>
-          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:5px;">고교 생기부 전략</span>
-          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:5px;">독서연계 글쓰기</span>
+          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:0;">수행평가 완전 대비</span>
+          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:0;">탐구보고서 심화</span>
+          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:0;">고교 생기부 전략</span>
+          <span style="background:rgba(200,131,10,.1);color:var(--amber);font-size:12px;padding:3px 8px;border-radius:0;">독서연계 글쓰기</span>
         </div>
         <div style="margin-top:14px;font-size:16px;font-weight:700;color:var(--amber);">상담 후 안내</div>
       </div>
       <div class="chartcard reveal">
-        <div style="background:rgba(46,158,91,.08);border-radius:8px;padding:10px 14px;margin-bottom:12px;">
+        <div style="background:rgba(46,158,91,.08);border-radius:0;padding:10px 14px;margin-bottom:12px;">
           <span style="font-size:14px;font-weight:700;color:var(--green);">🌳 고등 과정 — 열매 단계</span>
         </div>
         <p style="font-size:14px;color:var(--muted);margin-bottom:10px;">삼성고·광신고·미림여고 외 관악구 고등학생</p>
@@ -1647,10 +1647,10 @@
           1:1 입시 컨설팅 · 학종 면접·자소서 준비
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;">
-          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:5px;">1:1 생기부 컨설팅</span>
-          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:5px;">세특 전략 설계</span>
-          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:5px;">탐구보고서 심화</span>
-          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:5px;">학종 면접·자소서</span>
+          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:0;">1:1 생기부 컨설팅</span>
+          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:0;">세특 전략 설계</span>
+          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:0;">탐구보고서 심화</span>
+          <span style="background:rgba(46,158,91,.1);color:var(--green);font-size:12px;padding:3px 8px;border-radius:0;">학종 면접·자소서</span>
         </div>
         <div style="margin-top:14px;font-size:16px;font-weight:700;color:var(--amber);">상담 후 안내</div>
       </div>
@@ -1686,11 +1686,11 @@
       </p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener"
-          style="background:var(--amber);color:#fff;padding:12px 28px;border-radius:9px;font-size:16px;font-weight:700;text-decoration:none;">
+          style="background:var(--amber);color:#fff;padding:12px 28px;border-radius:0;font-size:16px;font-weight:700;text-decoration:none;">
           카카오 오픈채팅 상담 →
         </a>
         <a href="tel:010-2436-9019"
-          style="background:rgba(255,255,255,.15);color:#fff;padding:12px 28px;border-radius:9px;font-size:16px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.3);">
+          style="background:rgba(255,255,255,.15);color:#fff;padding:12px 28px;border-radius:0;font-size:16px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.3);">
           📞 010-2436-9019
         </a>
       </div>
@@ -1739,9 +1739,9 @@
 
       <!-- 자료 종류 탭 -->
       <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;" id="upTypeTabs">
-        <button class="uptab active" data-type="school" style="background:var(--navy);color:#fff;border:1px solid var(--navy);padding:9px 18px;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;">🏫 관악구 학교 자료</button>
-        <button class="uptab" data-type="official" style="background:var(--card);color:var(--muted);border:1px solid var(--line);padding:9px 18px;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;">📋 교육부·공신력 자료</button>
-        <button class="uptab" data-type="compare" style="background:var(--card);color:var(--muted);border:1px solid var(--line);padding:9px 18px;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;">🗺 비교 학군지 자료</button>
+        <button class="uptab active" data-type="school" style="background:var(--navy);color:#fff;border:1px solid var(--navy);padding:9px 18px;border-radius:0;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;">🏫 관악구 학교 자료</button>
+        <button class="uptab" data-type="official" style="background:var(--card);color:var(--muted);border:1px solid var(--line);padding:9px 18px;border-radius:0;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;">📋 교육부·공신력 자료</button>
+        <button class="uptab" data-type="compare" style="background:var(--card);color:var(--muted);border:1px solid var(--line);padding:9px 18px;border-radius:0;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;">🗺 비교 학군지 자료</button>
       </div>
 
       <!-- 관악구 학교 자료 -->
@@ -1822,7 +1822,7 @@
       </div>
       <div class="ustep" style="margin-top:4px;">
         <label class="t">메모 (선택)</label>
-        <input type="text" id="upMemo" placeholder="예: 여름방학캠프 안내문 / 2025년 자율탐구 활동" style="width:100%;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:16px;font-family:inherit;box-sizing:border-box;background:var(--bg);color:var(--txt);">
+        <input type="text" id="upMemo" placeholder="예: 여름방학캠프 안내문 / 2025년 자율탐구 활동" style="width:100%;padding:9px 12px;border:1.5px solid var(--line);border-radius:0;font-size:16px;font-family:inherit;box-sizing:border-box;background:var(--bg);color:var(--txt);">
       </div>
       <button class="uploadbtn" id="uploadBtn" disabled>업로드</button>
     </div>
@@ -1875,13 +1875,13 @@
 
       <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <span style="font-size:14px;color:#9ca3af;font-weight:600;">인쇄 대상:</span>
-        <select id="adminPrintSchool" style="background:#1f2937;color:#f9fafb;border:1px solid #374151;border-radius:8px;padding:8px 12px;font-size:14px;">
+        <select id="adminPrintSchool" style="background:#1f2937;color:#f9fafb;border:1px solid #374151;border-radius:0;padding:8px 12px;font-size:14px;">
           <option value="all">전체 11개 학교</option>
         </select>
-        <button id="adminPrintBtn" style="background:#10b981;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:16px;cursor:pointer;font-weight:600;">🖨 분석자료 인쇄</button>
+        <button id="adminPrintBtn" style="background:#10b981;color:#fff;border:none;border-radius:0;padding:10px 20px;font-size:16px;cursor:pointer;font-weight:600;">🖨 분석자료 인쇄</button>
       </div>
       <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
-        <button onclick="logoutAdmin()" style="background:#ef4444;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:16px;cursor:pointer;font-weight:600;">🔓 관리자 로그아웃</button>
+        <button onclick="logoutAdmin()" style="background:#ef4444;color:#fff;border:none;border-radius:0;padding:10px 20px;font-size:16px;cursor:pointer;font-weight:600;">🔓 관리자 로그아웃</button>
         <button class="admin-close-btn" id="adminCloseBtn">패널 닫기</button>
       </div>
     </div>
@@ -1928,7 +1928,7 @@
     <!-- 학년(입학년도) 선택 -->
     <div class="modal-yr-bar" id="modalYrBar" style="justify-content:flex-end;">
       <span style="font-size:16px;color:var(--muted);font-weight:800;">🎓 학년 선택:</span>
-      <select id="modalYrSelect" onchange="setModalYear(this.value)" style="width:auto;padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
+      <select id="modalYrSelect" onchange="setModalYear(this.value)" style="width:auto;padding:6px 12px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
         <option value="all">전체</option>
         <option value="2026">고1 (2026입학)</option>
         <option value="2025">고2 (2025입학)</option>
@@ -2100,19 +2100,19 @@ function renderGibDetail(school){
   if(!r){ el.innerHTML='<span style="color:var(--muted);">해당 학교 데이터를 수집 중입니다.</span>'; return; }
   el.innerHTML=`
     <div style="display:grid;gap:14px;">
-      <div style="background:rgba(28,61,107,.06);border-radius:10px;padding:14px;">
+      <div style="background:rgba(28,61,107,.06);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">💪 강점 과목 / 특징</div>
         <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.strengths}</div>
       </div>
-      <div style="background:rgba(200,131,10,.07);border-radius:10px;padding:14px;">
+      <div style="background:rgba(200,131,10,.07);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:6px;">⚠️ 보완 필요 / 주의사항</div>
         <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.weaknesses}</div>
       </div>
-      <div style="background:rgba(46,158,91,.07);border-radius:10px;padding:14px;">
+      <div style="background:rgba(46,158,91,.07);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px;">🎯 입시 활용 전략</div>
         <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.admissions}</div>
       </div>
-      <div style="background:var(--section-alt);border-radius:10px;padding:14px;">
+      <div style="background:var(--section-alt);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;">👤 이런 학생에게 적합</div>
         <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.target}</div>
       </div>
@@ -2173,7 +2173,7 @@ function printCurrentTab(){
     <title>생각탐구 — ${titleMap[tabName]||tabName}</title>
     <style>
       body{font-family:'Noto Sans KR',sans-serif;background:#fff;color:#1A2333;margin:0;padding:16px;}
-      .chartcard{border:1px solid #B8C3D7;border-radius:10px;padding:20px;margin-bottom:16px;break-inside:avoid;}
+      .chartcard{border:1px solid #B8C3D7;border-radius:0;padding:20px;margin-bottom:16px;break-inside:avoid;}
       h2{font-size:18px;font-weight:700;color:#1B3B86;margin-bottom:12px;}
       h3{font-size:16px;font-weight:700;color:#1B3B86;}
       table{width:100%;border-collapse:collapse;font-size:14px;}
@@ -2354,7 +2354,7 @@ function renderCalOverview(){
   }).join('');
 
   cont.innerHTML = `<div class="cal-overview-grid">${cards}</div>
-    <div style="margin-top:24px;padding:14px 18px;background:linear-gradient(135deg,rgba(28,61,107,.07),rgba(200,131,10,.07));border-radius:10px;border:1px solid var(--line);">
+    <div style="margin-top:24px;padding:14px 18px;background:linear-gradient(135deg,rgba(28,61,107,.07),rgba(200,131,10,.07));border-radius:0;border:1px solid var(--line);">
       <p style="font-size:14px;color:var(--txt);line-height:1.8;margin:0;">
         <b>지금 입시는 고1 입학과 동시에 시작</b>입니다.<br>
         학교 선택부터 선택과목, 진로 설계, 수시, 정시까지 전문가의 도움이 필요한 경우
@@ -3925,7 +3925,7 @@ SCHOOLS.forEach(s=>{
   card.innerHTML=`
     <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px;">
       <h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:0;">${s}</h3>
-      <button class="detail-btn" data-school="${s}" style="flex-shrink:0;width:auto;padding:4px 10px;font-size:12px;border-radius:7px;">상세 <span class="lockmini">🔒</span></button>
+      <button class="detail-btn" data-school="${s}" style="flex-shrink:0;width:auto;padding:4px 10px;font-size:12px;border-radius:0;">상세 <span class="lockmini">🔒</span></button>
     </div>
     <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px;">
       ${bk?`<span class="badge-key bk-${bk.cls}">${bk.label}</span>`:''}
@@ -4793,8 +4793,8 @@ window.runCompareAnalysis=function(){
     if(val==null)return '<span style="color:var(--muted);font-size:14px;">—</span>';
     const w=Math.min(val,100);
     return `<div style="display:flex;align-items:center;gap:5px;">
-      <div style="flex:1;height:5px;background:#B8C3D7;border-radius:3px;min-width:40px;">
-        <div style="width:${w}%;height:100%;background:${col};border-radius:3px;"></div>
+      <div style="flex:1;height:5px;background:#B8C3D7;border-radius:0;min-width:40px;">
+        <div style="width:${w}%;height:100%;background:${col};border-radius:0;"></div>
       </div>
       <span style="font-size:14px;font-weight:${win?700:400};color:${win?col:'var(--muted)'};">${val}%</span>
     </div>`;
@@ -4882,7 +4882,7 @@ window.runCompareAnalysis=function(){
 
     <div class="cmp-consultant">
       <div style="font-size:20px;font-weight:800;margin-bottom:16px;letter-spacing:-.3px;"><span class="lbl-ico">🎓</span> 생각탐구 컨설턴트 총평<br><span style="font-size:16px;font-weight:700;color:#C8830A;margin-top:4px;display:inline-block;">${sA} vs ${sB}</span></div>
-      <div style="padding:16px;background:rgba(255,255,255,.07);border-radius:10px;margin-bottom:14px;">
+      <div style="padding:16px;background:rgba(255,255,255,.07);border-radius:0;margin-bottom:14px;">
         ${generateConsultantSynthesis(sA,sB)}
       </div>
       <div style="padding-top:14px;border-top:1px solid rgba(255,255,255,.2);font-size:14px;line-height:1.85;opacity:.9;">
@@ -5000,8 +5000,8 @@ function igBars(rows,opt={}){
       const c=r.color||IG_PALETTE[i%IG_PALETTE.length];
       return `<div style="display:flex;align-items:center;gap:8px;">
         <div style="flex:0 0 ${opt.labelW||72}px;font-size:14px;font-weight:700;color:var(--txt);text-align:right;">${r.label}</div>
-        <div style="flex:1;min-width:0;background:#EEF2F7;border-radius:5px;height:20px;position:relative;overflow:hidden;">
-          <div style="width:${pct.toFixed(1)}%;height:100%;background:${c};border-radius:5px;"></div>
+        <div style="flex:1;min-width:0;background:#EEF2F7;border-radius:0;height:20px;position:relative;overflow:hidden;">
+          <div style="width:${pct.toFixed(1)}%;height:100%;background:${c};border-radius:0;"></div>
         </div>
         <div style="flex:0 0 auto;font-size:14px;font-weight:800;color:${c};min-width:52px;">${v.toLocaleString()}${unit}${r.note?`<span style="font-weight:500;color:var(--muted);font-size:12px;"> ${r.note}</span>`:''}</div>
       </div>`;
@@ -5014,7 +5014,7 @@ function igStack(segs,opt={}){
   const total=opt.total!=null?opt.total:segs.reduce((a,b)=>a+(Number(b.value)||0),0);
   if(!total) return '';
   return `<div style="margin-top:8px;">
-    <div style="display:flex;height:26px;border-radius:6px;overflow:hidden;border:1px solid var(--line);">
+    <div style="display:flex;height:26px;border-radius:0;overflow:hidden;border:1px solid var(--line);">
       ${segs.map((s,i)=>{
         const v=Number(s.value)||0, pct=v/total*100;
         if(pct<=0) return '';
@@ -5027,7 +5027,7 @@ function igStack(segs,opt={}){
         const v=Number(s.value)||0; if(v<=0) return '';
         const c=s.color||IG_PALETTE[i%IG_PALETTE.length];
         return `<div style="display:flex;align-items:center;gap:5px;font-size:14px;">
-          <span style="width:10px;height:10px;border-radius:2px;background:${c};display:inline-block;"></span>
+          <span style="width:10px;height:10px;border-radius:0;background:${c};display:inline-block;"></span>
           <span style="color:var(--txt);font-weight:600;">${s.label}</span>
           <span style="color:${c};font-weight:800;">${v.toLocaleString()}명</span>
           <span style="color:var(--muted);">(${(v/total*100).toFixed(1)}%)</span>
@@ -5086,7 +5086,7 @@ function igTrend(series,opt={}){
         const arrow=diff==null?'':diff>0?`▲ ${Math.abs(diff).toFixed(diff%1?1:0)}`:diff<0?`▼ ${Math.abs(diff).toFixed(diff%1?1:0)}`:'—';
         const ac=diff>0?'#D14343':diff<0?'#2E9E5B':'var(--muted)';
         return `<div style="display:flex;align-items:center;gap:5px;font-size:14px;">
-          <span style="width:14px;height:3px;background:${s.color};display:inline-block;border-radius:2px;"></span>
+          <span style="width:14px;height:3px;background:${s.color};display:inline-block;border-radius:0;"></span>
           <span style="font-weight:700;color:var(--txt);">${s.name}</span>
           ${last?`<span style="font-weight:800;color:${s.color};">${Number(last.y).toLocaleString()}${unit}</span>`:''}
           ${arrow?`<span style="color:${ac};font-weight:700;font-size:12px;">${arrow}</span>`:''}
@@ -5115,7 +5115,7 @@ function igTable(head,rows,opt={}){
 /* 핵심 수치 카드 — items:[{label, value, unit, sub, color}] */
 function igStats(items){
   return `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:8px;">
-    ${items.map(it=>`<div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;">
+    ${items.map(it=>`<div style="background:#fff;border:1px solid var(--line);border-radius:0;padding:10px 12px;">
       <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:3px;">${it.label}</div>
       <div style="font-size:19px;font-weight:800;color:${it.color||'var(--navy)'};line-height:1.2;">${it.value}<span style="font-size:14px;font-weight:600;"> ${it.unit||''}</span></div>
       ${it.sub?`<div style="font-size:12px;color:var(--muted);margin-top:2px;">${it.sub}</div>`:''}
@@ -5131,7 +5131,7 @@ function igTimeline(events){
   /* 학기 단위 고정 6칸 그리드 — 가로 스크롤 없이 화면 폭에 맞춰 축소. 일정 없는 달도 빈 칸으로 유지 */
   const SEMS=[{label:'1학기 (3~8월)',months:[3,4,5,6,7,8]},{label:'2학기 (9월~2월)',months:[9,10,11,12,1,2]}];
   const monthCol=m=>`
-    <div style="min-width:0;background:#F9FAFC;border:1px solid var(--line);border-radius:8px;padding:6px 4px;">
+    <div style="min-width:0;background:#F9FAFC;border:1px solid var(--line);border-radius:0;padding:6px 4px;">
       <div style="font-size:12px;font-weight:800;color:var(--navy);margin-bottom:4px;text-align:center;border-bottom:1px solid var(--line);padding-bottom:3px;">${m}월</div>
       ${(byM[m]||[]).map(e=>`<div style="font-size:12px;line-height:1.4;margin-bottom:4px;padding-left:4px;border-left:3px solid ${TAGC[e.tag]||'#94A3B8'};color:var(--txt);word-break:keep-all;overflow-wrap:anywhere;">
         <span style="font-weight:700;">${e.name}</span>${e.d?`<br><span style="color:var(--muted);font-size:12px;">${e.d}</span>`:''}
@@ -5147,7 +5147,7 @@ function igTimeline(events){
   return SEMS.map(semBlock).join('')
   +`<div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:10px;">
     ${Object.entries(TAGC).filter(([t])=>events.some(e=>e.tag===t)).map(([t,c])=>
-      `<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px;"><span style="width:3px;height:11px;background:${c};display:inline-block;border-radius:2px;"></span>${t}</span>`).join('')}
+      `<span style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px;"><span style="width:3px;height:11px;background:${c};display:inline-block;border-radius:0;"></span>${t}</span>`).join('')}
   </div>`;
 }
 
@@ -5164,10 +5164,10 @@ function renderProgramCards(s,det){
   if(p&&p.special&&p.special.length){
     out.push(card('특색사업·프로그램',
       `<div style="display:grid;gap:8px;margin-top:8px;">
-        ${p.special.map(x=>`<div style="background:#fff;border:1px solid var(--line);border-left:4px solid #C8830A;border-radius:8px;padding:10px 12px;">
+        ${p.special.map(x=>`<div style="background:#fff;border:1px solid var(--line);border-left:4px solid #C8830A;border-radius:0;padding:10px 12px;">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:7px;margin-bottom:4px;">
             <span style="font-size:16px;font-weight:800;color:var(--navy);">${x.name}</span>
-            ${x.when?`<span style="font-size:12px;font-weight:700;color:#C8830A;background:#FFFBEB;border-radius:20px;padding:2px 8px;">${x.when}</span>`:''}
+            ${x.when?`<span style="font-size:12px;font-weight:700;color:#C8830A;background:#FFFBEB;border-radius:0;padding:2px 8px;">${x.when}</span>`:''}
             ${x.who?`<span style="font-size:12px;color:var(--muted);">${x.who}</span>`:''}
           </div>
           ${x.desc?`<div style="font-size:16px;line-height:1.75;color:var(--txt);">${x.desc}</div>`:''}
@@ -6327,7 +6327,7 @@ window.renderUniCheck=function(changed){
     if(!parsed.raw) return '';
     const head=`<div style="font-size:16px;font-weight:800;color:${strong?'#B45309':'#0369A1'};margin-bottom:4px;">${title}`;
     if(!parsed.list.length&&!parsed.groups.length) return `<div style="margin-top:10px;">${head}</div>
-      <div style="font-size:14px;line-height:1.8;color:var(--txt);background:#F9FAFC;border:1px solid var(--line);border-radius:8px;padding:9px 11px;">${parsed.raw}</div></div>`;
+      <div style="font-size:14px;line-height:1.8;color:var(--txt);background:#F9FAFC;border:1px solid var(--line);border-radius:0;padding:9px 11px;">${parsed.raw}</div></div>`;
     const miss=parsed.list.filter(s=>!set.has(normSubj(s)));
     const gRows=parsed.groups.map(g=>{
       const got=groupOk(g);
@@ -6352,14 +6352,14 @@ window.renderUniCheck=function(changed){
 
   let verdict;
   if(!hasAny){
-    verdict=`<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:9px;padding:11px 13px;font-size:16px;line-height:1.8;">
+    verdict=`<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;">
       이 모집단위는 특정 과목을 지정하지 않고 <b>진로·적성에 따른 선택</b>을 권장합니다. 지망 전공과 연결되는 과목을 스스로 골라 깊이 있게 이수하는 것이 중요합니다.</div>`;
   } else if(!missing.length&&!groupMissing.length){
-    verdict=`<div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:9px;padding:11px 13px;font-size:16px;line-height:1.8;">
+    verdict=`<div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;">
       <b>${school}</b>에서 이 모집단위가 요구하는 과목을 <b>모두 이수할 수 있습니다.</b> 공동교육과정 없이 학교 정규 교육과정만으로 충족됩니다.</div>`;
   } else {
     const joint=missing.filter(s=>JOINT_ONLY_SUBJECTS.some(j=>normSubj(j)===normSubj(s)));
-    verdict=`<div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:9px;padding:11px 13px;font-size:16px;line-height:1.8;">
+    verdict=`<div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;">
       <b>${school}</b>에 <b>${missing.join(' · ')}</b>${coreMissing.length?` (이 중 <b style="color:#991B1B;">${coreMissing.join(' · ')}</b>은 핵심과목)`:''}이 개설되어 있지 않습니다.<br>
       <b style="color:#B45309;">→ 공동교육과정으로 이수할 수 있는지 확인하세요.</b> 거점학교·서울온라인학교 강좌를 학기당 2과목까지 신청할 수 있고, <b>석차등급이 산출되지 않아 내신 부담 없이</b> 들을 수 있습니다. 신청 전 담임·교육과정 담당 교사와 상담이 필요합니다.
       ${joint.length?`<br><span style="font-size:14px;">※ ${joint.join(' · ')}은 일반고 정규 편제에 없는 전문교과라 공동교육과정에서만 열립니다.</span>`:''}
@@ -6402,10 +6402,10 @@ window.renderTrackCheck=function(){
   });
 
   const verdict=!track.req.length
-    ? `<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:9px;padding:11px 13px;font-size:16px;line-height:1.8;color:var(--txt);">
+    ? `<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;color:var(--txt);">
          서울대는 이 계열에 <b>별도 권장과목을 제시하지 않습니다.</b> 진로와 적성에 따라 과목을 선택하고 적극적으로 이수하는 것을 권장합니다.
        </div>`
-    : `<div style="background:${allOk?'#F0FDF4':'#FEF2F2'};border:1.5px solid ${allOk?'#86EFAC':'#FCA5A5'};border-radius:9px;padding:11px 13px;font-size:16px;line-height:1.8;color:var(--txt);">
+    : `<div style="background:${allOk?'#F0FDF4':'#FEF2F2'};border:1.5px solid ${allOk?'#86EFAC':'#FCA5A5'};border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;color:var(--txt);">
          ${allOk
            ? `<b>${school}</b>에서 서울대 ${track.type} 권장과목을 <b>모두 이수할 수 있습니다.</b> 공동교육과정 없이 학교 정규 교육과정만으로 충족됩니다.`
            : `<b>${school}</b>에는 위 권장과목 중 개설되지 않은 것이 있습니다. 공동교육과정(거점학교·온라인학교)으로 보완할 수 있는지 담임·교육과정 담당 교사와 상담하세요.`}
@@ -6432,7 +6432,7 @@ window.renderTrackCheck=function(){
   }
 
   const missing=JOINT_ONLY_SUBJECTS.filter(s=>!hasSubj(s));
-  const deeper=`<div style="margin-top:12px;padding:11px 13px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;">
+  const deeper=`<div style="margin-top:12px;padding:11px 13px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
       <div style="font-size:16px;font-weight:800;color:#B45309;margin-bottom:5px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
       <div style="font-size:14px;line-height:1.8;color:var(--txt);">
         아래 과목은 <b>${school}을 포함한 관악구 11개교 어디에도 정규 편제로 개설되지 않습니다.</b> 일반고에서 개설하기 어려운 전문교과이기 때문이며, <b>공동교육과정(거점학교·서울온라인학교)에서만</b> 이수할 수 있습니다.
@@ -6483,7 +6483,7 @@ function renderJoint(){
       <b>동작관악 권역 공유캠퍼스</b>는 3개 강좌 모두 <b>정규 일과시간 내</b> 운영이라 학기당 2과목 제한에 포함되지 않습니다.
     </div>`
     +igTable(['개설 학교','과목','위치'],JOINT_LOCAL.map(x=>[`<b>${x.school}</b>`,x.subject,x.area]),{align:['center','left','left']})
-    +`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;padding:9px 11px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;">
+    +`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;padding:9px 11px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
       관악구 안에 있는 <b>거점학교는 삼성고 1곳</b>뿐이며 예술 영역(방송 일반, 연극과 삶)만 운영합니다. 아래 고급·전문 과목은 대부분 <b>타 지역 거점학교나 서울온라인학교</b>에서 들어야 합니다. 온라인학교는 실시간 쌍방향이라 이동 부담이 없습니다.
     </div>`;
 
@@ -6504,7 +6504,7 @@ function renderJoint(){
     {n:'5',t:'수강 및 이수',d:'출석 2/3 이상 + 학업성취율 40% 이상을 모두 충족해야 이수. 취소 기간 이후에는 중도 포기 불가(고1·고2).'}
   ];
   const apply=`<div style="display:grid;gap:8px;margin-top:8px;">
-      ${steps.map(s=>`<div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px;">
+      ${steps.map(s=>`<div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:0;padding:10px 12px;">
         <div style="flex:0 0 26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;">${s.n}</div>
         <div style="min-width:0;">
           <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px;">${s.t}</div>
@@ -6522,7 +6522,7 @@ function renderJoint(){
     </div>`;
 
   /* ⑤ 평가·이수 — 핵심 */
-  const evalBody=`<div style="background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:10px;padding:12px 14px;margin-top:8px;">
+  const evalBody=`<div style="background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:0;padding:12px 14px;margin-top:8px;">
       <div style="font-size:16px;font-weight:800;color:#9A3412;margin-bottom:6px;">가장 중요한 사실 — 석차등급이 산출되지 않습니다</div>
       <div style="font-size:16px;line-height:1.8;color:var(--txt);">
         공동교육과정·온라인학교 개설 과목은 여러 학교 학생이 함께 듣는 특성상 <b>상대평가 석차등급을 매기지 않습니다.</b>
@@ -6547,7 +6547,7 @@ function renderJoint(){
 
   /* ⑥ Q&A */
   const qa=`<div style="display:grid;gap:8px;margin-top:8px;">
-      ${JOINT_QA.map((x,i)=>`<details style="background:#fff;border:1px solid var(--line);border-radius:9px;padding:0;overflow:hidden;">
+      ${JOINT_QA.map((x,i)=>`<details style="background:#fff;border:1px solid var(--line);border-radius:0;padding:0;overflow:hidden;">
         <summary style="cursor:pointer;padding:11px 13px;font-size:16px;font-weight:700;color:var(--navy);list-style:none;display:flex;gap:8px;align-items:flex-start;">
           <span style="color:var(--amber);font-weight:800;flex:0 0 auto;">Q${i+1}.</span><span>${x.q}</span>
         </summary>
@@ -6567,7 +6567,7 @@ function renderJoint(){
         ['2026학년도 2학기 거점학교 학생 모집 요강 (PDF, 58p)','https://seoulonline.sen.hs.kr/dggb/board/boardFile/downFile.do?atchFileId=FILE_000000012328622&fileSn=1'],
         ['2026학년도 학점이수 인정기준 및 최소 성취수준 보장지도 지원자료','https://seoulhsc.sen.go.kr/fus/MI000000000000000167/board/BO00000064/list0011v.do'],
         ['서울온라인학교','https://seoulonline.sen.hs.kr/']
-      ].map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:10px 12px;font-size:16px;font-weight:600;color:#0369A1;text-decoration:none;">
+      ].map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:0;padding:10px 12px;font-size:16px;font-weight:600;color:#0369A1;text-decoration:none;">
         <span style="flex:0 0 auto;">📄</span><span style="min-width:0;word-break:keep-all;">${t}</span><span style="margin-left:auto;flex:0 0 auto;color:var(--muted);font-size:12px;">↗</span>
       </a>`).join('')}
     </div>
@@ -6579,12 +6579,12 @@ function renderJoint(){
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;">
       <span style="font-size:16px;font-weight:800;color:var(--muted);">학교</span>
-      <select id="trackSchool" onchange="renderTrackCheck()" style="padding:7px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
+      <select id="trackSchool" onchange="renderTrackCheck()" style="padding:7px 12px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
         ${SCHOOLS.map(s=>`<option value="${s}">${s}</option>`).join('')}
       </select>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;" id="trackSel" data-sel="t2">
-      ${SNU_TRACKS.map(t=>`<button onclick="selectTrack('${t.id}',this)" style="padding:8px 13px;border-radius:8px;border:1.5px solid ${t.id==='t2'?'var(--navy)':'var(--line)'};background:${t.id==='t2'?'var(--navy)':'var(--card)'};color:${t.id==='t2'?'#fff':'var(--txt)'};font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">${t.name}</button>`).join('')}
+      ${SNU_TRACKS.map(t=>`<button onclick="selectTrack('${t.id}',this)" style="padding:8px 13px;border-radius:0;border:1.5px solid ${t.id==='t2'?'var(--navy)':'var(--line)'};background:${t.id==='t2'?'var(--navy)':'var(--card)'};color:${t.id==='t2'?'#fff':'var(--txt)'};font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">${t.name}</button>`).join('')}
     </div>
     <div id="trackResult"></div>`;
 
@@ -6598,24 +6598,24 @@ function renderJoint(){
       <input type="text" id="deptSearchInput" placeholder="🔍 학과명으로 바로 검색 (예: 컴퓨터공학과)" autocomplete="off"
         oninput="searchUniDept(this.value)"
         onblur="setTimeout(()=>{const b=document.getElementById('deptSearchResults');if(b)b.style.display='none';},150)"
-        style="width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-family:inherit;box-sizing:border-box;">
-      <div id="deptSearchResults" style="display:none;position:absolute;top:100%;left:0;right:0;z-index:20;background:var(--card);border:1.5px solid var(--line);border-radius:8px;margin-top:4px;max-height:260px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.12);"></div>
+        style="width:100%;padding:9px 12px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-family:inherit;box-sizing:border-box;">
+      <div id="deptSearchResults" style="display:none;position:absolute;top:100%;left:0;right:0;z-index:20;background:var(--card);border:1.5px solid var(--line);border-radius:0;margin-top:4px;max-height:260px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.12);"></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:12px;">
       <div><div style="font-size:12px;font-weight:800;color:var(--muted);margin-bottom:3px;">지원 대학</div>
-        <select id="uniSel" onchange="renderUniCheck('uni')" style="width:100%;padding:7px 10px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
+        <select id="uniSel" onchange="renderUniCheck('uni')" style="width:100%;padding:7px 10px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
           ${uniNames.map(u=>`<option value="${u}">${u}</option>`).join('')}
         </select></div>
       <div><div style="font-size:12px;font-weight:800;color:var(--muted);margin-bottom:3px;">계열</div>
-        <select id="uniFac" onchange="renderUniCheck('fac')" style="width:100%;padding:7px 10px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
+        <select id="uniFac" onchange="renderUniCheck('fac')" style="width:100%;padding:7px 10px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
           ${Object.keys(UNI2028[uniNames[0]]).map(f=>`<option value="${f}">${FAC_LABEL[f]||f}</option>`).join('')}
         </select></div>
       <div><div style="font-size:12px;font-weight:800;color:var(--muted);margin-bottom:3px;">학과 · 모집단위</div>
-        <select id="uniDept" onchange="renderUniCheck('dept')" style="width:100%;padding:7px 10px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
+        <select id="uniDept" onchange="renderUniCheck('dept')" style="width:100%;padding:7px 10px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
           ${(UNI2028[uniNames[0]][firstFac]||[]).map((x,i)=>`<option value="${i}">${x.u}</option>`).join('')}
         </select></div>
       <div><div style="font-size:12px;font-weight:800;color:var(--muted);margin-bottom:3px;">재학 중인 학교</div>
-        <select id="uniSchool" onchange="renderUniCheck('school')" style="width:100%;padding:7px 10px;border-radius:8px;border:1.5px solid var(--navy);background:var(--card);color:var(--txt);font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;">
+        <select id="uniSchool" onchange="renderUniCheck('school')" style="width:100%;padding:7px 10px;border-radius:0;border:1.5px solid var(--navy);background:var(--card);color:var(--txt);font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;">
           ${SCHOOLS.map(s=>`<option value="${s}">${s}</option>`).join('')}
         </select></div>
     </div>
@@ -6781,7 +6781,7 @@ function renderElectives(det){
     });
     gradeTable=`<div style="margin-top:12px;">
       <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">${e.terms?'학년·학기별':'학년별'} 선택과목 편제표</div>
-      ${e.fixed?`<div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:6px;padding:8px 10px;background:#F9F7F4;border-radius:8px;"><b>학교지정(선택 아님)</b> — ${e.fixed}</div>`:''}
+      ${e.fixed?`<div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:6px;padding:8px 10px;background:#F9F7F4;border-radius:0;"><b>학교지정(선택 아님)</b> — ${e.fixed}</div>`:''}
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead><tr style="background:var(--navy);color:#fff;">
@@ -6791,7 +6791,7 @@ function renderElectives(det){
         </table>
       </div>
       ${e.unassigned&&e.unassigned.list&&e.unassigned.list.length?`
-        <div style="margin-top:10px;padding:10px 12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;">
+        <div style="margin-top:10px;padding:10px 12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
           <div style="font-size:14px;font-weight:800;color:#B45309;margin-bottom:5px;">${e.unassigned.label||'학년 배치 미확인 과목'} <span style="font-weight:500;color:var(--muted);">(${e.unassigned.list.length}과목)</span></div>
           <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:6px;">${e.unassigned.note||'편제표에 학년별 배당이 표기되지 않아 개설 여부만 확인된 과목입니다.'}</div>
           ${pills(e.unassigned.list)}
@@ -6802,7 +6802,7 @@ function renderElectives(det){
   return `<div class="rep-card">
     <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항 (2022 개정 교육과정)</div>
     <div class="rep-val" style="margin-bottom:2px;">${e.note||''}</div>
-    ${e.feature?`<div style="font-size:16px;line-height:1.8;color:var(--txt);background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:10px 12px;margin:8px 0 2px;">${e.feature}</div>`:''}
+    ${e.feature?`<div style="font-size:16px;line-height:1.8;color:var(--txt);background:#F0F9FF;border:1px solid #BAE6FD;border-radius:0;padding:10px 12px;margin:8px 0 2px;">${e.feature}</div>`:''}
     ${grp('1학년 공통과목 (전원 이수)','공통' in e?e['공통']:null,'#1B3B86')}
     ${grp('1학년 학교지정 선택',e.g1sel,'#1B3B86')}
     ${gradeTable}
@@ -6843,11 +6843,11 @@ function openModal(s){
   /* ── ③ 분석 리포트 ── */
   const rep=SCHOOL_REPORTS[s];
   document.getElementById('mReport').innerHTML=`
-    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px;">
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:0;padding:20px;display:grid;gap:14px;">
       <div><div style="font-size:16px;font-weight:800;color:var(--amber);letter-spacing:.3px;margin-bottom:5px;">강점 교과·환경</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);">${rep.strengths}</p></div>
       <div><div style="font-size:16px;font-weight:800;color:#D14343;letter-spacing:.3px;margin-bottom:5px;">약점·주의 사항</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);">${rep.weaknesses}</p></div>
       <div><div style="font-size:16px;font-weight:800;color:#2E9E5B;letter-spacing:.3px;margin-bottom:5px;">진학 특성</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);">${rep.admissions}</p></div>
-      <div style="background:rgba(28,61,107,.07);border-radius:8px;padding:12px 14px;"><div style="font-size:16px;font-weight:800;color:var(--navy);letter-spacing:.3px;margin-bottom:5px;">추천 학생 유형</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);font-weight:500;">${rep.target}</p></div>
+      <div style="background:rgba(28,61,107,.07);border-radius:0;padding:12px 14px;"><div style="font-size:16px;font-weight:800;color:var(--navy);letter-spacing:.3px;margin-bottom:5px;">추천 학생 유형</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);font-weight:500;">${rep.target}</p></div>
     </div>`;
 
   /* ── ④ TIP ── */
@@ -6862,7 +6862,7 @@ function openModal(s){
   /* ── ⑤ 도서 ── */
   const books=SCHOOL_BOOKS[s];
   document.getElementById('mBooks').innerHTML=`
-    <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:14px;">
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:0;padding:16px;display:grid;gap:14px;">
       ${books.map((b,i)=>`
         <div style="display:flex;gap:12px;align-items:flex-start;">
           <div style="flex-shrink:0;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;">${i+1}</div>
@@ -6916,11 +6916,11 @@ function openModal(s){
       <div class="gb-tip-title"><span class="lbl-ico">🎓</span> 생기부 관리 포인트</div>
       <div style="font-size:16px;color:var(--txt);line-height:1.8;margin-bottom:10px;">이 학교의 특색사업과 동아리를 <strong>생활기록부 활동 소재</strong>로 활용할 수 있습니다. 수시 학종에서 교내 활동의 일관성·깊이가 핵심 평가 요소입니다.</div>
       <div class="gb-act-grid">
-        <div style="background:#fff;border-radius:10px;padding:12px;border:1px solid #BAE6FD;">
+        <div style="background:#fff;border-radius:0;padding:12px;border:1px solid #BAE6FD;">
           <div style="font-weight:700;color:#0369A1;font-size:16px;margin-bottom:8px;">학교 제공 특색프로그램</div>
           ${specials.length?specials.map(a=>`<div style="font-size:16px;margin:4px 0;">• ${a}</div>`).join(''):'<div style="font-size:16px;color:var(--muted);">자료 수집 후 표시됩니다</div>'}
         </div>
-        <div style="background:#fff;border-radius:10px;padding:12px;border:1px solid #BAE6FD;">
+        <div style="background:#fff;border-radius:0;padding:12px;border:1px solid #BAE6FD;">
           <div style="font-weight:700;color:#0369A1;font-size:16px;margin-bottom:8px;">동아리 활동 연계</div>
           ${clubs.length?clubs.map(c=>`<div style="font-size:16px;margin:4px 0;">• ${c}</div>`).join(''):'<div style="font-size:16px;color:var(--muted);">자료 수집 후 표시됩니다</div>'}
         </div>
@@ -6962,7 +6962,7 @@ function openModal(s){
   ];
   document.getElementById('mFuture').innerHTML=`
     <div style="display:grid;gap:14px;">
-      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px;">
+      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:0;padding:16px;">
         <div class="rep-lbl" style="color:#1B3B86;margin-bottom:10px;"><span class="lbl-ico">🎓</span> 학년별 적용 입시제도 한눈에 보기</div>
         <div style="overflow-x:auto;">
           <table style="width:100%;border-collapse:collapse;font-size:16px;">
@@ -6982,14 +6982,14 @@ function openModal(s){
       ${cohorts.map(c=>`
         <div class="rep-card" style="background:${c.bg};border-color:${c.bd};">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-            <span style="background:${c.color};color:#fff;font-size:14px;font-weight:800;padding:3px 10px;border-radius:20px;">${c.grade}</span>
+            <span style="background:${c.color};color:#fff;font-size:14px;font-weight:800;padding:3px 10px;border-radius:0;">${c.grade}</span>
             <span style="font-size:14px;color:var(--muted);">${c.enter}</span>
             <span class="dir-yr" style="margin:0;color:${c.color};">${c.apply}</span>
           </div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;padding:8px 10px;background:rgba(255,255,255,.7);border-radius:8px;margin-bottom:10px;">${c.regime}</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;padding:8px 10px;background:rgba(255,255,255,.7);border-radius:0;margin-bottom:10px;">${c.regime}</div>
           <div class="dir-txt">${c.txt||'분석 예정'}</div>
         </div>`).join('')}
-      <div style="background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:12px;padding:16px;">
+      <div style="background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:0;padding:16px;">
         <div style="font-size:16px;font-weight:800;margin-bottom:8px;"><span class="lbl-ico">🎓</span> ${s} 맞춤 핵심 전략</div>
         <div style="font-size:16px;line-height:1.8;">${COMMENTS[s]||''}</div>
       </div>
@@ -7086,7 +7086,7 @@ function buildGBSection(){
   SCHOOLS.forEach((s,idx)=>{
     const btn=document.createElement('button');
     btn.textContent=s;
-    btn.style.cssText=`background:${idx===0?'var(--navy)':'var(--card)'};color:${idx===0?'#fff':'var(--muted)'};border:1px solid ${idx===0?'var(--navy)':'var(--line)'};padding:8px 16px;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;`;
+    btn.style.cssText=`background:${idx===0?'var(--navy)':'var(--card)'};color:${idx===0?'#fff':'var(--muted)'};border:1px solid ${idx===0?'var(--navy)':'var(--line)'};padding:8px 16px;border-radius:0;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;`;
     btn.addEventListener('click',()=>{
       tabs.querySelectorAll('button').forEach(b=>{b.style.background='var(--card)';b.style.color='var(--muted)';b.style.borderColor='var(--line)';});
       btn.style.background='var(--navy)';btn.style.color='#fff';btn.style.borderColor='var(--navy)';
@@ -7102,7 +7102,7 @@ function renderGB(s){
   const g=SCHOOL_GB[s];
   if(!g){content.innerHTML=`<p style="color:var(--muted);text-align:center;padding:24px;">준비 중입니다.</p>`;return;}
   const col=SCHOOL_COLORS[s];
-  const secStyle=`background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px;`;
+  const secStyle=`background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden;margin-bottom:14px;`;
   const hdStyle=`background:${col};color:#fff;padding:12px 18px;font-size:16px;font-weight:700;`;
   const bdStyle=`padding:16px 18px;font-size:16px;line-height:1.8;color:var(--txt);`;
   content.innerHTML=`
@@ -7121,7 +7121,7 @@ function buildReviews(){
   if(!grid) return;
   grid.innerHTML=REVIEWS.map(r=>{
     const col=SCHOOL_COLORS[r.school]||'var(--navy)';
-    return `<div style="background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:20px;">
+    return `<div style="background:var(--bg);border:1px solid var(--line);border-radius:0;padding:20px;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
         <span style="background:${col};color:#fff;font-size:14px;font-weight:700;padding:3px 10px;border-radius:999px;">${r.school}</span>
         <span style="font-size:14px;color:var(--muted);">${r.grade}</span>
@@ -7137,7 +7137,7 @@ function buildChecklists(){
   const grid=document.getElementById('checklistGrid');
   if(!grid) return;
   grid.innerHTML=CHECKLISTS.map(cl=>`
-    <div style="background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden;">
       <div style="background:${cl.color};color:#fff;padding:14px 18px;font-size:16px;font-weight:700;">${cl.grade}</div>
       <div style="padding:18px;">
         ${cl.items.map(item=>`<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:16px;line-height:1.7;">
@@ -7203,7 +7203,7 @@ function renderGradeHeat(grade,year){
 
   if(!gd||!gd.data){
     tbl.innerHTML='';
-    noData.innerHTML=`<div style="text-align:center;padding:40px 20px;background:#F9F7F4;border-radius:12px;border:2px dashed var(--line);">
+    noData.innerHTML=`<div style="text-align:center;padding:40px 20px;background:#F9F7F4;border-radius:0;border:2px dashed var(--line);">
       <div style="font-size:32px;margin-bottom:10px;">📋</div>
       <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;">${grade}학년 자료 수집 중</div>
       <div style="font-size:14px;color:var(--muted);line-height:1.7;">현재 2024·2025학년도 자료를 수집하고 있습니다.<br>수집 완료 후 학교별 과목 비교 분석이 자동으로 표시됩니다.</div>
@@ -7798,9 +7798,9 @@ function buildRWGrid(){
     const st = RW_STATUS[s] || 'none';
     const plan = (SCHOOL_DETAIL[s] && SCHOOL_DETAIL[s].evalPlan) || '수행평가 데이터 수집 예정';
     const badge = `<span style="display:inline-block;font-size:14px;font-weight:600;
-      padding:3px 9px;border-radius:20px;
+      padding:3px 9px;border-radius:0;
       background:${statusBg[st]};color:${statusCol[st]};">${statusLabel[st]}</span>`;
-    return `<div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;
+    return `<div style="background:#fff;border:1.5px solid var(--line);border-radius:0;
         padding:16px 18px;display:flex;flex-direction:column;gap:10px;
         box-shadow:0 2px 8px rgba(28,61,107,.04);">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
@@ -7811,7 +7811,7 @@ function buildRWGrid(){
       <div>
         <button onclick="openModal('${s}')"
           style="width:100%;padding:8px 0;background:var(--navy);color:#fff;border:none;
-            border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;
+            border-radius:0;font-size:14px;font-weight:600;cursor:pointer;
             transition:opacity .15s;" onmouseover="this.style.opacity='.85'"
             onmouseout="this.style.opacity='1'">자세히 보기 →</button>
       </div>
