@@ -44,31 +44,23 @@
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
 
-  /* ---------- HEADER ---------- */
+  /* ---------- HEADER (서울대 소식 페이지 구조 참조: 흰 배경 + 굵은 네이비 이중선 + 텍스트 서브내비) ---------- */
   header.site{
-    position:sticky;top:0;z-index:100;background:#1B3B86;
-    border-bottom:1px solid rgba(255,255,255,.12);
+    position:sticky;top:0;z-index:100;background:#fff;
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;
-    height:54px;max-width:1180px;margin:0 auto;padding:0 20px;}
-  .header-slogan{
-    padding:4px 20px 9px;max-width:1180px;margin:0 auto;
-    font-size:16px;color:#F5B93E;font-weight:600;white-space:nowrap;
-  }
-  .slogan-eq,.slogan-result{
-    display:inline;font-size:16px;color:#F5B93E;font-weight:600;
-  }
-  .navlinks-row{display:flex;align-items:center;justify-content:center;gap:4px;
-    flex-wrap:wrap;padding:5px 16px 7px;
-    border-top:1px solid rgba(255,255,255,.12);}
-  .logo{line-height:var(--lh-tight);}
-  .logo .name{font-size:22px;font-weight:700;}
-  .logo .name .g{color:var(--navy);}
-  .logo .name .t{color:var(--amber);}
-  .logo .tag{font-size:14px;color:rgba(255,255,255,.75);font-weight:500;margin-top:1px;}
-  header.site .logo .name .g{color:#fff;}
-  header.site .logo img{height:58px;}
-  footer .logo img{height:40px;}
+  .nav{display:flex;align-items:center;gap:11px;
+    height:64px;max-width:1180px;margin:0 auto;padding:0 20px;}
+  .logo{line-height:var(--lh-tight);display:flex;align-items:baseline;gap:9px;}
+  .logo-name{font-family:'Noto Serif KR',serif;font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.3px;white-space:nowrap;}
+  .logo-sub{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap;}
+  .header-seal{height:36px;flex-shrink:0;}
+  .hamburger{margin-left:auto;}
+  .header-line-wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+  .header-line{height:0;border-top:3px solid var(--navy);}
+  .header-subnav{background:#fff;}
+  .header-subnav-inner{display:flex;align-items:center;justify-content:center;gap:2px;
+    max-width:1180px;margin:0 auto;padding:0 12px;
+    overflow-x:auto;white-space:nowrap;}
   /* 헤더 내비게이션 — PC·모바일 공통으로 햄버거 뒤에 숨김 (사용자 요청: PC도 모바일처럼 항상 햄버거) */
   /* 햄버거 메뉴 — 우측 슬라이드 패널 (서울대 시흥캠퍼스 스타일) */
   .navlinks{display:none;position:fixed;top:0;right:0;bottom:0;
@@ -108,8 +100,8 @@
   .logout-btn{background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:0;padding:8px 12px;font-size:14px;font-weight:500;cursor:pointer;transition:.15s;}
   .logout-btn:hover{background:rgba(220,60,60,.7);color:#fff;border-color:transparent;}
   .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;
-    background:none;border:none;padding:8px;}
-  .hamburger span{width:24px;height:2px;background:#fff;border-radius:0;}
+    background:none;border:none;padding:8px;flex-shrink:0;}
+  .hamburger span{width:22px;height:2px;background:var(--navy);border-radius:0;}
 
   /* ---------- HERO ---------- */
   .hero{text-align:center;padding:62px 0 48px;}
@@ -540,25 +532,15 @@
   .tab-panel{display:block;}
   .tab-panel[style*="display:none"]{display:none!important;}
 
-  /* ---------- 모바일 하단 탭바 ---------- */
-  .mobile-tabbar{
-    display:none;
-    position:fixed;bottom:0;left:0;right:0;
-    background:#1B3B86;
-    border-top:1px solid rgba(255,255,255,.15);
-    z-index:200;
-    padding-bottom:env(safe-area-inset-bottom);
-  }
-  .mobile-tabbar-inner{display:flex;justify-content:space-around;}
+  /* ---------- 헤더 서브내비 (구 모바일 하단 탭바 — 상단 텍스트 링크 행으로 이동) ---------- */
   .mob-tab{
-    flex:1 1 0;min-width:0;text-align:center;padding:8px 2px 6px;
-    background:none;border:none;cursor:pointer;
-    color:rgba(255,255,255,.6);font-size:12px;font-family:inherit;
-    display:flex;flex-direction:column;align-items:center;gap:2px;
-    transition:.15s;white-space:nowrap;overflow:hidden;
+    flex:0 0 auto;background:none;border:none;cursor:pointer;
+    color:var(--muted);font-size:15px;font-weight:600;font-family:inherit;
+    padding:14px 16px;border-bottom:2px solid transparent;
+    transition:.15s;white-space:nowrap;
   }
-  .mob-tab.active{color:#F5B93E;}
-  .mob-tab svg{width:20px;height:20px;}
+  .mob-tab:hover{color:var(--navy);}
+  .mob-tab.active{color:var(--navy);border-bottom-color:var(--navy);}
 
   /* ---------- 입시 달력 ---------- */
   .cal-grade-btn{
@@ -624,11 +606,9 @@
   @media (max-width:900px){ .cal-overview-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:600px){ .cal-overview-grid{grid-template-columns:1fr;} }
 
-  /* PC·모바일 공통: 상단 탭 버튼은 숨기고 하단 고정 탭바로 대체 */
-  .mobile-tabbar{display:block;}
-  body{padding-bottom:64px;}
+  /* PC·모바일 공통: 상단 탭 버튼은 숨기고 헤더 서브내비(.mob-tab)로 대체 */
   .nav-tab{display:none;}
-  /* 햄버거 메뉴 안에서는 탭 버튼도 "학교" 카테고리의 하위 링크로 표시 (하단 탭바는 그대로 유지) */
+  /* 햄버거 메뉴 안에서는 탭 버튼도 "학교" 카테고리의 하위 링크로 표시 (헤더 서브내비는 그대로 유지) */
   .nav-cat-links .nav-tab:not([data-tab="news"]):not([data-tab="class"]){display:inline-flex !important;}
 
   /* ---------- 인쇄 ---------- */
@@ -647,9 +627,6 @@
   .kakao-float-btn{width:56px;height:56px;border-radius:50%;background:#FEE500;color:#191919;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
   .kakao-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,0,0,.25);}
   .kakao-float-label{font-size:12px;font-weight:700;color:var(--navy);background:#fff;padding:2px 8px;border-radius:0;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;}
-  /* 하단 탭바에 가려지지 않도록 모바일에서 플로팅 버튼 위치 조정 */
-  /* 하단 탭바가 항상 표시되므로 플로팅 버튼 위치도 항상 위로 올림 */
-  .kakao-float{bottom:calc(96px + env(safe-area-inset-bottom));}
   /* 채널 가입 플로팅 버튼 */
   .channel-float-btn{width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 20px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;}
   .channel-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(28,61,107,.4);}
@@ -731,18 +708,27 @@
 <!-- ========== HEADER ========== -->
 <header class="site">
   <div class="nav">
-    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;">
-      <img src="logo.png" alt="생각탐구">
-      <div class="tag" style="font-size:16px;color:#fff;font-weight:600;white-space:nowrap;letter-spacing:-.2px;">관악구 입시 분석 플랫폼</div>
+    <img src="logo_grade_navy.png" alt="생각탐구" class="header-seal">
+    <a href="index.html" class="logo">
+      <span class="logo-name">생각탐구</span>
+      <span class="logo-sub">관악구 입시 분석 플랫폼</span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="메뉴">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="header-slogan">
-    <span class="slogan-eq">학교 이해 &nbsp;+&nbsp; 전략 설계 &nbsp;+&nbsp; 철저한 준비 &nbsp;=</span>
-    <span class="slogan-result">원하는 대학 진학!</span>
+  <div class="header-line-wrap"><div class="header-line"></div></div>
+  <div class="header-subnav">
+    <div class="header-subnav-inner">
+      <button class="mob-tab active" onclick="setTab('overview');setMobTab(this)">학교 한눈에</button>
+      <button class="mob-tab" onclick="setTab('compare');setMobTab(this)">학교 비교</button>
+      <button class="mob-tab" onclick="setTab('rw');setMobTab(this)">수행평가</button>
+      <button class="mob-tab" onclick="setTab('joint');setMobTab(this)">선택과목</button>
+      <button class="mob-tab" onclick="setTab('calendar');setMobTab(this)">입시 달력</button>
+      <button class="mob-tab" onclick="quickNav('reviews');setMobTab(this)">후기</button>
+    </div>
   </div>
+  <div class="header-line-wrap"><div class="header-line"></div></div>
   <nav class="navlinks" id="navlinks">
     <div class="navlinks-head">
       <img src="logo_grade_w.png" alt="생각탐구">
@@ -2020,40 +2006,6 @@
 </div>
 
 <div class="toast" id="toast"></div>
-
-<!-- ========== 모바일 하단 탭바 ========== -->
-<div class="mobile-tabbar">
-  <div class="mobile-tabbar-inner">
-    <button class="mob-tab active" onclick="setTab('overview');setMobTab(this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-      학교 한눈에
-    </button>
-    <button class="mob-tab" onclick="setTab('compare');setMobTab(this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h3M16 3h3a2 2 0 012 2v14a2 2 0 01-2 2h-3M12 3v18"/></svg>
-      비교 <span class="tab-lock">🔒</span>
-    </button>
-    <button class="mob-tab" onclick="setTab('rw');setMobTab(this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M13 4H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 4 13 9 18 9"/></svg>
-      수행평가 <span class="tab-lock">🔒</span>
-    </button>
-    <button class="mob-tab" onclick="setTab('joint');setMobTab(this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2 8l10 5 10-5z"/><path d="M2 13l10 5 10-5"/></svg>
-      선택과목
-    </button>
-    <button class="mob-tab" onclick="setTab('calendar');setMobTab(this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      달력 <span class="tab-lock">🔒</span>
-    </button>
-    <button class="mob-tab" onclick="quickNav('reviews');setMobTab(this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
-      후기
-    </button>
-    <button class="mob-tab" onclick="setTab('class');setMobTab(this)" style="display:none;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-      수업 ↗
-    </button>
-  </div>
-</div>
 
 <script>
 /* ===================== TAB NAVIGATION ===================== */
