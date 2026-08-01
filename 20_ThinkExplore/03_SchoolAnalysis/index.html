@@ -25,13 +25,16 @@
     --orange:#E07B00;
     --red:#D14343;
     --section-alt:#EDF1FA;
+    --lh-tight:1.3;
+    --lh-base:1.5;
+    --lh-loose:1.6;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   /* ══ 전역 규칙: 모든 글자 최소 13px ══ */
   html{scroll-behavior:smooth;}
   body{
     font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;
-    background:var(--bg);color:var(--txt);line-height:1.7;
+    background:var(--bg);color:var(--txt);line-height:var(--lh-base);
     -webkit-font-smoothing:antialiased;font-size:16px;
     background-image:
       linear-gradient(rgba(100,140,210,.055) 1px, transparent 1px),
@@ -58,7 +61,7 @@
   .navlinks-row{display:flex;align-items:center;justify-content:center;gap:4px;
     flex-wrap:wrap;padding:5px 16px 7px;
     border-top:1px solid rgba(255,255,255,.12);}
-  .logo{line-height:1.1;}
+  .logo{line-height:var(--lh-tight);}
   .logo .name{font-size:22px;font-weight:700;}
   .logo .name .g{color:var(--navy);}
   .logo .name .t{color:var(--amber);}
@@ -95,7 +98,7 @@
   /* ---------- HERO ---------- */
   .hero{text-align:center;padding:62px 0 48px;}
   .hero h1{font-size:clamp(26px,5vw,40px);font-weight:700;color:var(--navy);
-    letter-spacing:-.5px;line-height:1.3;}
+    letter-spacing:-.5px;line-height:var(--lh-tight);}
   .hero h1 .sub2{display:block;font-size:clamp(18px,3.4vw,26px);color:var(--txt);
     margin-top:8px;font-weight:600;}
   .hero .lead{color:var(--muted);font-size:16px;margin-top:18px;}
@@ -129,7 +132,7 @@
   .pv-head{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
   .pv-icon{font-size:22px;line-height:1;}
   .pv-title{font-size:16px;font-weight:700;color:var(--navy);}
-  .pv-desc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:10px;}
+  .pv-desc{font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:10px;}
   .pv-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px;}
   .pv-tag{font-size:12px;background:var(--section-alt);color:var(--navy);padding:3px 9px;border-radius:0;font-weight:500;}
   .pv-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#FDF5E4;border:1px solid #EDD080;border-radius:0;padding:9px 13px;margin-top:auto;}
@@ -179,7 +182,7 @@
   .metric:last-child{border-right:none;}
   .metric .ic{font-size:16px;}
   .metric .v{font-size:14px;font-weight:700;color:var(--txt);margin-top:2px;}
-  .metric .k{font-size:12px;color:var(--muted);margin-top:1px;line-height:1.3;}
+  .metric .k{font-size:12px;color:var(--muted);margin-top:1px;line-height:var(--lh-tight);}
   .detail-btn{width:100%;padding:8px;border-radius:0;border:1.5px solid var(--navy);
     background:transparent;color:var(--navy);font-weight:700;font-size:14px;
     cursor:pointer;font-family:inherit;transition:.15s;}
@@ -191,7 +194,7 @@
     padding:28px 24px;margin-top:36px;box-shadow:0 4px 20px rgba(28,61,107,.07);}
   .chartcard h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center;}
   .chartcard .csub{font-size:14px;color:var(--muted);text-align:center;margin-bottom:20px;}
-  .chart-analysis{background:#EEF4FF;border-left:3.5px solid var(--navy);border-radius:0;padding:16px 20px;margin-top:20px;font-size:16px;line-height:1.9;color:var(--txt);}
+  .chart-analysis{background:#EEF4FF;border-left:3.5px solid var(--navy);border-radius:0;padding:16px 20px;margin-top:20px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);}
   .chart-analysis strong{color:var(--navy);}
   .chart-analysis ul{margin:6px 0 0 0;padding-left:18px;}
   .chart-analysis li{margin-bottom:5px;}
@@ -221,7 +224,7 @@
     font-weight:600;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;}
   .infobox{background:#EEF4FF;border:1.5px solid #C0D4F5;border-left:4px solid var(--navy);
     border-radius:0;padding:20px 22px;font-size:16px;color:var(--txt);margin-bottom:24px;
-    line-height:1.8;}
+    line-height:var(--lh-loose);}
   .infobox b{color:var(--navy);}
   .infobox.warn{background:#FFF8EE;border-color:#F5CFA0;border-left-color:var(--amber);}
   .infobox.warn b{color:#a36400;}
@@ -287,14 +290,14 @@
   .rep-card{background:var(--card);border:1px solid var(--line);border-radius:0;padding:14px;margin-bottom:12px;min-width:0;}
   .rep-lbl{font-size:17px;font-weight:800;letter-spacing:.3px;margin-bottom:8px;}
   .lbl-ico{font-size:1.5em;line-height:1;display:inline-block;vertical-align:-.18em;margin-right:2px;}
-  .rep-val{font-size:16px;line-height:1.9;color:var(--txt);}
+  .rep-val{font-size:16px;line-height:var(--lh-loose);color:var(--txt);}
   .rep-val p{margin:0 0 10px;}.rep-val p:last-child{margin-bottom:0;}
   .rec-source{color:var(--muted);font-size:14px;margin-top:8px;font-style:italic;}
   .elect-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
   .elect-pill{background:#EFF6FF;color:#1E40AF;font-size:16px;padding:4px 12px;border-radius:999px;font-weight:600;}
   .dir-box{border-radius:0;padding:14px 16px;margin-bottom:12px;}
   .dir-yr{font-size:16px;font-weight:800;color:#111;margin-bottom:6px;}
-  .dir-txt{font-size:16px;line-height:1.9;color:#111;}
+  .dir-txt{font-size:16px;line-height:var(--lh-loose);color:#111;}
   /* uploaded image gallery */
   .upl-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:10px;}
   .upl-img-card{border:1px solid var(--line);border-radius:0;overflow:hidden;background:#fff;cursor:zoom-in;transition:.15s;}
@@ -406,7 +409,7 @@
   .sec-title{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:.3px;}
   .tip-list{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);
     border-radius:0;padding:18px;}
-  .tip-item{display:flex;align-items:flex-start;gap:8px;font-size:16px;line-height:1.75;}
+  .tip-item{display:flex;align-items:flex-start;gap:8px;font-size:16px;line-height:var(--lh-base);}
   .tip-y{color:#2E9E5B;font-size:16px;flex-shrink:0;margin-top:1px;}
   .tip-n{color:#D14343;font-size:16px;flex-shrink:0;margin-top:1px;}
   /* ---------- 핵심 배지 (학교 카드) ---------- */
@@ -419,7 +422,7 @@
   /* ---------- 포뮬러 배너 ---------- */
   .formula-banner{background:linear-gradient(135deg,#0F2342 0%,#1B3B86 60%,#0F2342 100%);
     color:#fff;padding:60px 20px;text-align:center;}
-  .formula{font-size:clamp(16px,2.8vw,24px);font-weight:700;line-height:1.7;margin-bottom:24px;}
+  .formula{font-size:clamp(16px,2.8vw,24px);font-weight:700;line-height:var(--lh-base);margin-bottom:24px;}
   .formula .plus,.formula .eq{color:#C8830A;margin:0 4px;}
   .formula .result{display:block;font-size:clamp(18px,3.2vw,28px);color:#F59E0B;margin-top:4px;}
   .formula-cta-btn{display:inline-block;background:#C8830A;color:#fff;padding:14px 34px;
@@ -507,10 +510,10 @@
   footer{background:var(--card);border-top:1px solid var(--line);padding:40px 20px;}
   footer .fwrap{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;}
   footer .logo .name{font-size:20px;}
-  footer .finfo{font-size:14px;color:var(--muted);line-height:1.9;}
+  footer .finfo{font-size:14px;color:var(--muted);line-height:var(--lh-loose);}
   footer .finfo b{color:var(--navy);}
   .disc{font-size:14px;color:var(--muted);margin-top:18px;border-top:1px dashed var(--line);
-    padding-top:14px;max-width:1180px;margin-left:auto;margin-right:auto;line-height:1.9;}
+    padding-top:14px;max-width:1180px;margin-left:auto;margin-right:auto;line-height:var(--lh-loose);}
   .lock-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:22px 0 28px;text-align:left;}
   @media(max-width:640px){
     .lockbanner{padding:24px 16px;}
@@ -553,13 +556,13 @@
     padding:6px 13px;border-radius:0;border:1px solid var(--line);
     background:var(--card);color:var(--muted);font-size:14px;
     cursor:pointer;transition:.15s;font-family:inherit;
-    line-height:1.4;
+    line-height:var(--lh-tight);
   }
   .cal-month-btn.active{background:var(--amber);color:#fff;border-color:var(--amber);}
   .cal-check-item{
     display:flex;align-items:flex-start;gap:10px;
     padding:10px 14px;border-radius:0;background:var(--bg);
-    font-size:14px;color:var(--txt);line-height:1.7;margin-bottom:8px;
+    font-size:14px;color:var(--txt);line-height:var(--lh-base);margin-bottom:8px;
   }
   .cal-check-item .ico{color:var(--green);flex-shrink:0;margin-top:2px;font-size:16px;}
   .cal-event-tag{
@@ -596,12 +599,12 @@
   .cal-month-card-desc{font-size:12px;color:var(--amber);font-weight:600;background:rgba(200,131,10,.12);padding:2px 8px;border-radius:999px;}
   .cal-sec-label{font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 6px;}
   .cal-event-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px;}
-  .cal-event-list li{font-size:12px;line-height:1.6;color:var(--txt);padding-left:12px;position:relative;}
+  .cal-event-list li{font-size:12px;line-height:var(--lh-base);color:var(--txt);padding-left:12px;position:relative;}
   .cal-event-list li::before{content:'•';position:absolute;left:0;color:var(--amber);}
   .cal-grade-block{margin-bottom:8px;}
   .cal-grade-block-label{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--navy);padding:1px 8px;border-radius:0;margin-bottom:4px;}
   .cal-grade-block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;}
-  .cal-grade-block li{font-size:12px;line-height:1.6;color:var(--txt);padding-left:12px;position:relative;}
+  .cal-grade-block li{font-size:12px;line-height:var(--lh-base);color:var(--txt);padding-left:12px;position:relative;}
   .cal-grade-block li::before{content:'•';position:absolute;left:0;color:var(--amber);}
   @media (max-width:900px){ .cal-overview-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:600px){ .cal-overview-grid{grid-template-columns:1fr;} }
@@ -643,7 +646,7 @@
   .prem-step{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);}
   .prem-step:last-of-type{border-bottom:none;}
   .prem-step-num{width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .prem-step-body{font-size:16px;line-height:1.7;color:var(--txt);}
+  .prem-step-body{font-size:16px;line-height:var(--lh-base);color:var(--txt);}
   .prem-step-body strong{color:var(--navy);}
   .prem-step-body em{font-style:normal;color:var(--amber);font-weight:600;}
 
@@ -761,7 +764,7 @@
 
     <div style="text-align:center;margin-bottom:24px;">
       <h2 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;">심층 분석 자료 열람 안내</h2>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6;">① 오픈채팅 채널 가입 → ② 채널 공지에서 PW 확인 → ③ 아래 입력 → 프리미엄 무료 열람 🔓</p>
+      <p style="font-size:14px;color:var(--muted);line-height:var(--lh-base);">① 오픈채팅 채널 가입 → ② 채널 공지에서 PW 확인 → ③ 아래 입력 → 프리미엄 무료 열람 🔓</p>
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:16px;align-items:center;">
@@ -803,7 +806,7 @@
             <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);box-shadow:0 2px 12px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;overflow:hidden;flex-shrink:0;">
               <span style="font-size:18px;">🔑</span>
             </div>
-            <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1.3;text-align:left;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:var(--lh-tight);text-align:left;">
               <div>오픈채팅가입</div>
               <div>&비번확인</div>
             </div>
@@ -812,7 +815,7 @@
         <div id="gatePwErr" style="color:#e53e3e;font-size:12px;margin-bottom:4px;height:16px;text-align:center;"></div>
 
         <!-- 안내 문구 -->
-        <div style="font-size:14px;color:var(--navy);line-height:1.5;text-align:center;">
+        <div style="font-size:14px;color:var(--navy);line-height:var(--lh-base);text-align:center;">
           <div style="margin-bottom:4px;">비밀번호는 오픈채팅방 게시판에서 확인가능합니다.</div>
           <div>교육자료 • 관악구 학교정보 Q&A • 커뮤니티</div>
         </div>
@@ -931,7 +934,7 @@
             <li><strong>진학률의 함정</strong> — 4년제 진학률이 높다고 해서 반드시 상위권 대학에 많이 간다는 의미는 아님. 학교별 진학 대학 분포(SKY·수도권·지방국립 등)를 추가로 확인하는 것이 중요. 관련 데이터는 추후 업데이트 예정.</li>
           </ul>
         </div>
-        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:1.7;">※ 전문대·취업·학업중단·전출입 및 대학별 진학 현황 데이터는 추후 추가 예정입니다.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:var(--lh-base);">※ 전문대·취업·학업중단·전출입 및 대학별 진학 현황 데이터는 추후 추가 예정입니다.</p>
       </div>
 
       <!-- 패널 4: 학생 이동 -->
@@ -948,7 +951,7 @@
             <li><strong>참고</strong> — 광신고·남강고·당곡고·영락고·인헌고·구암고는 2025학년도, 문영여고·미림여고·삼성고·성보고·신림고는 2024학년도(2025년치 아직 미공시) 수치입니다.</li>
           </ul>
         </div>
-        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:1.7;">※ 원자료: <code>raw/학교자료/관악구학교자료/{학교명}/전출입및학업중단학생수.xls</code> (학교알리미 공시), 2026-07-22 재추출.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:var(--lh-base);">※ 원자료: <code>raw/학교자료/관악구학교자료/{학교명}/전출입및학업중단학생수.xls</code> (학교알리미 공시), 2026-07-22 재추출.</p>
       </div>
     </div><!-- /statsBlock -->
 
@@ -1123,7 +1126,7 @@
             <span style="font-size:16px;opacity:.7;font-weight:600;">STEP 1</span>
             <span style="font-size:16px;font-weight:700;margin-left:8px;">오픈채팅에서 비번 받기</span>
           </div>
-          <div style="font-size:16px;opacity:.85;margin-bottom:14px;line-height:1.6;">생각탐구 카카오톡 오픈채팅에 가입하고 공지 게시판에 있는 비밀번호를 입력하세요</div>
+          <div style="font-size:16px;opacity:.85;margin-bottom:14px;line-height:var(--lh-base);">생각탐구 카카오톡 오픈채팅에 가입하고 공지 게시판에 있는 비밀번호를 입력하세요</div>
           <div style="text-align:center;">
             <a href="https://open.kakao.com/o/gOTxt9Bi" target="_blank" rel="noopener"
               style="display:inline-block;background:var(--amber);color:#fff;padding:8px 16px;border-radius:0;font-size:14px;font-weight:600;text-decoration:none;">오픈채팅 입장</a>
@@ -1135,7 +1138,7 @@
             <span style="font-size:16px;opacity:.7;font-weight:600;">STEP 2</span>
             <span style="font-size:16px;font-weight:700;margin-left:8px;">비밀번호 입력</span>
           </div>
-          <div style="font-size:16px;opacity:.85;margin-bottom:12px;line-height:1.6;">오픈채팅에서 받은 비밀번호를 입력하시면 모든 프리미엄 자료를 열람하실 수 있습니다</div>
+          <div style="font-size:16px;opacity:.85;margin-bottom:12px;line-height:var(--lh-base);">오픈채팅에서 받은 비밀번호를 입력하시면 모든 프리미엄 자료를 열람하실 수 있습니다</div>
           <div class="pwbox" style="display:flex;gap:6px;align-items:center;">
             <span style="font-size:18px;flex-shrink:0;">🔑</span>
             <input type="password" id="pwInput" placeholder="비밀번호" autocomplete="off"
@@ -1567,7 +1570,7 @@
           <option value="">— 학교를 선택하세요 —</option>
         </select>
       </div>
-      <div id="gibDetail" style="font-size:14px;color:var(--muted);line-height:1.8;">
+      <div id="gibDetail" style="font-size:14px;color:var(--muted);line-height:var(--lh-loose);">
         학교를 선택하면 해당 학교의 생기부 특징과 전략이 표시됩니다.
       </div>
     </div>
@@ -1575,7 +1578,7 @@
     <!-- CTA -->
     <div class="chartcard reveal" style="background:linear-gradient(135deg,var(--navy),#2a5298);color:#fff;">
       <h3 style="color:#fff;font-size:16px;margin-bottom:10px;">📋 1:1 생기부 전략 컨설팅</h3>
-      <p style="font-size:14px;opacity:.9;line-height:1.8;margin-bottom:16px;">
+      <p style="font-size:14px;opacity:.9;line-height:var(--lh-loose);margin-bottom:16px;">
         우리 아이의 현재 생기부를 분석하고, 남은 학기·학년에 무엇을 어떻게 채워야 할지<br>
         <b>구체적인 로드맵</b>을 함께 설계합니다.
       </p>
@@ -1606,7 +1609,7 @@
           <span style="font-size:14px;font-weight:700;color:var(--navy);">🌱 초등 과정 — 씨앗 단계</span>
         </div>
         <p style="font-size:14px;color:var(--muted);margin-bottom:10px;">미성초·남부초·난우초·난향초 외 관악구 초등학생</p>
-        <div style="font-size:14px;line-height:1.9;color:var(--txt);">
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">
           <div style="margin-bottom:6px;"><b>생각탐구반</b> — 초등 1~3학년 · 교과+주제독서 · 90분/주1회</div>
           <div><b>탐구보고서반</b> — 초등 4~6학년 · 탐구심화 · 90분/주1회</div>
         </div>
@@ -1625,7 +1628,7 @@
           <span style="font-size:14px;font-weight:700;color:var(--amber);">🌿 중등 과정 — 뿌리 단계</span>
         </div>
         <p style="font-size:14px;color:var(--muted);margin-bottom:10px;">난곡중·신림중·관악중 외 관악구 중학생</p>
-        <div style="font-size:14px;line-height:1.9;color:var(--txt);">
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">
           학교 수행평가 완전 대비 + 고교 생기부 전략 설계<br>
           교과 연계 탐구보고서 완성 · 자기주도학습 역량 강화
         </div>
@@ -1642,7 +1645,7 @@
           <span style="font-size:14px;font-weight:700;color:var(--green);">🌳 고등 과정 — 열매 단계</span>
         </div>
         <p style="font-size:14px;color:var(--muted);margin-bottom:10px;">삼성고·광신고·미림여고 외 관악구 고등학생</p>
-        <div style="font-size:14px;line-height:1.9;color:var(--txt);">
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">
           생기부 세특 설계 + 탐구보고서 심화<br>
           1:1 입시 컨설팅 · 학종 면접·자소서 준비
         </div>
@@ -1663,17 +1666,17 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:28px;">
       <div class="chartcard reveal">
         <div style="color:var(--amber);font-size:16px;margin-bottom:8px;">★★★★★</div>
-        <p style="font-size:16px;line-height:1.9;color:var(--txt);margin-bottom:12px;">"수행평가 준비가 더 이상 엄마 숙제가 되지 않습니다. 탐구보고서를 아이 스스로 완성해 왔습니다."</p>
+        <p style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);margin-bottom:12px;">"수행평가 준비가 더 이상 엄마 숙제가 되지 않습니다. 탐구보고서를 아이 스스로 완성해 왔습니다."</p>
         <div style="font-size:14px;color:var(--muted);font-weight:600;">— 난곡중 2학년 학부모 · 교과연계 탐구보고서</div>
       </div>
       <div class="chartcard reveal">
         <div style="color:var(--amber);font-size:16px;margin-bottom:8px;">★★★★★</div>
-        <p style="font-size:16px;line-height:1.9;color:var(--txt);margin-bottom:12px;">"생기부를 어떻게 써야 할지 몰랐는데, 남은 학기에 뭘 채워야 하는지 구체적으로 알게 됐어요."</p>
+        <p style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);margin-bottom:12px;">"생기부를 어떻게 써야 할지 몰랐는데, 남은 학기에 뭘 채워야 하는지 구체적으로 알게 됐어요."</p>
         <div style="font-size:14px;color:var(--muted);font-weight:600;">— 신림고 1학년 학생 · 1:1 생기부 컨설팅</div>
       </div>
       <div class="chartcard reveal">
         <div style="color:var(--amber);font-size:16px;margin-bottom:8px;">★★★★★</div>
-        <p style="font-size:16px;line-height:1.9;color:var(--txt);margin-bottom:12px;">"영재원 면접에서 '이렇게 깊이 생각한 학생은 처음'이라는 말을 들었고, 결국 합격했습니다!"</p>
+        <p style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);margin-bottom:12px;">"영재원 면접에서 '이렇게 깊이 생각한 학생은 처음'이라는 말을 들었고, 결국 합격했습니다!"</p>
         <div style="font-size:14px;color:var(--muted);font-weight:600;">— 교육청 영재원 합격생 학부모 · 영재원 준비</div>
       </div>
     </div>
@@ -1681,7 +1684,7 @@
     <!-- 상담 CTA -->
     <div class="chartcard reveal" style="text-align:center;padding:32px 20px;background:linear-gradient(135deg,var(--navy),#2a5298);">
       <h3 style="color:#fff;font-size:20px;margin-bottom:10px;">무료 입학 상담 신청</h3>
-      <p style="color:rgba(255,255,255,.85);font-size:16px;margin-bottom:20px;line-height:1.8;">
+      <p style="color:rgba(255,255,255,.85);font-size:16px;margin-bottom:20px;line-height:var(--lh-loose);">
         우리 아이에게 맞는 수업을 찾고 싶으시다면<br>오픈채팅으로 편하게 문의하세요.
       </p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
@@ -2102,19 +2105,19 @@ function renderGibDetail(school){
     <div style="display:grid;gap:14px;">
       <div style="background:rgba(28,61,107,.06);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">💪 강점 과목 / 특징</div>
-        <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.strengths}</div>
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">${r.strengths}</div>
       </div>
       <div style="background:rgba(200,131,10,.07);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:6px;">⚠️ 보완 필요 / 주의사항</div>
-        <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.weaknesses}</div>
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">${r.weaknesses}</div>
       </div>
       <div style="background:rgba(46,158,91,.07);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px;">🎯 입시 활용 전략</div>
-        <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.admissions}</div>
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">${r.admissions}</div>
       </div>
       <div style="background:var(--section-alt);border-radius:0;padding:14px;">
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;">👤 이런 학생에게 적합</div>
-        <div style="font-size:14px;line-height:1.8;color:var(--txt);">${r.target}</div>
+        <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">${r.target}</div>
       </div>
     </div>`;
 }
@@ -2355,7 +2358,7 @@ function renderCalOverview(){
 
   cont.innerHTML = `<div class="cal-overview-grid">${cards}</div>
     <div style="margin-top:24px;padding:14px 18px;background:linear-gradient(135deg,rgba(28,61,107,.07),rgba(200,131,10,.07));border-radius:0;border:1px solid var(--line);">
-      <p style="font-size:14px;color:var(--txt);line-height:1.8;margin:0;">
+      <p style="font-size:14px;color:var(--txt);line-height:var(--lh-loose);margin:0;">
         <b>지금 입시는 고1 입학과 동시에 시작</b>입니다.<br>
         학교 선택부터 선택과목, 진로 설계, 수시, 정시까지 전문가의 도움이 필요한 경우
         <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:underline;">생각탐구 1:1 입시 컨설팅</a>이 함께하겠습니다.
@@ -4676,7 +4679,7 @@ function generateConsultantSynthesis(sA,sB){
 
   sections.push(`내 아이의 관심사를 구체적인 진로 스토리로 연결할 때 학생부종합전형에서 진정성이 드러납니다. <b>줄탁동시(啐啄同時)</b>처럼 아이의 내면 동기와 컨설턴트의 외부 코칭이 맞물려야 시너지가 생깁니다. 학교 선택부터 진로 설계·생기부 빌드업까지 통합적으로 설계하고 싶으시다면 <b>생각탐구 1:1 입시 컨설팅</b>이 함께하겠습니다. <span style="font-size:14px;opacity:.75;">(참고: 『바로 지금, 나의 것으로 만드는 힘이 나를 바꾸는 찐 공부다!』 — 생각탐구)</span>`);
 
-  return sections.map(s=>`<p style="font-size:14px;line-height:1.9;margin:0 0 12px;">${s}</p>`).join('');
+  return sections.map(s=>`<p style="font-size:14px;line-height:var(--lh-loose);margin:0 0 12px;">${s}</p>`).join('');
 }
 
 window.runCompareAnalysis=function(){
@@ -4820,7 +4823,7 @@ window.runCompareAnalysis=function(){
     if(!t)return '<div style="color:var(--muted);font-size:14px;">데이터 수집 중</div>';
     const clean=t.replace(/에 적합합니다\.?\s*$/,'').replace(/고려해볼 수 있습니다\.?\s*$/,'');
     const parts=clean.split(/,\s*/).filter(Boolean);
-    return parts.map(p=>`<div style="font-size:14px;line-height:1.75;padding:3px 0;">✓ ${p.trim()}</div>`).join('');
+    return parts.map(p=>`<div style="font-size:14px;line-height:var(--lh-base);padding:3px 0;">✓ ${p.trim()}</div>`).join('');
   }
 
   document.getElementById('cmpDeepSection').innerHTML=`
@@ -4853,15 +4856,15 @@ window.runCompareAnalysis=function(){
       <div class="cmp-split-grid">
         <div>
           <div style="font-size:14px;font-weight:700;color:#1E40AF;margin-bottom:10px;">◆ ${sA}</div>
-          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">강점</div><div style="font-size:16px;line-height:1.85;">${repA.strengths||'수집 예정'}</div></div>
-          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">약점·주의</div><div style="font-size:16px;line-height:1.85;">${repA.weaknesses||'수집 예정'}</div></div>
-          <div><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">진학 전략</div><div style="font-size:16px;line-height:1.85;">${repA.admissions||'수집 예정'}</div></div>
+          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">강점</div><div style="font-size:16px;line-height:var(--lh-loose);">${repA.strengths||'수집 예정'}</div></div>
+          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">약점·주의</div><div style="font-size:16px;line-height:var(--lh-loose);">${repA.weaknesses||'수집 예정'}</div></div>
+          <div><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">진학 전략</div><div style="font-size:16px;line-height:var(--lh-loose);">${repA.admissions||'수집 예정'}</div></div>
         </div>
         <div style="border-left:1.5px solid var(--line);padding-left:14px;">
           <div style="font-size:14px;font-weight:700;color:#92400E;margin-bottom:10px;">◆ ${sB}</div>
-          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">강점</div><div style="font-size:16px;line-height:1.85;">${repB.strengths||'수집 예정'}</div></div>
-          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">약점·주의</div><div style="font-size:16px;line-height:1.85;">${repB.weaknesses||'수집 예정'}</div></div>
-          <div><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">진학 전략</div><div style="font-size:16px;line-height:1.85;">${repB.admissions||'수집 예정'}</div></div>
+          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">강점</div><div style="font-size:16px;line-height:var(--lh-loose);">${repB.strengths||'수집 예정'}</div></div>
+          <div style="margin-bottom:12px;"><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">약점·주의</div><div style="font-size:16px;line-height:var(--lh-loose);">${repB.weaknesses||'수집 예정'}</div></div>
+          <div><div style="font-size:14px;color:var(--muted);font-weight:700;letter-spacing:.4px;margin-bottom:5px;">진학 전략</div><div style="font-size:16px;line-height:var(--lh-loose);">${repB.admissions||'수집 예정'}</div></div>
         </div>
       </div>
     </div>
@@ -4885,7 +4888,7 @@ window.runCompareAnalysis=function(){
       <div style="padding:16px;background:rgba(255,255,255,.07);border-radius:0;margin-bottom:14px;">
         ${generateConsultantSynthesis(sA,sB)}
       </div>
-      <div style="padding-top:14px;border-top:1px solid rgba(255,255,255,.2);font-size:14px;line-height:1.85;opacity:.9;">
+      <div style="padding-top:14px;border-top:1px solid rgba(255,255,255,.2);font-size:14px;line-height:var(--lh-loose);opacity:.9;">
         ※ 위 분석은 학교알리미 공시·교육부 자료 기반 종합 해석입니다.<br>생기부 세특 방향, 선택과목 설계, 내신 등급 전략까지 <b>우리 아이 맞춤 1:1 상담</b>으로 연결해드립니다.
       </div>
       <div style="text-align:center;margin-top:16px;">
@@ -5117,7 +5120,7 @@ function igStats(items){
   return `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-top:8px;">
     ${items.map(it=>`<div style="background:#fff;border:1px solid var(--line);border-radius:0;padding:10px 12px;">
       <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:3px;">${it.label}</div>
-      <div style="font-size:19px;font-weight:800;color:${it.color||'var(--navy)'};line-height:1.2;">${it.value}<span style="font-size:14px;font-weight:600;"> ${it.unit||''}</span></div>
+      <div style="font-size:19px;font-weight:800;color:${it.color||'var(--navy)'};line-height:var(--lh-tight);">${it.value}<span style="font-size:14px;font-weight:600;"> ${it.unit||''}</span></div>
       ${it.sub?`<div style="font-size:12px;color:var(--muted);margin-top:2px;">${it.sub}</div>`:''}
     </div>`).join('')}
   </div>`;
@@ -5133,7 +5136,7 @@ function igTimeline(events){
   const monthCol=m=>`
     <div style="min-width:0;background:#F9FAFC;border:1px solid var(--line);border-radius:0;padding:6px 4px;">
       <div style="font-size:12px;font-weight:800;color:var(--navy);margin-bottom:4px;text-align:center;border-bottom:1px solid var(--line);padding-bottom:3px;">${m}월</div>
-      ${(byM[m]||[]).map(e=>`<div style="font-size:12px;line-height:1.4;margin-bottom:4px;padding-left:4px;border-left:3px solid ${TAGC[e.tag]||'#94A3B8'};color:var(--txt);word-break:keep-all;overflow-wrap:anywhere;">
+      ${(byM[m]||[]).map(e=>`<div style="font-size:12px;line-height:var(--lh-tight);margin-bottom:4px;padding-left:4px;border-left:3px solid ${TAGC[e.tag]||'#94A3B8'};color:var(--txt);word-break:keep-all;overflow-wrap:anywhere;">
         <span style="font-weight:700;">${e.name}</span>${e.d?`<br><span style="color:var(--muted);font-size:12px;">${e.d}</span>`:''}
       </div>`).join('')}
     </div>`;
@@ -5170,7 +5173,7 @@ function renderProgramCards(s,det){
             ${x.when?`<span style="font-size:12px;font-weight:700;color:#C8830A;background:#FFFBEB;border-radius:0;padding:2px 8px;">${x.when}</span>`:''}
             ${x.who?`<span style="font-size:12px;color:var(--muted);">${x.who}</span>`:''}
           </div>
-          ${x.desc?`<div style="font-size:16px;line-height:1.75;color:var(--txt);">${x.desc}</div>`:''}
+          ${x.desc?`<div style="font-size:16px;line-height:var(--lh-base);color:var(--txt);">${x.desc}</div>`:''}
         </div>`).join('')}
       </div>`, p.specialSrc));
   } else {
@@ -5180,7 +5183,7 @@ function renderProgramCards(s,det){
   /* 학사일정 타임라인 */
   if(p&&p.events&&p.events.length){
     out.push(card('연간 학사일정 — 주요 행사',
-      `<div style="font-size:14px;color:var(--muted);line-height:1.7;">아래 행사는 <b>자율·자치활동</b>, <b>진로활동</b>, <b>봉사활동</b> 기록으로 연결할 수 있습니다.</div>`
+      `<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);">아래 행사는 <b>자율·자치활동</b>, <b>진로활동</b>, <b>봉사활동</b> 기록으로 연결할 수 있습니다.</div>`
       +igTimeline(p.events), p.eventsSrc));
   }
 
@@ -5191,7 +5194,7 @@ function renderProgramCards(s,det){
       {label:'정규 동아리',value:reg.length,unit:'개'},
       {label:'자율 동아리',value:aut.length?aut.length:'—',unit:aut.length?'개':'',color:'#0369A1',sub:aut.length?'':'명단 미공시'}
     ].concat(c.members?[{label:'참여 인원',value:c.members,unit:'명',color:'#C8830A'}]:[]));
-    if(c.how) body+=`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:8px;">${c.how}</div>`;
+    if(c.how) body+=`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:8px;">${c.how}</div>`;
     if(reg.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">정규(창의적 체험활동) 동아리</div><div class="elect-pills">${reg.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
     if(aut.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#0369A1;margin-bottom:5px;">자율 동아리</div><div class="elect-pills">${aut.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
     out.push(card('동아리 현황',body,p.clubsSrc));
@@ -6327,19 +6330,19 @@ window.renderUniCheck=function(changed){
     if(!parsed.raw) return '';
     const head=`<div style="font-size:16px;font-weight:800;color:${strong?'#B45309':'#0369A1'};margin-bottom:4px;">${title}`;
     if(!parsed.list.length&&!parsed.groups.length) return `<div style="margin-top:10px;">${head}</div>
-      <div style="font-size:14px;line-height:1.8;color:var(--txt);background:#F9FAFC;border:1px solid var(--line);border-radius:0;padding:9px 11px;">${parsed.raw}</div></div>`;
+      <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);background:#F9FAFC;border:1px solid var(--line);border-radius:0;padding:9px 11px;">${parsed.raw}</div></div>`;
     const miss=parsed.list.filter(s=>!set.has(normSubj(s)));
     const gRows=parsed.groups.map(g=>{
       const got=groupOk(g);
-      return `<div style="font-size:14px;line-height:1.7;margin-top:5px;color:${got.length?'#166534':'#991B1B'};">
+      return `<div style="font-size:14px;line-height:var(--lh-base);margin-top:5px;color:${got.length?'#166534':'#991B1B'};">
         ${got.length?'✓':'✕'} <b>${g.label}</b> — ${got.length?`${school} 개설: ${got.join(' · ')}`:'개설 과목 없음'}
         <span style="color:var(--muted);">(교과군 내 과목 이수로 충족)</span></div>`;
     }).join('');
     return `<div style="margin-top:10px;">${head} <span style="font-weight:500;color:var(--muted);">(${parsed.list.length+parsed.groups.length}항목)</span></div>
       ${parsed.list.length?`<div class="elect-pills" style="margin:0;">${parsed.list.map(s=>chip(s,set.has(normSubj(s)))).join('')}</div>`:''}
       ${gRows}
-      ${miss.length?`<div style="font-size:14px;color:#991B1B;margin-top:6px;line-height:1.7;"><b>${school}</b>에 개설되지 않은 과목: <b>${miss.join(' · ')}</b></div>`:''}
-      <div style="font-size:12px;color:var(--muted);margin-top:5px;line-height:1.6;">원문 — ${parsed.raw}</div>
+      ${miss.length?`<div style="font-size:14px;color:#991B1B;margin-top:6px;line-height:var(--lh-base);"><b>${school}</b>에 개설되지 않은 과목: <b>${miss.join(' · ')}</b></div>`:''}
+      <div style="font-size:12px;color:var(--muted);margin-top:5px;line-height:var(--lh-base);">원문 — ${parsed.raw}</div>
     </div>`;
   };
 
@@ -6352,14 +6355,14 @@ window.renderUniCheck=function(changed){
 
   let verdict;
   if(!hasAny){
-    verdict=`<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;">
+    verdict=`<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:11px 13px;font-size:16px;line-height:var(--lh-loose);">
       이 모집단위는 특정 과목을 지정하지 않고 <b>진로·적성에 따른 선택</b>을 권장합니다. 지망 전공과 연결되는 과목을 스스로 골라 깊이 있게 이수하는 것이 중요합니다.</div>`;
   } else if(!missing.length&&!groupMissing.length){
-    verdict=`<div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;">
+    verdict=`<div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:0;padding:11px 13px;font-size:16px;line-height:var(--lh-loose);">
       <b>${school}</b>에서 이 모집단위가 요구하는 과목을 <b>모두 이수할 수 있습니다.</b> 공동교육과정 없이 학교 정규 교육과정만으로 충족됩니다.</div>`;
   } else {
     const joint=missing.filter(s=>JOINT_ONLY_SUBJECTS.some(j=>normSubj(j)===normSubj(s)));
-    verdict=`<div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;">
+    verdict=`<div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:0;padding:11px 13px;font-size:16px;line-height:var(--lh-loose);">
       <b>${school}</b>에 <b>${missing.join(' · ')}</b>${coreMissing.length?` (이 중 <b style="color:#991B1B;">${coreMissing.join(' · ')}</b>은 핵심과목)`:''}이 개설되어 있지 않습니다.<br>
       <b style="color:#B45309;">→ 공동교육과정으로 이수할 수 있는지 확인하세요.</b> 거점학교·서울온라인학교 강좌를 학기당 2과목까지 신청할 수 있고, <b>석차등급이 산출되지 않아 내신 부담 없이</b> 들을 수 있습니다. 신청 전 담임·교육과정 담당 교사와 상담이 필요합니다.
       ${joint.length?`<br><span style="font-size:14px;">※ ${joint.join(' · ')}은 일반고 정규 편제에 없는 전문교과라 공동교육과정에서만 열립니다.</span>`:''}
@@ -6372,7 +6375,7 @@ window.renderUniCheck=function(changed){
     ${verdict}
     ${block('핵심과목 (필수 성격)',core,true)}
     ${block('권장과목',rec,false)}
-    <div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7;">
+    <div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:var(--lh-base);">
       ✓ = ${school} 개설 · ✕ = 미개설. 대학이 제시한 과목군(예: 「제2외국어/한문」, 「과학」)은 해당 교과군 내 과목 이수로 충족될 수 있으므로, 표시가 ✕여도 실제로는 충족되는 경우가 있습니다.
     </div>`;
 };
@@ -6402,10 +6405,10 @@ window.renderTrackCheck=function(){
   });
 
   const verdict=!track.req.length
-    ? `<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;color:var(--txt);">
+    ? `<div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:0;padding:11px 13px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
          서울대는 이 계열에 <b>별도 권장과목을 제시하지 않습니다.</b> 진로와 적성에 따라 과목을 선택하고 적극적으로 이수하는 것을 권장합니다.
        </div>`
-    : `<div style="background:${allOk?'#F0FDF4':'#FEF2F2'};border:1.5px solid ${allOk?'#86EFAC':'#FCA5A5'};border-radius:0;padding:11px 13px;font-size:16px;line-height:1.8;color:var(--txt);">
+    : `<div style="background:${allOk?'#F0FDF4':'#FEF2F2'};border:1.5px solid ${allOk?'#86EFAC':'#FCA5A5'};border-radius:0;padding:11px 13px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
          ${allOk
            ? `<b>${school}</b>에서 서울대 ${track.type} 권장과목을 <b>모두 이수할 수 있습니다.</b> 공동교육과정 없이 학교 정규 교육과정만으로 충족됩니다.`
            : `<b>${school}</b>에는 위 권장과목 중 개설되지 않은 것이 있습니다. 공동교육과정(거점학교·온라인학교)으로 보완할 수 있는지 담임·교육과정 담당 교사와 상담하세요.`}
@@ -6415,7 +6418,7 @@ window.renderTrackCheck=function(){
   if(track.id==='t2'){
     priority=`<div style="margin-top:12px;">
       <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">전공별 <b>우선 이수</b> 권장 과목</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:6px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
+      <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:6px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
       <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead><tr style="background:var(--navy);color:#fff;">
           <th style="padding:6px 8px;white-space:nowrap;">과목</th><th style="padding:6px 8px;">해당 모집단위</th><th style="padding:6px 8px;white-space:nowrap;">${school}</th>
@@ -6424,7 +6427,7 @@ window.renderTrackCheck=function(){
           const ok=p.any?p.any.some(hasSubj):hasSubj(p.subject);
           return `<tr>
             <td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap;">${p.subject}</td>
-            <td style="padding:7px 8px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.6;">${p.units}</td>
+            <td style="padding:7px 8px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);line-height:var(--lh-base);">${p.units}</td>
             <td style="padding:7px 8px;text-align:center;border-bottom:1px solid var(--line);font-weight:800;color:${ok?'#2E9E5B':'#D14343'};">${ok?'개설':'미개설'}</td>
           </tr>`;}).join('')}
         </tbody></table></div>
@@ -6434,14 +6437,14 @@ window.renderTrackCheck=function(){
   const missing=JOINT_ONLY_SUBJECTS.filter(s=>!hasSubj(s));
   const deeper=`<div style="margin-top:12px;padding:11px 13px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
       <div style="font-size:16px;font-weight:800;color:#B45309;margin-bottom:5px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
-      <div style="font-size:14px;line-height:1.8;color:var(--txt);">
+      <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">
         아래 과목은 <b>${school}을 포함한 관악구 11개교 어디에도 정규 편제로 개설되지 않습니다.</b> 일반고에서 개설하기 어려운 전문교과이기 때문이며, <b>공동교육과정(거점학교·서울온라인학교)에서만</b> 이수할 수 있습니다.
       </div>
       <div class="elect-pills" style="margin-top:7px;">${missing.map(s=>`<span class="elect-pill" style="background:#FEF3C7;color:#92400E;">${s}</span>`).join('')}</div>
     </div>`;
 
   box.innerHTML=`
-    <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;">${track.type} — <b>${track.name}</b><br>${track.units}</div>
+    <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:8px;">${track.type} — <b>${track.name}</b><br>${track.units}</div>
     ${track.req.length?`<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
       <thead><tr style="background:var(--navy);color:#fff;">
         <th style="padding:7px 8px;text-align:left;">서울대 권장과목</th><th style="padding:7px 8px;white-space:nowrap;">${school}</th><th style="padding:7px 8px;text-align:left;">개설 현황</th>
@@ -6471,7 +6474,7 @@ function renderJoint(){
   </div>`;
 
   /* ① 유형 5가지 */
-  const types=`<div style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:4px;">
+  const types=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);margin-bottom:4px;">
       우리 학교에 없는 과목을 다른 학교나 온라인학교에서 듣고 <b>학교생활기록부에 정식 과목으로 남기는</b> 제도입니다. 운영 방식에 따라 5가지로 나뉘며, <b>학생이 직접 신청할 수 있는 것은 거점학교와 온라인학교 개방형</b> 두 가지입니다.
     </div>`
     +igTable(['유형','운영 시간','내용','신청 방법','수강 제한'],
@@ -6479,16 +6482,16 @@ function renderJoint(){
       {align:['left','center','left','left','left']});
 
   /* ② 관악구 학생이 들을 수 있는 것 */
-  const local=`<div style="font-size:16px;color:var(--muted);line-height:1.8;">
+  const local=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);">
       <b>동작관악 권역 공유캠퍼스</b>는 3개 강좌 모두 <b>정규 일과시간 내</b> 운영이라 학기당 2과목 제한에 포함되지 않습니다.
     </div>`
     +igTable(['개설 학교','과목','위치'],JOINT_LOCAL.map(x=>[`<b>${x.school}</b>`,x.subject,x.area]),{align:['center','left','left']})
-    +`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;padding:9px 11px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
+    +`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:10px;padding:9px 11px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
       관악구 안에 있는 <b>거점학교는 삼성고 1곳</b>뿐이며 예술 영역(방송 일반, 연극과 삶)만 운영합니다. 아래 고급·전문 과목은 대부분 <b>타 지역 거점학교나 서울온라인학교</b>에서 들어야 합니다. 온라인학교는 실시간 쌍방향이라 이동 부담이 없습니다.
     </div>`;
 
   /* ③ 고급·전문 과목 개설처 */
-  const adv=`<div style="font-size:16px;color:var(--muted);line-height:1.8;">
+  const adv=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);">
       일반고 정규 교육과정에 편성하기 어려워 <b>공동교육과정에서만 열리는</b> 과목들입니다. 이과·의약학·공학 계열 지망 학생이 전공 적합성을 보여주기 좋은 통로입니다.
     </div>`
     +igTable(['과목','대상','개설 학교'],
@@ -6508,7 +6511,7 @@ function renderJoint(){
         <div style="flex:0 0 26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;">${s.n}</div>
         <div style="min-width:0;">
           <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px;">${s.t}</div>
-          <div style="font-size:14px;line-height:1.75;color:var(--txt);">${s.d}</div>
+          <div style="font-size:14px;line-height:var(--lh-base);color:var(--txt);">${s.d}</div>
         </div>
       </div>`).join('')}
     </div>
@@ -6524,7 +6527,7 @@ function renderJoint(){
   /* ⑤ 평가·이수 — 핵심 */
   const evalBody=`<div style="background:#FFF7ED;border:1.5px solid #FDBA74;border-radius:0;padding:12px 14px;margin-top:8px;">
       <div style="font-size:16px;font-weight:800;color:#9A3412;margin-bottom:6px;">가장 중요한 사실 — 석차등급이 산출되지 않습니다</div>
-      <div style="font-size:16px;line-height:1.8;color:var(--txt);">
+      <div style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
         공동교육과정·온라인학교 개설 과목은 여러 학교 학생이 함께 듣는 특성상 <b>상대평가 석차등급을 매기지 않습니다.</b>
         따라서 이 과목의 성적이 <b>내신 등급 평균을 깎지 않습니다.</b> 대신 <b>「과목별 세부능력 및 특기사항」</b>이 남아 학생부종합전형의 정성 평가 자료가 됩니다.
       </div>
@@ -6551,12 +6554,12 @@ function renderJoint(){
         <summary style="cursor:pointer;padding:11px 13px;font-size:16px;font-weight:700;color:var(--navy);list-style:none;display:flex;gap:8px;align-items:flex-start;">
           <span style="color:var(--amber);font-weight:800;flex:0 0 auto;">Q${i+1}.</span><span>${x.q}</span>
         </summary>
-        <div style="padding:0 13px 12px 13px;font-size:16px;line-height:1.85;color:var(--txt);border-top:1px dashed var(--line);padding-top:10px;">${x.a}</div>
+        <div style="padding:0 13px 12px 13px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);border-top:1px dashed var(--line);padding-top:10px;">${x.a}</div>
       </details>`).join('')}
     </div>`;
 
   /* ⑦ 공식 문서 */
-  const docs=`<div style="font-size:16px;color:var(--muted);line-height:1.8;">아래는 모두 <b>공식 기관이 발간한 2026학년도 자료</b>입니다.</div>
+  const docs=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);">아래는 모두 <b>공식 기관이 발간한 2026학년도 자료</b>입니다.</div>
     <div style="display:grid;gap:7px;margin-top:8px;">
       ${[
         ['서울고교학점제지원센터 (공동교육과정·수강신청)','https://seoulhsc.sen.go.kr/'],
@@ -6571,10 +6574,10 @@ function renderJoint(){
         <span style="flex:0 0 auto;">📄</span><span style="min-width:0;word-break:keep-all;">${t}</span><span style="margin-left:auto;flex:0 0 auto;color:var(--muted);font-size:12px;">↗</span>
       </a>`).join('')}
     </div>
-    <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;">문의 — 서울고교학점제지원센터 02-6033-5871 · 서울온라인학교 02-6953-9700 (평일 09:30~18:30)</div>`;
+    <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:10px;">문의 — 서울고교학점제지원센터 02-6033-5871 · 서울온라인학교 02-6953-9700 (평일 09:30~18:30)</div>`;
 
   /* ⓪ 학교 × 계열 대조기 */
-  const checker=`<div style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:10px;">
+  const checker=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);margin-bottom:10px;">
       <b>우리 학교에서 지망 계열의 권장과목을 다 들을 수 있는지</b> 확인해 보세요. 서울대학교 「2028학년도 전공 연계 과목 선택 안내」(2025년 6월 30일 발표) 기준입니다. 이 권장과목은 <b>지원자격은 아니지만 수시 서류평가·정시 교과역량평가에 반영</b>됩니다.
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;">
@@ -6591,7 +6594,7 @@ function renderJoint(){
   /* ⓪-A 대학·계열·학과 선택 → 내 학교 판정 */
   const uniNames=Object.keys(UNI2028);
   const firstFac=Object.keys(UNI2028[uniNames[0]])[0];
-  const uniChecker=`<div style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:10px;">
+  const uniChecker=`<div style="font-size:16px;color:var(--muted);line-height:var(--lh-loose);margin-bottom:10px;">
       지원하려는 <b>대학 → 계열 → 학과</b>와 <b>재학 중인 학교</b>를 고르면, 그 학과가 요구하는 과목이 우리 학교에 개설되어 있는지 바로 확인할 수 있습니다. 개설되지 않은 과목이 있으면 공동교육과정으로 이수하는 방법을 함께 안내합니다.
     </div>
     <div style="position:relative;margin-bottom:12px;">
@@ -6781,7 +6784,7 @@ function renderElectives(det){
     });
     gradeTable=`<div style="margin-top:12px;">
       <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">${e.terms?'학년·학기별':'학년별'} 선택과목 편제표</div>
-      ${e.fixed?`<div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:6px;padding:8px 10px;background:#F9F7F4;border-radius:0;"><b>학교지정(선택 아님)</b> — ${e.fixed}</div>`:''}
+      ${e.fixed?`<div style="font-size:12px;color:var(--muted);line-height:var(--lh-base);margin-bottom:6px;padding:8px 10px;background:#F9F7F4;border-radius:0;"><b>학교지정(선택 아님)</b> — ${e.fixed}</div>`:''}
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead><tr style="background:var(--navy);color:#fff;">
@@ -6793,7 +6796,7 @@ function renderElectives(det){
       ${e.unassigned&&e.unassigned.list&&e.unassigned.list.length?`
         <div style="margin-top:10px;padding:10px 12px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:0;">
           <div style="font-size:14px;font-weight:800;color:#B45309;margin-bottom:5px;">${e.unassigned.label||'학년 배치 미확인 과목'} <span style="font-weight:500;color:var(--muted);">(${e.unassigned.list.length}과목)</span></div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:6px;">${e.unassigned.note||'편제표에 학년별 배당이 표기되지 않아 개설 여부만 확인된 과목입니다.'}</div>
+          <div style="font-size:12px;color:var(--muted);line-height:var(--lh-base);margin-bottom:6px;">${e.unassigned.note||'편제표에 학년별 배당이 표기되지 않아 개설 여부만 확인된 과목입니다.'}</div>
           ${pills(e.unassigned.list)}
         </div>`:''}
     </div>`;
@@ -6802,12 +6805,12 @@ function renderElectives(det){
   return `<div class="rep-card">
     <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항 (2022 개정 교육과정)</div>
     <div class="rep-val" style="margin-bottom:2px;">${e.note||''}</div>
-    ${e.feature?`<div style="font-size:16px;line-height:1.8;color:var(--txt);background:#F0F9FF;border:1px solid #BAE6FD;border-radius:0;padding:10px 12px;margin:8px 0 2px;">${e.feature}</div>`:''}
+    ${e.feature?`<div style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);background:#F0F9FF;border:1px solid #BAE6FD;border-radius:0;padding:10px 12px;margin:8px 0 2px;">${e.feature}</div>`:''}
     ${grp('1학년 공통과목 (전원 이수)','공통' in e?e['공통']:null,'#1B3B86')}
     ${grp('1학년 학교지정 선택',e.g1sel,'#1B3B86')}
     ${gradeTable}
     ${gradeTable?'':CAT.map(([k,klabel,c])=>grp(klabel,e[k],c)).join('')}
-    ${e.limits?`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);"><b>이수 규정</b> — ${e.limits}</div>`:''}
+    ${e.limits?`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);"><b>이수 규정</b> — ${e.limits}</div>`:''}
     <div style="font-size:14px;color:var(--muted);margin-top:6px;">현 고3(2024년 입학)은 2015 개정 교육과정이 적용되어 위 과목 구성과 다릅니다.</div>
   </div>`;
 }
@@ -6844,10 +6847,10 @@ function openModal(s){
   const rep=SCHOOL_REPORTS[s];
   document.getElementById('mReport').innerHTML=`
     <div style="background:var(--card);border:1px solid var(--line);border-radius:0;padding:20px;display:grid;gap:14px;">
-      <div><div style="font-size:16px;font-weight:800;color:var(--amber);letter-spacing:.3px;margin-bottom:5px;">강점 교과·환경</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);">${rep.strengths}</p></div>
-      <div><div style="font-size:16px;font-weight:800;color:#D14343;letter-spacing:.3px;margin-bottom:5px;">약점·주의 사항</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);">${rep.weaknesses}</p></div>
-      <div><div style="font-size:16px;font-weight:800;color:#2E9E5B;letter-spacing:.3px;margin-bottom:5px;">진학 특성</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);">${rep.admissions}</p></div>
-      <div style="background:rgba(28,61,107,.07);border-radius:0;padding:12px 14px;"><div style="font-size:16px;font-weight:800;color:var(--navy);letter-spacing:.3px;margin-bottom:5px;">추천 학생 유형</div><p style="margin:0;font-size:16px;line-height:1.85;color:var(--txt);font-weight:500;">${rep.target}</p></div>
+      <div><div style="font-size:16px;font-weight:800;color:var(--amber);letter-spacing:.3px;margin-bottom:5px;">강점 교과·환경</div><p style="margin:0;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">${rep.strengths}</p></div>
+      <div><div style="font-size:16px;font-weight:800;color:#D14343;letter-spacing:.3px;margin-bottom:5px;">약점·주의 사항</div><p style="margin:0;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">${rep.weaknesses}</p></div>
+      <div><div style="font-size:16px;font-weight:800;color:#2E9E5B;letter-spacing:.3px;margin-bottom:5px;">진학 특성</div><p style="margin:0;font-size:16px;line-height:var(--lh-loose);color:var(--txt);">${rep.admissions}</p></div>
+      <div style="background:rgba(28,61,107,.07);border-radius:0;padding:12px 14px;"><div style="font-size:16px;font-weight:800;color:var(--navy);letter-spacing:.3px;margin-bottom:5px;">추천 학생 유형</div><p style="margin:0;font-size:16px;line-height:var(--lh-loose);color:var(--txt);font-weight:500;">${rep.target}</p></div>
     </div>`;
 
   /* ── ④ TIP ── */
@@ -6869,7 +6872,7 @@ function openModal(s){
           <div style="min-width:0;">
             <div style="font-weight:700;font-size:16px;">『${b.title}』 <span style="font-weight:400;color:var(--muted);font-size:16px;">— ${b.author}</span></div>
             <div style="font-size:14px;color:var(--amber);font-weight:700;margin:4px 0 5px;"># ${b.subject}</div>
-            <div style="font-size:16px;color:var(--muted);line-height:1.7;">${b.reason}</div>
+            <div style="font-size:16px;color:var(--muted);line-height:var(--lh-base);">${b.reason}</div>
           </div>
         </div>`).join('')}
     </div>`;
@@ -6914,7 +6917,7 @@ function openModal(s){
   const gbTip=`
     <div class="gb-tip-box">
       <div class="gb-tip-title"><span class="lbl-ico">🎓</span> 생기부 관리 포인트</div>
-      <div style="font-size:16px;color:var(--txt);line-height:1.8;margin-bottom:10px;">이 학교의 특색사업과 동아리를 <strong>생활기록부 활동 소재</strong>로 활용할 수 있습니다. 수시 학종에서 교내 활동의 일관성·깊이가 핵심 평가 요소입니다.</div>
+      <div style="font-size:16px;color:var(--txt);line-height:var(--lh-loose);margin-bottom:10px;">이 학교의 특색사업과 동아리를 <strong>생활기록부 활동 소재</strong>로 활용할 수 있습니다. 수시 학종에서 교내 활동의 일관성·깊이가 핵심 평가 요소입니다.</div>
       <div class="gb-act-grid">
         <div style="background:#fff;border-radius:0;padding:12px;border:1px solid #BAE6FD;">
           <div style="font-weight:700;color:#0369A1;font-size:16px;margin-bottom:8px;">학교 제공 특색프로그램</div>
@@ -6977,7 +6980,7 @@ function openModal(s){
             </tbody>
           </table>
         </div>
-        <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;">고교학점제는 <b>2025학년도 입학생(현 고2)</b>부터 전면 적용되며, 이 세대가 치르는 2028학년도 대입부터 수능이 통합형으로 바뀌고 내신이 5등급제로 전환됩니다.</div>
+        <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:10px;">고교학점제는 <b>2025학년도 입학생(현 고2)</b>부터 전면 적용되며, 이 세대가 치르는 2028학년도 대입부터 수능이 통합형으로 바뀌고 내신이 5등급제로 전환됩니다.</div>
       </div>
       ${cohorts.map(c=>`
         <div class="rep-card" style="background:${c.bg};border-color:${c.bd};">
@@ -6986,12 +6989,12 @@ function openModal(s){
             <span style="font-size:14px;color:var(--muted);">${c.enter}</span>
             <span class="dir-yr" style="margin:0;color:${c.color};">${c.apply}</span>
           </div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;padding:8px 10px;background:rgba(255,255,255,.7);border-radius:0;margin-bottom:10px;">${c.regime}</div>
+          <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);padding:8px 10px;background:rgba(255,255,255,.7);border-radius:0;margin-bottom:10px;">${c.regime}</div>
           <div class="dir-txt">${c.txt||'분석 예정'}</div>
         </div>`).join('')}
       <div style="background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:0;padding:16px;">
         <div style="font-size:16px;font-weight:800;margin-bottom:8px;"><span class="lbl-ico">🎓</span> ${s} 맞춤 핵심 전략</div>
-        <div style="font-size:16px;line-height:1.8;">${COMMENTS[s]||''}</div>
+        <div style="font-size:16px;line-height:var(--lh-loose);">${COMMENTS[s]||''}</div>
       </div>
     </div>`;
 
@@ -7042,7 +7045,7 @@ function buildStatusTable(){
         let st=(STATUS[s][i]||{})[yr]||'n';
         if(upMap[s+'|'+i+'|'+yr]) st='y';
         if(st==='n') rowHasMissing=true; else rowHasFile=true;
-        cellHtml+=`<div style="font-size:14px;line-height:1.5;white-space:nowrap;"><span class="sdot ${sym[st][0]}">${sym[st][1]}</span> <span style="color:#888;font-size:14px;">${yr.slice(2)}</span></div>`;
+        cellHtml+=`<div style="font-size:14px;line-height:var(--lh-base);white-space:nowrap;"><span class="sdot ${sym[st][0]}">${sym[st][1]}</span> <span style="color:#888;font-size:14px;">${yr.slice(2)}</span></div>`;
         cellCount++; if(st==='n') missingCount++;
       });
       const cls=rowHasFile?'cell-has':(rowHasMissing?'cell-missing':'');
@@ -7104,7 +7107,7 @@ function renderGB(s){
   const col=SCHOOL_COLORS[s];
   const secStyle=`background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden;margin-bottom:14px;`;
   const hdStyle=`background:${col};color:#fff;padding:12px 18px;font-size:16px;font-weight:700;`;
-  const bdStyle=`padding:16px 18px;font-size:16px;line-height:1.8;color:var(--txt);`;
+  const bdStyle=`padding:16px 18px;font-size:16px;line-height:var(--lh-loose);color:var(--txt);`;
   content.innerHTML=`
     <div style="${secStyle}"><div style="${hdStyle}"><span class="lbl-ico">🎓</span> 수행평가 난이도 및 과목별 특징</div><div style="${bdStyle}">${g.perf}</div></div>
     <div style="${secStyle}"><div style="${hdStyle}"><span class="lbl-ico">🎓</span> 읽기·쓰기·탐구 강화 포인트</div><div style="${bdStyle}">${g.rw}</div></div>
@@ -7127,7 +7130,7 @@ function buildReviews(){
       <div style="width:52px;height:52px;border-radius:50%;background:${avatarColor};color:#fff;font-size:19px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">${initial}</div>
       <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px;">${r.school}</div>
       <div style="font-size:14px;color:var(--muted);margin-bottom:14px;">${r.grade}</div>
-      <p style="font-size:16px;line-height:1.8;color:var(--txt);padding-bottom:16px;border-bottom:1px dashed var(--line);">"${r.text}"</p>
+      <p style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);padding-bottom:16px;border-bottom:1px dashed var(--line);">"${r.text}"</p>
     </div>`;
   }).join('');
 }
@@ -7141,7 +7144,7 @@ function buildChecklists(){
     <div style="background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden;">
       <div style="background:${cl.color};color:#fff;padding:14px 18px;font-size:16px;font-weight:700;">${cl.grade}</div>
       <div style="padding:18px;">
-        ${cl.items.map(item=>`<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:16px;line-height:1.7;">
+        ${cl.items.map(item=>`<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:16px;line-height:var(--lh-base);">
           <span style="color:${cl.color};flex-shrink:0;margin-top:2px;">☑</span>
           <span>${item}</span>
         </div>`).join('')}
@@ -7207,7 +7210,7 @@ function renderGradeHeat(grade,year){
     noData.innerHTML=`<div style="text-align:center;padding:40px 20px;background:#F9F7F4;border-radius:0;border:2px dashed var(--line);">
       <div style="font-size:32px;margin-bottom:10px;">📋</div>
       <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;">${grade}학년 자료 수집 중</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.7;">현재 2024·2025학년도 자료를 수집하고 있습니다.<br>수집 완료 후 학교별 과목 비교 분석이 자동으로 표시됩니다.</div>
+      <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);">현재 2024·2025학년도 자료를 수집하고 있습니다.<br>수집 완료 후 학교별 과목 비교 분석이 자동으로 표시됩니다.</div>
       <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
         ${gd.subjects.map(s=>`<span style="background:#EFF6FF;color:#1E40AF;font-size:14px;padding:4px 10px;border-radius:999px;font-weight:600;">${s}</span>`).join('')}
       </div>
@@ -7786,7 +7789,7 @@ function renderRW(school){
   });
   const totalPerform=d.subjects.map(s=>d.hasBreakdown?((s.서논술||0)+(s.그외||0)):(s.수행||0));
   const avg=Math.round(totalPerform.reduce((a,b)=>a+b,0)/totalPerform.length);
-  if(detEl) detEl.innerHTML=`<div class="infobox" style="background:#FFF8F0;border-left:3px solid var(--amber);">✏️ <b>${school} 분석</b><br><span style="display:block;margin-top:6px;line-height:1.8;">${d.note}</span><span style="display:block;margin-top:8px;font-size:14px;color:var(--muted);">→ 6개 주요 교과 평균 수행평가 비중: <b>약 ${avg}%</b></span></div>`;
+  if(detEl) detEl.innerHTML=`<div class="infobox" style="background:#FFF8F0;border-left:3px solid var(--amber);">✏️ <b>${school} 분석</b><br><span style="display:block;margin-top:6px;line-height:var(--lh-loose);">${d.note}</span><span style="display:block;margin-top:8px;font-size:14px;color:var(--muted);">→ 6개 주요 교과 평균 수행평가 비중: <b>약 ${avg}%</b></span></div>`;
 }
 
 function buildRWGrid(){
@@ -7808,7 +7811,7 @@ function buildRWGrid(){
         <div style="font-weight:700;font-size:16px;color:var(--navy);">${s}</div>
         ${badge}
       </div>
-      <div style="font-size:14px;color:var(--txt);line-height:1.75;flex:1;">${plan}</div>
+      <div style="font-size:14px;color:var(--txt);line-height:var(--lh-base);flex:1;">${plan}</div>
       <div>
         <button onclick="openModal('${s}')"
           style="width:100%;padding:8px 0;background:var(--navy);color:#fff;border:none;
