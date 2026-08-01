@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="logo_grade.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <style>
@@ -50,11 +50,14 @@
   }
   .nav{display:flex;align-items:center;gap:11px;
     height:64px;max-width:1180px;margin:0 auto;padding:0 20px;}
-  .logo{line-height:var(--lh-tight);display:flex;align-items:baseline;gap:9px;}
-  .logo-name{font-family:'Noto Serif KR',serif;font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.3px;white-space:nowrap;}
-  .logo-sub{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap;}
+  .logo{line-height:var(--lh-tight);display:flex;align-items:baseline;gap:9px;min-width:0;overflow:hidden;}
+  .logo-name{font-family:'Noto Serif KR',serif;
+    font-size:22px;font-weight:700;color:#111;letter-spacing:-.3px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .logo-name-sub{font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;
+    font-size:.68em;font-weight:700;}
   .header-seal{height:36px;flex-shrink:0;}
-  .hamburger{margin-left:auto;}
+  .hamburger{margin-left:auto;flex-shrink:0;}
   .header-line-wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
   .header-line{height:0;border-top:3px solid var(--navy);}
   .header-subnav{background:#fff;}
@@ -623,10 +626,15 @@
   .print-btn-amber:hover{background:#a86c08;}
 
   /* 카카오 플로팅 버튼 */
-  .kakao-float{position:fixed;bottom:28px;right:24px;z-index:900;display:flex;flex-direction:column;align-items:center;gap:6px;}
-  .kakao-float-btn{width:56px;height:56px;border-radius:50%;background:#FEE500;color:#191919;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
+  .kakao-float{position:fixed;bottom:28px;right:24px;z-index:900;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .kakao-float-btn{width:52px;height:52px;border-radius:0;background:#4472C4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
   .kakao-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,0,0,.25);}
   .kakao-float-label{font-size:12px;font-weight:700;color:var(--navy);background:#fff;padding:2px 8px;border-radius:0;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;}
+  .scrolltop-btn{width:52px;height:52px;border-radius:0;border:none;background:#4472C4;color:#fff;
+    display:none;align-items:center;justify-content:center;font-size:1.4rem;line-height:1;cursor:pointer;
+    box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
+  .scrolltop-btn.show{display:flex;}
+  .scrolltop-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,0,0,.25);}
   /* 채널 가입 플로팅 버튼 */
   .channel-float-btn{width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 20px rgba(28,61,107,.3);transition:transform .2s,box-shadow .2s;}
   .channel-float-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(28,61,107,.4);}
@@ -710,8 +718,7 @@
   <div class="nav">
     <img src="logo_grade_navy.png" alt="생각탐구" class="header-seal">
     <a href="index.html" class="logo">
-      <span class="logo-name">생각탐구</span>
-      <span class="logo-sub">관악구 입시 분석 플랫폼</span>
+      <span class="logo-name">생각탐구 학교분석<span class="logo-name-sub">_관악</span></span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="메뉴">
       <span></span><span></span><span></span>
@@ -776,10 +783,20 @@
 
 <!-- 플로팅 버튼 묶음 -->
 <div class="kakao-float no-print">
+  <button class="scrolltop-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로" aria-label="맨 위로">⌃</button>
   <!-- 버튼 2: 1:1상담 -->
   <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" class="kakao-float-btn" title="1:1 오픈채팅 상담">💬</a>
   <span class="kakao-float-label">1:1상담</span>
 </div>
+<script>
+(function(){
+  const btn=document.getElementById('scrollTopBtn');
+  if(!btn) return;
+  window.addEventListener('scroll',()=>{
+    btn.classList.toggle('show', window.scrollY>400);
+  },{passive:true});
+})();
+</script>
 
 <!-- 프리미엄 전환 안내 모달 -->
 <div class="prem-modal-overlay" id="premModal" style="display:none;" onclick="if(event.target===this)closePremModal()">
