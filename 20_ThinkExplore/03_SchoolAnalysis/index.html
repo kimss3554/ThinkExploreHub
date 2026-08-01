@@ -15,9 +15,9 @@
   :root{
     --bg:#F6F8FC;
     --card:#FFFFFF;
-    --navy:#1C3D6B;
+    --navy:#1B3B86;
     --amber:#C8830A;
-    --line:#DDE4F0;
+    --line:#B8C3D7;
     --txt:#1A2333;
     --muted:#5A6A85;
     --green:#2E9E5B;
@@ -43,7 +43,7 @@
 
   /* ---------- HEADER ---------- */
   header.site{
-    position:sticky;top:0;z-index:100;background:#1C3D6B;
+    position:sticky;top:0;z-index:100;background:#1B3B86;
     border-bottom:1px solid rgba(255,255,255,.12);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;
@@ -198,7 +198,7 @@
   .chartbox{position:relative;width:100%;}
 
   /* ---------- LOCK BANNER ---------- */
-  .lockbanner{background:linear-gradient(135deg,#1C3D6B 0%,#16315a 100%);
+  .lockbanner{background:linear-gradient(135deg,#1B3B86 0%,#16315a 100%);
     border-radius:18px;padding:42px 28px;text-align:center;color:#fff;
     box-shadow:0 16px 40px rgba(28,61,107,.25);
     max-width:760px;margin:0 auto;}
@@ -332,7 +332,7 @@
   .cmp-fit-box-b{background:#FFF8F0;border:1.5px solid #FDE68A;border-radius:12px;padding:16px;}
   .cmp-fit-title-a{font-size:16px;font-weight:700;color:#1E40AF;margin-bottom:10px;}
   .cmp-fit-title-b{font-size:16px;font-weight:700;color:#92400E;margin-bottom:10px;}
-  .cmp-consultant{background:linear-gradient(135deg,#0F2342,#1C3D6B);color:#fff;border-radius:14px;padding:22px;margin-top:18px;}
+  .cmp-consultant{background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:14px;padding:22px;margin-top:18px;}
   .cmp-cta-btn{display:inline-block;background:#C8830A;color:#fff;padding:12px 26px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;transition:.15s;}
   .cmp-cta-btn:hover{background:#a06a07;}
   @media(max-width:600px){.cmp-split-grid{grid-template-columns:1fr;}}
@@ -417,7 +417,7 @@
   .bk-green{background:#D1FAE5;color:#065F46;}
   .bk-muted{background:var(--card);color:var(--muted);border:1px solid var(--line);}
   /* ---------- 포뮬러 배너 ---------- */
-  .formula-banner{background:linear-gradient(135deg,#0F2342 0%,#1C3D6B 60%,#0F2342 100%);
+  .formula-banner{background:linear-gradient(135deg,#0F2342 0%,#1B3B86 60%,#0F2342 100%);
     color:#fff;padding:60px 20px;text-align:center;}
   .formula{font-size:clamp(16px,2.8vw,24px);font-weight:700;line-height:1.7;margin-bottom:24px;}
   .formula .plus,.formula .eq{color:#C8830A;margin:0 4px;}
@@ -526,7 +526,7 @@
   .mobile-tabbar{
     display:none;
     position:fixed;bottom:0;left:0;right:0;
-    background:#1C3D6B;
+    background:#1B3B86;
     border-top:1px solid rgba(255,255,255,.15);
     z-index:200;
     padding-bottom:env(safe-area-inset-bottom);
@@ -2173,20 +2173,20 @@ function printCurrentTab(){
     <title>생각탐구 — ${titleMap[tabName]||tabName}</title>
     <style>
       body{font-family:'Noto Sans KR',sans-serif;background:#fff;color:#1A2333;margin:0;padding:16px;}
-      .chartcard{border:1px solid #DDE4F0;border-radius:10px;padding:20px;margin-bottom:16px;break-inside:avoid;}
-      h2{font-size:18px;font-weight:700;color:#1C3D6B;margin-bottom:12px;}
-      h3{font-size:16px;font-weight:700;color:#1C3D6B;}
+      .chartcard{border:1px solid #B8C3D7;border-radius:10px;padding:20px;margin-bottom:16px;break-inside:avoid;}
+      h2{font-size:18px;font-weight:700;color:#1B3B86;margin-bottom:12px;}
+      h3{font-size:16px;font-weight:700;color:#1B3B86;}
       table{width:100%;border-collapse:collapse;font-size:14px;}
-      th{background:#EDF1FA;padding:7px 10px;border-bottom:1.5px solid #DDE4F0;}
-      td{padding:7px 10px;border-bottom:1px solid #DDE4F0;}
+      th{background:#EDF1FA;padding:7px 10px;border-bottom:1.5px solid #B8C3D7;}
+      td{padding:7px 10px;border-bottom:1px solid #B8C3D7;}
       img{max-width:100%;height:auto;}
       .no-print,.print-btn,.print-btn-float,.nav-tab,.cta,.logout-btn{display:none!important;}
       *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
       @media print{@page{margin:12mm;}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}}
     </style>
   </head><body>
-    <div style="margin-bottom:20px;border-bottom:2px solid #1C3D6B;padding-bottom:10px;">
-      <strong style="font-size:20px;color:#1C3D6B;">생각탐구 관악구 입시 분석 플랫폼</strong>
+    <div style="margin-bottom:20px;border-bottom:2px solid #1B3B86;padding-bottom:10px;">
+      <strong style="font-size:20px;color:#1B3B86;">생각탐구 관악구 입시 분석 플랫폼</strong>
       <span style="font-size:16px;color:#5A6A85;margin-left:12px;">${titleMap[tabName]}</span>
     </div>`;
 
@@ -2773,7 +2773,7 @@ const REVIEWS = [
 
 /* ===================== 학년별 점검 체크리스트 ===================== */
 const CHECKLISTS = [
-  {grade:'중3 겨울방학',color:'#1C3D6B',items:[
+  {grade:'중3 겨울방학',color:'#1B3B86',items:[
     '고1 국어·수학 예습 (수능 수학 기초)',
     '관심 진로 3가지 이상 구체화',
     '독서 이력 정리 (중학 3년 대표 도서 10권)',
@@ -3947,7 +3947,7 @@ new Chart(document.getElementById('rankChart'),{
     datasets:[{
       data:SCHOOLS.slice().sort((a,b)=>RANK[b]-RANK[a]).map(s=>RANK[s]),
       backgroundColor:ctx=>{const l=ctx.chart.data.labels[ctx.dataIndex];
-        return (l==='영락고'||l==='성보고')?'#C8830A':'#1C3D6B';},
+        return (l==='영락고'||l==='성보고')?'#C8830A':'#1B3B86';},
       borderRadius:6,barThickness:20
     }]
   },
@@ -3966,7 +3966,7 @@ new Chart(document.getElementById('rankChart'),{
 const statsCharts={};
 (function initStatsCharts(){
  try{
-  const navy='#1C3D6B', amber='#C8830A', teal='#0D9488';
+  const navy='#1B3B86', amber='#C8830A', teal='#0D9488';
   const tickC='#2A2A2A', gridC='#E5DDD0', mutedC='#6B6B6B';
   const baseOpts=(unit,xMin,xMax)=>({
     indexAxis:'y', responsive:true, maintainAspectRatio:false,
@@ -4461,7 +4461,7 @@ function renderModalRadar(s, year){
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{position:'bottom',labels:{color:'#1A2333',boxWidth:13,font:{size:13}}}},
       scales:{r:{min:50,max:90,ticks:{stepSize:10,color:'#5A6A85',backdropColor:'transparent'},
-        grid:{color:'#DDE4F0'},pointLabels:{color:'#1A2333',font:{size:13}}}}}
+        grid:{color:'#B8C3D7'},pointLabels:{color:'#1A2333',font:{size:13}}}}}
   });
   const titleEl=document.getElementById('radarSectTitle');
   /* 입학연도 = 1학년 성취도 공시연도. 고3=2024학년도, 고2=2025학년도, 고1=2026학년도(미공시) */
@@ -4474,7 +4474,7 @@ function renderModalRadar(s, year){
   const pd=document.getElementById('radarPrintData');
   if(pd){
     pd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;">
-      <thead><tr style="background:#1C3D6B;color:#fff;">
+      <thead><tr style="background:#1B3B86;color:#fff;">
         <th style="padding:4px 8px;text-align:left;">과목</th>
         <th style="padding:4px 8px;">${s}</th>
         <th style="padding:4px 8px;">${refSchool}(최고)</th>
@@ -4508,7 +4508,7 @@ function renderModalAeChart(s, yr){
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{position:'bottom',labels:{color:'#2A2A2A',boxWidth:12}},
-        title:{display:true,text:aeTitle,color:'#1C3D6B'}},
+        title:{display:true,text:aeTitle,color:'#1B3B86'}},
       scales:{x:{stacked:true,ticks:{color:'#2A2A2A'},grid:{display:false}},
               y:{stacked:true,max:100,ticks:{color:'#6B6B6B'},grid:{color:'#E5DDD0'}}}}
   });
@@ -4516,7 +4516,7 @@ function renderModalAeChart(s, yr){
   if(aePd){
     const aKor=src['국어'][s]||0, aMath=src['수학'][s]||0, aEng=src['영어'][s]||0;
     aePd.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;">
-      <thead><tr style="background:#1C3D6B;color:#fff;">
+      <thead><tr style="background:#1B3B86;color:#fff;">
         <th style="padding:4px 8px;text-align:left;">과목</th>
         <th style="padding:4px 8px;">A비율</th><th style="padding:4px 8px;">A 외</th>
       </tr></thead>
@@ -4729,7 +4729,7 @@ window.runCompareAnalysis=function(){
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{position:'bottom',labels:{color:'#2A2A2A',boxWidth:12,font:{size:13}}}},
       scales:{r:{min:50,max:90,ticks:{stepSize:10,color:'#6B6B6B',backdropColor:'transparent'},
-        grid:{color:'#DDE4F0'},pointLabels:{color:'#1A2333',font:{size:13}}}}}
+        grid:{color:'#B8C3D7'},pointLabels:{color:'#1A2333',font:{size:13}}}}}
   });
 
   // 과목별 가로 막대 비교
@@ -4743,7 +4743,7 @@ window.runCompareAnalysis=function(){
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{position:'bottom',labels:{color:'#2A2A2A',boxWidth:12,font:{size:13}}}},
       scales:{x:{ticks:{color:'#2A2A2A',font:{size:13}},grid:{display:false}},
-              y:{min:50,max:90,ticks:{color:'#5A6A85',font:{size:13}},grid:{color:'#DDE4F0'}}}}
+              y:{min:50,max:90,ticks:{color:'#5A6A85',font:{size:13}},grid:{color:'#B8C3D7'}}}}
   });
 
   // 비교 표
@@ -4793,7 +4793,7 @@ window.runCompareAnalysis=function(){
     if(val==null)return '<span style="color:var(--muted);font-size:14px;">—</span>';
     const w=Math.min(val,100);
     return `<div style="display:flex;align-items:center;gap:5px;">
-      <div style="flex:1;height:5px;background:#DDE4F0;border-radius:3px;min-width:40px;">
+      <div style="flex:1;height:5px;background:#B8C3D7;border-radius:3px;min-width:40px;">
         <div style="width:${w}%;height:100%;background:${col};border-radius:3px;"></div>
       </div>
       <span style="font-size:14px;font-weight:${win?700:400};color:${win?col:'var(--muted)'};">${val}%</span>
@@ -4949,7 +4949,7 @@ function _refreshEvalTab(s, yr){
   document.getElementById('mEval').innerHTML=`
     <div style="display:grid;gap:14px;">
       <div class="rep-card">
-        <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> 교과 학업성취 추이 (1학년 공통과목)${gradeNote}</div>
+        <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 교과 학업성취 추이 (1학년 공통과목)${gradeNote}</div>
         <div style="overflow-x:auto;margin-top:8px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed;">
             <colgroup><col style="width:28%;"><col style="width:16%;"><col style="width:16%;"><col style="width:16%;"><col style="width:24%;"></colgroup>
@@ -4965,7 +4965,7 @@ function _refreshEvalTab(s, yr){
         </div>
       </div>
       <div class="rep-card">
-        <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> A등급 비율 비교 (5등급제 vs 9등급제, 2025)</div>
+        <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> A등급 비율 비교 (5등급제 vs 9등급제, 2025)</div>
         <div style="overflow-x:auto;margin-top:8px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;">
             <thead><tr style="background:var(--navy);color:#fff;">
@@ -4978,7 +4978,7 @@ function _refreshEvalTab(s, yr){
         </div>
       </div>
       <div class="rep-card">
-        <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> 교수·학습·평가계획</div>
+        <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 교수·학습·평가계획</div>
         <div class="rep-val">${det.evalPlan||'수집 예정 (학교알리미 공시 확인 권장)'}</div>
       </div>
     </div>`;
@@ -4987,7 +4987,7 @@ function _refreshEvalTab(s, yr){
 /* ===================== 인포그래픽 헬퍼 =====================
    숫자를 표·막대·추이선으로 보여주기 위한 순수 SVG/CSS 컴포넌트.
    Chart.js 인스턴스를 쓰지 않아 모달 재렌더·인쇄에 안전하다. */
-const IG_PALETTE=['#1C3D6B','#C8830A','#0369A1','#4338CA','#B45309','#2E9E5B','#94A3B8'];
+const IG_PALETTE=['#1B3B86','#C8830A','#0369A1','#4338CA','#B45309','#2E9E5B','#94A3B8'];
 
 /* 가로 막대 — rows: [{label, value, unit, note}] */
 function igBars(rows,opt={}){
@@ -5155,7 +5155,7 @@ function igTimeline(events){
 function renderProgramCards(s,det){
   const p=(typeof SCHOOL_PROGRAMS!=='undefined'&&SCHOOL_PROGRAMS[s])?SCHOOL_PROGRAMS[s]:null;
   const card=(lbl,body,src)=>`<div class="rep-card">
-    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> ${lbl}</div>
     ${body}${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
   </div>`;
   const out=[];
@@ -5192,7 +5192,7 @@ function renderProgramCards(s,det){
       {label:'자율 동아리',value:aut.length?aut.length:'—',unit:aut.length?'개':'',color:'#0369A1',sub:aut.length?'':'명단 미공시'}
     ].concat(c.members?[{label:'참여 인원',value:c.members,unit:'명',color:'#C8830A'}]:[]));
     if(c.how) body+=`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:8px;">${c.how}</div>`;
-    if(reg.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">정규(창의적 체험활동) 동아리</div><div class="elect-pills">${reg.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
+    if(reg.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">정규(창의적 체험활동) 동아리</div><div class="elect-pills">${reg.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
     if(aut.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#0369A1;margin-bottom:5px;">자율 동아리</div><div class="elect-pills">${aut.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
     out.push(card('동아리 현황',body,p.clubsSrc));
   } else {
@@ -5214,7 +5214,7 @@ function renderProgramCards(s,det){
 function renderStatCards(s,det){
   const st=(typeof SCHOOL_STATS!=='undefined'&&SCHOOL_STATS[s])?SCHOOL_STATS[s]:null;
   const card=(lbl,body,src)=>`<div class="rep-card">
-    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> ${lbl}</div>
     ${body}
     ${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
   </div>`;
@@ -5236,7 +5236,7 @@ function renderStatCards(s,det){
     ].concat(L.sp?[{label:'특수학급',value:L.sp,color:'#94A3B8'}]:[]),{labelW:56});
     if(ks.length>1){
       body+=igTrend([
-        {name:'전교생',color:'#1C3D6B',data:ks.map(k=>({x:k,y:st.students[k].total}))},
+        {name:'전교생',color:'#1B3B86',data:ks.map(k=>({x:k,y:st.students[k].total}))},
         {name:'1학년',color:'#C8830A',data:ks.map(k=>({x:k,y:st.students[k].g1}))}
       ],{unit:'명'});
       body+=igTable(['학년도','1학년','2학년','3학년','전교생'],
@@ -5279,7 +5279,7 @@ function renderStatCards(s,det){
   if(st&&st.grad&&Object.keys(st.grad).length){
     const ks=Object.keys(st.grad).sort(), lastK=ks[ks.length-1], G=st.grad[lastK];
     const segs=[
-      {label:'4년제 대학',value:G.univ4,color:'#1C3D6B'},
+      {label:'4년제 대학',value:G.univ4,color:'#1B3B86'},
       {label:'전문대학',value:G.jeondae,color:'#0369A1'},
       {label:'국외 진학',value:G.abroad,color:'#7C3AED'},
       {label:'취업',value:G.employ,color:'#2E9E5B'},
@@ -5287,13 +5287,13 @@ function renderStatCards(s,det){
     ].filter(x=>Number(x.value)>0);
     let body=igStats([
       {label:`졸업자 (${lastK})`,value:G.total,unit:'명'},
-      {label:'4년제 진학',value:G.univ4,unit:'명',color:'#1C3D6B',sub:G.total?`${(G.univ4/G.total*100).toFixed(1)}%`:''},
+      {label:'4년제 진학',value:G.univ4,unit:'명',color:'#1B3B86',sub:G.total?`${(G.univ4/G.total*100).toFixed(1)}%`:''},
       {label:'전문대 진학',value:G.jeondae,unit:'명',color:'#0369A1',sub:G.total?`${(G.jeondae/G.total*100).toFixed(1)}%`:''}
     ]);
     body+=igStack(segs,{total:G.total});
     if(ks.length>1){
       body+=igTrend([
-        {name:'4년제 진학자',color:'#1C3D6B',data:ks.map(k=>({x:k,y:st.grad[k].univ4}))},
+        {name:'4년제 진학자',color:'#1B3B86',data:ks.map(k=>({x:k,y:st.grad[k].univ4}))},
         {name:'전문대 진학자',color:'#0369A1',data:ks.map(k=>({x:k,y:st.grad[k].jeondae}))}
       ],{unit:'명'});
       const anyAbroad=ks.some(k=>Number(st.grad[k].abroad)>0);
@@ -6414,7 +6414,7 @@ window.renderTrackCheck=function(){
   let priority='';
   if(track.id==='t2'){
     priority=`<div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">전공별 <b>우선 이수</b> 권장 과목</div>
+      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">전공별 <b>우선 이수</b> 권장 과목</div>
       <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:6px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
       <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead><tr style="background:var(--navy);color:#fff;">
@@ -6466,7 +6466,7 @@ function renderJoint(){
   const el=document.getElementById('jointContent');
   if(!el||el.dataset.done) return;
   const card=(lbl,body,note)=>`<div class="rep-card" style="margin-bottom:14px;">
-    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> ${lbl}</div>
     ${body}${note?`<div class="rec-source" style="margin-top:8px;">${note}</div>`:''}
   </div>`;
 
@@ -6513,7 +6513,7 @@ function renderJoint(){
       </div>`).join('')}
     </div>
     <div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">신청 시기</div>
+      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">신청 시기</div>
       ${igTable(['구분','신청 시기','비고'],[
         ['<b>1학기 과목</b>','전년도 12월 ~ 1월 말','1학년은 신청 불가'],
         ['<b>2학기 과목</b>','7월','1학년은 2학기부터 신청 가능'],
@@ -6536,7 +6536,7 @@ function renderJoint(){
       ['과목별 세부능력 및 특기사항','○','<b>○ (핵심)</b>']
     ],{align:['left','center','center']})
     +`<div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">이수 기준과 미이수 처리</div>
+      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">이수 기준과 미이수 처리</div>
       ${igTable(['구분','기준'],[
         ['<b>이수 조건</b>','수업횟수의 <b>2/3 이상 출석</b> + <b>학업성취율 40% 이상</b> (둘 다 충족)'],
         ['출석 미달 시','추가학습 — 1학점당 5시수 운영, 2/3 이상 참여 시 이수 인정'],
@@ -6743,7 +6743,7 @@ function renderElectives(det){
   if(!e) return '';
   if(Array.isArray(e)){
     return `<div class="rep-card">
-      <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항</div>
+      <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항</div>
       <div class="rep-val" style="margin-bottom:6px;color:#B45309;">※ 2015 개정 교육과정 과목입니다 — <b>현 고3(2024년 입학)</b>에만 해당합니다. 현 고1·고2의 2022 개정 편제는 수집 중입니다.</div>
       <div class="elect-pills">${e.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div>
     </div>`;
@@ -6780,7 +6780,7 @@ function renderElectives(det){
       });
     });
     gradeTable=`<div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1C3D6B;margin-bottom:5px;">${e.terms?'학년·학기별':'학년별'} 선택과목 편제표</div>
+      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">${e.terms?'학년·학기별':'학년별'} 선택과목 편제표</div>
       ${e.fixed?`<div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:6px;padding:8px 10px;background:#F9F7F4;border-radius:8px;"><b>학교지정(선택 아님)</b> — ${e.fixed}</div>`:''}
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
@@ -6800,11 +6800,11 @@ function renderElectives(det){
   }
 
   return `<div class="rep-card">
-    <div class="rep-lbl" style="color:#1C3D6B;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항 (2022 개정 교육과정)</div>
+    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항 (2022 개정 교육과정)</div>
     <div class="rep-val" style="margin-bottom:2px;">${e.note||''}</div>
     ${e.feature?`<div style="font-size:16px;line-height:1.8;color:var(--txt);background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:10px 12px;margin:8px 0 2px;">${e.feature}</div>`:''}
-    ${grp('1학년 공통과목 (전원 이수)','공통' in e?e['공통']:null,'#1C3D6B')}
-    ${grp('1학년 학교지정 선택',e.g1sel,'#1C3D6B')}
+    ${grp('1학년 공통과목 (전원 이수)','공통' in e?e['공통']:null,'#1B3B86')}
+    ${grp('1학년 학교지정 선택',e.g1sel,'#1B3B86')}
     ${gradeTable}
     ${gradeTable?'':CAT.map(([k,klabel,c])=>grp(klabel,e[k],c)).join('')}
     ${e.limits?`<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);"><b>이수 규정</b> — ${e.limits}</div>`:''}
@@ -6888,8 +6888,8 @@ function openModal(s){
     if(src) html+=`<p class="rec-source">${src}</p>`;
     return html;
   }
-  const infoItems=[{lbl:'🎓 교육과정 편성·운영',val:fmtVal(det.curriculum),c:'#1C3D6B'}];
-  const afterItems=[{lbl:'🎓 방과후학교 현황',val:fmtVal(det.afterschool),c:'#1C3D6B'}];
+  const infoItems=[{lbl:'🎓 교육과정 편성·운영',val:fmtVal(det.curriculum),c:'#1B3B86'}];
+  const afterItems=[{lbl:'🎓 방과후학교 현황',val:fmtVal(det.afterschool),c:'#1B3B86'}];
   // 업로드된 이미지 (현재 학교)
   const schoolImgs=getUploads().filter(u=>u.school===s&&u.isImage&&u.dataUrl);
   const imgGallery=schoolImgs.length?`
@@ -6963,7 +6963,7 @@ function openModal(s){
   document.getElementById('mFuture').innerHTML=`
     <div style="display:grid;gap:14px;">
       <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px;">
-        <div class="rep-lbl" style="color:#1C3D6B;margin-bottom:10px;"><span class="lbl-ico">🎓</span> 학년별 적용 입시제도 한눈에 보기</div>
+        <div class="rep-lbl" style="color:#1B3B86;margin-bottom:10px;"><span class="lbl-ico">🎓</span> 학년별 적용 입시제도 한눈에 보기</div>
         <div style="overflow-x:auto;">
           <table style="width:100%;border-collapse:collapse;font-size:16px;">
             <thead><tr style="background:var(--navy);color:#fff;">
@@ -6989,7 +6989,7 @@ function openModal(s){
           <div style="font-size:14px;color:var(--muted);line-height:1.7;padding:8px 10px;background:rgba(255,255,255,.7);border-radius:8px;margin-bottom:10px;">${c.regime}</div>
           <div class="dir-txt">${c.txt||'분석 예정'}</div>
         </div>`).join('')}
-      <div style="background:linear-gradient(135deg,#0F2342,#1C3D6B);color:#fff;border-radius:12px;padding:16px;">
+      <div style="background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:12px;padding:16px;">
         <div style="font-size:16px;font-weight:800;margin-bottom:8px;"><span class="lbl-ico">🎓</span> ${s} 맞춤 핵심 전략</div>
         <div style="font-size:16px;line-height:1.8;">${COMMENTS[s]||''}</div>
       </div>
@@ -7541,7 +7541,7 @@ document.getElementById('adminPrintBtn').addEventListener('click',()=>{
   let rows='';
   const schools=target==='all'?SCHOOLS:[target];
   ADMIN_YEARS.forEach(yr=>{
-    rows+=`<tr><td colspan="${CATEGORIES.length+1}" style="background:#1C3D6B;color:#fff;font-weight:700;padding:8px 12px;font-size:14px;">${yr}학년도</td></tr>`;
+    rows+=`<tr><td colspan="${CATEGORIES.length+1}" style="background:#1B3B86;color:#fff;font-weight:700;padding:8px 12px;font-size:14px;">${yr}학년도</td></tr>`;
     schools.forEach(s=>{
       let row=`<tr><td style="font-weight:600;padding:6px 10px;border:1px solid #ddd;white-space:nowrap;">${s}</td>`;
       CATEGORIES.forEach((_,i)=>{
@@ -7551,16 +7551,16 @@ document.getElementById('adminPrintBtn').addEventListener('click',()=>{
       row+='</tr>'; rows+=row;
     });
   });
-  const catHeaders=CATEGORIES.map(c=>`<th style="background:#1C3D6B;color:#fff;padding:6px 8px;font-size:12px;border:1px solid #ddd;min-width:60px;">${c}</th>`).join('');
+  const catHeaders=CATEGORIES.map(c=>`<th style="background:#1B3B86;color:#fff;padding:6px 8px;font-size:12px;border:1px solid #ddd;min-width:60px;">${c}</th>`).join('');
   printWin.document.write(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>관악구 입시 — 자료수집 현황</title>
 <style>body{font-family:'Noto Sans KR',sans-serif;font-size:12px;margin:20px;}
 table{border-collapse:collapse;width:100%;}
 @media print{@page{size:A3 landscape;margin:10mm;}}
 </style></head><body>
-<h2 style="color:#1C3D6B;margin-bottom:6px;">관악구 입시 — 자료수집 현황 (${target==='all'?'전체':target})</h2>
+<h2 style="color:#1B3B86;margin-bottom:6px;">관악구 입시 — 자료수집 현황 (${target==='all'?'전체':target})</h2>
 <p style="color:#666;font-size:12px;margin-bottom:16px;">인쇄일: ${new Date().toLocaleDateString('ko-KR')}</p>
 <table>
-<thead><tr><th style="background:#1C3D6B;color:#fff;padding:6px 10px;border:1px solid #ddd;text-align:left;">학교</th>${catHeaders}</tr></thead>
+<thead><tr><th style="background:#1B3B86;color:#fff;padding:6px 10px;border:1px solid #ddd;text-align:left;">학교</th>${catHeaders}</tr></thead>
 <tbody>${rows}</tbody>
 </table>
 </body></html>`);
@@ -7774,7 +7774,7 @@ function renderRW(school){
       indexAxis:'y', responsive:true, maintainAspectRatio:false,
       plugins:{
         legend:{position:'bottom',labels:{font:{size:13},color:'#1A2333'}},
-        title:{display:true,text:`${school} ${d.year} — 과목별 지필 : 수행 비중`,color:'#1C3D6B',font:{size:14}},
+        title:{display:true,text:`${school} ${d.year} — 과목별 지필 : 수행 비중`,color:'#1B3B86',font:{size:14}},
         tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x}%`}}
       },
       scales:{
