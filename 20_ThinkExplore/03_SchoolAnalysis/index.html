@@ -291,7 +291,9 @@
   .rep-lbl{font-size:17px;font-weight:800;letter-spacing:.3px;margin-bottom:16px;color:var(--txt);border-left:3px solid var(--navy);padding-left:10px;}
   .lbl-ico{font-size:1.5em;line-height:1;display:inline-block;vertical-align:-.18em;margin-right:2px;}
   .rep-val{font-size:16px;line-height:var(--lh-loose);color:var(--txt);}
-  .rep-val p{margin:0 0 10px;}.rep-val p:last-child{margin-bottom:0;}
+  .rep-val p{margin:0;padding:8px 0;border-bottom:1px dashed var(--line);}
+  .rep-val p:last-child{border-bottom:none;padding-bottom:0;}
+  .rep-val p:first-child{padding-top:0;}
   .rec-source{color:var(--muted);font-size:14px;margin-top:8px;font-style:italic;}
   .elect-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
   .elect-pill{background:#EFF6FF;color:#1B3B86;font-size:16px;padding:4px 12px;border-radius:999px;font-weight:600;}
@@ -3966,7 +3968,7 @@ new Chart(document.getElementById('rankChart'),{
 const statsCharts={};
 (function initStatsCharts(){
  try{
-  const navy='#1B3B86', amber='#C8830A', teal='#0D9488';
+  const navy='#1B3B86', amber='#C8830A', teal='#2E9E5B';
   const tickC='#2A2A2A', gridC='#E5DDD0', mutedC='#6B6B6B';
   const baseOpts=(unit,xMin,xMax)=>({
     indexAxis:'y', responsive:true, maintainAspectRatio:false,
@@ -6889,8 +6891,29 @@ function openModal(s){
     if(src) html+=`<p class="rec-source">${src}</p>`;
     return html;
   }
+  /* 쉼표·마침표로 나열된 "프로그램명(내용)" 형태 텍스트를 표로 재구성 */
+  function renderProgramTable(txt){
+    if(!txt) return fmtVal(txt);
+    const srcM=txt.match(/\s*\((OCR\s*)?출처:[^)]*\)\s*$/);
+    const body=srcM?txt.slice(0,srcM.index).trim():txt;
+    const src=srcM?srcM[0].trim():'';
+    const frags=body.split(/[,.]\s*/).map(f=>f.trim()).filter(Boolean);
+    if(frags.length<2) return fmtVal(txt);
+    const rows=frags.map(f=>{
+      const m=f.match(/^(.+?)\(([^)]+)\)$/);
+      return m?{name:m[1].trim(),desc:m[2].trim()}:{name:f,desc:''};
+    });
+    const rowsHtml=rows.map(r=>`<tr>
+        <td style="padding:8px 10px;text-align:center;font-weight:600;background:#F9F7F4;border-bottom:1px solid var(--line);">${r.name}</td>
+        <td style="padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);color:var(--muted);">${r.desc||'—'}</td>
+      </tr>`).join('');
+    return `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:7px 10px;text-align:center;">프로그램</th><th style="padding:7px 10px;text-align:left;">내용</th></tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table></div>${src?`<div class="rec-source" style="margin-top:6px;">${src}</div>`:''}`;
+  }
   const infoItems=[{lbl:'🎓 교육과정 편성·운영',val:fmtVal(det.curriculum),c:'#1B3B86'}];
-  const afterItems=[{lbl:'🎓 방과후학교 현황',val:fmtVal(det.afterschool),c:'#1B3B86'}];
+  const afterItems=[{lbl:'🎓 방과후학교 현황',val:renderProgramTable(det.afterschool),c:'#1B3B86'}];
   // 업로드된 이미지 (현재 학교)
   const schoolImgs=getUploads().filter(u=>u.school===s&&u.isImage&&u.dataUrl);
   const imgGallery=schoolImgs.length?`
@@ -6919,11 +6942,11 @@ function openModal(s){
       <div class="gb-act-grid">
         <div style="background:#fff;border-radius:0;padding:12px;border:1px solid #BAE6FD;">
           <div style="font-weight:700;color:#0369A1;font-size:16px;margin-bottom:8px;">학교 제공 특색프로그램</div>
-          ${specials.length?specials.map(a=>`<div style="font-size:16px;margin:4px 0;">• ${a}</div>`).join(''):'<div style="font-size:16px;color:var(--muted);">자료 수집 후 표시됩니다</div>'}
+          ${specials.length?specials.map(a=>`<div style="display:flex;gap:6px;font-size:16px;margin:4px 0;"><span style="flex-shrink:0;">•</span><span>${a}</span></div>`).join(''):'<div style="font-size:16px;color:var(--muted);">자료 수집 후 표시됩니다</div>'}
         </div>
         <div style="background:#fff;border-radius:0;padding:12px;border:1px solid #BAE6FD;">
           <div style="font-weight:700;color:#0369A1;font-size:16px;margin-bottom:8px;">동아리 활동 연계</div>
-          ${clubs.length?clubs.map(c=>`<div style="font-size:16px;margin:4px 0;">• ${c}</div>`).join(''):'<div style="font-size:16px;color:var(--muted);">자료 수집 후 표시됩니다</div>'}
+          ${clubs.length?clubs.map(c=>`<div style="display:flex;gap:6px;font-size:16px;margin:4px 0;"><span style="flex-shrink:0;">•</span><span>${c}</span></div>`).join(''):'<div style="font-size:16px;color:var(--muted);">자료 수집 후 표시됩니다</div>'}
         </div>
       </div>
     </div>`;
