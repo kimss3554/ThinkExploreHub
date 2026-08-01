@@ -288,7 +288,7 @@
   .rep-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media(max-width:680px){.rep-grid2{grid-template-columns:1fr;}}
   .rep-card{background:var(--card);border:1px solid var(--line);border-radius:0;padding:24px;margin-bottom:24px;min-width:0;}
-  .rep-lbl{font-size:17px;font-weight:800;letter-spacing:.3px;margin-bottom:16px;}
+  .rep-lbl{font-size:17px;font-weight:800;letter-spacing:.3px;margin-bottom:16px;color:var(--txt);border-left:3px solid var(--navy);padding-left:10px;}
   .lbl-ico{font-size:1.5em;line-height:1;display:inline-block;vertical-align:-.18em;margin-right:2px;}
   .rep-val{font-size:16px;line-height:var(--lh-loose);color:var(--txt);}
   .rep-val p{margin:0 0 10px;}.rep-val p:last-child{margin-bottom:0;}
@@ -370,7 +370,7 @@
   .stats-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .stats-panel{display:block;}
   .stats-panel.hidden{display:none;}
-  .stats-sub{font-size:16px;font-weight:800;color:var(--navy);margin:0 0 8px;}
+  .stats-sub{font-size:16px;font-weight:800;color:var(--txt);margin:0 0 8px;}
   /* print all modal panels */
   .print-data{display:none;}
   @media print{
@@ -4950,7 +4950,7 @@ function _refreshEvalTab(s, yr){
   document.getElementById('mEval').innerHTML=`
     <div style="display:grid;gap:14px;">
       <div class="rep-card">
-        <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 교과 학업성취 추이 (1학년 공통과목)${gradeNote}</div>
+        <div class="rep-lbl"><span class="lbl-ico">🎓</span> 교과 학업성취 추이 (1학년 공통과목)${gradeNote}</div>
         <div style="overflow-x:auto;margin-top:8px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed;">
             <colgroup><col style="width:28%;"><col style="width:16%;"><col style="width:16%;"><col style="width:16%;"><col style="width:24%;"></colgroup>
@@ -4966,7 +4966,7 @@ function _refreshEvalTab(s, yr){
         </div>
       </div>
       <div class="rep-card">
-        <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> A등급 비율 비교 (5등급제 vs 9등급제, 2025)</div>
+        <div class="rep-lbl"><span class="lbl-ico">🎓</span> A등급 비율 비교 (5등급제 vs 9등급제, 2025)</div>
         <div style="overflow-x:auto;margin-top:8px;">
           <table style="width:100%;border-collapse:collapse;font-size:14px;">
             <thead><tr style="background:var(--navy);color:#fff;">
@@ -4979,7 +4979,7 @@ function _refreshEvalTab(s, yr){
         </div>
       </div>
       <div class="rep-card">
-        <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 교수·학습·평가계획</div>
+        <div class="rep-lbl"><span class="lbl-ico">🎓</span> 교수·학습·평가계획</div>
         <div class="rep-val">${det.evalPlan||'수집 예정 (학교알리미 공시 확인 권장)'}</div>
       </div>
     </div>`;
@@ -5156,7 +5156,7 @@ function igTimeline(events){
 function renderProgramCards(s,det){
   const p=(typeof SCHOOL_PROGRAMS!=='undefined'&&SCHOOL_PROGRAMS[s])?SCHOOL_PROGRAMS[s]:null;
   const card=(lbl,body,src)=>`<div class="rep-card">
-    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    <div class="rep-lbl"><span class="lbl-ico">🎓</span> ${lbl}</div>
     ${body}${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
   </div>`;
   const out=[];
@@ -5193,7 +5193,7 @@ function renderProgramCards(s,det){
       {label:'자율 동아리',value:aut.length?aut.length:'—',unit:aut.length?'개':'',color:'#0369A1',sub:aut.length?'':'명단 미공시'}
     ].concat(c.members?[{label:'참여 인원',value:c.members,unit:'명',color:'#C8830A'}]:[]));
     if(c.how) body+=`<div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-top:8px;">${c.how}</div>`;
-    if(reg.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">정규(창의적 체험활동) 동아리</div><div class="elect-pills">${reg.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
+    if(reg.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:5px;">정규(창의적 체험활동) 동아리</div><div class="elect-pills">${reg.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
     if(aut.length) body+=`<div style="margin-top:10px;"><div style="font-size:16px;font-weight:800;color:#0369A1;margin-bottom:5px;">자율 동아리</div><div class="elect-pills">${aut.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div></div>`;
     out.push(card('동아리 현황',body,p.clubsSrc));
   } else {
@@ -5215,7 +5215,7 @@ function renderProgramCards(s,det){
 function renderStatCards(s,det){
   const st=(typeof SCHOOL_STATS!=='undefined'&&SCHOOL_STATS[s])?SCHOOL_STATS[s]:null;
   const card=(lbl,body,src)=>`<div class="rep-card">
-    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    <div class="rep-lbl"><span class="lbl-ico">🎓</span> ${lbl}</div>
     ${body}
     ${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
   </div>`;
@@ -6415,7 +6415,7 @@ window.renderTrackCheck=function(){
   let priority='';
   if(track.id==='t2'){
     priority=`<div style="margin-top:24px;">
-      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:10px;">전공별 <b>우선 이수</b> 권장 과목</div>
+      <div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:10px;">전공별 <b>우선 이수</b> 권장 과목</div>
       <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:10px;">같은 유형②라도 지망 학과에 따라 아래 일반선택 과목을 먼저 듣는 것이 권장됩니다.</div>
       <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead><tr style="background:var(--navy);color:#fff;">
@@ -6434,7 +6434,7 @@ window.renderTrackCheck=function(){
 
   const missing=JOINT_ONLY_SUBJECTS.filter(s=>!hasSubj(s));
   const deeper=`<div style="margin-top:24px;padding:18px 20px;background:var(--section-alt);border:1px solid var(--line);border-radius:0;">
-      <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
+      <div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:10px;">더 깊이 가고 싶다면 — 공동교육과정 전용 과목</div>
       <div style="font-size:14px;line-height:var(--lh-loose);color:var(--txt);">
         아래 과목은 <b>${school}을 포함한 관악구 11개교 어디에도 정규 편제로 개설되지 않습니다.</b> 일반고에서 개설하기 어려운 전문교과이기 때문이며, <b>공동교육과정(거점학교·서울온라인학교)에서만</b> 이수할 수 있습니다.
       </div>
@@ -6467,7 +6467,7 @@ function renderJoint(){
   const el=document.getElementById('jointContent');
   if(!el||el.dataset.done) return;
   const card=(lbl,body,note)=>`<div class="rep-card">
-    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    <div class="rep-lbl"><span class="lbl-ico">🎓</span> ${lbl}</div>
     ${body}${note?`<div class="rec-source" style="margin-top:8px;">${note}</div>`:''}
   </div>`;
 
@@ -6514,7 +6514,7 @@ function renderJoint(){
       </div>`).join('')}
     </div>
     <div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">신청 시기</div>
+      <div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:5px;">신청 시기</div>
       ${igTable(['구분','신청 시기','비고'],[
         ['<b>1학기 과목</b>','전년도 12월 ~ 1월 말','1학년은 신청 불가'],
         ['<b>2학기 과목</b>','7월','1학년은 2학기부터 신청 가능'],
@@ -6524,7 +6524,7 @@ function renderJoint(){
 
   /* ⑤ 평가·이수 — 핵심 */
   const evalBody=`<div style="background:var(--section-alt);border:1.5px solid var(--line);border-radius:0;padding:18px 20px;margin-top:16px;">
-      <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px;">가장 중요한 사실 — 석차등급이 산출되지 않습니다</div>
+      <div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:10px;">가장 중요한 사실 — 석차등급이 산출되지 않습니다</div>
       <div style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);">
         공동교육과정·온라인학교 개설 과목은 여러 학교 학생이 함께 듣는 특성상 <b>상대평가 석차등급을 매기지 않습니다.</b>
         따라서 이 과목의 성적이 <b>내신 등급 평균을 깎지 않습니다.</b> 대신 <b>「과목별 세부능력 및 특기사항」</b>이 남아 학생부종합전형의 정성 평가 자료가 됩니다.
@@ -6537,7 +6537,7 @@ function renderJoint(){
       ['과목별 세부능력 및 특기사항','○','<b>○ (핵심)</b>']
     ],{align:['center','center','center']})
     +`<div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">이수 기준과 미이수 처리</div>
+      <div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:5px;">이수 기준과 미이수 처리</div>
       ${igTable(['구분','기준'],[
         ['<b>이수 조건</b>','수업횟수의 <b>2/3 이상 출석</b> + <b>학업성취율 40% 이상</b> (둘 다 충족)'],
         ['출석 미달 시','추가학습 — 1학점당 5시수 운영, 2/3 이상 참여 시 이수 인정'],
@@ -6744,7 +6744,7 @@ function renderElectives(det){
   if(!e) return '';
   if(Array.isArray(e)){
     return `<div class="rep-card">
-      <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항</div>
+      <div class="rep-lbl"><span class="lbl-ico">🎓</span> 선택과목 개설 사항</div>
       <div class="rep-val" style="margin-bottom:6px;color:#B45309;">※ 2015 개정 교육과정 과목입니다 — <b>현 고3(2024년 입학)</b>에만 해당합니다. 현 고1·고2의 2022 개정 편제는 수집 중입니다.</div>
       <div class="elect-pills">${e.map(x=>`<span class="elect-pill">${x}</span>`).join('')}</div>
     </div>`;
@@ -6781,7 +6781,7 @@ function renderElectives(det){
       });
     });
     gradeTable=`<div style="margin-top:12px;">
-      <div style="font-size:16px;font-weight:800;color:#1B3B86;margin-bottom:5px;">${e.terms?'학년·학기별':'학년별'} 선택과목 편제표</div>
+      <div style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:5px;">${e.terms?'학년·학기별':'학년별'} 선택과목 편제표</div>
       ${e.fixed?`<div style="font-size:12px;color:var(--muted);line-height:var(--lh-base);margin-bottom:6px;padding:8px 10px;background:#F9F7F4;border-radius:0;"><b>학교지정(선택 아님)</b> — ${e.fixed}</div>`:''}
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
@@ -6801,7 +6801,7 @@ function renderElectives(det){
   }
 
   return `<div class="rep-card">
-    <div class="rep-lbl" style="color:#1B3B86;"><span class="lbl-ico">🎓</span> 선택과목 개설 사항 (2022 개정 교육과정)</div>
+    <div class="rep-lbl"><span class="lbl-ico">🎓</span> 선택과목 개설 사항 (2022 개정 교육과정)</div>
     <div class="rep-val" style="margin-bottom:2px;">${e.note||''}</div>
     ${e.feature?`<div style="font-size:16px;line-height:var(--lh-loose);color:var(--txt);background:#F0F9FF;border:1px solid #BAE6FD;border-radius:0;padding:10px 12px;margin:8px 0 2px;">${e.feature}</div>`:''}
     ${grp('1학년 공통과목 (전원 이수)','공통' in e?e['공통']:null,'#1B3B86')}
@@ -6895,7 +6895,7 @@ function openModal(s){
   const schoolImgs=getUploads().filter(u=>u.school===s&&u.isImage&&u.dataUrl);
   const imgGallery=schoolImgs.length?`
     <div class="rep-card" style="border-color:#BAE6FD;">
-      <div class="rep-lbl" style="color:#0369A1;"><span class="lbl-ico">🎓</span> 업로드된 활동 자료 (${schoolImgs.length}건)</div>
+      <div class="rep-lbl"><span class="lbl-ico">🎓</span> 업로드된 활동 자료 (${schoolImgs.length}건)</div>
       <div class="upl-gallery">
         ${schoolImgs.map(img=>`
           <div class="upl-img-card" onclick="window.open(this.querySelector('img').src)">
@@ -6908,7 +6908,7 @@ function openModal(s){
           </div>`).join('')}
       </div>
     </div>`:
-    '<div class="rep-card" style="border-color:#BAE6FD;background:#F0F9FF;"><div class="rep-lbl" style="color:#0369A1;"><span class="lbl-ico">🎓</span> 활동 자료 업로드</div><div class="rep-val" style="font-size:16px;color:#0369A1;">학교 홈페이지에서 수집한 특색프로그램·여름방학캠프·동아리 사진 등을 아래 <b>자료 업로드</b>에서 추가할 수 있습니다. 이미지(JPG·PNG)는 여기에 바로 표시됩니다.</div></div>';
+    '<div class="rep-card" style="border-color:#BAE6FD;background:#F0F9FF;"><div class="rep-lbl"><span class="lbl-ico">🎓</span> 활동 자료 업로드</div><div class="rep-val" style="font-size:16px;color:#0369A1;">학교 홈페이지에서 수집한 특색프로그램·여름방학캠프·동아리 사진 등을 아래 <b>자료 업로드</b>에서 추가할 수 있습니다. 이미지(JPG·PNG)는 여기에 바로 표시됩니다.</div></div>';
   // 생기부 활동 팁 섹션
   const specials=(det.special||'').split(/[,·\/]/).map(t=>t.trim()).filter(Boolean).slice(0,5);
   const clubs=(det.clubs||'').split(/[,·\/]/).map(t=>t.trim()).filter(Boolean).slice(0,5);
@@ -6931,13 +6931,13 @@ function openModal(s){
     <div style="display:grid;gap:10px;">
       ${infoItems.map(it=>`
         <div class="rep-card">
-          <div class="rep-lbl" style="color:${it.c};">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
+          <div class="rep-lbl">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
           <div class="rep-val">${it.val}</div>
         </div>`).join('')}
       ${renderProgramCards(s,det)}
       ${afterItems.map(it=>`
         <div class="rep-card">
-          <div class="rep-lbl" style="color:${it.c};">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
+          <div class="rep-lbl">${it.lbl.replace('🎓','<span class="lbl-ico">🎓</span>')}</div>
           <div class="rep-val">${it.val}</div>
         </div>`).join('')}
       ${renderStatCards(s,det)}
@@ -6964,7 +6964,7 @@ function openModal(s){
   document.getElementById('mFuture').innerHTML=`
     <div style="display:grid;gap:14px;">
       <div style="background:var(--section-alt);border:1.5px solid var(--line);border-radius:0;padding:16px;">
-        <div class="rep-lbl" style="color:#1B3B86;margin-bottom:10px;"><span class="lbl-ico">🎓</span> 학년별 적용 입시제도 한눈에 보기</div>
+        <div class="rep-lbl" style="margin-bottom:10px;"><span class="lbl-ico">🎓</span> 학년별 적용 입시제도 한눈에 보기</div>
         <div style="overflow-x:auto;">
           <table style="width:100%;border-collapse:collapse;font-size:16px;">
             <thead><tr style="background:var(--navy);color:#fff;">
