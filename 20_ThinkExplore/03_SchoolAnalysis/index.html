@@ -292,10 +292,12 @@
   table.heat thead th{background:var(--navy);color:#fff;font-weight:700;}
   table.heat tbody th{background:var(--section-alt);color:var(--navy);font-weight:700;text-align:center;padding-left:14px;}
   .cell{font-weight:700;color:#fff;border-radius:0;}
+  /* 커트라인 히트맵 전용 4단계 톤 — 인접 단계가 뚜렷이 구분되도록 색상환 간격을 넓힘
+     (사이트 공용 --yellow/--orange/--red와는 별도 값이라 다른 곳에 영향 없음) */
   .c-green{background:var(--green);}
-  .c-yellow{background:var(--yellow);}
-  .c-orange{background:var(--orange);}
-  .c-red{background:var(--red);}
+  .c-yellow{background:#D4A017;}
+  .c-orange{background:#C2650C;}
+  .c-red{background:#B0392B;}
   .legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:16px;font-size:14px;color:var(--muted);}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
   .dot{width:13px;height:13px;border-radius:0;display:inline-block;}
