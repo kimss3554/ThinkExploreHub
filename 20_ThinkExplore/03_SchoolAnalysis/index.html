@@ -180,8 +180,33 @@
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);gap:10px;}}
   @media(max-width:480px){.grid{grid-template-columns:1fr;}}
   .school{background:#fff;border:1.5px solid var(--line);border-radius:0;
-    padding:14px 15px;transition:.22s;box-shadow:0 2px 10px rgba(28,61,107,.07);}
+    padding:0;overflow:hidden;display:flex;flex-direction:column;
+    transition:.22s;box-shadow:0 2px 10px rgba(28,61,107,.07);}
   .school:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,61,107,.13);}
+  /* 학교 요약 카드 (한눈에 보기) */
+  .sc-body{padding:15px 16px 14px;flex:1;display:flex;flex-direction:column;}
+  .sc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:9px;}
+  .sc-name{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:var(--lh-tight);}
+  .sc-tag{font-size:12px;font-weight:600;padding:3px 8px;background:#E9F3ED;color:#1E7A53;white-space:nowrap;}
+  .sc-stats{font-size:15px;font-weight:700;color:var(--txt);line-height:var(--lh-tight);}
+  .sc-stats .sep{color:var(--line);margin:0 6px;font-weight:400;}
+  .sc-stats .warn{color:var(--red);}
+  .sc-hr{border-top:1px solid var(--line);margin:11px 0;}
+  .sc-adv{display:flex;align-items:center;gap:10px;}
+  .sc-adv-main{font-size:15px;font-weight:700;color:var(--txt);line-height:var(--lh-tight);}
+  .sc-adv-rank{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:2px;}
+  .sc-adv-rank .up{color:var(--green);font-weight:600;}
+  .sc-adv-rank .down{color:var(--red);font-weight:600;}
+  .sc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:auto;}
+  .sc-list li{font-size:14px;line-height:var(--lh-base);color:var(--txt);
+    padding-left:12px;position:relative;}
+  .sc-list li::before{content:'•';position:absolute;left:0;color:var(--muted);}
+  .sc-list b{color:var(--navy);font-weight:700;}
+  .sc-foot{background:#5E9E7B;color:#fff;font-size:14px;font-weight:700;
+    padding:11px 14px;text-align:center;line-height:var(--lh-tight);}
+  .sc-head .sc-detail{flex-shrink:0;margin-left:auto;width:auto;padding:4px 11px;font-size:12px;
+    font-weight:600;border-radius:0;border:1px solid var(--line);background:var(--bg);color:var(--navy);}
+  .sc-head .sc-detail:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
   .school .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
   .school h3{font-size:22px;font-weight:800;color:var(--navy);}
   .badge{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;}
@@ -3930,26 +3955,122 @@ function toast(msg){
   clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove('show'),2600);
 }
 
-/* ===================== RENDER SCHOOL CARDS ===================== */
+/* ===================== RENDER SCHOOL CARDS =====================
+   카드에 들어가는 수치는 모두 기존 실데이터에서만 산출한다.
+   학생수·중단율 = TRANSFER_DATA(학교알리미 공시), 진학률 = ADV_RATE,
+   강점 = ARATE['5'](현 고2 = 2028 대입 세대의 1학년 A비율),
+   진학률 추이 스파크라인 = SCHOOL_YEARLY[].grad (연도별 자료가 있는 학교만),
+   특색 프로그램 = SCHOOL_DETAIL[].special 자동 요약, 한줄평 = COMMENTS. */
+
+/* 4년제 진학률 관악구 순위 */
+const ADV_SORTED = SCHOOLS.slice().sort((a,b)=>ADV_RATE[b]-ADV_RATE[a]);
+const advRank = s => ADV_SORTED.indexOf(s)+1;
+
+function genderTag(s){
+  const m=META[s]||{};
+  if(m.cls==='girls') return '여고';
+  if(m.cls==='boys')  return '남고';
+  return /분리/.test(m.type||'') ? '공학·분리' : '공학';
+}
+function sizeTag(s){
+  const b=(TRANSFER_DATA[s]||{}).base;
+  if(!b) return '';
+  if(b>=700) return '최대규모';
+  if(b>=600) return '대형';
+  if(b<350)  return '최소규모';
+  if(b<450)  return '소규모';
+  return '';
+}
+/* 1학년 A비율 상위 과목 (5등급제 = 현 고2) */
+function topStrengths(s,n){
+  const src=ARATE['5'];
+  return Object.keys(src)
+    .map(k=>({k,v:src[k][s]}))
+    .filter(o=>typeof o.v==='number')
+    .sort((a,b)=>b.v-a.v)
+    .slice(0,n||2);
+}
+/* 서술형 특색활동 문장에서 앞쪽 항목만 뽑아 짧게 요약 */
+function summarizePrograms(txt,max){
+  if(!txt) return '';
+  return txt.replace(/\([^)]*\)/g,'')
+            .split(/[,.]\s*/)
+            .map(t=>t.trim())
+            .filter(Boolean)
+            .slice(0,max||3)
+            .join(', ');
+}
+/* 5과목(국어·수학·영어·통합사회·통합과학) 평균 성취도 3년 추이 — 11개교 전부 보유 */
+function avgTrend(s){
+  const subs=Object.keys(TREND);
+  return [0,1,2].map(i=>{
+    const v=subs.map(k=>(TREND[k][s]||[])[i]).filter(x=>typeof x==='number');
+    return v.length ? v.reduce((a,b)=>a+b,0)/v.length : null;
+  }).filter(v=>v!==null);
+}
+/* 추이 스파크라인 */
+function sparkline(vs){
+  if(!vs || vs.length<2) return '';
+  const W=76,H=28,P=3;
+  const mn=Math.min(...vs), mx=Math.max(...vs), rg=(mx-mn)||1;
+  const pts=vs.map((v,i)=>[
+    P+(W-2*P)*(i/(vs.length-1)),
+    P+(H-2*P)*(1-(v-mn)/rg)
+  ]);
+  const line=pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+  const last=pts[pts.length-1];
+  const up=vs[vs.length-1]>=vs[0];
+  const c=up?'#2E9E5B':'#D14343';
+  const fill=up?'rgba(46,158,91,.14)':'rgba(209,67,67,.12)';
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true" style="flex-shrink:0;">
+    <polygon points="${P},${H-P} ${line} ${W-P},${H-P}" fill="${fill}"/>
+    <polyline points="${line}" fill="none" stroke="${c}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="2.6" fill="${c}"/>
+  </svg>`;
+}
+
 const grid=document.getElementById('schoolGrid');
 SCHOOLS.forEach(s=>{
-  const m=META[s];
+  const t=TRANSFER_DATA[s]||{};
   const card=document.createElement('div');
   card.className='school';
-  const bk=BADGES[s];
+
+  const tags=[genderTag(s),sizeTag(s)].filter(Boolean)
+    .map(x=>`<span class="sc-tag">${x}</span>`).join('');
+  const highDrop=typeof t.rate==='number' && t.rate>=2.5;
+  const rank=advRank(s);
+  const tr=avgTrend(s);
+  const trUp=tr.length>=2 && tr[tr.length-1]>=tr[0];
+  const trDelta=tr.length>=2 ? (tr[tr.length-1]-tr[0]).toFixed(1) : '';
+  const strengths=topStrengths(s,3).map(o=>`${o.k} A ${o.v}%`).join(', ');
+  const programs=summarizePrograms((SCHOOL_DETAIL[s]||{}).special,3);
+  const summary=(COMMENTS[s]||'').split('. ')[0].replace(/\.$/,'');
+
   card.innerHTML=`
-    <div style="background:${SCHOOL_COLORS[s]};margin:-14px -15px 12px;padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:6px;">
-      <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0;">${s}</h3>
-      <button class="detail-btn" data-school="${s}" style="flex-shrink:0;width:auto;padding:4px 10px;font-size:12px;border-radius:0;border:none;background:rgba(255,255,255,.25);color:#fff;">상세 <span class="lockmini" style="color:#fff;">🔒</span></button>
+    <div class="sc-body">
+      <div class="sc-head">
+        <span class="sc-name">${s}</span>${tags}
+        <button class="sc-detail detail-btn" data-school="${s}">상세 <span class="lockmini">🔒</span></button>
+      </div>
+      <div class="sc-stats">
+        ${t.base?`${t.base}명`:''}${t.base&&typeof t.rate==='number'?'<span class="sep">|</span>':''}
+        ${typeof t.rate==='number'?`중단율 <span class="${highDrop?'warn':''}">${t.rate}%</span>`:''}
+      </div>
+      <div class="sc-hr"></div>
+      <div class="sc-adv">
+        ${sparkline(tr)}
+        <div class="sc-adv-main">4년제 진학률 ${ADV_RATE[s].toFixed(1)}%
+          <span class="sc-adv-rank">관악구 ${rank}위 / 11개교</span>
+          ${tr.length>=2?`<span class="sc-adv-rank">성취도 ${tr[tr.length-1].toFixed(1)}점 <span class="${trUp?'up':'down'}">(3년 ${trUp?'+':''}${trDelta}점)</span></span>`:''}
+        </div>
+      </div>
+      <div class="sc-hr"></div>
+      <ul class="sc-list">
+        ${strengths?`<li><b>강점:</b> ${strengths}</li>`:''}
+        ${programs?`<li><b>특색 프로그램:</b> ${programs}</li>`:''}
+      </ul>
     </div>
-    <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px;">
-      ${bk?`<span class="badge-key bk-${bk.cls}">${bk.label}</span>`:''}
-      <span class="badge ${m.cls}">${m.cls==='girls'?'여고':m.cls==='boys'?'남고':'남녀공학'}</span>
-    </div>
-    <div class="metrics">
-      <div class="metric"><div class="ic">🎓</div><div class="v">${m.adv}</div><div class="k">4년제</div></div>
-      <div class="metric"><div class="ic">📈</div><div class="v">${m.avg}</div><div class="k">국영수</div></div>
-    </div>
+    ${summary?`<div class="sc-foot">${summary}</div>`:''}
   `;
   grid.appendChild(card);
 });
