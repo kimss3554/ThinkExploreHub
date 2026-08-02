@@ -1036,7 +1036,20 @@
             <li><strong>광신고는 고점 유지</strong> — 57.1%→53.6%→58.0%로 등락은 있으나 3년 내내 관악구 1위를 지킴. 영락고는 43.6%→57.4%→53.9%로 2024년 졸업에서 크게 뛴 뒤 소폭 조정.</li>
           </ul>
         </div>
-        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:var(--lh-base);">※ 전문대·취업 세부 및 대학별 진학 현황(SKY·수도권 등) 데이터는 추후 추가 예정입니다.</p>
+
+        <p class="stats-sub" style="margin-top:30px;">전문대 진학률 3개년 추이 (2023~2025년 졸업)</p>
+        <p class="csub" style="margin:0 0 10px;">같은 졸업생 기준의 전문대학 진학 비율입니다. 위 4년제 그래프와 함께 보면 학교별 진학 성향을 비교할 수 있습니다.</p>
+        <div class="chartbox" style="height:440px;"><canvas id="jdTrendChart"></canvas></div>
+        <div class="chart-analysis">
+          <strong>📌 4년제 ↔ 전문대 비교</strong>
+          <ul>
+            <li><strong>대체로 반비례</strong> — 4년제가 높은 광신고(58.0%)·미림여고(57.5%)는 전문대가 18.2%·16.3%로 낮고, 4년제 최하위 신림고(38.4%)는 전문대가 31.8%로 가장 높습니다. 진학 자체를 못 한 것이 아니라 <b>진학 경로가 다른 것</b>으로 읽어야 합니다.</li>
+            <li><strong>신림고 전문대 +14.6%p 급증</strong> — 17.2%(2023년 졸업)→27.2%→31.8%. 같은 기간 4년제는 −1.6%p라, 진학률 총합은 오히려 늘어 진학 지도 자체는 강화된 것으로 보입니다.</li>
+            <li><strong>당곡고·삼성고는 전문대 비중이 꾸준히 높음</strong> — 28.3%·26.2%로 3년 내내 상위권. 4년제(41.3%·45.6%)와 합하면 전체 진학률은 약 70%대입니다.</li>
+            <li><strong>남강고 −5.2%p</strong> — 20.5%→16.4%→15.3%로 전문대 비중이 가장 크게 줄고 4년제는 +2.7%p 올라, 4년제 중심으로 이동한 흐름이 뚜렷합니다.</li>
+          </ul>
+        </div>
+        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:var(--lh-base);">※ 취업·국외진학 세부 및 대학별 진학 현황(SKY·수도권 등) 데이터는 추후 추가 예정입니다.</p>
       </div>
 
       <!-- 패널 4: 학생 이동 -->
@@ -4315,6 +4328,36 @@ const statsCharts={};
       }
     }
   });
+
+  /* ── 9. 전문대 진학률 3개년 추이 — 4년제(8번)와 같은 학교 순서로 두어 대조하기 쉽게 함.
+        색은 상세 모달의 '전문대 진학자'와 동일한 #0369A1 계열을 재사용 ── */
+  const jdRate=(s,y)=>{const g=SCHOOL_STATS[s]?.grad?.[y]; return g?+(g.jeondae/g.total*100).toFixed(1):null;};
+  statsCharts.jdTrend = new Chart(document.getElementById('jdTrendChart'),{
+    type:'bar',
+    data:{
+      labels: grSorted,
+      datasets: GR_YEARS.map((y,i)=>({
+        label:y+'년 졸업',
+        data: grSorted.map(s=>jdRate(s,y)),
+        backgroundColor:`rgba(3,105,161,${[0.3,0.55,0.85][i]})`,
+        borderRadius:0, barThickness:9
+      }))
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,position:'top',labels:{font:{size:13},padding:14}},
+        tooltip:{callbacks:{label:c=>{
+          const s=grSorted[c.dataIndex], y=GR_YEARS[c.datasetIndex], g=SCHOOL_STATS[s]?.grad?.[y];
+          return g?`${y}년 졸업 전문대 ${jdRate(s,y)}% (졸업 ${g.total}명 중 ${g.jeondae}명) · 4년제 ${gradRate(s,y)}%`:`${y}년 자료 없음`;
+        }}}
+      },
+      scales:{
+        x:{min:0,max:35,ticks:{color:mutedC,font:{size:13},callback:v=>v+'%'},grid:{color:gridC}},
+        y:{ticks:{color:tickC,font:{weight:'600',size:13}},grid:{display:false}}
+      }
+    }
+  });
  }catch(e){
   /* 통계 차트 하나가 실패해도(예: 숨겨진 탭 안 캔버스) 이후 스크립트 전체가
      멈추면 안 되므로 여기서 흡수한다. 로그인/비밀번호 로직이 이 아래에 있어서
@@ -4330,7 +4373,7 @@ function switchStatsTab(id, btn){
   document.getElementById('sp-'+id).classList.remove('hidden');
   btn.classList.add('active');
   // 숨겨진 상태에서 0px로 굳어버렸을 수 있는 차트를 다시 계산
-  const chartKeys={class:['cls'], career:['career','advTrend'], movement:['transfer','dropTrend']}[id]||[];
+  const chartKeys={class:['cls'], career:['career','advTrend','jdTrend'], movement:['transfer','dropTrend']}[id]||[];
   requestAnimationFrame(()=>chartKeys.forEach(k=>statsCharts[k]&&statsCharts[k].resize()));
 }
 
