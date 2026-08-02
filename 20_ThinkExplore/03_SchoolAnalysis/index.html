@@ -7182,9 +7182,10 @@ function openModal(s){
     </div>`;
 
   modal.classList.add('open');
+  document.body.style.overflow='hidden';
 }
-document.getElementById('modalClose').addEventListener('click',()=>modal.classList.remove('open'));
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+document.getElementById('modalClose').addEventListener('click',()=>{modal.classList.remove('open');document.body.style.overflow='';});
+modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');document.body.style.overflow='';}});
 
 /* ===================== DATA STATUS TABLE ===================== */
 const STORE_KEY='sjtg_uploads';
