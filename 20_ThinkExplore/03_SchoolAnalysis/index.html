@@ -1011,105 +1011,52 @@
         </div>
       </div>
 
-      <!-- 패널 3: 졸업 진로 -->
+      <!-- 패널 3: 졸업 진로 — 학교별 종합리포트와 동일한 인포그래픽 카드 형식 -->
       <div class="stats-panel hidden" id="sp-career">
-        <p class="stats-sub">4년제 대학 진학률 (높은 순)</p>
-        <p class="csub" style="margin:0 0 10px;">2025년 졸업(2024학년도 졸업생) 기준. 수시·정시 모두 포함.</p>
-        <div class="chartbox" style="height:360px;"><canvas id="careerBarChart"></canvas></div>
+        <div id="careerIG"></div>
         <div class="chart-analysis">
-          <strong>📌 4년제 진학률 분석</strong>
+          <strong>📌 해석 — 4년제와 전문대는 함께 봐야 합니다</strong>
           <ul>
-            <li><strong>관악구 평균 48.9%</strong> — 광신고(58.0%)·미림여고(57.5%)가 평균을 9%p 안팎 웃돌며 2강을 형성. 두 학교 모두 진학 지도 체계와 방과후 수능 대비 프로그램이 탄탄.</li>
-            <li><strong>영락고(53.9%) 주목</strong> — 국·수 관악구 1위 학력임에도 진학률은 광신고에 밀림. 상위권 학생의 의대·SKY 재도전(재수·반수) 비율이 높을 가능성 있음 — 단순 진학률이 아닌 합격 대학 수준을 함께 봐야 함.</li>
-            <li><strong>신림고(38.4%) 최하위</strong> — 단, 2025년 수학·영어 성취도가 급등한 만큼 향후 졸업생의 진학률 개선 여부를 주목할 필요가 있음.</li>
-            <li><strong>진학률의 함정</strong> — 4년제 진학률이 높다고 해서 반드시 상위권 대학에 많이 간다는 의미는 아님. 학교별 진학 대학 분포(SKY·수도권·지방국립 등)를 추가로 확인하는 것이 중요. 관련 데이터는 추후 업데이트 예정.</li>
+            <li><strong>관악구 4년제 평균 48.9%</strong> — 광신고(58.0%)·미림여고(57.5%)가 평균을 9%p 안팎 웃돌며 2강을 형성합니다.</li>
+            <li><strong>인헌고 +11.0%p 급등</strong> — 36.7%(2023년 졸업)→38.8%→47.7%로 관악구 최대 상승. 영락고(+10.3%p)·성보고(+8.6%p)·삼성고(+7.9%p)·미림여고(+6.1%p)·구암고(+4.6%p)도 뚜렷한 상승세입니다.</li>
+            <li><strong>문영여고 −3.4%p 하락</strong> — 52.9%→49.4%→49.5%로 관악구 최대 하락 폭. 신림고(−1.6%p)·당곡고(−0.7%p)도 소폭 하락했습니다.</li>
+            <li><strong>4년제와 전문대는 대체로 반비례</strong> — 4년제 최하위 신림고(38.4%)가 전문대는 31.8%로 최고이고 3년새 +14.6%p 급증했습니다. 같은 기간 4년제는 −1.6%p라 <b>진학 총합은 오히려 늘었습니다</b>. 진학을 못 한 것이 아니라 경로가 다른 것으로 읽어야 합니다.</li>
+            <li><strong>진학률의 함정</strong> — 4년제 진학률이 높다고 상위권 대학에 많이 간다는 뜻은 아닙니다. 영락고는 국·수 관악구 1위 학력인데도 진학률은 3위인데, 상위권 학생의 재수·반수 비율이 높을 가능성이 있습니다. 학교별 진학 대학 분포는 추후 추가 예정입니다.</li>
           </ul>
         </div>
-        <p class="stats-sub" style="margin-top:30px;">4년제 진학률 3개년 추이 (2023~2025년 졸업)</p>
-        <p class="csub" style="margin:0 0 10px;">졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. 11개교 모두 3개년 확보.</p>
-        <div class="chartbox" style="height:440px;"><canvas id="advTrendChart"></canvas></div>
-        <div class="chart-analysis">
-          <strong>📌 3개년 진학률 변화</strong>
-          <ul>
-            <li><strong>인헌고 +11.0%p 급등</strong> — 36.7%(2023년 졸업)→38.8%→47.7%로 관악구 최대 상승. 영락고(+10.3%p)·성보고(+8.6%p)·삼성고(+7.9%p)·미림여고(+6.1%p)·구암고(+4.6%p)도 뚜렷한 상승세.</li>
-            <li><strong>문영여고 −3.4%p 하락</strong> — 52.9%(2023년 졸업)→49.4%→49.5%로 관악구 최대 하락 폭. 신림고(−1.6%p)·당곡고(−0.7%p)도 소폭 하락.</li>
-            <li><strong>광신고는 고점 유지</strong> — 57.1%→53.6%→58.0%로 등락은 있으나 3년 내내 관악구 1위를 지킴. 영락고는 43.6%→57.4%→53.9%로 2024년 졸업에서 크게 뛴 뒤 소폭 조정.</li>
-          </ul>
-        </div>
-
-        <p class="stats-sub" style="margin-top:30px;">전문대 진학률 3개년 추이 (2023~2025년 졸업)</p>
-        <p class="csub" style="margin:0 0 10px;">같은 졸업생 기준의 전문대학 진학 비율입니다. 위 4년제 그래프와 함께 보면 학교별 진학 성향을 비교할 수 있습니다.</p>
-        <div class="chartbox" style="height:440px;"><canvas id="jdTrendChart"></canvas></div>
-        <div class="chart-analysis">
-          <strong>📌 4년제 ↔ 전문대 비교</strong>
-          <ul>
-            <li><strong>대체로 반비례</strong> — 4년제가 높은 광신고(58.0%)·미림여고(57.5%)는 전문대가 18.2%·16.3%로 낮고, 4년제 최하위 신림고(38.4%)는 전문대가 31.8%로 가장 높습니다. 진학 자체를 못 한 것이 아니라 <b>진학 경로가 다른 것</b>으로 읽어야 합니다.</li>
-            <li><strong>신림고 전문대 +14.6%p 급증</strong> — 17.2%(2023년 졸업)→27.2%→31.8%. 같은 기간 4년제는 −1.6%p라, 진학률 총합은 오히려 늘어 진학 지도 자체는 강화된 것으로 보입니다.</li>
-            <li><strong>당곡고·삼성고는 전문대 비중이 꾸준히 높음</strong> — 28.3%·26.2%로 3년 내내 상위권. 4년제(41.3%·45.6%)와 합하면 전체 진학률은 약 70%대입니다.</li>
-            <li><strong>남강고 −5.2%p</strong> — 20.5%→16.4%→15.3%로 전문대 비중이 가장 크게 줄고 4년제는 +2.7%p 올라, 4년제 중심으로 이동한 흐름이 뚜렷합니다.</li>
-          </ul>
-        </div>
-        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:var(--lh-base);">※ 취업·국외진학 세부 및 대학별 진학 현황(SKY·수도권 등) 데이터는 추후 추가 예정입니다.</p>
       </div>
 
-      <!-- 패널 4: 학생 이동 -->
+      <!-- 패널 4: 학생 이동 — 학교별 종합리포트와 동일한 인포그래픽 카드 형식 -->
       <div class="stats-panel hidden" id="sp-movement">
-        <p class="stats-sub">학업중단율 (낮을수록 안정적)</p>
-        <p class="csub" style="margin:0 0 10px;">학교알리미 「전출입 및 학업중단 학생 수」 공시 원자료 기준. 11개교 모두 2025학년도로 통일했습니다.</p>
-        <div class="chartbox" style="height:360px;"><canvas id="transferChart"></canvas></div>
-        <div class="chart-analysis">
-          <strong>📌 학업중단율 분석</strong>
-          <ul>
-            <li><strong>문영여고·남강고·당곡고(1.3%) 최저</strong> — 관악구 내 학업중단율이 가장 낮아 학적 안정성이 가장 높음. 특히 문영여고는 2023년 3.7%에서 3년 연속 하락해 관악구 최대 개선 폭(-2.4%p)을 기록.</li>
-            <li><strong>삼성고(3.3%) 최고</strong> — 관악구 평균(1.9%)의 약 1.7배. 전년 4.1%보다는 낮아졌으나 여전히 최고치. 다만 재적 269명의 소규모 학교라 절대 인원(9명) 변동에도 비율이 크게 흔들릴 수 있음(표본 변동성 유의).</li>
-            <li><strong>구암고(2.7%) 3년 연속 상승</strong> — 1.7%(2023)→2.3%(2024)→2.7%(2025)로 유일하게 3년 내리 악화. 성보고도 1.1%→2.1%로 올라 관악구 평균 수준이 됨.</li>
-            <li><strong>참고</strong> — 11개교 모두 2025학년도 공시 기준입니다. 11개교 평균은 2.18%(2023)→2.01%(2024)→1.92%(2025)로 3년 연속 개선됐습니다.</li>
-          </ul>
-        </div>
-        <p class="stats-sub" style="margin-top:30px;">항목별 3개년 추이 (2023~2025학년도)</p>
-        <p class="csub" style="margin:0 0 10px;">11개교 전부 3개년 확보. 범례의 학교명을 클릭하면 해당 선을 켜고 끌 수 있습니다.</p>
-
-        <p class="csub" style="margin:14px 0 4px;font-weight:700;color:var(--navy);">① 학업중단율 (%) — 낮을수록 안정적</p>
-        <div class="chartbox" style="height:330px;"><canvas id="dropRateLine"></canvas></div>
-
-        <p class="csub" style="margin:22px 0 4px;font-weight:700;color:var(--navy);">② 전입 학생수 (명)</p>
-        <div class="chartbox" style="height:300px;"><canvas id="inLine"></canvas></div>
-
-        <p class="csub" style="margin:22px 0 4px;font-weight:700;color:var(--navy);">③ 전출 학생수 (명)</p>
-        <div class="chartbox" style="height:300px;"><canvas id="outLine"></canvas></div>
-
-        <p class="stats-sub" style="margin-top:28px;">3개년 수치표</p>
-        <p class="csub" style="margin:0 0 8px;">증감(Δ)은 2023 대비 2025 변화입니다. 학업중단율은 하락이 개선이라 초록, 상승이 악화라 빨강으로 표시했습니다. 전입·전출은 많고 적음을 좋다·나쁘다로 볼 수 없어 중립 표기입니다.</p>
-        <div id="transferTable" style="overflow-x:auto;"></div>
+        <div id="movementIG"></div>
         <div class="chart-analysis">
           <strong>📌 해석 — 관악구 전체 흐름</strong>
           <ul>
-            <li><strong>학업중단은 3년 연속 줄었습니다</strong> — 11개교 평균 2.18%(2023)→2.01%→1.92%. 실인원으로도 128명→113명→106명으로 <b>3년새 22명(17%) 감소</b>했습니다. 관악구 전체로는 학적 안정성이 개선되는 방향입니다.</li>
-            <li><strong>전입은 늘고 전출은 줄었습니다</strong> — 전입 116→124명, 전출 86→108명으로 절대량은 둘 다 늘었지만, 2024년에 순유출(−2명)로 돌아섰던 것이 2025년 순유입(+16명)으로 회복됐습니다. 학교 간 이동 자체가 활발해진 가운데 구 밖으로의 순유출은 멈춘 셈입니다.</li>
-            <li><strong>단, 중단율 개선이 모든 학교의 이야기는 아닙니다</strong> — 6개교는 개선, 5개교는 악화로 갈렸습니다. 평균만 보면 안 되는 이유입니다.</li>
+            <li><strong>학업중단은 3년 연속 줄었습니다</strong> — 11개교 평균 2.18%(2023)→2.01%→1.92%. 실인원으로도 128명→113명→106명으로 <b>3년새 22명(17%) 감소</b>했습니다.</li>
+            <li><strong>전입은 늘고 순유출은 멈췄습니다</strong> — 2024년 순유출(−2명)로 돌아섰던 것이 2025년 순유입(+16명)으로 회복됐습니다. 학교 간 이동 자체는 활발해진 가운데 구 밖으로 빠져나가는 흐름은 멈춘 셈입니다.</li>
+            <li><strong>단, 평균만 보면 안 됩니다</strong> — 6개교는 개선, 5개교는 악화로 갈렸습니다.</li>
           </ul>
           <strong style="display:block;margin-top:14px;">📌 학업중단율 — 학교별</strong>
           <ul>
-            <li><strong>문영여고 −2.4%p, 최대 개선</strong> — 3.7%→1.7%→1.3%로 3년 내리 하락해 관악구 최저 그룹에 진입했습니다. 미림여고(3.0%→1.7%)·신림고(3.6%→2.3%)도 각 −1.3%p로 크게 좋아졌습니다. 세 학교 모두 <b>출발점이 관악구 최상위였다</b>는 공통점이 있어, 높은 이탈률을 관리 대상으로 삼은 결과로 보입니다.</li>
-            <li><strong>구암고 +1.0%p, 유일한 3년 연속 악화</strong> — 1.7%→2.3%→2.7%로 관악구 최고 수준까지 올랐습니다. 전입도 10→15명으로 늘어(순유입 +9명) 학생 유출입이 함께 커지는 중이라, 단순 이탈보다 <b>학적 변동 자체가 잦아진 학교</b>로 읽는 것이 정확합니다.</li>
-            <li><strong>삼성고 3.3%로 최고치</strong> — 4.1%(2024)에서 낮아지긴 했으나 여전히 관악구 평균의 1.7배입니다. 다만 재적 269명의 소규모 학교라 <b>중단 9명이면 3.3%</b>가 됩니다. 한두 명 차이로 비율이 크게 흔들리므로 절대 인원과 함께 봐야 합니다.</li>
-            <li><strong>광신고·성보고는 반대로 나빠졌습니다</strong> — 두 학교 모두 2024년에 0.9%·1.1%로 관악구 최저였다가 2025년 2.1%로 올랐습니다. 특히 광신고는 전출이 4→13명으로 3배 이상 늘어, 진학 실적(4년제 58.0%, 관악구 1위)과는 별개로 중도 이탈이 늘어난 점은 지켜볼 필요가 있습니다.</li>
+            <li><strong>문영여고 −2.4%p, 최대 개선</strong> — 3.7%→1.7%→1.3%로 3년 내리 하락해 관악구 최저 그룹에 진입했습니다. 미림여고(3.0%→1.7%)·신림고(3.6%→2.3%)도 각 −1.3%p로 크게 좋아졌습니다. 세 학교 모두 <b>출발점이 관악구 최상위였다</b>는 공통점이 있습니다.</li>
+            <li><strong>구암고 +1.0%p, 유일한 3년 연속 악화</strong> — 1.7%→2.3%→2.7%로 관악구 최고 수준까지 올랐습니다. 전입도 10→15명으로 늘어, 단순 이탈보다 <b>학적 변동 자체가 잦아진 학교</b>로 읽는 것이 정확합니다.</li>
+            <li><strong>삼성고 3.3%로 최고치</strong> — 4.1%(2024)보다는 낮아졌으나 관악구 평균의 1.7배입니다. 다만 재적 269명 소규모라 <b>중단 9명이면 3.3%</b>가 됩니다. 비율보다 인원을 먼저 보셔야 합니다.</li>
+            <li><strong>광신고·성보고는 반대로 나빠졌습니다</strong> — 2024년 0.9%·1.1%로 관악구 최저였다가 2025년 나란히 2.1%로 올랐습니다. 특히 광신고는 전출이 4→13명으로 3배 이상 늘었습니다.</li>
           </ul>
           <strong style="display:block;margin-top:14px;">📌 전입·전출 — 학교별</strong>
           <ul>
-            <li><strong>신림고, 순유출에서 순유입으로 전환</strong> — 전입이 9→21명으로 11개교 중 가장 크게 늘어 순이동이 −2명에서 <b>+11명</b>이 됐습니다. 같은 기간 중단율도 −1.3%p 개선돼, 학교를 떠나던 흐름이 들어오는 흐름으로 바뀐 유일한 사례입니다.</li>
-            <li><strong>문영여고는 3년 내내 순유출</strong> — −10 → −8 → −10명으로 관악구 최대 순유출이 고착돼 있습니다. 중단율은 최대 폭으로 개선됐지만, 학교를 <b>그만두는</b> 학생이 준 것이지 <b>옮겨가는</b> 학생이 준 것은 아니라는 뜻입니다. 두 지표를 반드시 나눠 봐야 하는 대표 사례입니다.</li>
-            <li><strong>남강고는 전출이 두 배</strong> — 10→20명으로 가장 크게 늘며 순유출(−2명)로 돌아섰습니다. 중단율도 0.5%→1.3%로 관악구 최저에서 중위권이 됐습니다.</li>
-            <li><strong>당곡고·영락고는 꾸준한 순유입</strong> — 3년 내내 플러스를 유지했고 중단율도 각각 1.3%·1.6%로 낮습니다. 규모가 크면서(746명·509명) 이탈이 적은, 가장 안정적인 조합입니다.</li>
+            <li><strong>신림고, 순유출에서 순유입으로 전환</strong> — 전입이 9→21명으로 가장 크게 늘어 순이동이 −2명에서 <b>+11명</b>이 됐습니다. 같은 기간 중단율도 −1.3%p 개선된 유일한 전환 사례입니다.</li>
+            <li><strong>문영여고는 3년 내내 순유출</strong> — −10 → −8 → −10명으로 고착돼 있습니다. 중단율은 최대 폭으로 개선됐지만 <b>그만두는 학생</b>이 준 것이지 <b>옮겨가는 학생</b>이 준 것은 아닙니다. 두 지표를 반드시 나눠 봐야 하는 사례입니다.</li>
+            <li><strong>남강고는 전출이 두 배</strong> — 10→20명으로 가장 크게 늘며 순유출로 돌아섰고, 중단율도 0.5%→1.3%로 관악구 최저에서 중위권이 됐습니다.</li>
+            <li><strong>당곡고·영락고는 꾸준한 순유입</strong> — 3년 내내 플러스이면서 중단율도 1.3%·1.6%로 낮습니다. 규모가 크면서 이탈이 적은 가장 안정적인 조합입니다.</li>
           </ul>
           <strong style="display:block;margin-top:14px;">📌 학교 선택에 참고할 점</strong>
           <ul>
-            <li><b>중단율이 낮다 ≠ 좋은 학교</b>가 아니라, <b>학적이 안정적이다</b>로 읽는 것이 정확합니다. 실제로 4년제 진학률 1위 광신고의 중단율은 2.1%로 관악구 중하위권입니다.</li>
-            <li>소규모 학교(삼성고 269명)는 비율 변동성이 큽니다. <b>비율보다 인원</b>을 먼저 확인하세요.</li>
-            <li>전출이 많다고 반드시 부정적이지는 않습니다. 이사·진로 변경 등도 포함되므로, <b>전출과 학업중단을 구분</b>해서 보셔야 합니다.</li>
+            <li><b>중단율이 낮다 ≠ 좋은 학교</b>가 아니라 <b>학적이 안정적이다</b>로 읽는 것이 정확합니다. 4년제 진학률 1위 광신고의 중단율은 2.1%로 중하위권입니다.</li>
+            <li>소규모 학교는 비율 변동성이 큽니다. <b>비율보다 인원</b>을 먼저 확인하세요.</li>
+            <li>전출에는 이사·진로 변경도 포함됩니다. <b>전출과 학업중단을 구분</b>해서 보셔야 합니다.</li>
           </ul>
         </div>
-        <p style="font-size:14px;color:var(--muted);margin-top:14px;line-height:var(--lh-base);">※ 원자료: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 미림여고·삼성고·성보고 2025학년도는 2026-08-02 추가 반영.</p>
       </div>
     </div><!-- /statsBlock -->
 
@@ -4248,192 +4195,12 @@ const statsCharts={};
     }
   });
 
-  /* ── 5. 4년제 진학률 (높은 순) ── */
-  const sCareerSorted = SCHOOLS.slice().sort((a,b)=>ADV_RATE[b]-ADV_RATE[a]);
-  statsCharts.career = new Chart(document.getElementById('careerBarChart'),{
-    type:'bar',
-    data:{
-      labels: sCareerSorted,
-      datasets:[{
-        data: sCareerSorted.map(s=>ADV_RATE[s]),
-        backgroundColor: sCareerSorted.map(s=>SCHOOL_COLORS[s]+'CC'),
-        borderColor: sCareerSorted.map(s=>SCHOOL_COLORS[s]),
-        borderWidth:1, borderRadius:5, barThickness:22
-      }]
-    },
-    options:{
-      ...baseOpts('%', 30, 65),
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{label:c=>`4년제 진학률 ${c.parsed.x}%`}}
-      }
-    }
-  });
+  /* ── 5·6. 졸업 진로 / 학생 이동 ──
+     이 두 패널은 Chart.js 캔버스 대신 학교별 종합리포트(renderStatCards)와 같은
+     인포그래픽 카드(igStats·igBars·igTrend·igTable)로 렌더한다. 형식을 통일해
+     같은 지표를 모달과 비교 화면에서 똑같은 모양으로 읽을 수 있게 하기 위함.
+     실제 렌더는 헬퍼 정의 이후 buildStatsIG()에서 수행한다. ── */
 
-  /* ── 6. 학업중단율 (낮은 순) ── */
-  const sTransferSorted = SCHOOLS.slice().sort((a,b)=>TRANSFER_DATA[a].rate-TRANSFER_DATA[b].rate);
-  const avgTransfer = Math.round(SCHOOLS.reduce((s,k)=>s+TRANSFER_DATA[k].rate,0)/SCHOOLS.length*100)/100;
-  statsCharts.transfer = new Chart(document.getElementById('transferChart'),{
-    type:'bar',
-    data:{
-      labels: sTransferSorted.map(s=>`${s} (${TRANSFER_DATA[s].year})`),
-      datasets:[{
-        data: sTransferSorted.map(s=>TRANSFER_DATA[s].rate),
-        backgroundColor: sTransferSorted.map(s=>TRANSFER_DATA[s].rate<avgTransfer?teal+'CC':navy+'99'),
-        borderColor: sTransferSorted.map(s=>TRANSFER_DATA[s].rate<avgTransfer?teal:navy),
-        borderWidth:1, borderRadius:5, barThickness:22
-      }]
-    },
-    options:{
-      ...baseOpts('%', 0, 5),
-      plugins:{
-        legend:{display:false},
-        annotation:{annotations:{avg:{type:'line',scaleID:'x',value:avgTransfer,borderColor:amber,borderWidth:2,borderDash:[5,4],
-          label:{content:'11개교 평균 '+avgTransfer+'%',display:true,position:'end',font:{size:12},color:amber,backgroundColor:'rgba(255,255,255,.85)'}}}},
-        tooltip:{callbacks:{label:c=>{
-          const s=sTransferSorted[c.dataIndex]; const d=TRANSFER_DATA[s];
-          return `학업중단율 ${d.rate}%(${d.year}) · 전입 ${d.in}명·전출 ${d.out}명·학업중단 ${d.drop}명 (전년도 재적 ${d.base}명)`;
-        }}}
-      }
-    }
-  });
-
-  /* ── 7. 전출입·학업중단 항목별 3개년 꺾은선 (2023~2025, 11개교 전부 확보)
-        항목(학업중단율/전입/전출)마다 차트를 나누고, 각 학교를 하나의 선으로 둔다.
-        범례 클릭으로 학교별 선을 켜고 끌 수 있어 11개 선이어도 비교가 가능하다. ── */
-  const TR_YEARS=['2023','2024','2025'];
-  const trSorted = SCHOOLS.slice().sort((a,b)=>
-    (SCHOOL_STATS[a].transfer['2025'].rate)-(SCHOOL_STATS[b].transfer['2025'].rate));
-  const lineChart=(canvasId,pick,unit,yMax)=>new Chart(document.getElementById(canvasId),{
-    type:'line',
-    data:{
-      labels: TR_YEARS.map(y=>y+'학년도'),
-      datasets: trSorted.map(s=>({
-        label:s,
-        data: TR_YEARS.map(y=>{const d=SCHOOL_STATS[s].transfer[y]; return d?pick(d):null;}),
-        borderColor: SCHOOL_COLORS[s], backgroundColor: SCHOOL_COLORS[s],
-        borderWidth:2, pointRadius:3, pointHoverRadius:5, tension:0.25, fill:false
-      }))
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false, interaction:{mode:'nearest',intersect:false},
-      plugins:{
-        legend:{display:true,position:'top',labels:{font:{size:12},padding:9,boxWidth:12,usePointStyle:true}},
-        tooltip:{callbacks:{label:c=>{
-          const s=c.dataset.label, y=TR_YEARS[c.dataIndex], d=SCHOOL_STATS[s].transfer[y];
-          return `${s} ${y}학년도 — ${pick(d)}${unit} (전입 ${d.in}·전출 ${d.out}·중단 ${d.drop}명 / 재적 ${d.base}명)`;
-        }}}
-      },
-      scales:{
-        y:{beginAtZero:true,suggestedMax:yMax,ticks:{color:mutedC,font:{size:13},callback:v=>v+unit},grid:{color:gridC}},
-        x:{ticks:{color:tickC,font:{weight:'600',size:13}},grid:{display:false}}
-      }
-    }
-  });
-  statsCharts.dropRateLine = lineChart('dropRateLine', d=>d.rate, '%', 4.5);
-  statsCharts.inLine       = lineChart('inLine',       d=>d.in,   '명', 25);
-  statsCharts.outLine      = lineChart('outLine',      d=>d.out,  '명', 25);
-
-  /* 3개년 수치표 — 증감(Δ)은 2023 대비 2025.
-     학업중단율만 하락=개선(초록)/상승=악화(빨강)로 색을 주고,
-     전입·전출은 많고 적음의 좋고 나쁨을 단정할 수 없어 중립(회색)으로 둔다. */
-  (function buildTransferTable(){
-    const el=document.getElementById('transferTable'); if(!el) return;
-    const num=(v,dec)=>dec?v.toFixed(1):String(v);
-    const delta=(a,b,dec,colored)=>{
-      const d=+(b-a).toFixed(dec?1:0);
-      const sign=d>0?'+':'';
-      const col=!colored?'var(--muted)':(d<0?'var(--green)':d>0?'var(--red)':'var(--muted)');
-      return `<span style="color:${col};font-weight:700;">${d===0?'—':sign+num(d,dec)}</span>`;
-    };
-    const th=(t,extra='')=>`<th style="padding:7px 8px;text-align:center;white-space:nowrap;${extra}">${t}</th>`;
-    const td=(t,extra='')=>`<td style="padding:6px 8px;text-align:center;border-bottom:1px solid var(--line);${extra}">${t}</td>`;
-    let head=`<tr style="background:var(--navy);color:#fff;">${th('학교','position:sticky;left:0;background:var(--navy);')}`
-      +[['학업중단율(%)',4],['전입(명)',4],['전출(명)',4]].map(([g,n])=>`<th colspan="${n}" style="padding:7px 8px;text-align:center;border-left:1px solid rgba(255,255,255,.35);">${g}</th>`).join('')+`</tr>`;
-    head+=`<tr style="background:var(--section-alt);color:var(--navy);">${th('','position:sticky;left:0;background:var(--section-alt);')}`
-      +[0,1,2].map(()=>['2023','2024','2025','Δ'].map((y,i)=>th(y,i===0?'border-left:1px solid var(--line);':'')).join('')).join('')+`</tr>`;
-    const rows=trSorted.map(s=>{
-      const t=y=>SCHOOL_STATS[s].transfer[y];
-      const cells=[
-        ...TR_YEARS.map(y=>td(num(t(y).rate,1))), td(delta(t('2023').rate,t('2025').rate,1,true)),
-        ...TR_YEARS.map(y=>td(String(t(y).in))),  td(delta(t('2023').in,t('2025').in,0,false)),
-        ...TR_YEARS.map(y=>td(String(t(y).out))), td(delta(t('2023').out,t('2025').out,0,false))
-      ].join('');
-      return `<tr>${td(s,'font-weight:700;background:#F9F7F4;position:sticky;left:0;')}${cells}</tr>`;
-    }).join('');
-    /* 11개교 합계·평균 행 */
-    const sum=(y,k)=>SCHOOLS.reduce((a,s)=>a+SCHOOL_STATS[s].transfer[y][k],0);
-    const avgR=y=>+(SCHOOLS.reduce((a,s)=>a+SCHOOL_STATS[s].transfer[y].rate,0)/SCHOOLS.length).toFixed(2);
-    const foot=`<tr style="background:var(--section-alt);font-weight:700;">`
-      +td('11개교 평균·합계','font-weight:800;background:var(--section-alt);position:sticky;left:0;')
-      +TR_YEARS.map(y=>td(avgR(y).toFixed(2))).join('')+td(delta(avgR('2023'),avgR('2025'),1,true))
-      +TR_YEARS.map(y=>td(String(sum(y,'in')))).join('')+td(delta(sum('2023','in'),sum('2025','in'),0,false))
-      +TR_YEARS.map(y=>td(String(sum(y,'out')))).join('')+td(delta(sum('2023','out'),sum('2025','out'),0,false))
-      +`</tr>`;
-    el.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:760px;">
-      <thead>${head}</thead><tbody>${rows}${foot}</tbody></table>`;
-  })();
-
-  /* ── 8. 4년제 진학률 3개년 추이 (졸업 연도 2023~2025년 = 2022~2024학년도 졸업생) ── */
-  const GR_YEARS=['2023','2024','2025'];
-  const gradRate=(s,y)=>{const g=SCHOOL_STATS[s]?.grad?.[y]; return g?+(g.univ4/g.total*100).toFixed(1):null;};
-  const grSorted = SCHOOLS.slice().sort((a,b)=>(ADV_RATE[b]||0)-(ADV_RATE[a]||0));
-  statsCharts.advTrend = new Chart(document.getElementById('advTrendChart'),{
-    type:'bar',
-    data:{
-      labels: grSorted,
-      datasets: GR_YEARS.map((y,i)=>({
-        label:y+'년 졸업',
-        data: grSorted.map(s=>gradRate(s,y)),
-        backgroundColor:`rgba(28,61,107,${[0.3,0.55,0.85][i]})`,
-        borderRadius:0, barThickness:9
-      }))
-    },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{display:true,position:'top',labels:{font:{size:13},padding:14}},
-        tooltip:{callbacks:{label:c=>{
-          const s=grSorted[c.dataIndex], y=GR_YEARS[c.datasetIndex], g=SCHOOL_STATS[s]?.grad?.[y];
-          return g?`${y}년 졸업 ${gradRate(s,y)}% (졸업 ${g.total}명 중 4년제 ${g.univ4}명)`:`${y}년 자료 없음`;
-        }}}
-      },
-      scales:{
-        x:{min:30,max:65,ticks:{color:mutedC,font:{size:13},callback:v=>v+'%'},grid:{color:gridC}},
-        y:{ticks:{color:tickC,font:{weight:'600',size:13}},grid:{display:false}}
-      }
-    }
-  });
-
-  /* ── 9. 전문대 진학률 3개년 추이 — 4년제(8번)와 같은 학교 순서로 두어 대조하기 쉽게 함.
-        색은 상세 모달의 '전문대 진학자'와 동일한 #0369A1 계열을 재사용 ── */
-  const jdRate=(s,y)=>{const g=SCHOOL_STATS[s]?.grad?.[y]; return g?+(g.jeondae/g.total*100).toFixed(1):null;};
-  statsCharts.jdTrend = new Chart(document.getElementById('jdTrendChart'),{
-    type:'bar',
-    data:{
-      labels: grSorted,
-      datasets: GR_YEARS.map((y,i)=>({
-        label:y+'년 졸업',
-        data: grSorted.map(s=>jdRate(s,y)),
-        backgroundColor:`rgba(3,105,161,${[0.3,0.55,0.85][i]})`,
-        borderRadius:0, barThickness:9
-      }))
-    },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{display:true,position:'top',labels:{font:{size:13},padding:14}},
-        tooltip:{callbacks:{label:c=>{
-          const s=grSorted[c.dataIndex], y=GR_YEARS[c.datasetIndex], g=SCHOOL_STATS[s]?.grad?.[y];
-          return g?`${y}년 졸업 전문대 ${jdRate(s,y)}% (졸업 ${g.total}명 중 ${g.jeondae}명) · 4년제 ${gradRate(s,y)}%`:`${y}년 자료 없음`;
-        }}}
-      },
-      scales:{
-        x:{min:0,max:35,ticks:{color:mutedC,font:{size:13},callback:v=>v+'%'},grid:{color:gridC}},
-        y:{ticks:{color:tickC,font:{weight:'600',size:13}},grid:{display:false}}
-      }
-    }
-  });
  }catch(e){
   /* 통계 차트 하나가 실패해도(예: 숨겨진 탭 안 캔버스) 이후 스크립트 전체가
      멈추면 안 되므로 여기서 흡수한다. 로그인/비밀번호 로직이 이 아래에 있어서
@@ -4449,8 +4216,8 @@ function switchStatsTab(id, btn){
   document.getElementById('sp-'+id).classList.remove('hidden');
   btn.classList.add('active');
   // 숨겨진 상태에서 0px로 굳어버렸을 수 있는 차트를 다시 계산
-  const chartKeys={class:['cls'], career:['career','advTrend','jdTrend'],
-                   movement:['transfer','dropRateLine','inLine','outLine']}[id]||[];
+  /* 졸업 진로·학생 이동 패널은 Chart.js가 아닌 인포그래픽(HTML/SVG)이라 resize 대상이 없다 */
+  const chartKeys={class:['cls']}[id]||[];
   requestAnimationFrame(()=>chartKeys.forEach(k=>statsCharts[k]&&statsCharts[k].resize()));
 }
 
@@ -5568,6 +5335,105 @@ function renderProgramCards(s,det){
 
 /* 학생 통계 3종(학생수·전출입/학업중단·졸업생 진로)을 인포그래픽 카드로 렌더.
    SCHOOL_STATS에 연도별 실인원(명)이 있으면 그래프·표로, 없으면 기존 텍스트로 대체한다. */
+/* 학생 현황 비교 패널(졸업 진로 / 학생 이동)을 학교별 종합리포트와 같은
+   인포그래픽 카드 형식으로 렌더. 모달은 '한 학교의 연도별', 여기는 '11개교 비교'라
+   대상만 다르고 구성 요소(igStats·igBars·igTrend·igTable)는 동일하게 맞춘다. */
+function buildStatsIG(){
+  if(typeof SCHOOL_STATS==='undefined') return;
+  const Y=['2023','2024','2025'];
+  const card=(lbl,body,src)=>`<div class="rep-card">
+    <div class="rep-lbl"><span class="lbl-ico">🎓</span> ${lbl}</div>
+    ${body}${src?`<div class="rec-source" style="margin-top:8px;">${src}</div>`:''}
+  </div>`;
+  const sum=(y,k)=>SCHOOLS.reduce((a,s)=>a+SCHOOL_STATS[s].transfer[y][k],0);
+  const gsum=(y,k)=>SCHOOLS.reduce((a,s)=>a+SCHOOL_STATS[s].grad[y][k],0);
+  const avgRate=y=>+(SCHOOLS.reduce((a,s)=>a+SCHOOL_STATS[s].transfer[y].rate,0)/SCHOOLS.length).toFixed(2);
+  const LAST=Y[Y.length-1];
+
+  /* ── 졸업 진로 ── */
+  const ce=document.getElementById('careerIG');
+  if(ce){
+    const gTot=gsum(LAST,'total'), gU=gsum(LAST,'univ4'), gJ=gsum(LAST,'jeondae');
+    const pc=(a,b)=>b?+(a/b*100).toFixed(1):0;
+    let body=igStats([
+      {label:`졸업자 합계 (${LAST}년 졸업)`,value:gTot.toLocaleString(),unit:'명'},
+      {label:'4년제 진학',value:gU.toLocaleString(),unit:'명',sub:`${pc(gU,gTot)}%`},
+      {label:'전문대 진학',value:gJ.toLocaleString(),unit:'명',sub:`${pc(gJ,gTot)}%`,color:'#0369A1'},
+      {label:'11개교 평균 4년제',value:pc(gU,gTot),unit:'%',sub:'관악구 전체 기준'}
+    ]);
+    body+=igStack([
+      {label:'4년제 대학',value:gU,color:'#1B3B86'},
+      {label:'전문대학',value:gJ,color:'#0369A1'},
+      {label:'기타(재수·미정 등)',value:gTot-gU-gJ,color:'#94A3B8'}
+    ],{total:gTot});
+    body+=igTrend([
+      {name:'4년제 진학률',color:'#1B3B86',data:Y.map(y=>({x:y,y:pc(gsum(y,'univ4'),gsum(y,'total'))}))},
+      {name:'전문대 진학률',color:'#0369A1',data:Y.map(y=>({x:y,y:pc(gsum(y,'jeondae'),gsum(y,'total'))}))}
+    ],{unit:'%'});
+    const sortedC=SCHOOLS.slice().sort((a,b)=>(ADV_RATE[b]||0)-(ADV_RATE[a]||0));
+    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 2px;">학교별 4년제 진학률 (${LAST}년 졸업)</div>`;
+    body+=igBars(sortedC.map(s=>({label:s,value:ADV_RATE[s],color:SCHOOL_COLORS[s]})),{labelW:62,unit:'%'});
+    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 2px;">학교별 전문대 진학률 (${LAST}년 졸업)</div>`;
+    body+=igBars(sortedC.map(s=>{const g=SCHOOL_STATS[s].grad[LAST];
+      return {label:s,value:pc(g.jeondae,g.total),color:'#0369A1'};}),{labelW:62,unit:'%'});
+    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:18px 0 2px;">학교별 3개년 상세</div>`;
+    body+=igTable(['학교','4년제 2023','2024','2025','Δ','전문대 2023','2024','2025','Δ'],
+      sortedC.map(s=>{
+        const u=Y.map(y=>pc(SCHOOL_STATS[s].grad[y].univ4,SCHOOL_STATS[s].grad[y].total));
+        const j=Y.map(y=>pc(SCHOOL_STATS[s].grad[y].jeondae,SCHOOL_STATS[s].grad[y].total));
+        const d=(a,b,col)=>{const v=+(b-a).toFixed(1);
+          const c=!col?'var(--muted)':(v>0?'var(--green)':v<0?'var(--red)':'var(--muted)');
+          return `<span style="color:${c};font-weight:700;">${v===0?'—':(v>0?'+':'')+v}</span>`;};
+        return [`<b>${s}</b>`,u[0]+'%',u[1]+'%',`<b>${u[2]}%</b>`,d(u[0],u[2],true),
+                j[0]+'%',j[1]+'%',`<b>${j[2]}%</b>`,d(j[0],j[2],false)];
+      }));
+    ce.innerHTML=card('졸업생 진로현황 — 11개교 비교',body,
+      '출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. Δ는 2023년 대비 2025년 변화이며, 4년제만 상승=초록·하락=빨강으로 표시했습니다(전문대는 많고 적음을 좋고 나쁨으로 볼 수 없어 중립).');
+  }
+
+  /* ── 학생 이동 ── */
+  const me=document.getElementById('movementIG');
+  if(me){
+    let body=igStats([
+      {label:`전입 합계 (${LAST}학년도)`,value:sum(LAST,'in'),unit:'명',color:'#2E9E5B'},
+      {label:'전출 합계',value:sum(LAST,'out'),unit:'명',color:'#B45309'},
+      {label:'학업중단 합계',value:sum(LAST,'drop'),unit:'명',color:'#D14343'},
+      {label:'11개교 평균 중단율',value:avgRate(LAST),unit:'%',color:'#D14343',sub:'공시 관악구 평균 1.9%'}
+    ]);
+    body+=igBars([
+      {label:'전입',value:sum(LAST,'in'),color:'#2E9E5B'},
+      {label:'전출',value:sum(LAST,'out'),color:'#B45309'},
+      {label:'학업중단',value:sum(LAST,'drop'),color:'#D14343'}
+    ],{labelW:60});
+    body+=igTrend([
+      {name:'전입',color:'#2E9E5B',data:Y.map(y=>({x:y,y:sum(y,'in')}))},
+      {name:'전출',color:'#B45309',data:Y.map(y=>({x:y,y:sum(y,'out')}))},
+      {name:'학업중단',color:'#D14343',data:Y.map(y=>({x:y,y:sum(y,'drop')}))}
+    ],{unit:'명'});
+    body+=igTable(['학년도','전입','전출','학업중단','평균 중단율'],
+      Y.map(y=>[y,sum(y,'in')+'명',sum(y,'out')+'명',sum(y,'drop')+'명',`<b>${avgRate(y)}%</b>`]));
+    const sortedM=SCHOOLS.slice().sort((a,b)=>SCHOOL_STATS[a].transfer[LAST].rate-SCHOOL_STATS[b].transfer[LAST].rate);
+    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:18px 0 2px;">학교별 학업중단율 (${LAST}학년도, 낮은 순)</div>`;
+    body+=igBars(sortedM.map(s=>{const r=SCHOOL_STATS[s].transfer[LAST].rate;
+      return {label:s,value:r,color:r<avgRate(LAST)?'#2E9E5B':'#D14343'};}),{labelW:62,unit:'%'});
+    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:18px 0 2px;">학교별 3개년 상세</div>`;
+    body+=igTable(['학교','중단율 2023','2024','2025','Δ','전입 25','전출 25','순이동'],
+      sortedM.map(s=>{
+        const t=y=>SCHOOL_STATS[s].transfer[y];
+        const r=Y.map(y=>t(y).rate), net=t(LAST).in-t(LAST).out;
+        const dv=+(r[2]-r[0]).toFixed(1);
+        const dc=dv<0?'var(--green)':dv>0?'var(--red)':'var(--muted)';
+        return [`<b>${s}</b>`,r[0]+'%',r[1]+'%',`<b>${r[2]}%</b>`,
+          `<span style="color:${dc};font-weight:700;">${dv===0?'—':(dv>0?'+':'')+dv}</span>`,
+          t(LAST).in+'명',t(LAST).out+'명',
+          `<span style="color:var(--muted);font-weight:700;">${net>0?'+':''}${net}명</span>`];
+      }));
+    me.innerHTML=card('전출입·학업중단 현황 — 11개교 비교',body,
+      '출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준. Δ는 2023년 대비 2025년 변화로, 중단율은 하락=개선(초록)·상승=악화(빨강)입니다. 전입·전출·순이동은 많고 적음을 좋고 나쁨으로 볼 수 없어 중립 표기입니다.');
+  }
+}
+try{ buildStatsIG(); }catch(e){ console.error('학생 현황 인포그래픽 렌더 실패:',e); }
+
 function renderStatCards(s,det){
   const st=(typeof SCHOOL_STATS!=='undefined'&&SCHOOL_STATS[s])?SCHOOL_STATS[s]:null;
   const card=(lbl,body,src)=>`<div class="rep-card">
