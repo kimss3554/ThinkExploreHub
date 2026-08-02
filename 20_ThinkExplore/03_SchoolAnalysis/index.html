@@ -1471,6 +1471,77 @@
     </div>
   </section>
 
+<!-- 생기부 강점 분석 — 메뉴에 노출하지 않는 숨김 섹션.
+     수행평가 탭의 프리미엄 영역 안으로 합쳤고, 기본은 display:none 이라
+     수행평가를 그냥 열었을 때는 보이지 않는다.
+     진입은 "심층 분석 콘텐츠"의 생기부 관리 분석 카드(pvClick('gib'))로만 가능. -->
+<div id="gibContent" style="display:none;">
+<section class="block">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <h2>생기부 강점 분석 <span class="premflag">프리미엄</span></h2>
+      <p>관악구 11개 고등학교의 학생부 특징을 전국 평균과 비교하고, 학교별 맞춤 전략을 제안합니다.</p>
+    </div>
+    <button class="print-btn no-print" onclick="printCurrentTab()">🖨️ 이 페이지 인쇄</button>
+
+    <!-- 관악구 vs 전국 개요 -->
+    <div class="chartcard reveal" style="margin-bottom:24px;">
+      <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;">📊 관악구 생기부, 전국과 어떻게 다를까?</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;">
+        <div style="background:rgba(28,61,107,.06);border-radius:0;padding:16px;">
+          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">수행평가 서·논술형 비중</div>
+          <div style="font-size:20px;font-weight:700;color:var(--navy);">삼성고 · 광신고 선도</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:4px;">2032 대입 개편 방향과 정렬</div>
+        </div>
+        <div style="background:rgba(200,131,10,.08);border-radius:0;padding:16px;">
+          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">탐구보고서·발표 강조 학교</div>
+          <div style="font-size:20px;font-weight:700;color:var(--amber);">11개교 공통</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:4px;">학종 중점 대비 환경</div>
+        </div>
+        <div style="background:rgba(46,158,91,.08);border-radius:0;padding:16px;">
+          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">관악구 4년제 진학률 평균</div>
+          <div style="font-size:20px;font-weight:700;color:var(--green);">48.9%</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:4px;">서울시 평균 대비 분석 중</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="cal-check-item"><span class="ico">✅</span><span><b>중학교 성적의 65.1%가 고등학교 등급으로 이어집니다.</b> (진학사 데이터) — 고교 선택은 3년 생기부 전략의 출발점입니다.</span></div>
+        <div class="cal-check-item"><span class="ico">✅</span><span>관악구 학교들은 <b>수행평가 비중이 높고 탐구보고서·발표를 강조</b>하는 구조로, 단순 내신보다 역량 중심 평가 방향입니다.</span></div>
+        <div class="cal-check-item"><span class="ico">✅</span><span><b>독서·탐구·발표 역량</b>을 중학교부터 쌓아온 학생이 관악구 학교 환경에서 가장 유리합니다.</span></div>
+      </div>
+    </div>
+
+    <!-- 학교별 드롭다운 -->
+    <div class="chartcard reveal" style="margin-bottom:24px;">
+      <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px;">🏫 학교별 생기부 특징</h3>
+      <div style="margin-bottom:16px;">
+        <label style="font-size:16px;font-weight:600;color:var(--txt);margin-right:10px;">학교 선택:</label>
+        <select id="gibSchoolSelect" onchange="renderGibDetail(this.value)"
+          style="padding:8px 12px;border-radius:0;border:1.5px solid var(--line);font-size:16px;font-family:inherit;background:var(--card);color:var(--txt);">
+          <option value="">— 학교를 선택하세요 —</option>
+        </select>
+      </div>
+      <div id="gibDetail" style="font-size:14px;color:var(--muted);line-height:var(--lh-loose);">
+        학교를 선택하면 해당 학교의 생기부 특징과 전략이 표시됩니다.
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="chartcard reveal" style="background:linear-gradient(135deg,var(--navy),#2a5298);color:#fff;">
+      <h3 style="color:#fff;font-size:16px;margin-bottom:10px;">📋 1:1 생기부 전략 컨설팅</h3>
+      <p style="font-size:14px;opacity:.9;line-height:var(--lh-loose);margin-bottom:16px;">
+        우리 아이의 현재 생기부를 분석하고, 남은 학기·학년에 무엇을 어떻게 채워야 할지<br>
+        <b>구체적인 로드맵</b>을 함께 설계합니다.
+      </p>
+      <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener"
+        style="display:inline-block;background:var(--amber);color:#fff;padding:10px 22px;border-radius:0;font-size:16px;font-weight:700;text-decoration:none;">
+        오픈채팅으로 상담 신청 →
+      </a>
+    </div>
+  </div>
+</section>
+</div><!-- /gibContent -->
+
 </div><!-- /premium -->
 
 </div><!-- /tab-panel rw -->
@@ -1633,74 +1704,6 @@
 </div><!-- /tab-panel news -->
 
 <!-- TAB: 생기부 강점 분석 (gib) — 프리미엄 -->
-<div class="tab-panel" data-tab="gib" style="display:none;">
-<div id="gibContent" style="display:none;">
-<section class="block">
-  <div class="wrap">
-    <div class="sechead reveal">
-      <h2>생기부 강점 분석 <span class="premflag">프리미엄</span></h2>
-      <p>관악구 11개 고등학교의 학생부 특징을 전국 평균과 비교하고, 학교별 맞춤 전략을 제안합니다.</p>
-    </div>
-    <button class="print-btn no-print" onclick="printCurrentTab()">🖨️ 이 페이지 인쇄</button>
-
-    <!-- 관악구 vs 전국 개요 -->
-    <div class="chartcard reveal" style="margin-bottom:24px;">
-      <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;">📊 관악구 생기부, 전국과 어떻게 다를까?</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;">
-        <div style="background:rgba(28,61,107,.06);border-radius:0;padding:16px;">
-          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">수행평가 서·논술형 비중</div>
-          <div style="font-size:20px;font-weight:700;color:var(--navy);">삼성고 · 광신고 선도</div>
-          <div style="font-size:14px;color:var(--muted);margin-top:4px;">2032 대입 개편 방향과 정렬</div>
-        </div>
-        <div style="background:rgba(200,131,10,.08);border-radius:0;padding:16px;">
-          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">탐구보고서·발표 강조 학교</div>
-          <div style="font-size:20px;font-weight:700;color:var(--amber);">11개교 공통</div>
-          <div style="font-size:14px;color:var(--muted);margin-top:4px;">학종 중점 대비 환경</div>
-        </div>
-        <div style="background:rgba(46,158,91,.08);border-radius:0;padding:16px;">
-          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;">관악구 4년제 진학률 평균</div>
-          <div style="font-size:20px;font-weight:700;color:var(--green);">48.9%</div>
-          <div style="font-size:14px;color:var(--muted);margin-top:4px;">서울시 평균 대비 분석 중</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div class="cal-check-item"><span class="ico">✅</span><span><b>중학교 성적의 65.1%가 고등학교 등급으로 이어집니다.</b> (진학사 데이터) — 고교 선택은 3년 생기부 전략의 출발점입니다.</span></div>
-        <div class="cal-check-item"><span class="ico">✅</span><span>관악구 학교들은 <b>수행평가 비중이 높고 탐구보고서·발표를 강조</b>하는 구조로, 단순 내신보다 역량 중심 평가 방향입니다.</span></div>
-        <div class="cal-check-item"><span class="ico">✅</span><span><b>독서·탐구·발표 역량</b>을 중학교부터 쌓아온 학생이 관악구 학교 환경에서 가장 유리합니다.</span></div>
-      </div>
-    </div>
-
-    <!-- 학교별 드롭다운 -->
-    <div class="chartcard reveal" style="margin-bottom:24px;">
-      <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:14px;">🏫 학교별 생기부 특징</h3>
-      <div style="margin-bottom:16px;">
-        <label style="font-size:16px;font-weight:600;color:var(--txt);margin-right:10px;">학교 선택:</label>
-        <select id="gibSchoolSelect" onchange="renderGibDetail(this.value)"
-          style="padding:8px 12px;border-radius:0;border:1.5px solid var(--line);font-size:16px;font-family:inherit;background:var(--card);color:var(--txt);">
-          <option value="">— 학교를 선택하세요 —</option>
-        </select>
-      </div>
-      <div id="gibDetail" style="font-size:14px;color:var(--muted);line-height:var(--lh-loose);">
-        학교를 선택하면 해당 학교의 생기부 특징과 전략이 표시됩니다.
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="chartcard reveal" style="background:linear-gradient(135deg,var(--navy),#2a5298);color:#fff;">
-      <h3 style="color:#fff;font-size:16px;margin-bottom:10px;">📋 1:1 생기부 전략 컨설팅</h3>
-      <p style="font-size:14px;opacity:.9;line-height:var(--lh-loose);margin-bottom:16px;">
-        우리 아이의 현재 생기부를 분석하고, 남은 학기·학년에 무엇을 어떻게 채워야 할지<br>
-        <b>구체적인 로드맵</b>을 함께 설계합니다.
-      </p>
-      <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener"
-        style="display:inline-block;background:var(--amber);color:#fff;padding:10px 22px;border-radius:0;font-size:16px;font-weight:700;text-decoration:none;">
-        오픈채팅으로 상담 신청 →
-      </a>
-    </div>
-  </div>
-</section>
-</div><!-- /gibContent -->
-</div><!-- /tab-panel gib -->
 
 <!-- TAB: 수업 소개 (class) — 전체 공개 -->
 <div class="tab-panel" data-tab="class" style="display:none;">
@@ -2126,7 +2129,7 @@ function setTab(name){
      STEP1~3 안내 카드(#premium-lock)만 보여준다. 모달은 더 이상 쓰지 않는다.
      rw의 #premium은 자체 CSS 클래스(.premium.unlocked)로 이미 표시 여부가 관리되므로
      여기서 인라인 style을 건드리지 않는다(건드리면 로그인 후에도 display:none이 남을 수 있음). */
-  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent', joint:'jointContentWrap'};
+  const LOCK_CONTENT_ID={compare:'compareContent', calendar:'calendarContent', joint:'jointContentWrap'};
   if(name==='rw' || name in LOCK_CONTENT_ID){
     const unlocked=localStorage.getItem('sjtg_unlocked')==='1';
     const contentEl=(name in LOCK_CONTENT_ID)?document.getElementById(LOCK_CONTENT_ID[name]):null;
@@ -4246,7 +4249,7 @@ function unlock(persist){
   document.querySelectorAll('.premflag').forEach(el=>el.style.display='none');
   // 잠긴 탭(compare/rw/gib/calendar) 안에서 바로 로그인한 경우 화면이 비어 보이던 문제 수정 —
   // 지금 열려있는 탭이 어디였는지 먼저 파악해둔다.
-  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent', joint:'jointContentWrap'};
+  const LOCK_CONTENT_ID={compare:'compareContent', calendar:'calendarContent', joint:'jointContentWrap'};
   let _activeTabAtLogin=null;
   document.querySelectorAll('.tab-panel[data-tab]').forEach(p=>{ if(p.style.display!=='none') _activeTabAtLogin=p.dataset.tab; });
   if(_activeTabAtLogin && _activeTabAtLogin in LOCK_CONTENT_ID){
@@ -4384,8 +4387,22 @@ function tryPw(){
 }
 
 function pvClick(tab){
-  if(localStorage.getItem('sjtg_unlocked')==='1'){ setTab(tab); }
-  else { showLockPrompt(); }
+  if(localStorage.getItem('sjtg_unlocked')!=='1'){ showLockPrompt(); return; }
+  /* '생기부 강점 분석'은 별도 탭이 아니라 수행평가 탭 안의 숨김 섹션이다.
+     메뉴에는 노출하지 않고, 이 카드로 들어올 때만 펼쳐서 보여준다. */
+  if(tab==='gib'){
+    setTab('rw');
+    setTimeout(()=>{
+      const el=document.getElementById('gibContent');
+      if(!el) return;
+      el.style.display='block';
+      if(typeof observeReveals==='function') observeReveals();
+      el.querySelectorAll('.reveal').forEach(r=>r.classList.add('show'));
+      _scrollToEl(el);
+    },360);
+    return;
+  }
+  setTab(tab);
 }
 function updatePvBars(){
   for(let i=1;i<=6;i++){
@@ -7612,7 +7629,12 @@ uploadBtn.addEventListener('click',()=>{
 /* ===================== HAMBURGER ===================== */
 const hb=document.getElementById('hamburger');
 hb.addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
-document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+/* 드로어 안의 이동 요소를 누르면 드로어를 닫는다.
+   예전엔 <a>만 대상이라 탭 버튼(<button class="nav-tab">: 11개교·학교 비교·
+   수행평가·선택과목·입시 달력·후기)을 누르면 탭은 바뀌는데 드로어가 그대로 덮고 있어
+   "링크가 안 먹는다"처럼 보였다. 닫기(✕)·로그아웃 버튼은 제외한다. */
+document.querySelectorAll('#navlinks a, #navlinks button.nav-tab').forEach(el=>
+  el.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
 
 /* ===================== REVEAL ON SCROLL ===================== */
 let io=null;
