@@ -6610,7 +6610,8 @@ window.renderTrackCheck=function(){
 
   box.innerHTML=`
     <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);margin-bottom:14px;">${track.type} — <b>${track.name}</b><br>${track.units}</div>
-    ${track.req.length?`<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">
+    ${track.req.length?`<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed;">
+      <colgroup><col style="width:42%;"><col style="width:16%;"><col style="width:42%;"></colgroup>
       <thead><tr style="background:var(--navy);color:#fff;">
         <th style="padding:7px 8px;text-align:center;">서울대 권장과목</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">${school}</th><th style="padding:7px 8px;text-align:center;">개설 현황</th>
       </tr></thead><tbody>${rows}</tbody></table></div>`:''}
