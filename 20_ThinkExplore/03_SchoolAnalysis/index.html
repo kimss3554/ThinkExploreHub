@@ -1014,7 +1014,7 @@
       <!-- 패널 3: 졸업 진로 -->
       <div class="stats-panel hidden" id="sp-career">
         <p class="stats-sub">4년제 대학 진학률 (높은 순)</p>
-        <p class="csub" style="margin:0 0 10px;">2024학년도 졸업생 기준. 수시·정시 모두 포함.</p>
+        <p class="csub" style="margin:0 0 10px;">2025년 졸업(2024학년도 졸업생) 기준. 수시·정시 모두 포함. 남강고만 자료 미확보로 2024년 졸업 기준.</p>
         <div class="chartbox" style="height:360px;"><canvas id="careerBarChart"></canvas></div>
         <div class="chart-analysis">
           <strong>📌 4년제 진학률 분석</strong>
@@ -1025,14 +1025,14 @@
             <li><strong>진학률의 함정</strong> — 4년제 진학률이 높다고 해서 반드시 상위권 대학에 많이 간다는 의미는 아님. 학교별 진학 대학 분포(SKY·수도권·지방국립 등)를 추가로 확인하는 것이 중요. 관련 데이터는 추후 업데이트 예정.</li>
           </ul>
         </div>
-        <p class="stats-sub" style="margin-top:30px;">4년제 진학률 3개년 추이</p>
-        <p class="csub" style="margin:0 0 10px;">2022~2024학년도 졸업생 기준. 졸업생 진로는 공시 시차가 있어 학업중단율(2023~2025)과 기준 연도가 다릅니다. 영락고 2022·남강고 2024는 원자료 미확보로 표시되지 않습니다.</p>
+        <p class="stats-sub" style="margin-top:30px;">4년제 진학률 3개년 추이 (2023~2025년 졸업)</p>
+        <p class="csub" style="margin:0 0 10px;">졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. 영락고 2023년·남강고 2025년 졸업은 원자료 미확보로 표시되지 않습니다.</p>
         <div class="chartbox" style="height:440px;"><canvas id="advTrendChart"></canvas></div>
         <div class="chart-analysis">
           <strong>📌 3개년 진학률 변화</strong>
           <ul>
-            <li><strong>인헌고 +11.0%p 급등</strong> — 36.7%(2022)→38.8%→47.7%로 관악구 최대 상승. 성보고(+8.6%p)·삼성고(+7.9%p)·미림여고(+6.1%p)·구암고(+4.6%p)도 뚜렷한 상승세.</li>
-            <li><strong>문영여고 −3.4%p 하락</strong> — 52.9%(2022)→49.4%→49.5%로 관악구 최대 하락 폭. 신림고(−1.6%p)·당곡고(−0.7%p)도 소폭 하락.</li>
+            <li><strong>인헌고 +11.0%p 급등</strong> — 36.7%(2023년 졸업)→38.8%→47.7%로 관악구 최대 상승. 성보고(+8.6%p)·삼성고(+7.9%p)·미림여고(+6.1%p)·구암고(+4.6%p)도 뚜렷한 상승세.</li>
+            <li><strong>문영여고 −3.4%p 하락</strong> — 52.9%(2023년 졸업)→49.4%→49.5%로 관악구 최대 하락 폭. 신림고(−1.6%p)·당곡고(−0.7%p)도 소폭 하락.</li>
             <li><strong>광신고는 고점 유지</strong> — 57.1%→53.6%→58.0%로 등락은 있으나 3년 내내 관악구 1위를 지킴.</li>
           </ul>
         </div>
@@ -2638,8 +2638,8 @@ const STU_DATA = {
   '영락고': {total:510, g1:155, g2:160, g3:195, cls:20, stuPerCls:25.5, teachers:54, stuPerTeacher:9.4},
   '인헌고': {total:416, g1:133, g2:134, g3:149, cls:19, stuPerCls:21.9, teachers:48, stuPerTeacher:8.7}
 };
-/* 4년제 진학률(%) — SCHOOL_STATS.grad의 최신 학년도(대부분 2024학년도 졸업생)
-   univ4/total 실인원에서 산출한 값. 남강고만 2024 자료 미확보라 2023학년도 기준.
+/* 4년제 진학률(%) — SCHOOL_STATS.grad의 최신 연도(대부분 2025년 졸업 = 2024학년도 졸업생)
+   univ4/total 실인원에서 산출한 값. 남강고만 2025년 자료 미확보라 2024년 졸업 기준.
    ※ SCHOOL_STATS.grad를 수정하면 이 값도 함께 맞출 것 */
 const ADV_RATE = {
   '광신고':58.0,'구암고':45.8,'남강고':49.5,'당곡고':41.3,
@@ -3755,11 +3755,11 @@ const SCHOOL_STATS = {
       '2024':{in:11,out:13,drop:12,base:479,rate:2.5},
       '2025':{in:21,out:10,drop:11,base:485,rate:2.3}
     },
-    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정했습니다.',
     grad:{
-      '2022':{total:145,univ4:58,jeondae:25,abroad:0,employ:0,etc:62},
-      '2023':{total:162,univ4:65,jeondae:44,abroad:1,employ:17,etc:35},
-      '2024':{total:151,univ4:58,jeondae:48,abroad:0,employ:4,etc:41}
+      '2023':{total:145,univ4:58,jeondae:25,abroad:0,employ:0,etc:62},
+      '2024':{total:162,univ4:65,jeondae:44,abroad:1,employ:17,etc:35},
+      '2025':{total:151,univ4:58,jeondae:48,abroad:0,employ:4,etc:41}
     }
   },
   '영락고':{
@@ -3777,8 +3777,8 @@ const SCHOOL_STATS = {
     },
     gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다. 확보된 연도는 2개입니다.',
     grad:{
-      '2023':{total:155,univ4:89,jeondae:27,abroad:0,employ:0,etc:39},
-      '2024':{total:180,univ4:97,jeondae:29,abroad:0,employ:0,etc:54}
+      '2024':{total:155,univ4:89,jeondae:27,abroad:0,employ:0,etc:39},
+      '2025':{total:180,univ4:97,jeondae:29,abroad:0,employ:0,etc:54}
     }
   },
   '광신고':{
@@ -3796,9 +3796,9 @@ const SCHOOL_STATS = {
     },
     gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시 (2023·2024·2025년 11월 공시분). 각 공시는 그해 2월 졸업자 기준이므로 2022~2024학년도 졸업생에 해당합니다.',
     grad:{
-      '2022':{total:168,univ4:96,jeondae:28,abroad:1,employ:2,etc:41},
-      '2023':{total:153,univ4:82,jeondae:31,abroad:0,employ:1,etc:39},
-      '2024':{total:176,univ4:102,jeondae:32,abroad:0,employ:0,etc:42}
+      '2023':{total:168,univ4:96,jeondae:28,abroad:1,employ:2,etc:41},
+      '2024':{total:153,univ4:82,jeondae:31,abroad:0,employ:1,etc:39},
+      '2025':{total:176,univ4:102,jeondae:32,abroad:0,employ:0,etc:42}
     }
   },
   '구암고':{
@@ -3816,9 +3816,9 @@ const SCHOOL_STATS = {
     },
     gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시 (2023·2024·2025년 11월 공시분). 각 공시는 그해 2월 졸업자 기준이므로 2022~2024학년도 졸업생에 해당합니다.',
     grad:{
-      '2022':{total:199,univ4:82,jeondae:27,abroad:0,employ:2,etc:88},
-      '2023':{total:184,univ4:79,jeondae:36,abroad:0,employ:0,etc:69},
-      '2024':{total:190,univ4:87,jeondae:37,abroad:0,employ:0,etc:66}
+      '2023':{total:199,univ4:82,jeondae:27,abroad:0,employ:2,etc:88},
+      '2024':{total:184,univ4:79,jeondae:36,abroad:0,employ:0,etc:69},
+      '2025':{total:190,univ4:87,jeondae:37,abroad:0,employ:0,etc:66}
     }
   },
   '남강고':{
@@ -3836,8 +3836,8 @@ const SCHOOL_STATS = {
     },
     gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시 (2023·2024년 11월 공시분). <b>2025년 11월 공시 파일은 전년도와 수치·작성자까지 완전히 동일해 갱신 오류로 보이므로 제외</b>했습니다 — 2024학년도 졸업생 자료는 재수집이 필요합니다.',
     grad:{
-      '2022':{total:205,univ4:96,jeondae:42,abroad:0,employ:0,etc:67},
-      '2023':{total:216,univ4:107,jeondae:33,abroad:0,employ:0,etc:76}
+      '2023':{total:205,univ4:96,jeondae:42,abroad:0,employ:0,etc:67},
+      '2024':{total:216,univ4:107,jeondae:33,abroad:0,employ:0,etc:76}
     }
   },
   '당곡고':{
@@ -3855,9 +3855,9 @@ const SCHOOL_STATS = {
     },
     gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 전혀 없어 3학년 재적수·파일 순번과 대조해 추정한 학년도입니다. 정확한 연도는 재수집 확인이 필요합니다.',
     grad:{
-      '2022':{total:238,univ4:100,jeondae:67,abroad:0,employ:0,etc:71},
-      '2023':{total:224,univ4:98,jeondae:60,abroad:0,employ:0,etc:66},
-      '2024':{total:247,univ4:102,jeondae:70,abroad:0,employ:0,etc:75}
+      '2023':{total:238,univ4:100,jeondae:67,abroad:0,employ:0,etc:71},
+      '2024':{total:224,univ4:98,jeondae:60,abroad:0,employ:0,etc:66},
+      '2025':{total:247,univ4:102,jeondae:70,abroad:0,employ:0,etc:75}
     }
   },
   '문영여고':{
@@ -3873,11 +3873,11 @@ const SCHOOL_STATS = {
       '2024':{in:8,out:16,drop:11,base:634,rate:1.7},
       '2025':{in:1,out:11,drop:8,base:604,rate:1.3}
     },
-    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정했습니다.',
     grad:{
-      '2022':{total:191,univ4:101,jeondae:36,abroad:0,employ:0,etc:54},
-      '2023':{total:170,univ4:84,jeondae:36,abroad:0,employ:0,etc:50},
-      '2024':{total:188,univ4:93,jeondae:32,abroad:0,employ:0,etc:63}
+      '2023':{total:191,univ4:101,jeondae:36,abroad:0,employ:0,etc:54},
+      '2024':{total:170,univ4:84,jeondae:36,abroad:0,employ:0,etc:50},
+      '2025':{total:188,univ4:93,jeondae:32,abroad:0,employ:0,etc:63}
     }
   },
   '미림여고':{
@@ -3887,18 +3887,17 @@ const SCHOOL_STATS = {
       '2025':{g1:148,g2:149,g3:180,sp:0,total:477,cls:19},
       '2026':{g1:155,g2:143,g3:144,sp:0,total:442,cls:18}
     },
-    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2022~2025학년도). 재적은 4월 1일 기준.',
+    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준.',
     transfer:{
-      '2022':{in:7,out:8,drop:9,base:496,rate:1.8},
       '2023':{in:5,out:9,drop:15,base:508,rate:3.0},
       '2024':{in:2,out:10,drop:9,base:497,rate:1.8},
       '2025':{in:4,out:7,drop:8,base:477,rate:1.7}
     },
-    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정했습니다.',
     grad:{
-      '2022':{total:175,univ4:90,jeondae:26,abroad:0,employ:0,etc:59},
-      '2023':{total:151,univ4:88,jeondae:24,abroad:0,employ:0,etc:39},
-      '2024':{total:153,univ4:88,jeondae:25,abroad:0,employ:0,etc:40}
+      '2023':{total:175,univ4:90,jeondae:26,abroad:0,employ:0,etc:59},
+      '2024':{total:151,univ4:88,jeondae:24,abroad:0,employ:0,etc:39},
+      '2025':{total:153,univ4:88,jeondae:25,abroad:0,employ:0,etc:40}
     }
   },
   '삼성고':{
@@ -3909,18 +3908,17 @@ const SCHOOL_STATS = {
       '2025':{g1:80,g2:95,g3:75,sp:19,total:269,cls:18},
       '2026':{g1:95,g2:82,g3:86,sp:15,total:278,cls:18}
     },
-    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2022~2025학년도). 재적은 4월 1일 기준.',
+    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준.',
     transfer:{
-      '2022':{in:11,out:11,drop:12,base:363,rate:3.3},
       '2023':{in:14,out:3,drop:7,base:308,rate:2.3},
       '2024':{in:7,out:2,drop:12,base:292,rate:4.1},
       '2025':{in:9,out:8,drop:9,base:269,rate:3.3}
     },
-    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정했습니다.',
     grad:{
-      '2022':{total:130,univ4:49,jeondae:36,abroad:0,employ:0,etc:45},
-      '2023':{total:123,univ4:48,jeondae:29,abroad:0,employ:0,etc:46},
-      '2024':{total:103,univ4:47,jeondae:27,abroad:0,employ:0,etc:29}
+      '2023':{total:130,univ4:49,jeondae:36,abroad:0,employ:0,etc:45},
+      '2024':{total:123,univ4:48,jeondae:29,abroad:0,employ:0,etc:46},
+      '2025':{total:103,univ4:47,jeondae:27,abroad:0,employ:0,etc:29}
     }
   },
   '성보고':{
@@ -3931,18 +3929,17 @@ const SCHOOL_STATS = {
       '2025':{g1:169,g2:206,g3:234,sp:0,total:609,cls:23},
       '2026':{g1:173,g2:158,g3:198,sp:6,total:535,cls:24}
     },
-    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2022~2025학년도). 재적은 4월 1일 기준.',
+    transferSrc:'출처: 학교알리미 「전출입 및 학업중단 학생수」 공시 (2023~2025학년도). 재적은 4월 1일 기준.',
     transfer:{
-      '2022':{in:5,out:7,drop:6,base:611,rate:1.0},
       '2023':{in:10,out:7,drop:11,base:639,rate:1.7},
       '2024':{in:4,out:6,drop:7,base:645,rate:1.1},
       '2025':{in:7,out:9,drop:13,base:609,rate:2.1}
     },
-    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정했습니다.',
     grad:{
-      '2022':{total:203,univ4:86,jeondae:34,abroad:0,employ:2,etc:81},
-      '2023':{total:194,univ4:98,jeondae:42,abroad:0,employ:0,etc:54},
-      '2024':{total:198,univ4:101,jeondae:35,abroad:0,employ:0,etc:62}
+      '2023':{total:203,univ4:86,jeondae:34,abroad:0,employ:2,etc:81},
+      '2024':{total:194,univ4:98,jeondae:42,abroad:0,employ:0,etc:54},
+      '2025':{total:198,univ4:101,jeondae:35,abroad:0,employ:0,etc:62}
     }
   },
   '인헌고':{
@@ -3958,11 +3955,11 @@ const SCHOOL_STATS = {
       '2024':{in:13,out:12,drop:15,base:450,rate:3.3},
       '2025':{in:15,out:13,drop:6,base:416,rate:1.4}
     },
-    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정한 학년도입니다.',
+    gradSrc:'출처: 학교알리미 「졸업생의 진로현황」 공시. 연도는 졸업 연도(2월 졸업) 기준 — 2025년 졸업 = 2024학년도 졸업생. ※ 원자료에 연도 표기가 없어 3학년 재적수와 대조해 추정했습니다.',
     grad:{
-      '2022':{total:147,univ4:54,jeondae:40,abroad:0,employ:0,etc:53},
-      '2023':{total:129,univ4:50,jeondae:29,abroad:0,employ:0,etc:50},
-      '2024':{total:153,univ4:73,jeondae:36,abroad:1,employ:0,etc:43}
+      '2023':{total:147,univ4:54,jeondae:40,abroad:0,employ:0,etc:53},
+      '2024':{total:129,univ4:50,jeondae:29,abroad:0,employ:0,etc:50},
+      '2025':{total:153,univ4:73,jeondae:36,abroad:1,employ:0,etc:43}
     }
   }
 };
@@ -4315,8 +4312,8 @@ const statsCharts={};
     }
   });
 
-  /* ── 8. 4년제 진학률 3개년 추이 (졸업생 진로 공시, 2022~2024학년도 졸업생) ── */
-  const GR_YEARS=['2022','2023','2024'];
+  /* ── 8. 4년제 진학률 3개년 추이 (졸업 연도 2023~2025년 = 2022~2024학년도 졸업생) ── */
+  const GR_YEARS=['2023','2024','2025'];
   const gradRate=(s,y)=>{const g=SCHOOL_STATS[s]?.grad?.[y]; return g?+(g.univ4/g.total*100).toFixed(1):null;};
   const grSorted = SCHOOLS.slice().sort((a,b)=>(ADV_RATE[b]||0)-(ADV_RATE[a]||0));
   statsCharts.advTrend = new Chart(document.getElementById('advTrendChart'),{
@@ -4324,7 +4321,7 @@ const statsCharts={};
     data:{
       labels: grSorted,
       datasets: GR_YEARS.map((y,i)=>({
-        label:y+'학년도 졸업',
+        label:y+'년 졸업',
         data: grSorted.map(s=>gradRate(s,y)),
         backgroundColor:`rgba(28,61,107,${[0.3,0.55,0.85][i]})`,
         borderRadius:0, barThickness:9
@@ -4336,7 +4333,7 @@ const statsCharts={};
         legend:{display:true,position:'top',labels:{font:{size:13},padding:14}},
         tooltip:{callbacks:{label:c=>{
           const s=grSorted[c.dataIndex], y=GR_YEARS[c.datasetIndex], g=SCHOOL_STATS[s]?.grad?.[y];
-          return g?`${y}학년도 졸업 ${gradRate(s,y)}% (졸업 ${g.total}명 중 4년제 ${g.univ4}명)`:`${y}학년도 자료 없음`;
+          return g?`${y}년 졸업 ${gradRate(s,y)}% (졸업 ${g.total}명 중 4년제 ${g.univ4}명)`:`${y}년 자료 없음`;
         }}}
       },
       scales:{
