@@ -1480,7 +1480,10 @@
 
 </div><!-- /premium -->
 
-<!-- D. 학생 후기 — 비로그인 상태에서도 항상 노출 (premium 래퍼 밖) -->
+</div><!-- /tab-panel rw -->
+
+<!-- D. 학생 후기 — 어떤 탭에서도 항상 노출되도록 tab-panel 바깥에 둔다.
+     (탭 안에 있으면 setTab()이 그 패널을 숨기는 순간 스크롤 대상이 사라짐) -->
 <section class="block" id="full-reviews" style="background:var(--card);">
   <div class="wrap">
     <div class="sechead reveal">
@@ -1495,8 +1498,6 @@
     </div>
   </div>
 </section>
-
-</div><!-- /tab-panel rw -->
 
 <!-- TAB: 공동교육과정 (joint) -->
 <div class="tab-panel" data-tab="joint" style="display:none;">
@@ -4518,7 +4519,8 @@ const QUICK_NAV_MAP={
   'sec-rw':       {tab:'overview', target:'rw-section',    premium:true},
   'sec-checklist':{tab:'calendar', target:'checklistGrid', premium:true},
   'sec-score':    {tab:'overview', target:'full-score',    premium:true},
-  reviews:        {tab:'overview', target:'full-reviews',  premium:false}
+  /* 후기는 tab-panel 바깥에 있어 항상 표시되므로 탭 전환 없이 스크롤만 한다 (tab:null) */
+  reviews:        {tab:null,       target:'full-reviews',  premium:false}
 };
 function _scrollToEl(el){
   if(!el) return;
@@ -4536,6 +4538,7 @@ function quickNav(id){
     showLockPrompt();
     return;
   }
+  if(!info.tab){ _scrollToEl(document.getElementById(info.target)); return; }
   let activeName=null;
   document.querySelectorAll('.tab-panel[data-tab]').forEach(p=>{ if(p.style.display!=='none') activeName=p.dataset.tab; });
   if(activeName!==info.tab){
