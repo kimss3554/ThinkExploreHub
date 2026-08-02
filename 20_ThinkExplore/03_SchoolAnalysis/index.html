@@ -1546,23 +1546,6 @@
 
 </div><!-- /tab-panel rw -->
 
-<!-- D. 학생 후기 — 어떤 탭에서도 항상 노출되도록 tab-panel 바깥에 둔다.
-     (탭 안에 있으면 setTab()이 그 패널을 숨기는 순간 스크롤 대상이 사라짐) -->
-<section class="block" id="full-reviews" style="background:var(--card);">
-  <div class="wrap">
-    <div class="sechead reveal">
-      <h2>학생·학부모 후기</h2>
-      <p>생각탐구 컨설팅 학생·학부모님의 실제 후기</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;" id="reviewGrid">
-      <!-- JS로 채움 -->
-    </div>
-    <div style="text-align:center;margin-top:28px;">
-      <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" class="btn btn-amber">후기 더 보기 · 오픈채팅 참여 →</a>
-    </div>
-  </div>
-</section>
-
 <!-- TAB: 공동교육과정 (joint) -->
 <div class="tab-panel" data-tab="joint" style="display:none;">
 <div id="jointContentWrap" style="display:none;">
@@ -1814,6 +1797,25 @@
   </div>
 </section>
 </div><!-- /tab-panel class -->
+
+<!-- D. 학생 후기 — 어떤 탭에서도 항상 노출되도록 모든 tab-panel 뒤(형제 순서상 마지막)에 둔다.
+     탭 안에 있으면 setTab()이 그 패널을 숨기는 순간 스크롤 대상이 사라지고,
+     tab-panel 사이에 끼어 있으면(과거 버그) 이 섹션 뒤에 오는 탭들이 이 섹션 높이만큼 아래로 밀려
+     setTab()의 scrollTo(top:0) 직후 화면에는 여전히 후기 섹션만 보이는 문제가 있었다. -->
+<section class="block" id="full-reviews" style="background:var(--card);">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <h2>학생·학부모 후기</h2>
+      <p>생각탐구 컨설팅 학생·학부모님의 실제 후기</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;" id="reviewGrid">
+      <!-- JS로 채움 -->
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://open.kakao.com/o/sjRc4Keh" target="_blank" rel="noopener" class="btn btn-amber">후기 더 보기 · 오픈채팅 참여 →</a>
+    </div>
+  </div>
+</section>
 
 <!-- ========== DATA STATUS ========== -->
 <section class="block admin-zone" id="data" style="display:none;">
