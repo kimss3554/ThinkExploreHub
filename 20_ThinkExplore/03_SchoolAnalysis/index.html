@@ -31,7 +31,10 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   /* ══ 전역 규칙: 모든 글자 최소 13px ══ */
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;}
+  html::-webkit-scrollbar{display:none;}
+  body{scrollbar-width:none;-ms-overflow-style:none;}
+  body::-webkit-scrollbar{display:none;}
   body{
     font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;
     background:var(--bg);color:var(--txt);line-height:var(--lh-base);
@@ -323,7 +326,8 @@
     border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;}
   .modal-close:hover{background:rgba(255,255,255,.5);}
   /* modal tabs */
-  .m-tabs{display:flex;gap:3px;padding:14px 0 0;border-bottom:2px solid var(--line);flex-wrap:nowrap;margin:12px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .m-tabs{display:flex;gap:3px;padding:14px 0 0;border-bottom:2px solid var(--line);flex-wrap:nowrap;margin:12px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;}
+  .m-tabs::-webkit-scrollbar{display:none;}
   .mtab{padding:7px 9px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:#111;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;border-bottom:2px solid var(--line);margin-bottom:-2px;white-space:nowrap;}
   .mtab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
   .m-panel{display:none;padding-top:6px;}
