@@ -783,7 +783,7 @@
         <button class="nav-tab active" data-tab="overview" onclick="setTab('overview')">학교 한눈에</button>
         <button class="nav-tab" data-tab="compare" onclick="setTab('compare')">학교 비교 <span class="tab-lock">🔒</span></button>
         <button class="nav-tab" data-tab="rw" onclick="setTab('rw')">수행평가 <span class="tab-lock">🔒</span></button>
-        <button class="nav-tab" data-tab="joint" onclick="setTab('joint')">선택과목</button>
+        <button class="nav-tab" data-tab="joint" onclick="setTab('joint')">선택과목 <span class="tab-lock">🔒</span></button>
         <button class="nav-tab" data-tab="calendar" onclick="setTab('calendar')">입시 달력 <span class="tab-lock">🔒</span></button>
         <button class="nav-tab" onclick="quickNav('reviews')">후기</button>
         <button class="nav-tab" data-tab="news" onclick="setTab('news')" style="display:none;">입시뉴스 ↗</button>
@@ -1465,15 +1465,17 @@
 
 <!-- TAB: 공동교육과정 (joint) -->
 <div class="tab-panel" data-tab="joint" style="display:none;">
+<div id="jointContentWrap" style="display:none;">
 <section class="block">
   <div class="wrap">
     <div class="sechead reveal">
-      <h2>선택과목 — 지원 학과가 요구하는 과목, 우리 학교에 있나?</h2>
+      <h2>선택과목 — 지원 학과가 요구하는 과목, 우리 학교에 있나? <span class="premflag">프리미엄</span></h2>
       <p>지원하려는 대학·학과가 요구하는 과목을 재학 중인 학교에서 이수할 수 있는지 확인하고, 개설되지 않은 과목은 공동교육과정으로 듣는 방법을 안내합니다. (2028학년도 대입 = 현 고1·고2 기준)</p>
     </div>
     <div id="jointContent"></div>
   </div>
 </section>
+</div><!-- /jointContentWrap -->
 </div><!-- /tab-panel joint -->
 
 <!-- TAB: 입시 달력 (calendar) -->
@@ -2095,7 +2097,7 @@ function setTab(name){
      STEP1~3 안내 카드(#premium-lock)만 보여준다. 모달은 더 이상 쓰지 않는다.
      rw의 #premium은 자체 CSS 클래스(.premium.unlocked)로 이미 표시 여부가 관리되므로
      여기서 인라인 style을 건드리지 않는다(건드리면 로그인 후에도 display:none이 남을 수 있음). */
-  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent'};
+  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent', joint:'jointContentWrap'};
   if(name==='rw' || name in LOCK_CONTENT_ID){
     const unlocked=localStorage.getItem('sjtg_unlocked')==='1';
     const contentEl=(name in LOCK_CONTENT_ID)?document.getElementById(LOCK_CONTENT_ID[name]):null;
@@ -4283,7 +4285,7 @@ function unlock(persist){
   document.querySelectorAll('.premflag').forEach(el=>el.style.display='none');
   // 잠긴 탭(compare/rw/gib/calendar) 안에서 바로 로그인한 경우 화면이 비어 보이던 문제 수정 —
   // 지금 열려있는 탭이 어디였는지 먼저 파악해둔다.
-  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent'};
+  const LOCK_CONTENT_ID={compare:'compareContent', gib:'gibContent', calendar:'calendarContent', joint:'jointContentWrap'};
   let _activeTabAtLogin=null;
   document.querySelectorAll('.tab-panel[data-tab]').forEach(p=>{ if(p.style.display!=='none') _activeTabAtLogin=p.dataset.tab; });
   if(_activeTabAtLogin && _activeTabAtLogin in LOCK_CONTENT_ID){
