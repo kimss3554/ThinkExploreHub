@@ -6747,8 +6747,8 @@ function renderJoint(){
       <b>우리 학교에서 지망 계열의 권장과목을 다 들을 수 있는지</b> 확인해 보세요. 서울대학교 「2028학년도 전공 연계 과목 선택 안내」(2025년 6월 30일 발표) 기준입니다. 이 권장과목은 <b>지원자격은 아니지만 수시 서류평가·정시 교과역량평가에 반영</b>됩니다.
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px;">
-      <span style="font-size:16px;font-weight:800;color:var(--muted);">학교</span>
       <select id="trackSchool" onchange="renderTrackCheck()" style="padding:7px 12px;border-radius:0;border:1.5px solid var(--line);background:var(--card);color:var(--txt);font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;">
+        <option value="">==== 학교 선택 ====</option>
         ${SCHOOLS.map(s=>`<option value="${s}">${s}</option>`).join('')}
       </select>
     </div>
