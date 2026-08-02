@@ -46,7 +46,7 @@
 - 상태: `localStorage.sjtg_unlocked === '1'`
 - 테스트: 콘솔에서 `localStorage.setItem('sjtg_unlocked','1')` 후 리로드
 - 잠금 탭은 `LOCK_CONTENT_ID` 맵 + 공용 `#premium-lock` 배너를 활성 탭으로 옮겨 표시
-- **현재 테스트 기간이라 비밀번호가 화면에 노출·자동입력**되어 있다(`#pwInput` type=text + value). 정식 운영 전 되돌릴 것. 관리자 비번은 노출 안 함.
+- `#pwInput`은 `type=password`로 마스킹 처리되어 있다(2026-08-02 수정). 단, `PREMIUM_PASSWORD` 상수는 클라이언트 JS에 평문으로 남아 있어 view-source로는 확인 가능 — 백엔드 없이는 근본적으로 못 숨긴다. 관리자 비번은 노출 안 함.
 - **후기(`#full-reviews`)는 로그인 없이 항상 노출**되어야 한다. 반드시 **모든 `.tab-panel` 바깥**에 둘 것 — 탭 안에 있으면 `setTab()`이 그 패널을 숨기는 순간 스크롤 대상이 사라진다(실제 발생했던 버그).
 
 ## 작업 규칙
