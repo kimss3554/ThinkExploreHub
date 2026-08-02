@@ -314,7 +314,9 @@
     align-items:center;justify-content:center;padding:18px;}
   .modal.open{display:flex;}
   .modal-inner{background:var(--bg);border-radius:0;max-width:960px;width:100%;
-    max-height:92vh;overflow-y:auto;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;}
+    max-height:92vh;overflow-y:auto;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;
+    scrollbar-width:none;-ms-overflow-style:none;}
+  .modal-inner::-webkit-scrollbar{display:none;}
   .modal-inner h3{font-size:23px;font-weight:700;color:var(--navy);}
   .modal-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.3);
     border:none;color:#fff;font-size:20px;cursor:pointer;z-index:10;width:30px;height:30px;
@@ -6988,8 +6990,8 @@ function openModal(s){
       <div class="modal-hdr-name">${s} 종합리포트</div>
       <div class="modal-hdr-sub">${m.cls==='girls'?'여고':m.cls==='boys'?'남고':'남녀공학'} · ${m.students} · 4년제 ${m.adv}</div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="logo_grade.png" alt="생각탐구" style="height:56px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-right:36px;flex-shrink:0;">
+      <img src="logo_grade_w.png" alt="생각탐구" style="height:67px;">
     </div>`;
 
   /* 탭 초기화 */
@@ -7136,13 +7138,13 @@ function openModal(s){
   const cohorts=[
     {grade:'현 고3', enter:'2024년 입학', apply:'2027학년도 대입전형',
      regime:'2015 개정 교육과정 · 내신 9등급 상대평가 · 선택형 수능(국어·수학 선택과목, 사탐/과탐 택2)',
-     txt:det.dir2027, color:'#1B3B86', bg:'var(--section-alt)', bd:'var(--line)'},
+     txt:det.dir2027, color:'#1B3B86', bg:'#fff', bd:'var(--line)'},
     {grade:'현 고2', enter:'2025년 입학', apply:'2028학년도 대입전형',
      regime:'2022 개정 교육과정 · <b>고교학점제 첫 적용 세대</b> · 내신 5등급 상대평가(성취도 A~E 병기) · 통합형 수능(통합사회·통합과학 전원 응시)',
-     txt:det.dir2028, color:'#1B3B86', bg:'var(--section-alt)', bd:'var(--line)'},
+     txt:det.dir2028, color:'#1B3B86', bg:'#fff', bd:'var(--line)'},
     {grade:'현 고1', enter:'2026년 입학', apply:'2029학년도 대입전형',
      regime:'고교학점제 2년차 · 2028 개편체제 안착 · 192학점 이수 · 선택과목 설계가 진로 적합성 평가의 핵심',
-     txt:det.dir2029, color:'#1B3B86', bg:'var(--section-alt)', bd:'var(--line)'}
+     txt:det.dir2029, color:'#1B3B86', bg:'#fff', bd:'var(--line)'}
   ];
   document.getElementById('mFuture').innerHTML=`
     <div style="display:grid;gap:14px;">
@@ -7155,9 +7157,9 @@ function openModal(s){
               <th style="padding:7px 8px;text-align:center;white-space:nowrap;">대입전형</th><th style="padding:7px 8px;text-align:center;white-space:nowrap;">내신</th>
             </tr></thead>
             <tbody>
-              <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고3</td><td style="padding:6px 8px;text-align:center;">2024년</td><td style="padding:6px 8px;text-align:center;font-weight:700;">2027학년도</td><td style="padding:6px 8px;text-align:center;">9등급</td></tr>
-              <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고2</td><td style="padding:6px 8px;text-align:center;">2025년</td><td style="padding:6px 8px;text-align:center;font-weight:700;">2028학년도</td><td style="padding:6px 8px;text-align:center;">5등급</td></tr>
-              <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고1</td><td style="padding:6px 8px;text-align:center;">2026년</td><td style="padding:6px 8px;text-align:center;font-weight:700;">2029학년도</td><td style="padding:6px 8px;text-align:center;">5등급</td></tr>
+              <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고3</td><td style="padding:6px 8px;text-align:center;background:#fff;">2024년</td><td style="padding:6px 8px;text-align:center;font-weight:700;background:#fff;">2027학년도</td><td style="padding:6px 8px;text-align:center;background:#fff;">9등급</td></tr>
+              <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고2</td><td style="padding:6px 8px;text-align:center;background:#fff;">2025년</td><td style="padding:6px 8px;text-align:center;font-weight:700;background:#fff;">2028학년도</td><td style="padding:6px 8px;text-align:center;background:#fff;">5등급</td></tr>
+              <tr><td style="padding:6px 8px;text-align:center;font-weight:700;background:#F9F7F4;">고1</td><td style="padding:6px 8px;text-align:center;background:#fff;">2026년</td><td style="padding:6px 8px;text-align:center;font-weight:700;background:#fff;">2029학년도</td><td style="padding:6px 8px;text-align:center;background:#fff;">5등급</td></tr>
             </tbody>
           </table>
         </div>
@@ -7170,7 +7172,7 @@ function openModal(s){
             <span style="font-size:14px;color:var(--muted);">${c.enter}</span>
             <span class="dir-yr" style="margin:0;color:${c.color};">${c.apply}</span>
           </div>
-          <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);padding:8px 10px;background:rgba(255,255,255,.7);border-radius:0;margin-bottom:10px;">${c.regime}</div>
+          <div style="font-size:14px;color:var(--muted);line-height:var(--lh-base);padding:8px 10px;background:var(--section-alt);border-radius:0;margin-bottom:10px;">${c.regime}</div>
           <div class="dir-txt">${c.txt||'분석 예정'}</div>
         </div>`).join('')}
       <div style="background:linear-gradient(135deg,#0F2342,#1B3B86);color:#fff;border-radius:0;padding:16px;">
