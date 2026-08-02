@@ -5180,6 +5180,36 @@ function igStack(segs,opt={}){
   </div>`;
 }
 
+/* 항목별 100% 스택 가로막대 목록 — rows:[{label, segs:[{label,value,color}]}]
+   각 행이 하나의 100% 막대라 구성비를 행끼리 바로 비교할 수 있다.
+   값(value)은 이미 백분율로 넣는다. */
+function igStackBars(rows,legend,opt={}){
+  const labelW=opt.labelW||62;
+  return `<div style="margin-top:8px;">
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:9px;">
+      ${(legend||[]).map(l=>`<div style="display:flex;align-items:center;gap:5px;font-size:13px;">
+        <span style="width:11px;height:11px;background:${l.color};display:inline-block;"></span>
+        <span style="font-weight:600;color:var(--txt);">${l.label}</span>
+      </div>`).join('')}
+    </div>
+    <div style="display:grid;gap:6px;">
+      ${rows.map(r=>{
+        const tot=r.segs.reduce((a,s)=>a+(Number(s.value)||0),0)||1;
+        return `<div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:0 0 ${labelW}px;font-size:14px;font-weight:700;color:var(--txt);text-align:right;">${r.label}</div>
+          <div style="flex:1;min-width:0;display:flex;height:22px;border:1px solid var(--line);overflow:hidden;">
+            ${r.segs.map(s=>{
+              const v=Number(s.value)||0, p=v/tot*100;
+              if(p<=0) return '';
+              return `<div title="${s.label} ${v}%" style="width:${p.toFixed(2)}%;background:${s.color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;">${p>=12?v+'%':''}</div>`;
+            }).join('')}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
 /* 연도별 추이 선그래프 — series: [{name, color, data:[{x, y}]}] */
 function igTrend(series,opt={}){
   const xs=[...new Set(series.flatMap(s=>s.data.map(d=>d.x)))].sort();
@@ -5390,11 +5420,22 @@ function buildStatsIG(){
       {name:'전문대 진학률',color:'#0369A1',data:Y.map(y=>({x:y,y:pc(gsum(y,'jeondae'),gsum(y,'total'))}))}
     ],{unit:'%'});
     const sortedC=SCHOOLS.slice().sort((a,b)=>(ADV_RATE[b]||0)-(ADV_RATE[a]||0));
-    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 2px;">학교별 4년제 진학률 (${LAST}년 졸업)</div>`;
-    body+=igBars(sortedC.map(s=>({label:s,value:ADV_RATE[s],color:SCHOOL_COLORS[s]})),{labelW:62,unit:'%'});
-    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 2px;">학교별 전문대 진학률 (${LAST}년 졸업)</div>`;
-    body+=igBars(sortedC.map(s=>{const g=SCHOOL_STATS[s].grad[LAST];
-      return {label:s,value:pc(g.jeondae,g.total),color:'#0369A1'};}),{labelW:62,unit:'%'});
+    /* 4년제·전문대를 따로 두면 "진학 총량"이 안 보인다. 한 막대에 미진학까지
+       함께 쌓아 학교별 진로 구성을 한 줄로 비교할 수 있게 한다. */
+    body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 2px;">학교별 진로 구성 (${LAST}년 졸업, 4년제 진학률 높은 순)</div>`;
+    body+=igStackBars(sortedC.map(s=>{
+      const g=SCHOOL_STATS[s].grad[LAST];
+      const u=pc(g.univ4,g.total), j=pc(g.jeondae,g.total);
+      return {label:s, segs:[
+        {label:'4년제',value:u,color:'#1B3B86'},
+        {label:'전문대',value:j,color:'#0369A1'},
+        {label:'미진학',value:+(100-u-j).toFixed(1),color:'#94A3B8'}
+      ]};
+    }),[
+      {label:'4년제 대학',color:'#1B3B86'},
+      {label:'전문대학',color:'#0369A1'},
+      {label:'미진학(재수·취업·미정 등)',color:'#94A3B8'}
+    ],{labelW:62});
     body+=`<div style="font-size:14px;font-weight:700;color:var(--navy);margin:18px 0 2px;">학교별 3개년 상세</div>`;
     body+=igTable(['학교','4년제 2023','2024','2025','Δ','전문대 2023','2024','2025','Δ'],
       sortedC.map(s=>{
