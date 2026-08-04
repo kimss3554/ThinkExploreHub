@@ -970,10 +970,14 @@
       <p>각 학교 카드를 클릭해 상세 분석을 확인하세요</p>
     </div>
 
-    <!-- 검색·AI 검색 노출용 정적 요약표. 아래 schoolGrid는 JS로 렌더링되어
+    <div class="grid" id="schoolGrid"></div>
+
+    <!-- 검색·AI 검색 노출용 정적 요약표. 위 schoolGrid는 JS로 렌더링되어
          자바스크립트를 실행하지 않는 크롤러에는 보이지 않으므로, 핵심 수치는
-         이 표에 정적 HTML로도 남겨둔다 (2026-08-02). -->
-    <div style="overflow-x:auto;margin-bottom:24px;">
+         이 표에 정적 HTML로도 남겨둔다 (2026-08-02). 화면에서는 학교 카드
+         목록 뒤에 나오도록 배치(2026-08-03 사용자 요청) — 크롤러는 DOM 내
+         존재 여부만 보므로 화면상 순서와 무관하게 그대로 인식된다. -->
+    <div style="overflow-x:auto;margin-top:24px;">
       <table style="width:100%;border-collapse:collapse;font-size:14px;">
         <thead>
           <tr style="background:rgba(28,61,107,.08);">
@@ -1000,7 +1004,6 @@
       </table>
     </div>
 
-    <div class="grid" id="schoolGrid"></div>
     <div style="text-align:center;margin-top:28px;">
       <button class="cmp-run-btn" onclick="setTab('compare')">학교 비교하기</button>
     </div>
