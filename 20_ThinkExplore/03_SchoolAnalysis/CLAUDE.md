@@ -115,4 +115,10 @@ Browser 패널이 프레임을 합성하지 않아 다음이 **모두 실패하�
 
 **완료** — "SEO/GEO 원칙" 1번 실행: `#schools` 섹션에 11개교 진학률·학업중단율 정적 `<table>` 추가(schoolGrid 위, JS 없이도 원본 HTML에 노출). raw.githubusercontent.com으로 캐시 우회해 실제 반영 확인함.
 
-**다음 후보** — Search Console에 sitemap 제출 여부 미확인. 다른 탭(학교비교·수행평가·선택과목 등)도 같은 문제(JS 전용 렌더링)가 있는지 점검 필요.
+**완료 (2026-08-03)** — 선택과목(`#jointContent`)·입시달력(`#checklistGrid`, `#calContent`)·후기(`#reviewGrid`)에도 크롤러용 정적 콘텐츠를 baked-in 했다. 방법: 로컬 서버 + 브라우저에서 `localStorage.setItem('sjtg_unlocked','1')`로 언락 후 각 탭을 열어 JS가 실제 렌더링한 `innerHTML`을 캡처(작은 건 `javascript_exec`로 직접, 큰 건 로컬 POST 수신 서버로 정확한 바이트 전송 — 손으로 옮겨적지 말 것, 4만자 넘는 선택과목 콘텐츠에서 오타 위험), 빈 컨테이너의 초기 HTML로 심음. 로그인 후 JS(`renderJoint`/`initCalendar`/`buildReviews`)가 그대로 재렌더링해 덮어쓰므로 실사용자는 차이 없음(검증: 재렌더링 후 `hasStaticComment`가 `false`로 바뀌는지 확인). 비로그인 사용자는 `#premium-lock`이 여전히 앞을 가려 기존과 동일하게 잠금 화면만 봄 — UA 감지 등 서버단 차별 없이 모든 방문자에 동일 HTML을 서빙하고 CSS/JS로만 표시를 가르므로 cloaking 아님.
+
+**⚠️ REVIEWS/CHECKLISTS/CAL_DATA/JOINT_TYPES 등 원본 데이터를 바꾸면 이 정적 스냅샷이 낡는다.** 데이터 수정 후에는 위 캡처 절차를 재실행해 스냅샷을 다시 구워야 한다 — 안 하면 정적 텍스트(크롤러가 보는 것)와 실제 로그인 후 콘텐츠(사람이 보는 것)가 어긋난다.
+
+**학교비교(compare) 탭은 이 작업에서 제외** — 학교 A/B 조합에 따라 결과가 달라지는 인터랙티브 도구라 "하나의 정답"으로 미리 구울 수 없다(11개교 조합 55가지). 이미 있는 정적 요약표(11개교 진학률·학업중단율 비교, `#schools` 섹션)로 검색 노출은 충분히 커버된다고 판단.
+
+**다음 후보** — Search Console에 sitemap 제출 여부 미확인.
