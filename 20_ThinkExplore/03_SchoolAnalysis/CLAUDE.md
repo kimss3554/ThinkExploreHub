@@ -4,8 +4,18 @@
 
 **이 폴더가 실제 운영 중인 배포 파일이다.** 상위 `ThinkExploreHub/CLAUDE.md` 65행에 "Obsidian의 관악구고교분석 로컬 백업본"이라고 적혀 있으나 **사실과 다르다.** Obsidian Vault의 `01_ObsidianVault/관악구고교분석/index.html`은 구버전 미러이고 UNI2028·renderUniCheck 등 주요 기능이 없다. 관악구 고교분석 관련 작업은 **반드시 이 폴더의 `index.html`**에서 한다.
 
-- 배포: GitHub `kimss3554/ThinkExploreHub` (이 폴더는 허브 저장소의 하위 폴더이며 독립 repo가 아니다)
+- **실서비스 배포(2026-08-02~)**: `kimss3554/whyylab` — 이 허브와 무관한 **별도 저장소**. GitHub Pages + 커스텀 도메인 `whyylab.com` 연결됨. **이 폴더 `index.html`을 고쳐도 자동으로 반영되지 않는다** — 반드시 `whyylab` 저장소에도 같은 파일을 복사해 커밋·push해야 실제 사이트(whyylab.com)에 뜬다. 로컬 작업 시 세션 스크래치패드는 세션마다 사라지므로, 다음 세션에서는 `git clone https://github.com/kimss3554/whyylab.git`로 새로 받아서 index.html만 덮어쓰고 push하면 된다.
+- **원본 보관(소스 오브 트루스)**: 이 폴더, `kimss3554/ThinkExploreHub` 하위 — 실사이트에는 반영 안 됨, 백업 겸 원본.
 - 원본 자료: `G:\내 드라이브\ThinkExploreHub\01_ObsidianVault\wiki\raw\학교자료\관악구학교자료\{학교명}\`
+
+## SEO/GEO — 앞으로 모든 작업의 기본 목표 (2026-08-02~)
+
+이 사이트는 구글 검색·AI 검색(ChatGPT·Perplexity·구글 AI 개요 등)에 노출·인용되는 것을 실제 목표로 삼는다. 콘텐츠·구조를 바꿀 때 항상 이 관점을 기본으로 고려할 것:
+
+1. **핵심 사실 콘텐츠는 정적 HTML로도 노출되어야 한다.** 지금 `#schoolGrid`·비교표 등 대부분이 빈 `<div>`에 JS로 렌더링되는 구조인데, JS를 실행하지 않는 크롤러(ChatGPT·Perplexity 등 다수 AI 크롤러)는 이 내용을 전혀 못 본다 — 2026-08-02 확인: 실 서버 응답이 `<div class="grid" id="schoolGrid"></div>`처럼 텅 비어 있었음(Googlebot은 JS를 실행해서 보지만 다른 크롤러는 대부분 못 봄). **학교명·진학률·순위 같은 핵심 수치는 JS 렌더링과 별개로 정적 텍스트/표로도 페이지 소스에 존재하게 하는 것이 이상적** — 아직 미착수, 다음 작업 후보.
+2. 새 섹션·데이터를 추가/수정할 때 `<title>`·meta description·OG·JSON-LD 내용이 실제 페이지 내용과 어긋나지 않도록 같이 갱신한다.
+3. canonical/OG/JSON-LD URL은 `https://whyylab.com/` 기준으로 쓴다(예전 github.io 경로 아님).
+4. `robots.txt`/`sitemap.xml`은 `whyylab` 저장소 루트에 있다(허브 저장소 쪽엔 없음 — 다른 프로젝트와 섞이므로 의도적으로 안 둠).
 
 ## 아키텍처
 
@@ -98,3 +108,9 @@ Browser 패널이 프레임을 합성하지 않아 다음이 **모두 실패하�
 4. 한 번에 전체 진행할지 11개교 탭만 파일럿으로 먼저 할지
 
 **남은 자료 과제** — 대학별 진학 현황(SKY·수도권 등) 미확보. 취업·국외진학 세부도 미수집.
+
+## 진행 상황 (2026-08-02, 도메인·SEO)
+
+**완료** — whyylab.com 도메인 구매(가비아) 및 GitHub Pages 연결, HTTPS 인증서 발급·Enforce HTTPS 적용, Google Search Console 도메인 속성 소유권 확인(TXT 레코드), robots.txt·sitemap.xml 추가. meta description·canonical·OG·Twitter Card·JSON-LD(EducationalOrganization) 추가.
+
+**미완/다음 후보** — 위 "SEO/GEO 원칙" 1번(정적 콘텐츠 노출)이 AI 검색 인용 가능성에 가장 임팩트 큰 미착수 작업. 사용자 승인 후 진행할 것.
