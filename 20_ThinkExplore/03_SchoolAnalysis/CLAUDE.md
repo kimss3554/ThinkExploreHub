@@ -12,7 +12,7 @@
 
 이 사이트는 구글 검색·AI 검색(ChatGPT·Perplexity·구글 AI 개요 등)에 노출·인용되는 것을 실제 목표로 삼는다. 콘텐츠·구조를 바꿀 때 항상 이 관점을 기본으로 고려할 것:
 
-1. **핵심 사실 콘텐츠는 정적 HTML로도 노출되어야 한다.** 지금 `#schoolGrid`·비교표 등 대부분이 빈 `<div>`에 JS로 렌더링되는 구조인데, JS를 실행하지 않는 크롤러(ChatGPT·Perplexity 등 다수 AI 크롤러)는 이 내용을 전혀 못 본다 — 2026-08-02 확인: 실 서버 응답이 `<div class="grid" id="schoolGrid"></div>`처럼 텅 비어 있었음(Googlebot은 JS를 실행해서 보지만 다른 크롤러는 대부분 못 봄). **학교명·진학률·순위 같은 핵심 수치는 JS 렌더링과 별개로 정적 텍스트/표로도 페이지 소스에 존재하게 하는 것이 이상적** — 아직 미착수, 다음 작업 후보.
+1. **핵심 사실 콘텐츠는 정적 HTML로도 노출되어야 한다.** JS로 빈 `<div>`에 렌더링되는 구조는 JS를 실행하지 않는 크롤러(ChatGPT·Perplexity 등 다수 AI 크롤러)에는 안 보인다. 단, **화면에 눈에 띄게 보이는 형태로 추가하면 사용자가 거부할 수 있다** — `#schools` 섹션 정적 요약표는 이렇게 추가했다가 삭제됨(아래 "진행 상황" 참조). 반대로 `#jointContent`/`#checklistGrid`/`#calContent`/`#reviewGrid`처럼 **이미 CSS로 숨겨져 있는(프리미엄 락 또는 JS 재렌더링 예정) 컨테이너에 정적 스냅샷을 심는 방식은 화면 변화가 없어 그대로 유지됨.** 앞으로 이 원칙을 적용할 땐 후자의 형태(안 보이게)를 우선 고려할 것.
 2. 새 섹션·데이터를 추가/수정할 때 `<title>`·meta description·OG·JSON-LD 내용이 실제 페이지 내용과 어긋나지 않도록 같이 갱신한다.
 3. canonical/OG/JSON-LD URL은 `https://whyylab.com/` 기준으로 쓴다(예전 github.io 경로 아님).
 4. `robots.txt`/`sitemap.xml`은 `whyylab` 저장소 루트에 있다(허브 저장소 쪽엔 없음 — 다른 프로젝트와 섞이므로 의도적으로 안 둠).
@@ -113,12 +113,12 @@ Browser 패널이 프레임을 합성하지 않아 다음이 **모두 실패하�
 
 **완료** — whyylab.com 도메인 구매(가비아) 및 GitHub Pages 연결, HTTPS 인증서 발급·Enforce HTTPS 적용, Google Search Console 도메인 속성 소유권 확인(TXT 레코드), robots.txt·sitemap.xml 추가. meta description·canonical·OG·Twitter Card·JSON-LD(EducationalOrganization) 추가.
 
-**완료** — "SEO/GEO 원칙" 1번 실행: `#schools` 섹션에 11개교 진학률·학업중단율 정적 `<table>` 추가(schoolGrid 위, JS 없이도 원본 HTML에 노출). raw.githubusercontent.com으로 캐시 우회해 실제 반영 확인함.
+**시도 후 롤백 (2026-08-02→08-03)** — `#schools` 섹션에 11개교 진학률·학업중단율 정적 `<table>`을 추가했었으나(schoolGrid 위/아래로 위치를 옮겨보기도 함), 사용자가 화면에 보이는 게 마음에 안 든다며 **완전 삭제 요청** — 삭제함. `#schools` 섹션은 현재 다시 순수 JS 렌더링(schoolGrid)만 남아, 이 섹션 자체는 크롤러 노출 관점에서 원점으로 돌아간 상태. 재도입한다면 화면에 안 보이면서도(예: `#premium-lock`처럼 CSS로 숨김) 크롤러엔 남는 형태를 먼저 제안할 것 — 눈에 보이는 표 추가는 다시 거부당할 가능성 높음.
 
 **완료 (2026-08-03)** — 선택과목(`#jointContent`)·입시달력(`#checklistGrid`, `#calContent`)·후기(`#reviewGrid`)에도 크롤러용 정적 콘텐츠를 baked-in 했다. 방법: 로컬 서버 + 브라우저에서 `localStorage.setItem('sjtg_unlocked','1')`로 언락 후 각 탭을 열어 JS가 실제 렌더링한 `innerHTML`을 캡처(작은 건 `javascript_exec`로 직접, 큰 건 로컬 POST 수신 서버로 정확한 바이트 전송 — 손으로 옮겨적지 말 것, 4만자 넘는 선택과목 콘텐츠에서 오타 위험), 빈 컨테이너의 초기 HTML로 심음. 로그인 후 JS(`renderJoint`/`initCalendar`/`buildReviews`)가 그대로 재렌더링해 덮어쓰므로 실사용자는 차이 없음(검증: 재렌더링 후 `hasStaticComment`가 `false`로 바뀌는지 확인). 비로그인 사용자는 `#premium-lock`이 여전히 앞을 가려 기존과 동일하게 잠금 화면만 봄 — UA 감지 등 서버단 차별 없이 모든 방문자에 동일 HTML을 서빙하고 CSS/JS로만 표시를 가르므로 cloaking 아님.
 
 **⚠️ REVIEWS/CHECKLISTS/CAL_DATA/JOINT_TYPES 등 원본 데이터를 바꾸면 이 정적 스냅샷이 낡는다.** 데이터 수정 후에는 위 캡처 절차를 재실행해 스냅샷을 다시 구워야 한다 — 안 하면 정적 텍스트(크롤러가 보는 것)와 실제 로그인 후 콘텐츠(사람이 보는 것)가 어긋난다.
 
-**학교비교(compare) 탭은 이 작업에서 제외** — 학교 A/B 조합에 따라 결과가 달라지는 인터랙티브 도구라 "하나의 정답"으로 미리 구울 수 없다(11개교 조합 55가지). 이미 있는 정적 요약표(11개교 진학률·학업중단율 비교, `#schools` 섹션)로 검색 노출은 충분히 커버된다고 판단.
+**학교비교(compare) 탭은 이 작업에서 제외** — 학교 A/B 조합에 따라 결과가 달라지는 인터랙티브 도구라 "하나의 정답"으로 미리 구울 수 없다(11개교 조합 55가지).
 
 **다음 후보** — Search Console에 sitemap 제출 여부 미확인.
