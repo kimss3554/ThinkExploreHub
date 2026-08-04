@@ -113,4 +113,6 @@ Browser 패널이 프레임을 합성하지 않아 다음이 **모두 실패하�
 
 **완료** — whyylab.com 도메인 구매(가비아) 및 GitHub Pages 연결, HTTPS 인증서 발급·Enforce HTTPS 적용, Google Search Console 도메인 속성 소유권 확인(TXT 레코드), robots.txt·sitemap.xml 추가. meta description·canonical·OG·Twitter Card·JSON-LD(EducationalOrganization) 추가.
 
-**미완/다음 후보** — 위 "SEO/GEO 원칙" 1번(정적 콘텐츠 노출)이 AI 검색 인용 가능성에 가장 임팩트 큰 미착수 작업. 사용자 승인 후 진행할 것.
+**완료** — "SEO/GEO 원칙" 1번 실행: `#schools` 섹션에 11개교 진학률·학업중단율 정적 `<table>` 추가(schoolGrid 위, JS 없이도 원본 HTML에 노출). raw.githubusercontent.com으로 캐시 우회해 실제 반영 확인함.
+
+**다음 후보** — Search Console에 sitemap 제출 여부 미확인. 다른 탭(학교비교·수행평가·선택과목 등)도 같은 문제(JS 전용 렌더링)가 있는지 점검 필요.
