@@ -21,17 +21,25 @@
 G:\내 드라이브\
 └── ThinkExploreHub/
     └── 01_ObsidianVault/          ☁️ Obsidian Vault 루트
+        ├── 00_Inbox/
         ├── 00_대시보드/
+        ├── 05_관악구고교분석/
         ├── 10_논문/
         ├── 20_학생탐구보고서/
         ├── 30_교재/
         ├── 40_생각탐구site/       (웹사이트 기획·콘텐츠)
-        ├── 50_수업자료/
         ├── 60_브랜드마케팅/
+        ├── 70_입시자료/
+        ├── 80_컨설팅학생관리/
+        ├── 90_주제pull/
         ├── 99_AI_context/
-        ├── wiki/                  (참고 자료 라이브러리)
+        ├── study-wiki/            (참고 자료 라이브러리)
+        ├── templates/
+        ├── 기타data/
+        ├── .claude/
         └── .obsidian/             (Obsidian 설정)
 ```
+※ 위 목록은 2026-08-06 Google Drive 커넥터로 실제 조회한 결과 기준.
 
 ### **로컬** (개발 전용)
 ```
@@ -127,6 +135,33 @@ C:\Users\Kim\ThinkExploreHub/
 4. 완료! (모든 기기에서 자동 동기화)
 ```
 
+### **Claude(웹/원격 세션)에서 Vault 접근** ☁️
+
+원격 세션에는 `G:` 드라이브가 없다. 대신 **Google Drive 커넥터**로 Vault에 직접 접근한다.
+
+**Drive 폴더 ID (재검색 없이 바로 사용)**
+
+| 폴더 | Drive folder ID |
+|------|-----------------|
+| `ThinkExploreHub/` | `1ywyTh6V2PoFMsv42MyRBy5m2D5qEqV5G` |
+| `01_ObsidianVault/` (Vault 루트) | `1m2hsmFExYWdYnFbLZjdWZGuaAKS8u1pK` |
+| `00_대시보드/` | `10N_8fOSi7wuL6t2Rv_vp22bEVzz8hqH8` |
+| `10_논문/` | `1r5nfmQ-EivP1tdHHuC6oMN-LhMu9MVDf` |
+| `20_학생탐구보고서/` | `1FMuROomaIVzC-QaCKNR3LrAEtfq-NTW7` |
+| `30_교재/` | `140n0eddhfFRuwIp7D-0tIFVS1Rfz3ps9` |
+| `40_생각탐구site/` | `1g1kikyUTNSqwPu0sKz5btWBuNMuSr5-o` |
+| `05_관악구고교분석/` | `13-_QXnPFPfC9uV7L-SHbddc5bUD1b9Vu` |
+| `99_AI_context/` | `18wA6rRH106xxQt98HMooWJrjvwz9Yj6J` |
+| `study-wiki/` | `1h_9RLg52F6TpL_jfOlRLqlTfWSGCPzyZ` |
+
+**사용법**
+- 폴더 목록: `search_files` → `parentId = '<folder id>'`
+- 전체 검색: `search_files` → `fullText contains '키워드'`
+- `.md` 읽기: `download_file_content`(base64 반환 → 디코드). `read_file_content`는 Google 문서/PDF용이라 `text/markdown`은 지원하지 않음
+- 새 노트 쓰기: `create_file` (`parentId` + `contentMimeType: text/markdown` + `disableConversionToGoogleType: true` — 안 하면 Google Docs로 변환되어 Obsidian이 못 읽음)
+
+**제약**: 커넥터에 *덮어쓰기(update)* 도구가 없다. 기존 노트를 같은 제목으로 `create_file` 하면 **중복 파일**이 생긴다. 기존 노트 수정은 ① 새 버전 파일로 저장 후 사용자가 정리하거나 ② 사용자가 로컬 Obsidian에서 직접 수정하는 방식으로 처리한다.
+
 ### **개발 서버 실행**
 ```bash
 cd C:\Users\Kim\ThinkExploreHub\03_Projects\thinkexplore-site
@@ -217,6 +252,7 @@ npm run dev
 
 | 날짜 | 변경 내용 | 대상 | 사유 |
 |------|----------|------|------|
+| 2026-08-06 | Google Drive 커넥터 연결 정보·폴더 ID 기록, Vault 폴더 목록 최신화 | CLAUDE.md | 원격 세션에서 Obsidian Vault 직접 접근 가능해짐 |
 | 2026-07-21 | 폴더 정리 및 Google Drive 동기화 | 전체 | Obsidian을 Google Drive로 이동하여 다중 기기 동기화 지원 |
 | 2026-07-21 | 중복 폴더 삭제 | 02_Zotero, 04_Cloud_Shared, .obsidian | 불필요한 백업 제거, 저장소 단순화 |
 | 2026-07-16 | 초기 구성 | 전체 | ThinkExploreHub 통합 설정 |
